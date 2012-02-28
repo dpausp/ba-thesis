@@ -25,7 +25,7 @@ needs_sphinx = '1.1'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'rst2pdf.pdfbuilder']
+extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'rst2pdf.pdfbuilder', 'bibcite.bibcite']
 #extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -165,26 +165,53 @@ html_domain_indices = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IPM3Ddoc'
+htmlhelp_basename = 'IPM3D'
 
 
 # -- Options for LaTeX output --------------------------------------------------
+
+preamble_normal =  r"""
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1cm,bmargin=2cm,lmargin=2.5cm,rmargin=2.5cm,headheight=2cm,headsep=1cm,footskip=1cm}
+
+\definecolor{TitleColor}{rgb}{0.212, 0.376, 0.569}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fontspec}
+\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSerif}
+\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSans}
+
+\usepackage{setspace}
+\setstretch{1.2}
+
+\usepackage{babel}
+\usepackage{xunicode}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt} 
+"""
+
+preamble_simple = ""
 
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 'papersize': 'a4',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '',
+'preamble' : preamble_normal,
+
+'classoptions': ',openany,oneside',
+
+'babel': '\\usepackage[ngerman]{babel}'
 }
 
 latex_title = u"""
 I>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen \\\\
-- \\\\
-Repr\\"asentation von Prozessmodellen im dreidimensionalen Raum - Konzept und Implementierung
+\\vspace{1cm}
+Repräsentation von Prozessmodellen im dreidimensionalen Raum - Konzept und Implementierung
 """
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -203,16 +230,19 @@ latex_documents = [
 latex_use_parts = False
 
 # If true, show page references after internal links.
-latex_show_pagerefs = False
+latex_show_pagerefs = True
 
 # If true, show URL addresses after external links.
-latex_show_urls = True
+latex_show_urls = 'footnote'
 
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
 
 # If false, no module index is generated.
 latex_domain_indices = False
+
+latex_use_modindex = False
+
 
 
 # -- Options for manual page output --------------------------------------------
