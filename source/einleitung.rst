@@ -56,7 +56,16 @@ kommen Maus und Tastatur, sowie Microsoft Kinect und Nintendo Wii
 
 da issn Zitat:
 
-:cite:`jablonski_perspective_2008`
+:cite:`jablonski_workflow_1996`
+
+
+Nette Skizze:
+
+.. figure:: _static/diagrams/graph_based.png
+    :width: 5cm
+
+    Verbindung im graphbasierten Ansatz
+    
 
 Hier wird ein anderes Kapitel referenziert:
 
