@@ -18,9 +18,15 @@ An die für Knoten verwendbaren geometrischen Objekte gibt es einige Anforderung
 Durch die freie Beweglichkeit der Kamera und der Objekte ergeben sich sehr unterschiedliche Beobachtungsperspektiven. So können die Entfernungen zwischen Kamera und Modellelementen sehr groß sein; auch können die Objekte durch die freien Rotationsmöglichkeiten von allen Seiten betrachtet werden.
 
 
-Für die Darstellung der Objekte wurden einfache, dreidimensionale geometrische Körper mit ebenen Seitenflächen wie Würfel oder Quader gewählt. Ebene Flächen eignen sich gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von Text. 
+Für die Darstellung der Objekte wurden einfache, dreidimensionale geometrische Körper mit ebenen Seitenflächen wie Würfel oder Quader gewählt. 
+Ebene Flächen eignen sich gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von Text. 
 
-Für die Realisierung des Prototypen ist es besonders sinnvoll, auf Quader oder annähernd quaderförmige Geometrien zu setzen, da die Knoten in die physikalische Simulation eingebunden sind, um Selektion zu ermöglichen, Kollisionen zu erkennen oder Gravitationsebenen zu realisieren. Quader werden von der verwendeten Physik-Engine direkt unterstützt und sind somit einfach zu benutzen. 
+Für die Realisierung des Prototypen ist es daneben sinnvoll, auf Quader oder annähernd quaderförmige Geometrien zu setzen, da die Knoten in die physikalische Simulation eingebunden sind, um Selektion zu ermöglichen, Kollisionen zu erkennen oder Gravitationsebenen zu realisieren. Quader werden von der verwendeten Physik-Engine direkt unterstützt und sind somit einfach zu benutzen. 
+
+Da dieser Prototyp neben der klassischen Desktop-Bedienung mit Maus und Tastatur auch zur Evaluierung von neuartigen Eingabegeräten eingesetzt werden soll müssen die Eigenschaften dieser Eingabemethoden berücksichtigt werden. Aktuelle 3D-Eingabegeräte  wie die Kinect oder WiiMote haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. Daher müssen die Modellelemente auch eine gewisse Größe und geringe geometrische Komplexität aufweisen damit die Arbeit mit dem Modell für den Benutzer nicht zu anstrengend wird.
+
+Näheres zur Auswahl und Positionierung von Modellelementen mit neuartigen Eingabegeräten dazu findet sich in (-> buchi, uli)
+
 
 Verbindungen zwischen Knoten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt. Verbindungen können texturiert werden. Genutzt wird das im Prototypen, um die Richtung von gerichteten Kanten anzuzeigen. Dazu wird eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken verwendet, die so platziert ist, dass an zwei Ecken der Verbindung ein Pfeil entsteht. [BILD]
 

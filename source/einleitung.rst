@@ -69,4 +69,4 @@ Nette Skizze:
 
 Hier wird ein anderes Kapitel referenziert:
 
-Anderes Kapitel, wo endlich mal was Konkretes steht :ref:`ref_anwendungsfall`.
+Anderes Kapitel, wo endlich mal was Konkretes steht :ref:`ref_konzept_modellanbindung`.
