@@ -1,8 +1,11 @@
-***************
-Zusammenfassung
-***************
+*************************
+Zusammenfassung (deutsch)
+*************************
 
+.. include:: include_zusammenfassung.rst
 
-********
-Abstract
-********
+******************
+Abstract (english)
+******************
+
+.. include:: include_abstract.rst

@@ -1,5 +1,5 @@
 .. toctree::
-    zusammenfassung
+    zusammenfassung-latex
     einleitung
     grundlagen
     related

@@ -12,8 +12,6 @@ I>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen - Repräsentati
     :maxdepth: 3
     :numbered:
 
-    lmm4mmpe
-    
     einleitung
     grundlagen
     related
@@ -25,8 +23,8 @@ I>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen - Repräsentati
     schluss
 
 .. toctree::
-    referenzen
-    anhang
+    anhang_a
+    anhang_b
 
 Index und Tabellen
 ==================

@@ -1,2 +1,3 @@
-.. bibliography:: AI4
+.. bibliography:: komplett
     :style: amsalpha
+

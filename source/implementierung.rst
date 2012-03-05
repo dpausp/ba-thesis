@@ -2,6 +2,8 @@
 Implementierung
 ***************
 
+.. _render_bibliothek:
+
 Render-Bibliothek
 =================
 
@@ -84,7 +86,7 @@ Die drei Visualisierungsvarianten lassen sich einfach über entsprechende Proper
     drawable.disabled = false
     drawable.highlighted = false
     drawable.selectionState = DrawableSelectionState.Normal
-
+Dies könnte im Rahmen dieser Arbeit beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 DrawableSelectionState wurde als enum vorgesehen, damit in Zukunft weitere Selektionszustände unterstützt werden können. 
 
 Die Properties werden nur an den Shader durchgereicht; die Auswahl der richtigen Visualisierungsparameter wird komplett innerhalb eine Shaderfunktion realisiert.
