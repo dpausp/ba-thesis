@@ -7,11 +7,12 @@ Scala
 
 Die Implementierung der Konzepte dieser Arbeit erfolge nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www_scala` 
 
-Die Verwendung von Scala ergab sich aus der Entscheidung, die Simulations-Middleware :ref:`simulator_x` als Basis für den I>PM3D-Prototypen zu verwenden. 
+Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulator_x` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
 Scala wird als objektfunktionale Programmiersprache charakterisiert. "Objektfunktional" soll die Bestrebungen ausdrücken, Aspekte aus funktionalen und objektorientierten Programmiersprachen zu einer effektiven Programmiersprache zu kombinieren.
 
-Scala wird zur Zeit vorwiegend auf der Java Virtual Machine genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
+Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. 
+I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
 
 Actors
 ------
@@ -64,9 +65,6 @@ Außerdem sorgt dies auch dafür, dass auch aktuelle Rechnersysteme mit mehreren
 
 Aufbauend auf dem Actor-Modell stellt Simulator X ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
 
-Ein Event-System ist für interaktive 3D-Anwendungen sehr hilfreich, da auf eine Vielzahl von Ereignissen, die vor allem durch Eingabegeräte verursacht werden, reagiert werden muss.
-
-
 Globale Zustandsvariablen, SVars genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit bem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
 Eine zugeordnete SVarDescription [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
 
@@ -77,8 +75,7 @@ Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie bei
 
 Komponenten können Aspekte zu Entitäten hinzufügen. 
 
-Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind.
-
+Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind; beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
 
 Die genutzte Version von Simulator X (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www_jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
 
@@ -90,11 +87,42 @@ Dies war durch den modularen Aufbau von Simulator X problemlos umsetzbar.
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www_opengl` genutzt. Die :ref:`render_bibliothek` nutzt ausschließlich Funktionalitäten, die in Version 3.3 des OpenGL-Standards nicht als "deprecated" markiert sind. Die im Projekt von :cite:`uli` für Menüs genutzte Nifty-GUI-Bibliothek erfordert allerdings noch OpenGL in der Version 1.x. Somit muss die Anwendung in einem abwärtskompatiblen Grafikmodus gestartet werden.
+Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www_opengl` genutzt. 
 
+Die :ref:`render_bibliothek` nutzt ausschließlich Funktionalitäten, die in Version 3.3 des OpenGL-Standards nicht als "deprecated" markiert sind. Die im Projekt von :cite:`uli` für Menüs genutzte Nifty-GUI-Bibliothek erfordert allerdings noch OpenGL-Funktonen der Version 1.x. Somit muss die Anwendung in einem abwärtskompatiblen Grafikmodus gestartet werden.
 
 Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www_lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff Tastatur und Maus zur Verfügung.
+
+Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
+
+In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionalitäten wie die Berechnung der Beleuchtung und Nebel, Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. Altes OpenGL wird mit dem Begriff *fixed-function-Pipeline* in Verbindung gebracht.
+
+Mit Version 3.0 wurde die *fixed-function-Pipeline* aus dem Kern von OpenGL entfernt. In neueren Versionen müssen diese Berechnung selbst durch den Programmierer in *Shadern* implementiert werden. 
+
+Das neue Konzept gibt jedoch dem Programmierer auch die Freiheit, neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
+Diese Möglichkeit wurde in dieser Arbeit häufig genutzt, wie in :ref:`render_Bibliothek` beschrieben wird.
+
+
+Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von den *Shader-Einheiten* ausgeführt werden.
+
+*Shader* erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. 
+
+Vertex-Shader  
+    arbeiten auf einzelnen Modell-Vertices sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL intern benutzte Koordinatensystem zuständig.
+
+Geometry-Shader
+    könnnen aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
+
+Fragment-Shader 
+    werden einmal pro Fragment aufgerufen [#f3]_ und implementieren bespielsweise Texturierung und Beleuchtung.
+
+Tesselation-Shader (ab OpenGL 4)
+    können komplett neue Geometrien erzeugen.
+
+Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex, an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
+
+*Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein komplettes Objekt konstant bleiben. Dies können beispielsweise Lichtparameter sein.
 
 
 Sonstiges
@@ -107,7 +135,9 @@ Um Prozessmodelle in einer textuellen Form speichern zu können wird die Templat
 
 ST folgt dem Prinzip, Templates als Text mit Platzhaltern zu definieren. Die Platzhalter werden durch das Setzen von Attributen aus dem Anwendungsprogramm heraus mit Inhalt gefüllt.
 
-Um die Nutzung von ST in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
+Um die Nutzung von ST in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. 
+Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
+
 Für Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www_clapper` genutzt.
 
 Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
@@ -126,7 +156,9 @@ Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
 Simplex3D-Math
 --------------
 
-Im gesamten I>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www_simplex3d` genutzt. Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
+Im gesamten I>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www_simplex3d` genutzt. 
+
+Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
 
 SLF4J / Logback
 ---------------
@@ -137,3 +169,4 @@ Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4
 
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozessmodelleditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
+.. [#f3] Ein Fragment entspricht einem Pixel auf dem Bildschirm, wenn man Antialiasing vernachlässigt
