@@ -1,3 +1,4 @@
-.. bibliography:: komplett
-    :style: amsalpha
+.. raw:: latex
+    
+    \printbibliography
 

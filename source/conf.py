@@ -187,6 +187,10 @@ preamble_normal =  r"""
 \usepackage{babel}
 \usepackage{xunicode}
 
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+\addbibresource{links.bib}
+\addbibresource{komplett.rdf}
+
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 
 """
@@ -218,7 +222,7 @@ Repräsentation von Prozessmodellen im dreidimensionalen Raum - Konzept und Impl
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index-latex', 'IPM3D.tex', latex_title,
-   u'Tobias Stenzel', 'manual'),
+   u'Tobias Stenzel', 'manual', True),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

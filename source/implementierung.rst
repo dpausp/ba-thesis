@@ -128,7 +128,9 @@ Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werd
 COLLADA2Scala-Compiler
 ----------------------
 
+Da Laden von Modellen direkt aus COLLADA-XML-Dateien ist relativ zeitaufwändig. Außerdem unterstützt der genutzte COLLADA-Loader bisher noch nicht die Wiederverwendung der geladenen Geometriedaten. So wird für jede Instanz eines COLLADA-Modellobjekts zusätzlicher Grafikspeicher belegt. 
 
+Um die Effizienz zu steigern und nachträgliche Modifikationen an den Modelldaten zu erlauben wurde ein eigenständiges Programm entwickelt, dass mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation in Scala-Code erstellt. Die erzeugte Scala-Meshdatei lässt sich dann dafür nutzen, neue Modellobjekte zu konstruieren.
 
 
 

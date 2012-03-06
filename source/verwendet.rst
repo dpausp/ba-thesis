@@ -49,26 +49,33 @@ Folgende Parser-Funktion
       case id ~ stringLits => LiteralTypeAssignment(id, stringLits)
     }
 
-würde beispielsweise in die LMM-String-Zuweisung ``functions = "a", "test";`` erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen.
+würde beispielsweise die LMM-String-Zuweisung 
+
+.. code-block:: java
+
+    functions = "a", "test";
+
+    
+erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen.
 
 .. _simulator_x:
 
 Simulator X
 ***********
 
-Bei Simulator X handelt es sich um ein Konzept und eine prototypische Implementierung für eine neuartige Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll. 
+*Simulator X* bezeichnet es sich um ein neuartige Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll. 
 Der Fokus liegt hierbei auch auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung. Dies macht Simulator X zu einer gut geeigneten Plattform für den I>PM3D-Prototypen.
 
-Simulator X setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
+*Simulator X* setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
 
 Außerdem sorgt dies auch dafür, dass auch aktuelle Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
 
-Aufbauend auf dem Actor-Modell stellt Simulator X ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
+Aufbauend auf dem Actor-Modell stellt *Simulator X* ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
 
 Globale Zustandsvariablen, SVars genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit bem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
-Eine zugeordnete SVarDescription [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
+Eine zugeordnete SVarDescription\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
 
-Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine Entity beschreibt genau ein Simulationsobjekt [#f2]_ und dessen Daten. 
+Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine Entity beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
 
 Simulator-X-Anwendungen sind aus Komponenten aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
 Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
@@ -77,10 +84,10 @@ Komponenten können Aspekte zu Entitäten hinzufügen.
 
 Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind; beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
 
-Die genutzte Version von Simulator X (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www_jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
+Die genutzte Version von *Simulator X* (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www_jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
 
 Die mitgelieferte Renderkomponente, die für die grafische Ausgabe zuständig ist, war für das vorliegende Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine selbst entwickelte, ebenfalls OpenGL-basierte :ref:`render_bibliothek` ersetzt. 
-Dies war durch den modularen Aufbau von Simulator X problemlos umsetzbar. 
+Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. 
 
 .. _opengl:
 
