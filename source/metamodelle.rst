@@ -28,7 +28,7 @@ Editor-Metamodell
 
 Das Editor-Metamodell enthält alle Informationen, die für die Visualisierung eines Domänenmetamodells nötig sind.
 
-Das vollständige Metamodell, wie es im realisierten Protoypen im Einsatz ist, kann in :ref:`anhang A` nachgelesen werden.
+Das vollständige Editor-Metamodell, wie es im realisierten Protoypen im Einsatz ist, kann in :ref:`anhang_emm` nachgelesen werden.
 
 Ebene D3
 --------
@@ -96,3 +96,4 @@ Im Unterschied zu den Metamodellen von POPM müssen Beziehungen zwischen Knoten 
 Ein DataItem muss also beispielsweise über eine NodeDataConnection an Prozess- oder Entscheidungsknoten angebunden werden.
 
 
+Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.

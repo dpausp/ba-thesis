@@ -24,6 +24,8 @@ Beziehungen verschiedener Art zwischen Elementen werden durch Kanten (connecting
 
 Neben den beiden genannten Elementkategorien stehen noch "Swim Lanes", die eine Gruppierung von flow objects nach ausführender Instanz erlauben und artifacts, die unter Anderem Daten repräsentieren, zur Verfügung.
 
+.. _popm:
+
 Perspektivenorientierte Prozessmodellierung
 ===========================================
 
@@ -40,6 +42,8 @@ Operationsbezogene Perspektive: Zur Ausführung von Prozessen sind immer verschi
 Dies soll explizit keine vollständige Aufzählung, sondern nur eine Darstellung oft relevanter Aspekte sein. Die Objekte der Prozessmodellierung sind sehr vielgestaltig und die Anforderungen können sehr unterschiedlich sein. Das bedingt eine flexible Modellierungssprache. So können nach Bedarf weitere Perspektiven hinzugefügt werden.
 
 In diesem Zusammenhang soll auch erwähnt werden, dass es oft notwendig ist, die Granularität von Prozessen dynamisch zu verändern, je nachdem, welche Informationen im konkreten Fall gefragt sind. Prozesse können daher komposit (oder auch komplex genannt) sein und weitere, Subprozesse enthalten, die in einem grobgranularen Diagramm nicht darstellt werden. Bei Bedarf können diese Unterprozesse separat in einem Diagramm betrachten werden (Umsetzung im Tool).
+
+.. _metamodellierung:
 
 Metamodellierung
 ================

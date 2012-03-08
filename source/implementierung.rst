@@ -86,7 +86,7 @@ Die drei Visualisierungsvarianten lassen sich einfach über entsprechende Proper
     drawable.disabled = false
     drawable.highlighted = false
     drawable.selectionState = DrawableSelectionState.Normal
-Dies könnte im Rahmen dieser Arbeit beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
+
 DrawableSelectionState wurde als enum vorgesehen, damit in Zukunft weitere Selektionszustände unterstützt werden können. 
 
 Die Properties werden nur an den Shader durchgereicht; die Auswahl der richtigen Visualisierungsparameter wird komplett innerhalb eine Shaderfunktion realisiert.
@@ -113,6 +113,7 @@ Um Text darstellen zu können müssen beschriftbare Drawables den trait "TextDis
 Der angezeigte Text kann im Drawable mit 
 
 .. code-block:: scala
+
     drawable.text = "irgendein Text" 
 
 verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, -größe und -stil (über java.awt.Font) und die Schriftfarbe (java.awt.Color) angeboten.
@@ -132,5 +133,9 @@ Da Laden von Modellen direkt aus COLLADA-XML-Dateien ist relativ zeitaufwändig.
 
 Um die Effizienz zu steigern und nachträgliche Modifikationen an den Modelldaten zu erlauben wurde ein eigenständiges Programm entwickelt, dass mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation in Scala-Code erstellt. Die erzeugte Scala-Meshdatei lässt sich dann dafür nutzen, neue Modellobjekte zu konstruieren.
 
+.. _implementierung_lmmlight:
 
+LMMLight
+========
 
+Für den Protoypen wurde die Anbindung an eine textuelle Modellierungssprache benötigt. Für ...

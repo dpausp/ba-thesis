@@ -1,3 +1,5 @@
+.. _konzept_visualisierung:
+
 ***************************************
 Konzept 3D-Visualisierung von Prozessen
 ***************************************
@@ -48,7 +50,7 @@ Zusammengesetze Objekte
 bla
 
 
-.. _ref_visualisierungsvarianten:
+.. _visualisierungsvarianten:
 
 Visualisierungsvarianten für interaktive Modelleditoren
 =======================================================
@@ -120,3 +122,14 @@ Zur besseren Orientierung könnten noch andere Grafikeffekt genutzt werden, die 
 
 
 Eine andere Möglichkeit, den gerichteten Charakter einer Verbindung darzustellen wäre das Anzeigen einer dreidimensionalen Pfeilspitze am Ende der Linie oder innerhalb der Verbindung. 
+
+Andere Varianten, um Kanten darzustellen: "Bezier-Röhren" :cite:`spratt_using_1994`
+
+Benutzerstudie zur Darstellung von Verbindungen: :cite:`holten_user_2009`
+
+Level of Detail: Anzeige automatisch vereinfachen bei weit entfernten Objekten, Text abkürzen (automatisch nach bestimmten Regeln oder Attribut für Abkürzung definieren)
+
+
+Das ebenfalls für die Prozessmodellierung interessante Konzept der dynamischen Transparent von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
+
+Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. Unwichtige, die Ansicht störende Objekte werden als "distractors", informationstragende Elemente als "targets" bezeichnet. Das Ziel ist nun, sicherzustellen, dass "targets" nie von "distractors" verdeckt werden können. Letztere werden, sobald sie wichtige Objekte verdecken transparent dargestellt, damit das relevante Element jederzeit erkannt werden kann. Dazu wird ein Algorithmus angegeben, der diesen Effekt in Echtzeit auf Sub-Objekt-Ebene berechnen kann.
