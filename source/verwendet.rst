@@ -5,7 +5,7 @@ Verwendete Techniken und Software
 Scala
 *****
 
-Die Implementierung der Konzepte dieser Arbeit erfolge nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www_scala` 
+Die Implementierung der Konzepte dieser Arbeit erfolge nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala` 
 
 Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulator_x` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
@@ -18,7 +18,7 @@ Actors
 ------
 
 Ein sinnvoller Einsatzbereich von Scala ist unter Anderem die Erstellung von parallelen und verteilten Anwendungen.
-Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www_erlang` realisiert wurde.
+Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
 Grundlage für das Actor-Patterns ist das *message passing*, das bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen. In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem dazu benutzt werden, Daten zu unveränderlichen Objekten zusammenzufassen.
 
@@ -84,7 +84,7 @@ Komponenten können Aspekte zu Entitäten hinzufügen.
 
 Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind; beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
 
-Die genutzte Version von *Simulator X* (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www_jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
+Die genutzte Version von *Simulator X* (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www:jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
 
 Die mitgelieferte Renderkomponente, die für die grafische Ausgabe zuständig ist, war für das vorliegende Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine selbst entwickelte, ebenfalls OpenGL-basierte :ref:`render_bibliothek` ersetzt. 
 Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. 
@@ -94,11 +94,11 @@ Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar.
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www_opengl` genutzt. 
+Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
 Die :ref:`render_bibliothek` nutzt ausschließlich Funktionalitäten, die in Version 3.3 des OpenGL-Standards nicht als "deprecated" markiert sind. Die im Projekt von :cite:`uli` für Menüs genutzte Nifty-GUI-Bibliothek erfordert allerdings noch OpenGL-Funktonen der Version 1.x. Somit muss die Anwendung in einem abwärtskompatiblen Grafikmodus gestartet werden.
 
-Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www_lwjgl` in der Version 2.8.2 eingesetzt. 
+Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff Tastatur und Maus zur Verfügung.
 
 Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
@@ -145,7 +145,7 @@ ST folgt dem Prinzip, Templates als Text mit Platzhaltern zu definieren. Die Pla
 Um die Nutzung von ST in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. 
 Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
 
-Für Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www_clapper` genutzt.
+Für Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www:clapper` genutzt.
 
 Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
 
@@ -163,14 +163,14 @@ Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
 Simplex3D-Math
 --------------
 
-Im gesamten I>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www_simplex3d` genutzt. 
+Im gesamten I>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www:simplex3d` genutzt. 
 
 Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
 
 SLF4J / Logback
 ---------------
 
-Für die Aufzeichnung von Logging-Informationen wird die Java-Logging-API *SLF4J* :cite:`SLF4J` in der Version 1.6.4 mit Logback (1.0.0) als Implementierung eingesetzt. 
+Für die Aufzeichnung von Logging-Informationen wird die Java-Logging-API *SLF4J* :cite:`www:slf4j` in der Version 1.6.4 mit Logback (1.0.0) als Implementierung eingesetzt. 
 Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4J-API entwickelt.
 
 

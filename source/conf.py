@@ -25,7 +25,7 @@ needs_sphinx = '1.1'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'rst2pdf.pdfbuilder', 'bibcite.bibcite']
+extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'rst2pdf.pdfbuilder', 'bibcite.bibcite', 'numfig.numfig']
 #extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -87,6 +87,13 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
+
+
+# -- Options for numfig [extension]  ---------------------------------------------------
+
+figure_caption_prefix = "Abbildung"
+
+number_figures = True
 
 # -- Options for HTML output ---------------------------------------------------
 
@@ -178,18 +185,17 @@ preamble_normal =  r"""
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{fontspec}
-\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSerif}
-\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSans}
+\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.9]{FreeSerif}
+\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.9]{FreeSans}
 
 \usepackage{setspace}
 \setstretch{1.2}
 
-\usepackage{babel}
 \usepackage{xunicode}
 
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{links.bib}
-\addbibresource{komplett.rdf}
+\addbibresource{komplett.bib}
 
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 

@@ -1,4 +1,6 @@
 .. raw:: latex
     
-    \printbibliography
+    \printbibheading
+    \printbibliography[nottype=online,heading=subbibliography,title={Literatur}]
+    \printbibliography[type=online,heading=subbibliography,title={WWW-Quellen}]
 
