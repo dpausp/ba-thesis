@@ -2,7 +2,7 @@
 Related Work
 ************
 
-Neben den (relativ wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Modellierung und Visualisierung von Prozessen beschäftigen sollen hier auch solche Arbeiten vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten beschäftigen und für die Realisierung der Aufgabenstellung hilfreich sein könnten. Dies umfasst beispielsweise folgende Themengebiete:
+Neben den (relativ wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche Arbeiten vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten beschäftigen und für die Realisierung der Aufgabenstellung oder für zukünftige Arbeiten in dieser Richtung hilfreich sein könnten. Dies umfasst beispielsweise folgende Themengebiete:
 
 * Visualisierung von Graphen in 3D
 * Graph-Layouting
@@ -11,6 +11,14 @@ Neben den (relativ wenigen) Arbeiten, die sich explizit mit der dreidimensionale
 
 Allgemein stellt sich die Frage, inwieweit 3D-Visualisierungen Vorteile bieten können und welche Probleme dabei auftreten.
 
+
+Visualisierung von Graphen in 3D
+================================
+
+Visualizing Graphs in Three Dimensions
+--------------------------------------
+
+Ware, Mitchell :cite:`Ware:2008:VGT:1279640.1279642`
 
 3D-Softwarevisualisierung
 =========================
@@ -27,7 +35,8 @@ Es lässt sich eine Reihe von Arbeiten finden, die sich mit 3D-Visualisierungste
 
 Einen umfassenden Überblick über derartige Arbeiten gibt :cite:`teyseyre_overview_2009`. 
 
-
+Three dimensional UML using force directed layout
+-------------------------------------------------
 
 :cite:`dwyer_three_2001` weist auf die Probleme von Softwarevisualisierungstechniken hin, große und insbesondere hierarchisch aufgebaute Diagramme darzustellen. 
 3D-Darstellungen hätten hier Vorteile durch die Möglichkeit, Hierarchieebenen des Diagramms als Flächen im 3D-Raum zu zeigen. 
@@ -58,6 +67,8 @@ Es wird ein Benutzer zitiert, der die Möglichkeit, das Diagramm aus verschieden
 Auch seien Benutzer gebeten worden, selbst ein 3D-Diagramm nach einer textuellen Vorlage zu modellieren. Dabei sei aufgefallen, dass die meisten Benutzer wenig Probleme mit der Aufgabe hatten. Es wird jedoch vermutet, dass die 3D-Darstellung bei einigen Benutzern eine gewisse Eingewöhnungszeit voraussetzen könnte.
 Probanden mit vorheriger Erfahrung aus 3D-Computerspielen hätten im Versuch die wenigsten Schwierigkeiten mit der Navigation im 3D-Raum gehabt. 
 
+X3D-UML: 3D UML State Machine Diagrams
+--------------------------------------
 
 In :cite:`mcintosh_x3d-uml:_2008` werden Zustandsdiagramme (state machine diagrams) der UML in den 3D-Raum übertragen.
 
@@ -79,6 +90,8 @@ Solche Diagramme seien Benutzern mit Erfahrung in Rational Rose vorgelegt worden
 
     Hierarchisch aufgebautes 3D-UML-Zustandsdiagramm aus :cite:`mcintosh_x3d-uml:_2008`
 
+3D Visualization for Model Comprehension
+----------------------------------------
 
 3D-Visualisierungen von (großen) UML-Zustandsdiagrammen werden auch von :cite:`krolovitsch_3d_2009` und, darauf aufbauend, :cite:`alvergren_3d_2009` untersucht. Zustandsdiagramme werden, wie in :cite:`mcintosh_x3d-uml:_2008` auf Flächen im 3D-Raum gezeichnet, wobei hier die Zustände selbst als 3D-Objekte dargestellt werden, um den visuellen Eindruck zu verbessern, wie in :num:`Abbildung #krolovitsch-sm` zu sehen ist. 
 
@@ -99,6 +112,9 @@ In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagram
 
     Zustandsdiagramm mit ausgeblendeten Diagrammteilen (dargestellt durch blaue Würfel) aus :cite:`krolovitsch_3d_2009`
 
+Three dimensional software modelling
+------------------------------------
+
 :cite:`gil_three_1998` merkt an, dass durch 3D-Visualisierungen die Ausdruckstärke von (graphbasierten) grafischen Notationen deutlich erhöht werden könne. Besonders vorteilhaft seien 3D-Visualisierungen von Graphen, wenn es darum ginge, eine Vielzahl von unterschiedlichen Beziehungs- bzw. Verbindungstypen darzustellen. 
 Im 2D-Bereich habe man nur relativ eingeschränkte Möglichkeiten, unterschiedliche Verbindungstypen durch Farbe, unterschiedliche Linentypen oder durch Konnektoren, also Symbole an den Enden der Linien, voneinander abzugrenzen. Um diese Probleme im 2D-Raum zu umgehen würden oft unterschiedliche Graphen bzw. Diagrammtypen genutzt. Dabei besitzen Knoten in unterschiedlichen Diagrammtypen oft die gleiche Bedeutung während Verbindungen eine komplett andere Semantik besäßen. 
 Problematisch sei die Repräsentation von Zusammenhängen zwischen unterschiedlichen Diagrammtypen, was allgemein einen großen Schwachpunkt von Modellierungssprachen darstelle.
@@ -114,6 +130,8 @@ Die 3. Dimension ließe sich auch als Zeitachse interpretieren. So sei es mögli
 
     3D-UML-Sequenzdiagramm; Ausschnitt aus :cite:`gil_three_1998`
 
+Towards three-dimensional representation and animation of UML diagrams
+----------------------------------------------------------------------
 
 In :cite:`gogolla_towards_1999` wird ebenfalls die 3D-Darstellung von UML-Diagrammen, speziell Klassen-, Objekt- und Sequenzdiagrammen behandelt. 3D-Visualisierungen könnten die Verständlichkeit von komplexen UML-Diagrammen erhöhen. Graphen, die in zwei Dimensionen nicht mehr kreuzungsfrei zeichnen ließen, könnten in 3D ohne solche Überschneidungen dargestellt werden. Die dritte Dimension könnte beispielsweise dafür genutzt werden, als "uninteressant" eingestufte Elemente in den Hintergrund zu schieben und damit Elemente im Vordergrund besonders hervorzuheben.
 
@@ -140,7 +158,7 @@ Zusätzlich wird die Nutzung von Animationen vorgeschlagen, um Übergänge zwisc
 Außerdem wurden auch schon 3D-Programmiersprachen vorgeschlagen, unter Anderem von : :cite:`Shu:1988:VP:59606` und :cite:`Freeman:1995:SSV:832276.834313`.
 
 Graphical Editing Framework 3D
-==============================
+------------------------------
 
 GEF3D :cite:`von_pilgrim_gef3d:_2008`. Das Projekt basiert auf den Konzepten von GEF, dem Grafical Editing Framework der Eclipse Plattform und uberträgt diese in den dreidimensionalen Raum.
 
@@ -148,9 +166,71 @@ GEF3D :cite:`von_pilgrim_gef3d:_2008`. Das Projekt basiert auf den Konzepten von
 
 Zur Implementierung ist zu sagen, dass das Projekt in den letzten beiden Jahren relativ wenig Änderungen und Verbesserungen erfahren hat und das Rendering noch auf "altem" OpenGL basiert und damit die Möglichkeiten moderner Grafikhardware eher unzureichend nutzt.
 
+3D-Prozessvisualisierung
+========================
+
+3D Representation of Business Process Models
+--------------------------------------------
+
+Von :cite:`betz_3d_2008` wird die Visualisierung von Prozessen mittels dreidimensional dargestellter Petrinetze vorgestellt. Es werden verschiedene Szenarien gezeigt, in denen 3D-Visualisierungen gewinnbringend genutzt werden könnten. 
+
+Es wird das Problem angesprochen, dass für die Modellierung von Prozessen oft verschiedene Diagrammtypen nötig seien, zwischen denen in üblichen 2D-Werkzeugen zeitraubend gewechselt werden müsse. Mehrere Diagrammtypen in eine 3D-Ansicht zu integrieren könne hier Abhilfe schaffen. 
+
+Als Beispiel (:num:`Abbildung #betz-org-process`) wird eine Kombination eines Organisationsmodells mit einem Prozessmodell gezeigt. 
+Neben den Beziehungen zwischen Aktivitäten im Prozessmodell und den Rollen des Organisationsmodells sei es gleichzeitig möglich, Beziehungen im Organisationsmodell, wie die Generalisierung von Rollen oder die Zuordnung von Ressourcen zu Rollen zu visualisieren.
+
+.. _betz-org-process:
+
+.. figure:: _static/ext_pics/betz_org_process.png
+
+   Darstellung von Beziehungen zwischen Prozess- und Organisationsmodell aus :cite:`betz_3d_2008` 
+
+Ein weiteres Anwendungsszenario für 3D-Visualisierungen sei es, Ähnlichkeiten zwischen verschiedenen Prozessmodellen aufzuzeigen. 
+
+Im 3D-Raum sei es einfach möglich, die zu vergleichenden Prozesse nebeneinander auf parallelen Ebenen im Raum zu platzieren.
+Verbindungen zwischen Modellelementen der gegenüber gestellten Prozessmodelle könnten dafür genutzt werden, mit verschiedenen Metriken berechnete Ähnlichkeitswerte anzuzeigen. 
+Wie in :num:`Abbildung #betz-vergleich-pm` zu sehen ist werden die Werte sowohl durch die Beschriftung als auch durch die Dicke der Verbindungslinien visualisiert. 
+
+.. _betz-vergleich-pm:
+
+.. figure:: _static/ext_pics/betz_vergleich_pm.png
+
+   Visualisierung von Ähnlichkeiten zwischen Prozessmodellen aus :cite:`betz_3d_2008` 
+
+Außerdem könnten hierarchische Prozessdiagramme gut im dreidimensionalen Raum dargestellt werden. Der Benutzer könne mehrere Verfeinerungsstufen des Modells in einer Ansicht sehen, wie in :num:`Abbildung #betz-prozess-verfeinerung` gezeigt wird. 
+
+.. _betz-prozess-verfeinerung:
+
+.. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
+
+   4 Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
+
+3D gadgets for business process visualization — a case study
+------------------------------------------------------------
+
+In :cite:`schoenhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vorgestellt, der dafür genutzt werden könne, Simulationen von Prozessen zu kontrollieren und dabei anfallende Daten zu visualisieren.
+
+Der Prozess selbst wird, wie in :num:`Abbildung #schoenhage-graph` gezeigt, als 3D-Graph dargestellt, wobei Subgraphen durch den Benutzer nach Bedarf auf- und zugeklappt werden könnten. 
+
+Datenflüsse würden durch animierte Kugeln angezeigt, die sich entlang der Kanten von einem Aktivitätsknoten zum nächsten bewegen würden.
+Der Anwender könne durch die Auswahl von Knoten und dem Drücken einer "drill-down-Schaltfläche" eine Visualisierung zugehöriger Prozessdaten öffnen – hier im Beispiel ein 3D-Histogramm – wie in :num:`Abbildung #schoenhage-drilldown` zu sehen ist.
+Es sei möglich, Ansichten auf den Prozessgraphen zu speichern um später wieder schnell zu diesen zurückspringen zu können.
+
+.. _schoenhage-graph:
+
+.. figure:: _static/ext_pics/schoenhage_drilldown.png
+
+   Prozessgraph mit "Datenflusskugeln" aus :cite:`schoenhage_3d_2000`
+
+.. _schoenhage-drilldown:
+
+.. figure:: _static/ext_pics/schoenhage_drilldown.png
+
+   Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schoenhage_3d_2000`
+
 
 Conceptual Modelling in 3D Virtual Worlds for Process Communication
-===================================================================
+-------------------------------------------------------------------
 
 In dieser Arbeit wird ein Prototyp eines 3D BPMN-Editors vorgestellt, der in der virtuellen Welt von Second Life implementiert wurde. Besonderen Wert wurde auf die Zusammenarbeit zwischen mehreren Modellierern und die Prozesskommunikation, auch unter Beteiligung von Personen, die keine Modellierungsexperten sind, gelegt. 
 "Naive stakeholders" hätten oft Probleme, die abstrakte Welt der konzeptuellen Modellierung zu verstehen, weil der Bezug zu realen Gegenständen fehle. Durch Zuhilfennahme einer virtuellen Welt, in der abstrakte Prozessmodelle eingebettet sind solle dies abgemildert werden. 
@@ -174,43 +254,10 @@ Es gibt es die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige
 Hier sind Screenshots aus einem Video zu sehen, das mit Hilfe des beschriebenen Systems erstellt wurde. Es zeigt einen Prozess an einem Flughafen. 
 
 
-Im Bereich des Process- / Event-Mining anzusiedeln ist die Arbeit :cite:`suntinger_event_2008`, "The Event Tunnel". Hier wird eine 3D-Ansicht dafür genutzt, Ereignisse bei der Ausführung von Prozessen in hilfreicher Weise zu visualisieren. Die Ereignisse sind hierbei innerhalb eines 3D-"Tunnels" angeordnet, entlang dessen Achse die Zeitachse verläuft. So lassen sich Ereignisse leicht zeitlich einordnen und Zusammenhänge werden erkennbar.
+Zusammenfassung
+===============
 
-3D Representation of Business Process Models
-============================================
-
-Von :cite:`betz_3d_2008` wird die Visualisierung von Prozessen mit Hilfe von dreidimensional dargestellten Petrinetzen vorgestellt. Es werden verschiedene Szenarien gezeigt, in denen 3D-Visualisierungen gewinnbringend genutzt werden könnten.
-
-Es wird das Problem angesprochen, dass für die Modellierung von Prozessen oft verschiedene Diagrammtypen nötig seien, zwischen denen in üblichen 2D-Werkzeugen zeitraubend gewechselt werden müsse. Mehrere Diagrammtypen in eine 3D-Ansicht zu integrieren könne hier Abhilfe schaffen. 
-
-Als Beispiel (:num:`Abbildung #betz-org-process`) wird eine Kombination eines Organisationsmodells mit einem Prozessmodell gezeigt. 
-Neben den Beziehungen zwischen Aktivitäten im Prozessmodell und den Rollen des Organisationsmodells sei es gleichzeitig möglich, Beziehungen im Organisationsmodell, wie die Generalisierung von Rollen oder die Zuordnung von Ressourcen zu Rollen zu visualisieren.
-
-Mit dieser Darstellung sei es auch einfach zu erkennen, an welchen Stellen und wie oft bestimmte Rollen an Prozessaktivitäten beteiligt seien.
-
-.. _betz-org-process:
-
-.. figure:: _static/ext_pics/betz_org_process.png
-
-   Darstellung von Beziehungen zwischen Prozess- und Organisationsmodell aus :cite:`betz_3d_2008` 
-
-Als dritte Anwendung wird, Gemeinsamkeiten und Unterschiede zwischen verschiedenen Prozessversionen oder -varianten aufzuzeigen. Die Darstellung als 3D-Graph hilft hierbei, da die Prozesse gut nebeneinander im Raum platziert und Verbindungen zwischen gleichen Modellelementen der gegenüberliegenden Modelle angezeigt werden könnten.
-
-.. _betz-vergleich-pm:
-
-.. figure:: _static/ext_pics/betz_vergleich_pm.png
-
-   Visualisierung von Ähnlichkeiten zwischen Prozessmodellen aus :cite:`betz_3d_2008` 
-
-Außerdem könnten Verfeinerungen und Aggregierungen von Prozessteilen gut im dreidimensionalen Raum dargestellt werden, da man neben dem verfeinerndem Diagramm die grobgranulare Prozessansicht zeigen kann, wie in :num:`Abbildung #betz-prozess-verfeinerung` zu sehen ist.
-
-.. _betz-prozess-verfeinerung:
-
-.. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
-
-   Darstellung von Prozessmodell-Verfeinerungen aus :cite:`betz_3d_2008` 
-
-Das Konzept wurde in einem Prototypen implementiert.
+bla
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" können unter http://wilma.sourceforge.net/ heruntergeladen werden
 
