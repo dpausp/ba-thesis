@@ -139,3 +139,6 @@ LMMLight
 ========
 
 Für den Protoypen wurde die Anbindung an eine textuelle Modellierungssprache benötigt. Für ...
+
+
+Die Sprache ist vollständig kompatibel zum textuellen Editor von OMME. Das heißt, dass gültige LMMLight-Modelle vom Editor nicht beanstandet werden. Dies ermöglicht ein einfaches Bearbeiten der Modelle ohne einen eigenen Editor entwickeln zu müssen.

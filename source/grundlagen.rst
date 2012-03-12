@@ -5,6 +5,18 @@ Grundlagen
 Prozessmodellierungssprachen
 ============================
 
+Prozessmodellierung
+-------------------
+
+* Modellbildung allgemein
+
+* Prozess, Kontrollfluss und so
+
+* Darstellung von Modellen mit Hilfe von Modellierungssprachen
+
+Klassifikation von Modellierungssprachen
+----------------------------------------
+
 Modellierungssprachen lassen sich prinzipiell in textuelle und graphische Notationen unterscheiden. 
 
 Textuelle Sprachen eignen sich besonders für die automatische Verarbeitung und Transformation in andere Sprachen.
@@ -16,6 +28,9 @@ Bei der graphbasierten Variante werden grafische Elemente mittels Kanten verbund
 Im geometriebasierten Fall wird Zusammengehörigkeit durch "Enthaltensein" dargestellt; ein Element wird innerhalb eines anderen gezeichnet.
 
 Es ist auch möglich, beide Ansätze in einer Modellierungssprache zu kombinieren (Hybrid).
+
+BPMN
+----
 
 Business Process Model and Notation, kurz BPMN ist eine von der Object Management Group spezifizierte, grafische Repräsentation für Prozessmodelle, die in den letzten Jahren eine hohe Verbreitung in der Forschung und im praktischen Einsatz erlebt. [Quelle?]
 
@@ -29,15 +44,20 @@ Neben den beiden genannten Elementkategorien stehen noch "Swim Lanes", die eine 
 Perspektivenorientierte Prozessmodellierung
 ===========================================
 
-Funktionale Perspektive: hier werden die funktionalen Einheiten, allgemein "Prozess" genannt angegeben.
+Funktionale Perspektive 
+    hier werden die funktionalen Einheiten, allgemein "Prozess" genannt angegeben.
 
-Verhaltensbezogene Perspektive: dies wird auch als "Kontrollfluss" bezeichnet und gibt die zeitlichen bzw. logische Abfolge der funktionalen Einheiten an, also die Ausführungsreihenfolge an sich an. 
+Verhaltensbezogene Perspektive 
+    dies wird auch als "Kontrollfluss" bezeichnet und gibt die zeitlichen bzw. logische Abfolge der funktionalen Einheiten an, also die Ausführungsreihenfolge an sich an. 
 
-Organisationsbezogene Perspektive: jeder Prozess lässt sich einer ausführenden Entität, zum Beispiel eine Rolle oder eine konkreten Person zuordnen, die für die Ausführung verantwortlich ist.
+Organisationsbezogene Perspektive 
+    jeder Prozess lässt sich einer ausführenden Entität, zum Beispiel eine Rolle oder eine konkreten Person zuordnen, die für die Ausführung verantwortlich ist.
 
-Datenbezogene Perspektive: Prozessmodelle sind ohne ausgetauschte und erstellte / modifizierte Daten quasi undenkbar. Datenflüsse legen oft die Abhängigkeiten zwischen Prozessen fest.
+Datenbezogene Perspektive 
+    Prozessmodelle sind ohne ausgetauschte und erstellte / modifizierte Daten quasi undenkbar. Datenflüsse legen oft die Abhängigkeiten zwischen Prozessen fest.
 
-Operationsbezogene Perspektive: Zur Ausführung von Prozessen sind immer verschiedene Betriebsmittel erforderlich.
+Operationsbezogene Perspektive 
+    Zur Ausführung von Prozessen sind immer verschiedene Betriebsmittel erforderlich.
 
 Dies soll explizit keine vollständige Aufzählung, sondern nur eine Darstellung oft relevanter Aspekte sein. Die Objekte der Prozessmodellierung sind sehr vielgestaltig und die Anforderungen können sehr unterschiedlich sein. Das bedingt eine flexible Modellierungssprache. So können nach Bedarf weitere Perspektiven hinzugefügt werden.
 

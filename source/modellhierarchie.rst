@@ -1,8 +1,8 @@
 .. _metamodelle:
 
-***********
-Metamodelle
-***********
+*****************
+Modell-Hierarchie
+*****************
 
 Diese Arbeit konzentriert sich zwar auf die Visualisierung von Prozessmodellen, aber es wurde dennoch als vorteilhaft gesehen, die Visualisierung und die Modellanbindung möglichst flexibel zu gestalten. 
 Das führt dazu, dass Modifikationen schnell vorgenommen werden könnnen und ein Experimentieren mit der Prozessvisualisierung einfach durchführbar ist. 
@@ -19,12 +19,10 @@ Die Modelle werden mit Hilfe einer textuellen Modellierungssprache spezifiziert,
 Die hier verwendete Sprache, im Folgenden LMMLight genannt folgt in vielen Aspekten LMM, ohne jedoch alle weiterführenden Modellierungsmuster zu unterstützen. 
 Details zu LMMLight und der Implentierung finden sich im späteren Kapitel :ref:`implementierung_lmmlight`.
 
-Die Sprache ist vollständig kompatibel zum textuellen Editor von OMME. Das heißt, dass gültige LMMLight-Modelle vom Editor nicht beanstandet werden. Dies ermöglicht ein einfaches Bearbeiten der Modelle ohne einen eigenen Editor entwickeln zu müssen.
-
 Im Folgenden soll nun beschrieben werden, welche Anforderungen Editor-Metamodell und Domänenmetamodell erfüllen müsen und wie die für diese Arbeit verwendeten Metamodelle aussehen.
 
-Editor-Metamodell
-=================
+Editor-Modelle
+==============
 
 Das Editor-Metamodell enthält alle Informationen, die für die Visualisierung eines Domänenmetamodells nötig sind.
 
@@ -60,8 +58,6 @@ Hier wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendu
 
   Details zur Palette siehe :cite:`uli` und :cite:`buchi`
 
-Kanten werden entweder durch eine farbige (ColoredLine) oder eine texturierte (TexturedLine) Linie dargestellt.
-
 Kanten müssen folgende Attribute definieren:
 
   * toolingName: definiert, wie der Kantentyp in einer Palette genannt wird
@@ -72,10 +68,14 @@ Für Szenenobjekte kann eine Physikrepräsentation definiert werden.
 
 Details zur Visualisierung und den zur Verfügung stehenden grafischen Objekten sind im nächsten Kapitel :ref:`konzept_visualisierung` zu finden.
 
+Ebene D1
+--------
+
+
 .. _domaenenmodell:
 
-Domänenmodell
-=============
+Domänenmodelle
+==============
 
 Das Domänen-Metamodell ist im prinzipiell frei wählbar. Für diese Arbeit kommt ein Metamodell zum Einsatz, das an die Metamodelle der perspektivenorientierten Prozessmodellierung wie sie in :cite:`volz_werkzeugunterstuetzung_2011` andefiniert wurden, angelehnt ist.
 

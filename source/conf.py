@@ -178,8 +178,8 @@ htmlhelp_basename = 'IPM3D'
 # -- Options for LaTeX output --------------------------------------------------
 
 preamble_normal =  r"""
-\usepackage[a4paper]{geometry}
-\geometry{verbose,tmargin=1cm,bmargin=2cm,lmargin=2.5cm,rmargin=2.5cm,headheight=2cm,headsep=1cm,footskip=1cm}
+\usepackage[a4paper,margin=2cm,tmargin=2.5cm]{geometry}
+%% \geometry{verbose,tmargin=1cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,headheight=3cm,headsep=1cm,footskip=1cm}
 
 \definecolor{TitleColor}{rgb}{0.212, 0.376, 0.569}
 \renewcommand{\familydefault}{\sfdefault}

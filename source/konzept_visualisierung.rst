@@ -10,9 +10,6 @@ Grundsätzlich handelt es sich um einen graphbasierte Visualisierungsansatz. Pro
 
 Das Aussehen der Modellelemente ist an die 2D-Repräsentation von Prozess in IPM2 angelehnt. Auf die in diesem Projekt realisierten geometrischen Ansatz, also Beziehungen zwischen Elementen durch grafisches Enthaltensein darzustellen wurde hier aus Gründen der einfacheren Implementierung verzichtet. Dies könnte später noch hinzugefügt werden jedoch ist dabei zu beachten, dass dies im 3D-Raum wohl deutlich schwieriger darzustellen und zu verstehen ist als in 2D-Diagrammen. [Beispiel? oder irgendein Beleg?]
 
-Die Objekte sind frei drehbar um alle 3 Achsen und können prinzipiell frei in der 3D-Szene platziert werden solange sie nicht mit anderen Objekten kollidieren oder von Gravitationsebenen angezogen werden (->).
-
-Wie in der Computergrafik üblich wird die Vorstellung einer virtuellen Kamera benutzt, durch die der Benutzer die Szene beobachtet. Durch Verschieben und Rotieren der Kamera kann sich der Benutzer in der virtuellen Umgebung "bewegen". 
 
 Für die Darstellung von Informationen auf den Knoten gibt es grundsätzlich zwei Möglichkeiten. Zum einen können mehrzeilige Texte, zum Anderen statische 2D-Grafiken (Texturen) auf den Seiten angezeigt werden. Texte können dazu verwendet werden, Attribute aus dem Prozessmodell anzuzeigen, beispielsweise den Namen oder die Funktion des Elements. 
 
@@ -27,7 +24,7 @@ Für die Realisierung des Prototypen ist es daneben sinnvoll, auf Quader oder an
 
 Da dieser Prototyp neben der klassischen Desktop-Bedienung mit Maus und Tastatur auch zur Evaluierung von neuartigen Eingabegeräten eingesetzt werden soll müssen die Eigenschaften dieser Eingabemethoden berücksichtigt werden. Aktuelle 3D-Eingabegeräte  wie die Kinect oder WiiMote haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. Daher müssen die Modellelemente auch eine gewisse Größe und geringe geometrische Komplexität aufweisen damit die Arbeit mit dem Modell für den Benutzer nicht zu anstrengend wird.
 
-Näheres zur Auswahl und Positionierung von Modellelementen mit neuartigen Eingabegeräten dazu findet sich in (-> buchi, uli)
+Näheres zur Auswahl und Positionierung von Modellelementen durch Eingabegeräte dazu findet sich in (-> buchi, uli)
 
 
 Verbindungen zwischen Knoten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt. Verbindungen können texturiert werden. Genutzt wird das im Prototypen, um die Richtung von gerichteten Kanten anzuzeigen. Dazu wird eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken verwendet, die so platziert ist, dass an zwei Ecken der Verbindung ein Pfeil entsteht. [BILD]
@@ -43,11 +40,6 @@ Trotz der freien Drehbarkeit soll sichergestellt werden, dass Texte oder Symbole
 Ab einem gewissen Winkel wird nur noch die Hintergrundfarbe angezeigt.
 
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen. Diese Objekte werden als "scenery objects" bezeichnet. Diese Objekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen, die zur Illustration von Prozessschritten diesen können. 
-
-Zusammengesetze Objekte
-=======================
-
-bla
 
 
 .. _visualisierungsvarianten:
@@ -82,6 +74,11 @@ Diese 3 Varianten können frei kombiniert werden; also ist es zum Beispiel auch 
 
 Maßnahmen zu Verbesserung der Benutzerfreundlichkeit
 ====================================================
+
+Zusammengesetze Objekte
+-----------------------
+
+bla
 
 
 2D-Modellierungsflächen

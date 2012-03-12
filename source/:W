@@ -246,11 +246,11 @@ Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das M
 
 Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolge mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befänden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
 
-Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum. Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
+Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme bei Rotation der Modellelemente und Bewegungen um den Prozessgraphen herum. Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 
 Auf den Objekten sind rote Kugeln als Anker für Verbindungen zu anderen Modellobjekten angeordnet.
 
-Die Benutzer selbst werden als Avatar gezeigt, welche die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen sollen.
+Die Benutzer selbst werden als Avatar [wassn das?] gezeigt, welche die Interaktion des Benutzers mit dem Modell für andere Teilnehmer verdeutlichen.
 
 Es gebe die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige Texte zur Kommunikation zwischen den Beteiligten dargestellt werden können. Daneben könnten auch andere Multimediainhalte wie Videos, Tonaufnahmen oder Statistiken zur Prozessausführung (über Web-Services) eingebettet werden.
 

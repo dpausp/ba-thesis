@@ -39,8 +39,6 @@ Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücke
 
 In Scala werden die Bestandteile einer textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen abstrakten Syntaxbaum ergeben.
 
-Die Notation von Parser-Kombinatoren in Scala erinnert an die Spezifikation einer Grammatik mittels der Extended-Backur-Naur-Form.
-
 Folgende Parser-Funktion 
 
 .. code-block:: scala
@@ -138,12 +136,12 @@ Sonstiges
 StringTemplate
 --------------
 
-Um Prozessmodelle in einer textuellen Form speichern zu können wird die Template-Bibliothek *StringTemplate*, im Folgenden mit *ST* abgekürzt, in der Version 4.0.4 verwendet. :cite:`Parr:2009:LIP:1823613` 
+Um Prozessmodelle in einer textuellen Form speichern zu können wird die Template-Bibliothek *StringTemplate*, in der Version 4.0.4 verwendet. :cite:`parr_language_2009` 
 
 ST folgt dem Prinzip, Templates als Text mit Platzhaltern zu definieren. Die Platzhalter werden durch das Setzen von Attributen aus dem Anwendungsprogramm heraus mit Inhalt gefüllt.
 
-Um die Nutzung von ST in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. 
-Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
+Um die Nutzung von *StringTemplate* in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. 
+Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an *StringTemplate* weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
 
 Für Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www:clapper` genutzt.
 
@@ -175,5 +173,5 @@ Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4
 
 
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
-.. [#f2] Dies könnte im Prozessmodelleditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
+.. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht einem Pixel auf dem Bildschirm, wenn man Antialiasing vernachlässigt
