@@ -37,7 +37,7 @@ Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe
 
 Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
 
-In Scala werden die Bestandteile einer textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen abstrakten Syntaxbaum ergeben.
+In Scala werden die Bestandteile einer textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen Syntaxbaum der Eingabe ergeben.
 
 Folgende Parser-Funktion 
 
@@ -54,7 +54,11 @@ würde beispielsweise die LMM-String-Zuweisung
     functions = "a", "test";
 
     
-erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen.
+erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen. Dieser Typ könnte wie folgt definiert sein:
+
+.. code-block:: scala
+
+    case class LiteralTypeAssignment(id: String, stringLiterals: List[String])
 
 .. _simulator_x:
 
@@ -82,10 +86,7 @@ Komponenten können Aspekte zu Entitäten hinzufügen.
 
 Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind; beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
 
-Die genutzte Version von *Simulator X* (Stand August 2011) bringt eine Anbindung an die Open-Source-Physikengine JBullet :cite:`www:jbullet` mit, die innerhalb des I>PM3D-Projekts für verschiedene Aufgaben wie die Selektion von Modellelementen und die Realisierung von Modellierungsebenen genutzt wird.
-
-Die mitgelieferte Renderkomponente, die für die grafische Ausgabe zuständig ist, war für das vorliegende Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine selbst entwickelte, ebenfalls OpenGL-basierte :ref:`render_bibliothek` ersetzt. 
-Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. 
+*Simulator X* befindet sich gerade in der Entwicklung. Für das Projekt wird eine Version von August 2011 genutzt.
 
 .. _opengl:
 
@@ -101,7 +102,7 @@ Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff Tastatur und Maus z
 
 Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
 
-In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionalitäten wie die Berechnung der Beleuchtung und Nebel, Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. Altes OpenGL wird mit dem Begriff *fixed-function-Pipeline* in Verbindung gebracht.
+In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionen wie die Berechnung der Beleuchtung und Nebel, Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. Diese "alten" OpenGL-Funktionlitäten werden mit dem Begriff *fixed-function-Pipeline* bezeichnet.
 
 Mit Version 3.0 wurde die *fixed-function-Pipeline* aus dem Kern von OpenGL entfernt. In neueren Versionen müssen diese Berechnung selbst durch den Programmierer in *Shadern* implementiert werden. 
 

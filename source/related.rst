@@ -299,6 +299,6 @@ bla
 
 .. [#f3] Näheres zu CAVE-Systemen siehe :cite:`wpe:cave` oder :cite:`wpe:cave`.
 
-.. [#f4] GEF3D baut allerdings noch auf "alter" OpenGL-Funktionalität auf und es werden die Möglichkeiten "moderner" OpenGL-Programmierung (siehe :ref:`opengl`\ ) nicht genutzt 
+.. [#f4] GEF3D baut allerdings noch auf "alter" OpenGL-Funktionalität auf und es werden die Möglichkeiten "moderner" OpenGL-Programmierung (siehe :ref:`opengl`\ ) nicht genutzt.
 
 .. [#f5] Ein verbreiteter Ansatz, um 2D-Grafiken und Text in OpenGL darzustellen ist es, diese erst in eine Textur zu zeichnen und diese auf 3D-Objekte aufzubringen. Dies wird auch in dieser Arbeit verwendet.
