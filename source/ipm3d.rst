@@ -9,7 +9,7 @@ Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchhol
 
 .. _ipm3d-konzeptionelle-uebersicht:
 
-.. figure:: _static/diags/ipm3d-uebersicht.png
+.. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
 
    Übersicht über die Bestandteile von I>PM3D
 
@@ -42,6 +42,8 @@ Modellanbindung
 Ein Modellierungswerkzeug muss die Möglichkeit haben, bestehende Modelle in einer physischen Repräsentation zu laden, das Modell beziehungsweise dessen Elemente zu bearbeiten und wieder zu speichern. Außerdem sollen neue Modelle erstellt werden können. 
 
 Das Konzept für die Einbindung dieser Modell-Funktionen in den Prototypen und die Implementierung zu erstellen ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`konzept-modellanbindung` beziehungsweise :ref:`implementierung` behandelt. In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Abschnitt als "Modellanbindung" bezeichnet.
+
+.. _ipm3d-gui:
 
 GUI
 ---

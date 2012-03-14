@@ -6,12 +6,13 @@ Konzept 3D-Visualisierung von Prozessen
 
 Im Folgenden soll das Konzept zur dreidimensionalen Visualisierung von Prozessen im I>PM3D-Prototypen vorgestellt werden.
 
-Grundsätzlich handelt es sich um einen graphbasierte Visualisierungsansatz. Prozessmodell-Konzepte wie Prozesse, Entscheidungsknoten und Daten werden als Knoten, Beziehungen wie Kontroll- oder Datenflüsse werden als Kanten dargestellt.
+Grundsätzlich handelt es sich um einen graphbasierten Visualisierungsansatz. Prozessmodell-Konzepte wie Prozesse, Entscheidungsknoten und Daten werden als Knoten, Beziehungen wie Kontroll- oder Datenflüsse werden als Kanten dargestellt.
 
-Das Aussehen der Modellelemente ist an die 2D-Repräsentation von Prozess in IPM2 angelehnt. Auf die in diesem Projekt realisierten geometrischen Ansatz, also Beziehungen zwischen Elementen durch grafisches Enthaltensein darzustellen wurde hier aus Gründen der einfacheren Implementierung verzichtet. Dies könnte später noch hinzugefügt werden jedoch ist dabei zu beachten, dass dies im 3D-Raum wohl deutlich schwieriger darzustellen und zu verstehen ist als in 2D-Diagrammen. [Beispiel? oder irgendein Beleg?]
+Das Aussehen der Modellelemente ist an die 2D-Repräsentation von Prozessen in IPM2 angelehnt. Auf die in diesem Projekt realisierten geometrischen Ansatz, also Beziehungen zwischen Elementen durch grafisches Enthaltensein darzustellen wurde hier aus Gründen der einfacheren Implementierung verzichtet. Dies könnte später noch hinzugefügt werden jedoch ist dabei zu beachten, dass dies im 3D-Raum wohl deutlich schwieriger darzustellen und zu verstehen ist als in 2D-Diagrammen. [Beispiel? oder irgendein Beleg?]
 
 
-Für die Darstellung von Informationen auf den Knoten gibt es grundsätzlich zwei Möglichkeiten. Zum einen können mehrzeilige Texte, zum Anderen statische 2D-Grafiken (Texturen) auf den Seiten angezeigt werden. Texte können dazu verwendet werden, Attribute aus dem Prozessmodell anzuzeigen, beispielsweise den Namen oder die Funktion des Elements. 
+Für die Darstellung von Informationen auf den Knoten gibt es grundsätzlich zwei Möglichkeiten. Zum einen können mehrzeilige Texte, zum Anderen statische 2D-Grafiken (Texturen) auf den Seiten angezeigt werden. 
+Texte können dazu verwendet werden, Attribute aus dem Prozessmodell anzuzeigen, beispielsweise den Namen oder die Funktion des Elements. 
 
 An die für Knoten verwendbaren geometrischen Objekte gibt es einige Anforderungen, die davon bestimmt sind, dass die Lesbarkeit und die Verständlichkeit des Prozessmodells möglichst hoch sein soll.
 Durch die freie Beweglichkeit der Kamera und der Objekte ergeben sich sehr unterschiedliche Beobachtungsperspektiven. So können die Entfernungen zwischen Kamera und Modellelementen sehr groß sein; auch können die Objekte durch die freien Rotationsmöglichkeiten von allen Seiten betrachtet werden.
@@ -74,12 +75,6 @@ Diese 3 Varianten können frei kombiniert werden; also ist es zum Beispiel auch 
 
 Maßnahmen zu Verbesserung der Benutzerfreundlichkeit
 ====================================================
-
-Zusammengesetze Objekte
------------------------
-
-bla
-
 
 2D-Modellierungsflächen
 -----------------------
