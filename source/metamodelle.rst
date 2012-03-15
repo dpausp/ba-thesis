@@ -3,12 +3,13 @@ Spezifikation der Metamodelle
 *****************************
 
 Nachdem im vorherigen Kapitel der Aufbau der Modellschichten sowie grundsätzliche Aspekte zu Metamodellen und den Usage-Modellen besprochen wurden, werden hier die in I>PM3D verwendeten Metamodelle genauer vorgestellt.
-Bei der Beschreibung des Editor-Model-Stacks wird hier vor allem auf die Aspekte Wert gelegt, die prinzipiell unabhängig von der gewählten Modellierungsdomäne sind. 
+Bei der folgenden Beschreibung des Editor-Model-Stacks wird hier vor allem auf die Aspekte Wert gelegt, die prinzipiell unabhängig von der gewählten Modellierungsdomäne sind. 
+Anschließend wird das Prozess-Metamodell näher vorgestellt.
 
 Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`konzept-visualisierung` dargestellt.
 
-Spezifikation der Editor-Meta-Modelle
-=====================================
+Editor-Meta-Modelle
+===================
 
 Das Editor-Metamodell enthält alle Informationen, die für die Spezifikation eines Editors und damit auch der Visualisierung eines Domänenmodells nötig sind.
 
@@ -32,11 +33,12 @@ Editor-Base-Model
 -----------------
 
 Die Ebene D2 ist als Instanz der Ebene D3 definiert. Daraus folgt, dass alle hier definierten Konzepte Instanzen von ScalaMapping sein müssen.
+Auf Level D2 werden zwei Packages, *types* und *figures*, definiert.
 
 .. _emm-types:
 
-Paket types
-^^^^^^^^^^^
+Paket "types"
+^^^^^^^^^^^^
 
 Das *types*-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
 
@@ -62,14 +64,14 @@ Dazu werden folgeden Typen angeboten:
 
   * PhysicsSettings: Unterkonzepte dieses abstrakten Konzept werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
 
-    Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien definiert, wie sie von der von :ref:`simulator-x` bereitgestellten Physikkomponente angeboten werden.
+    Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien angeboten, wie sie von der von :ref:`simulator-x` bereitgestellten Physikkomponente unterstützt werden.
     Für eine *PhysSphere* muss der Radius angegeben werden; eine *PhysBox* wird analog über die halben Seitenlängen (Attribut *halfExtends*, Typ *Dimension*) festgelegt.
 
 
 .. _emm-figures:
 
-Paket figures
-^^^^^^^^^^^^^
+Paket "figures"
+^^^^^^^^^^^^^^
 
 Im *figures*-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Konzepte bereitgestellt werden. Die auf dieser Ebene definierten Konzepte sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
 
@@ -79,8 +81,15 @@ Das Package wird durch 2 abstrakte Basistypen, EditorElement und SceneryObject s
 
 Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. Dadurch wäre es prinzipell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Konzepten besteht.
     
+Knoten
+^^^^^^
 
-Für die Visualisierung von Knoten sind ein texturierter (TexturedNode) und ein beschrifteter (TextLabelNode) Basistyp vorgesehen, die folgende Attribute definieren:
+Das abstrakte Basis-Konzept aller Knoten, *Node* definiert die Attribute **dim** (Typ *Dimension*), **pos** (*Position*) und **rotation** (*Rotation*), die dazu benutzt werden, sowohl das Erscheinungsbild als auch das physikalische Verhalten zu beschreiben.
+
+In der Implementierung wird sichergestellt, dass Visualisierung und physikalische Repräsentation immer zueinander passen. 
+Das bedeutet beispielsweise, dass die für den Benutzer sichtbare Ausdehnung genau die ist, die auch für die Erkennung von Kollisionen oder bei der Auswahl von Elementen durch ein Eingabegerät genutzt wird.
+
+Für die Visualisierung von **Knoten** sind ein texturierter (TexturedNode) und ein beschrifteter (TextLabelNode) Basistyp vorgesehen, die folgende Attribute definieren:
 
     * TexturedNode: 
 
@@ -106,7 +115,10 @@ Daher müssen Nodes folgende Attribute setzen:
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im Domain-Meta-Model definiert werden.
 
 
-Für Kanten stehen ein einfarbiger (*ColoredLine*) und ein texturierter Basistyp (*TexturedLine*) zur Verfügung. 
+Kanten
+^^^^^^
+
+Für **Kanten** stehen ein einfarbiger (*ColoredLine*) und ein texturierter Basistyp (*TexturedLine*) zur Verfügung. 
 
 *TexturedLine* bietet die gleichen Attribute wie *TexturedNode* an; bei *ColoredLine* muss die Grundfarbe gesetzt werden (**color**)
 Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f2]_, **specularColor** angegeben werden.
@@ -123,34 +135,69 @@ In Konzepten, die Kantentypen repräsentieren müssen außerdem die Attribute vo
 
 Außerdem sind für Kanten noch die beiden Attribute **startNode** und **endNode** definiert, denen im Editor-Usage-Model das Editor-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten darstellt.
 
+Szenenobjekte
+^^^^^^^^^^^^^
+
 Szenenobjekte werden vom Basistyp SceneryObject abgeleitet. In dieser Kategorie stehen momentan nur Objekte zur Verfügung, die aus einer COLLADA-Datei geladen werden.
 Für Szenenobjekte kann eine Physikrepräsentation definiert werden.
 
 Details zur Visualisierung und den zur Verfügung stehenden grafischen Objekten sind im nächsten Kapitel :ref:`konzept_visualisierung` zu finden.
 
 
-Die Typen Dimension, Position und Rotation werden benutzt, um das Erscheinungsbild sowie das physikalische Verhalten zu beschreiben, das bei der Erkennung von Kollisionen sowie bei der Auswahl von Elementen mittels Eingabegerät eine Rolle spielt. 
-In der Implementierung wird sichergestellt, dass die Visualisierung und physikalische Repräsentation 
-
 Editor-Definition-Model
 -----------------------
 
-Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine genauere Beschreibungverzichtet.
+Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine gesonderte Beschreibung verzichtet.
 Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu der auf diesen spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
 
 
 Prozess-Meta-Modell
 ===================
 
-In dieser Arbeit wird ein Metamodell verwendet, das sich an den Metamodellen für die perspektivenorientierten Prozessmodellierung orientiert, wie sie in :cite:`volz_werkzeugunterstuetzung_2011` definiert worden sind.
+Von diesem Modell wird die eigentliche Prozessmodellierungssprache definiert.
+
+In dieser Arbeit wird dafür ein Metamodell verwendet, das sich an den Metamodellen für die perspektivenorientierten Prozessmodellierung orientiert, wie sie in :cite:`volz_werkzeugunterstuetzung_2011` definiert worden sind.
+
+Wie erwähnt werden von I>PM3D nur Modelle unterstützt, die sich sinnvoll auf eine Graphdarstellung abbilden lassen. 
+
+Am einfachsten lässt sich das realisieren, wenn die hier spezifizierten Sprachelemente selbst Knoten und Kanten dargestellen und Knoten ausschließlich über Kanten miteinander verbunden werden.
 
 Das Prozess-Metamodel definiert nur ein Paket, *processLanguage*. 
-Hier findet sich die Idee der perspektivenorientierten Prozessmodellierung wieder, Prozessmodelle in verschiedene Perspektiven einzuteilen
+Hier findet sich die Idee der perspektivenorientierten Prozessmodellierung wieder, Prozessmodelle in verschiedene Perspektiven einzuteilen :cite:`jablonski`\ .
 
-Nodes gehören beispielsweise zur funktionalen Perspektive, während Kontrollflüsse Nodes verbinden und der Verhaltensperspektive zugeordnet werden. Dies drückt sich im Metamodell durch die Vererbungshierarchie der Konzepte aus.
+Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die *Perspective* erweitern.
 
-Im Unterschied zu den Metamodellen von POPM müssen Beziehungen zwischen Knoten mit Hilfe von Connections spezifiziert werden. Dies wurde . Näheres dazu unter :ref:`konzept_visualisierung`
-Ein DataItem muss also beispielsweise über eine NodeDataConnection an Prozess- oder Entscheidungsknoten angebunden werden.
+*Node* ist das einzige Sub-Concept der funktionalen Perspektive, von diesem wiederum *Process* und *FlowElement* abgeleitet sind.
+
+Ein *Process* stellt einen Prozess im Sinne der perspektivenorientierten Prozessmodellierung dar.
+*FlowElement* ist eine Basisklasse für Kontrollflusselemente wie Konnektoren (*AndConnector*, *OrConnector*) und Entscheidungsknoten (*Decision*).
+
+Ein *ControlFlow* verbindet Nodes miteinander und zeigt die Richtung des Kontrollflusses an. Dies wird wird der Verhaltensperspektive zugeordnet. 
+
+Die Datenperspektive teilt sich in *DataItems*, die einzelne Dateneinheiten repräsentieren, die mit einem Prozess assoziiert sind und in *DataContainer*, die Dateneinheiten zu einer Gruppe zusammenfassen. 
+
+DataItems können über (gerichtete) Datenflüsse (*DataFlow*) miteinander verbunden werden.
+
+DataContainer ist gleichzeitig Teil der funktionalen Perspektive und kann daher über Kontrollflüsse mit anderen Nodes verbunden werden.
+
+Im Unterschied zu den Metamodellen von POPM werden Beziehungen zwischen Knoten immer mittels expliziten Verbindungs-Concepts spezifiziert, die auch in der Editor-Repräsentation auf Kanten abgebildet werden.
+
+Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an einen Node, also Prozess- oder Entscheidungsknoten angebunden werden.
+
+Zur Verdeutlichung soll das Concept *DataItem* dienen:
+
+.. code-block:: java
+
+    concept DataItem extends DataPerspective {
+        1..1 string name;
+        0..* concept DataFlow inboundDataFlows;
+        0..* concept DataFlow outboundDataFlows;
+        0..* concept NodeDataItemConnection inboundNodeDataItemConnection;
+    }
+
+Die Attribute **inboundDataFlows** und *outboundDataFlows* legen fest, dass DataItems untereinander verbunden werden können. 
+
+Durch **inboundNodeDataItemConnection** wird ausgedrückt, dass ein DataItem Endpunkt einer NodeDataConnection sein kann. Der Startpunkt ist entsprechend in *Node* definiert.
 
 Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
