@@ -1,4 +1,4 @@
-.. _metamodelle:
+.. _modellhierarchie:
 
 *****************
 Modell-Hierarchie
@@ -57,7 +57,7 @@ Dabei wird hingenommen, dass die Repräsentationen der  neu beschrieben werden m
 
 Die in :num:`Abbildung #modellhierarchie` angegebenen Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden, jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell definiert werden, das im Folgenden vereinfachend als Editor-Metamodell bezeichnet wird.
 
-Um eine andere Visualisierung festzulegen müsste daher das komplette Editor-Metamodell neu definiert werden, sinnvollerweise auf Basis des bestehenden Metamodells.\ [#f2]_
+Um eine andere Visualisierung festzulegen müsste daher das komplette Editor-Metamodell neu definiert werden, sinnvollerweise auf Basis des bestehenden Metamodells\ [#f1]_.
 
 Übersicht über die Editor-Model-Ebenen
 --------------------------------------
@@ -78,12 +78,12 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein:
     * package "connectionFigures" definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
     * Das package "sceneryObjects" enthält die verwendbaren Szenenobjekte. Szenenobjekte haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
-Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte *Editor-Definition-Model*. 
+Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte Editor-Definition-Model. 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, die von Concepts aus den obigen Packages referenziert werden. 
 Dies können beispielsweise Concepts für die Definition von Farben oder der Größe eines Objekts sein.
 
-Auf demselben Level befindet sich das *Editor-Usage-Model*, das Verwendungen, also Spezialisierungen der Instanzen aus dem *Editor-Definition-Model* enthält. 
-Analog zum *Editor-Definition-Model* sind die Verwendungen in drei Packages eingeteilt, die hier "nodeUsages", "connectionUsages" und "sceneryObjectsUsages" genannt werden müssen.
+Auf demselben Level befindet sich das **Editor-Usage-Model**, das Verwendungen, also Spezialisierungen der Instanzen aus dem Editor-Definition-Model enthält. 
+Analog zum Editor-Definition-Model sind die Verwendungen in drei Packages eingeteilt, die hier "nodeUsages", "connectionUsages" und "sceneryObjectsUsages" genannt werden müssen.
 
 Zusammen ergeben diese Verwendungen die konkrete Repräsentation eines Domänenmodells. Concepts spezifizieren hier also die Objekte, die vom Modellierungswerkzeug erstellt und angezeigt werden.
 
@@ -113,7 +113,7 @@ Die Existenz von zugehörigen Attributen legt damit fest, in welcher Weise Kante
 
 Die Namen dieser Attribute können frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, die Attributnamen für eingehende Kanten mit dem Präfix "inbound" und die ausgehenden mit "outbound" zu beginnen und den Typ der Kante anzuhängen.
 
-Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein "outbound"-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes "inbound"-Attribut besitzt.[#f3]_
+Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein "outbound"-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes "inbound"-Attribut besitzt.\ [#f2]_
 
 Das **Domain-Usage-Model** enthält das eigentliche Domänenmodell, also im Kontext dieser Arbeit die im Prozessmodell verwendeten Elemente, die vom Modellierungswerkzeug erstellt wurden.
 
@@ -121,18 +121,15 @@ Zusammen mit dem Editor-Usage-Model ergibt das den aktuellen Zustand des Editors
 
 Für die Erzeugung von Knoten im Domain-Usage-Modell wird ausschließlich das Typ-Verwendungs-Konzept verwendet. 
 
-Konkret bedeutet das hier, dass im Domain-Meta-Model Concepts [#f4]_ definiert werden, zu denen ein Typ-Concept als Instanz im Domain-Usage-Model erzeugt werden muss. 
+Konkret bedeutet das hier, dass im Domain-Meta-Model Concepts\ [#f3]_ definiert werden, zu denen ein Typ-Concept als Instanz im Domain-Usage-Model erzeugt werden muss. 
 Von diesen Type-Concepts kann dann eine Verwendung im Usage-Model – also im Sinne von LMM eine Spezialisierung des Type-Concepts – erzeugt werden.
 
 Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz. Kanten sind daher direkte Instanzen von Typen aus dem Domain-Meta-Modell.
 
-Ebene D1
---------
-.. [f1]: Eine andere Möglichkeit wäre es, die Rotation mit den Komponenten einer Rotationsmatrix darzustellen. Dafür sind aber 9 Werte nötig, was die Modelle unnötig überfrachtet, da für jeden Wert ein eigenes Attribut definiert werden muss. 
 
-.. [f2]: Klarer Fall von Copy-And-Paste-"Wiederverwendung" ;)
+.. [#f1] Klarer Fall von Copy-And-Paste-"Wiederverwendung".
 
-.. [f3]: Technisch gesehen sind Kanten also immer "gerichtet"; jedoch können auch "ungerichtete" Kantentypen erstellt werden, indem in allen beteiligten Knotentypen beide Attribute definiert werden und die Unterschiedung zwischen Kanten, die dem "outbound" oder "inbound"-Attribut zugewiesen werden einfach ignoriert wird. Die Visualisierung der Kanten sollte dann allerdings auch unabhängig von der Richtung sein.
+.. [#f2] Technisch gesehen sind Kanten also immer "gerichtet"; jedoch können auch "ungerichtete" Kantentypen erstellt werden, indem in allen beteiligten Knotentypen beide Attribute definiert werden und die Unterschiedung zwischen Kanten, die dem "outbound" oder "inbound"-Attribut zugewiesen werden einfach ignoriert wird. Die Visualisierung der Kanten sollte dann allerdings auch unabhängig von der Richtung sein.
 
-.. [f4]: kann und sollte man das "Metatyp" nennen?
+.. [#f3] kann und sollte man das "Metatyp" nennen?
 

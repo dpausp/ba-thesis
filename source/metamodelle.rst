@@ -45,7 +45,7 @@ Dazu werden folgeden Typen angeboten:
   * Dimension, Position: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
     Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp *Vec3* von :ref:`Simplex3D` angeboten.
 
-  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum :ref:`quaternions`.\ [#f1]_
+  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum\ [#f1]_ :ref:`quaternions`.
     Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt *Quat4*  abgebildet, das ebenfalls von Simplex3D bereitgestellt wird.
 
   * Color: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzfaktor) angegeben werden.
@@ -65,7 +65,6 @@ Dazu werden folgeden Typen angeboten:
     Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien definiert, wie sie von der von :ref:`simulator-x` bereitgestellten Physikkomponente angeboten werden.
     Für eine *PhysSphere* muss der Radius angegeben werden; eine *PhysBox* wird analog über die halben Seitenlängen (Attribut *halfExtends*, Typ *Dimension*) festgelegt.
 
-"""
 
 .. _emm-figures:
 
@@ -109,8 +108,8 @@ Daher müssen Nodes folgende Attribute setzen:
 
 Für Kanten stehen ein einfarbiger (*ColoredLine*) und ein texturierter Basistyp (*TexturedLine*) zur Verfügung. 
 
-*TexturedLine* bietet die gleichen Attribute wie *TexturedNode* an; bei *ColoredLine* muss die Grundfarbe gesetzt werden (**color**)i
-Zusätzlich muss bei beiden noch eine spekulare Farbe[#f2]_ (**specularColor**) angegeben werden.
+*TexturedLine* bietet die gleichen Attribute wie *TexturedNode* an; bei *ColoredLine* muss die Grundfarbe gesetzt werden (**color**)
+Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f2]_, **specularColor** angegeben werden.
 
 Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungskonzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
 
@@ -122,7 +121,7 @@ In Konzepten, die Kantentypen repräsentieren müssen außerdem die Attribute vo
   * inboundAttrib: 
   * outboundAttrib: Legen die Namen der Attribute im Domänenmodell fest, 
 
-Außerdem sind für Kanten noch die beiden Attribute **startNode** und **endNode** definiert, denen im *Editor-Usage-Model* das Editor-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten darstellt.
+Außerdem sind für Kanten noch die beiden Attribute **startNode** und **endNode** definiert, denen im Editor-Usage-Model das Editor-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten darstellt.
 
 Szenenobjekte werden vom Basistyp SceneryObject abgeleitet. In dieser Kategorie stehen momentan nur Objekte zur Verfügung, die aus einer COLLADA-Datei geladen werden.
 Für Szenenobjekte kann eine Physikrepräsentation definiert werden.
@@ -137,7 +136,7 @@ Editor-Definition-Model
 -----------------------
 
 Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine genauere Beschreibungverzichtet.
-Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden.
+Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu der auf diesen spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
 
 
 Prozess-Meta-Modell
@@ -153,7 +152,9 @@ Nodes gehören beispielsweise zur funktionalen Perspektive, während Kontrollfl�
 Im Unterschied zu den Metamodellen von POPM müssen Beziehungen zwischen Knoten mit Hilfe von Connections spezifiziert werden. Dies wurde . Näheres dazu unter :ref:`konzept_visualisierung`
 Ein DataItem muss also beispielsweise über eine NodeDataConnection an Prozess- oder Entscheidungsknoten angebunden werden.
 
-
 Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
 
+.. [#f1] Eine andere Möglichkeit wäre es, die Rotation mit den Komponenten einer Rotationsmatrix darzustellen. Dafür sind aber 9 Werte nötig, was die Modelle unnötig überfrachtet, da für jeden Wert ein eigenes Attribut definiert werden muss. 
+
+.. [#f2] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
