@@ -4,14 +4,19 @@
 Modell-Hierarchie
 *****************
 
-Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :cite:`jablonski` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
-Deshalb wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren. 
+Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :ref:`volz_werkzeugunterstuetzung_2011` beschrieben wird. 
 
-Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Demselben Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :ref:`ma-bastian`
-mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen.
+Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Diesem Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :ref:`ma-bastian`
+mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen. 
 
-Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier die Modellierung von Prozessen nach den Vorgaben der perspektivenorientierte Prozessmodellierung und kein generisches Framework realisiert werden sollte. Dennoch ist es leicht möglich, Modifikationen an den verwendeten Prozessmodellelementen vorzunehmen und deren Visualisierung anzupassen. 
+Die hier vorgestellte Modellhierarchie ist prinzipiell ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
+Auf wichtige Unterschiede wird im Folgenden explizit hingewiesen.
+
+Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier die Modellierung von Prozessen nach den Vorgaben der perspektivenorientierte Prozessmodellierung und kein generisches Framework realisiert werden sollte. Dennoch ist es möglich, in einem gewissen Rahmen Modifikationen an den verwendeten Prozessmodellelementen vorzunehmen und deren Visualisierung anzupassen. 
+
+Dies hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
 
 Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene Prozess-Metamodell genutzt wird. 
 
@@ -27,7 +32,7 @@ Zusätzlich sei noch gesagt, dass *LMMLight* das Muster der Instanz-Spezialisier
 
 Details zu LMMLight und der Implementierung finden sich im späteren Kapitel :ref:`implementierung_lmmlight`.
 
-:num:`Abbildung #modellhierarchie` zeigt, wie die für I>PM3D genutzte Hierarchie der Modelle aussieht, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
+:num:`Abbildung #modellhierarchie` zeigt wie die für I>PM3D genutzte Hierarchie der Modelle aussieht, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
 Im Rest dieses Kapitels wird eine Übersicht über die beiden abgegrenzten *Model-Stacks* gegeben.
 
 Die detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel vorgestellt. 
@@ -40,9 +45,12 @@ Editor-Model-Stack
 Der *Editor-Model-Stack* von I>PM3D enthält alle Modelle die in erster Linie dafür zuständig sind, die Visualisierung eines Domänenmodells zu beschreiben. 
 Außerdem können hier Parameter spezifiziert und gesetzt werden, die beispielsweise die physikalische Repräsentation oder die für das Modellelement angebotenen Funktionalitäten im interaktiven Modellierungswerkzeug beeinflussen.
 
-Die Verknüpfung von Editormodell mit dem Domänenmodell wird dadurch herstellt, dass in den Concepts des Editor-Model-Stacks, die Domain-Model-Concepts repräsentieren, eine Referenz auf Letztere angegeben wird.
+Die Verknüpfung von Editormodell mit dem Domänenmodell wird dadurch hergestellt, dass in den Concepts des Editor-Model-Stacks, die Domain-Model-Concepts repräsentieren, eine Referenz auf Letztere angegeben wird.
 
 Die Gesamtheit aus Visualisierungs- und sonstigen Parametern, die für den Modell-Editor relevant lässt sich als "Repräsentation" eines einzelnen Domänenmodellelements oder des ganzen Domänenmodells bezeichnen.
+
+Anpassbarkeit
+-------------
 
 Durch Anpassungen im Editor-Model-Stack können für ein Domänenmodell im Prinzip auch mehrere verschiedene Repräsentationen erstellt werden. 
 
@@ -53,7 +61,7 @@ Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungsel
 
 Um die Implementierung zu vereinfachen wurde jedoch darauf verzichtet. 
 
-Dabei wird hingenommen, dass die Repräsentationen der  neu beschrieben werden müssen.
+Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
 
 Die in :num:`Abbildung #modellhierarchie` angegebenen Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden, jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell definiert werden, das im Folgenden vereinfachend als Editor-Metamodell bezeichnet wird.
 
@@ -62,15 +70,27 @@ Um eine andere Visualisierung festzulegen müsste daher das komplette Editor-Met
 Übersicht über die Editor-Model-Ebenen
 --------------------------------------
 
-Auf der obersten Ebene des Stacks, die im Modell als Level M3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`emm-scalamapping` beschrieben wird.
+Programming-Language-Mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Darunter befindet sich auf Level M2 der prinzipiell von der Modellierungsdomäne unabhängige Teil der Editor-Spezifikation, der Concepts bereitstellt, die die Grundlagen der Repräsentation für Typen aus dem Domänenmodell darstellen.
+Auf der obersten Ebene des Stacks, die im Modell als Level D3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`emm-scalamapping` beschrieben wird.
+In der :num:`Abbildung #modellhierarchie` wird diese Ebene als **Programming-Language-Mapping** bezeichnet.
 
-Es wird vorausgesetzt, dass sich hier ein Package mit dem Namen *figures* befindet, welches vom Editor genutzt wird
+Editor-Base-Model
+^^^^^^^^^^^^^^^^^
 
-Welche Konzepte hier definiert werden wird in :ref:`emm-meta` näher beschrieben.
+Darunter befindet sich auf Level D2 der prinzipiell von der Modellierungsdomäne unabhängige Teil der Editor-Spezifikation 
+Hier werden Concepts bereitgestellt, die die Grundlagen der Repräsentation für Typen aus dem Domänenmodell darstellen.
 
-Level M1 enthält die Modellebene, die festlegt, auf welche Weise ein Typ aus dem Domänenmodell repräsentiert wird, wie in :ref:`emm-definition` dargestellt wird. 
+In der :num:`Abbildung #modellhierarchie` ist diese Ebene als **Editor-Base-Model** zu finden.
+Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werdenwird in :ref:`emm-meta` näher beschrieben.
+
+Die beiden Ebenen D3 und D2, die bisher beschrieben worden sind können prinzipiell beliebig definiert werden, soweit dies von LMMLight unterstützt wird. 
+
+Editor-Definition-Model
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Level D1 enthält die Modellebene, die festlegt, auf welche Weise ein Typ aus dem Domänenmodell repräsentiert wird, wie in :ref:`emm-definition` dargestellt wird. 
 
 Auf dieser Ebene müssen die folgenden Packages definiert sein:
 
@@ -78,14 +98,20 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein:
     * package "connectionFigures" definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
     * Das package "sceneryObjects" enthält die verwendbaren Szenenobjekte. Szenenobjekte haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
-Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte Editor-Definition-Model. 
+Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte **Editor-Definition-Model**. 
+
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, die von Concepts aus den obigen Packages referenziert werden. 
 Dies können beispielsweise Concepts für die Definition von Farben oder der Größe eines Objekts sein.
 
+Editor-Usage-Model
+^^^^^^^^^^^^^^^^^^
+
 Auf demselben Level befindet sich das **Editor-Usage-Model**, das Verwendungen, also Spezialisierungen der Instanzen aus dem Editor-Definition-Model enthält. 
+Diese Concepts dürfen alle in der Instanz definierten Attributzuweisungen überschreiben.
+
 Analog zum Editor-Definition-Model sind die Verwendungen in drei Packages eingeteilt, die hier "nodeUsages", "connectionUsages" und "sceneryObjectsUsages" genannt werden müssen.
 
-Zusammen ergeben diese Verwendungen die konkrete Repräsentation eines Domänenmodells. Concepts spezifizieren hier also die Objekte, die vom Modellierungswerkzeug erstellt und angezeigt werden.
+Zusammen ergeben diese Verwendungen die konkrete Repräsentation eines Domänenmodells. Diese Concepts spezifizieren hier also die Objekte, die vom Modellierungswerkzeug erstellt und angezeigt werden.
 
 Sie legen damit zum Beispiel fest, wo sich Modellelemente im Raum befinden und welche Ausrichtung sie haben. Dies sind auch typische Parameter, in denen sich alle Verwendungen einer Instanz unterscheiden.
 
@@ -98,6 +124,9 @@ Modellelemente, die von derselben Instanz abstammen haben also grundsätzlich da
 
 Domain-Model-Stack
 ==================
+
+Domain-Meta-Model
+-----------------
 
 Durch das **Domäin-Meta-Model** wird eine Sprache definiert, mit der ein Modell in der spezifischen Domäne erstellt werden kann. Es legt also die Syntax, also die verwendbaren Konstrukte sowie deren Beziehungen fest. 
 
@@ -114,6 +143,9 @@ Die Existenz von zugehörigen Attributen legt damit fest, in welcher Weise Kante
 Die Namen dieser Attribute können frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, die Attributnamen für eingehende Kanten mit dem Präfix "inbound" und die ausgehenden mit "outbound" zu beginnen und den Typ der Kante anzuhängen.
 
 Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein "outbound"-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes "inbound"-Attribut besitzt.\ [#f2]_
+
+Domain-Usage-Model
+-----------------
 
 Das **Domain-Usage-Model** enthält das eigentliche Domänenmodell, also im Kontext dieser Arbeit die im Prozessmodell verwendeten Elemente, die vom Modellierungswerkzeug erstellt wurden.
 
