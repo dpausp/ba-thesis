@@ -3,8 +3,8 @@ Spezifikation der Metamodelle
 *****************************
 
 Nachdem im vorherigen Kapitel der Aufbau der Modellschichten sowie grundsätzliche Aspekte zu Metamodellen und den Usage-Modellen besprochen wurden, werden hier die in I>PM3D verwendeten Metamodelle genauer vorgestellt.
-Bei der folgenden Beschreibung des Editor-Model-Stacks wird hier vor allem auf die Aspekte Wert gelegt, die prinzipiell unabhängig von der gewählten Modellierungsdomäne sind. 
-Anschließend wird das Prozess-Metamodell näher vorgestellt.
+
+Anschließend wird das verwendete Prozess-Metamodell näher vorgestellt.
 
 Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`konzept-visualisierung` dargestellt.
 
@@ -26,14 +26,13 @@ Dieses Konzept definiert Attribute, die festlegen, wie Konzepte aus dem Modell a
 
 Für jedes Konzept, das sich auf den weiter unten liegenden Ebenen befindet muss das Attribut *scalaType* definiert werden, das den korrespondierenden Scala-Typ angibt. 
 
-Optional ist das Attribut *typeConverter*, welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Konzept in ein passendes Scala-Objekt umzuwandeln und umgekehrt. 
+Optional ist das Attribut *typeConverter*, welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Konzept in ein passendes Scala-Objekt umzuwandeln und umgekehrt.\ [#f1]_ 
 
 Ohne TypeConverter-Angabe wird *scalaType* direkt als voll qualifizierter Klassenname interpretiert. 
 Von dieser so angegebenen Klasse wird ein Objekt erstellt, welches das entsprechende Concept in der Anwendung vertritt.
 
-Wird ein TypeConverter genutzt, muss der *scalaType* nicht zwingend ein Klassenname sein. Wie das Attribut interpretiert wird hängt vom TypeConverter ab.
-
-Näheres zum Mapping auf Scala-Objekte, das in der Implementierung von **LMM2Scala** geleistet wird und zu Typ-Konvertern findet sich im unter :ref:`implementierung`.
+Wird ein TypeConverter genutzt, muss der *scalaType* nicht zwingend ein Klassenname sein. 
+Wie das Attribut interpretiert wird hängt vom TypeConverter ab. 
 
 .. _emm-base:
 
@@ -58,7 +57,7 @@ Dazu werden folgeden Typen angeboten:
   * Dimension, Position: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
     Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp *Vec3* von :ref:`Simplex3D` angeboten.
 
-  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum\ [#f1]_ :ref:`quaternions`.
+  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum\ [#f2]_ :ref:`quaternions`.
     Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt *Quat4*  abgebildet, das ebenfalls von Simplex3D bereitgestellt wird.
 
   * Color: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzfaktor) angegeben werden.
@@ -93,6 +92,7 @@ Das Package wird durch 2 abstrakte Basistypen, EditorElement und SceneryObject s
 *EditorElement* ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (*Edge*) und Knoten (*Node*) aufteilen.
 
 Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. Dadurch wäre es prinzipell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Konzepten besteht.
+Über das Attribut *interactionAllowed* lässt sich festlegen, ob eine Interaktion mit dem Modellelement durch den Benutzer erlaubt ist. Dies ist standardmäßig für alle Element auf "true" gesetzt.
 
 Das von *ScalaMapping* definierte Attribut *scalaType* legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
 Es ist zu beachten, dass die Interpretation von *scalaType* hier nicht den :ref:`emm-scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
@@ -140,7 +140,7 @@ Kanten
 Für **Kanten** stehen ein einfarbiger (*ColoredLine*) und ein texturierter Basistyp (*TexturedLine*) zur Verfügung. 
 
 *TexturedLine* bietet die gleichen Attribute wie *TexturedNode* an; bei *ColoredLine* muss die Grundfarbe gesetzt werden (**color**)
-Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f2]_, **specularColor** angegeben werden.
+Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f3]_, **specularColor** angegeben werden.
 
 Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungskonzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
 
@@ -233,7 +233,8 @@ Damit müssen beispielsweise im DataFlowConnection-Concept im Editor-Definition-
 
 Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
+.. [#f1] Die Implementierung stellt momentan TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
 
-.. [#f1] Eine andere Möglichkeit wäre es, die Rotation mit den Komponenten einer Rotationsmatrix darzustellen. Dafür sind aber 9 Werte nötig, was die Modelle unnötig überfrachtet, da für jeden Wert ein eigenes Attribut definiert werden muss. 
+.. [#f2] Eine andere Möglichkeit wäre es, die Rotation mit den Komponenten einer Rotationsmatrix darzustellen. Dafür sind aber 9 Werte nötig, was die Modelle unnötig überfrachtet, da für jeden Wert ein eigenes Attribut definiert werden muss. 
 
-.. [#f2] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
+.. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.

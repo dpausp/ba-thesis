@@ -21,6 +21,8 @@ Grundlegende Konzepte
 
 Bei der Konzeption der Render-Bibliothek stand die Wiederverwendbarkeit von einzelnen Bestandteilen im Vordergrund.
 
+
+
 Drawable: Jedes Objekt, das vom Renderer dargestellt werden soll muss durch ein Objekt einer Klasse repräsentiert werden, die Drawable implementiert.
 
 Diese Klassen bestehen aus einer Beschreibung der Geometrie (Mesh), Positions-Dimensions-Beschreibung (Transformation) und einer Darstellungsweise (Effect).
@@ -167,19 +169,3 @@ Da Laden von Modellen direkt aus COLLADA-XML-Dateien ist relativ zeitaufwändig.
 So wird für jede Instanz eines COLLADA-Modellobjekts zusätzlicher Grafikspeicher belegt. 
 
 Um die Effizienz zu steigern und nachträgliche Modifikationen an den Modelldaten zu erlauben wurde ein eigenständiges Programm entwickelt, dass mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation in Scala-Code erstellt. Die erzeugte Scala-Meshdatei lässt sich dann dafür nutzen, neue Modellobjekte zu konstruieren.
-
-.. _implementierung_lmmlight:
-
-LMMLight
-========
-
-Für den Protoypen wurde die Anbindung an eine textuelle Modellierungssprache benötigt. Für ...
-
-
-Die Sprache ist vollständig kompatibel zum textuellen Editor von OMME. Das heißt, dass gültige LMMLight-Modelle vom Editor nicht beanstandet werden. 
-Dies ermöglicht ein einfaches Bearbeiten der Modelle ohne einen eigenen Editor entwickeln zu müssen.
-
-LMM-Scala-Mapping
-=================
-
-bla

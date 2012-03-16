@@ -23,13 +23,18 @@ Da das Ziel des Projekts I>PM3D ist, einen interaktiven Prozessmodelleditor zu e
 
 Da das Projekt auf der Grundlage von Simulator X entwickelt wurde folgt das hier vorgestellte Konzept der Architektur von Simulator-X-Anwendungen.
 
-ModelComponent
-==============
+Modell-Funktionalitäten - ModelComponent
+========================================
 
 Wie in :ref:`simulator_x` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die eine bestimmte Funktionalität dem restlichen System bereitstellen.
 
 Die ModelComponent stellt folglich dem System alle Funktionen zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
-Diese Funktionen werden als sogenannte *Commands* bereitgestellt. 
+
+So wird der Zugriff auf die Modelle wird vollständig von der ModelComponent gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
+Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die actor-basierte und damit parallele Architektur von Simulator X vorgegeben.
+
+Die Funktionen werden zum Teil als sogenannte *Commands* bereitgestellt, die über das Kommunikationssystem von :ref:`simulator X` an die ModelComponent geschickt werden.
+In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
 Es existieren Commands für die folgenden Funktionen [I]_\ :
 
@@ -38,16 +43,30 @@ Es existieren Commands für die folgenden Funktionen [I]_\ :
 * Erstellen und Löschen von Knoten und Szenenobjekten
 * Erstellen einer Kante zwischen zwei Knoten
 
-Alle anderen Manipulationsmöglichkeiten, also diejenigen, die nur Parameter von einzelnen Modellelementen betreffen werden über Modell-Entitäten bereitgestellt.
+Alle anderen Manipulationsmöglichkeiten, das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen werden über Modell-Entitäten bereitgestellt.
+
+Im Folgenden wird das Laden und Speichern von Modellen sowie die dafür genutzte Funktionen beschrieben, soweit diese an keiner anderen Stelle in dieser Arbeit vorgestellt wurden.
 
 Modell-Persistenz
 -----------------
 
 Eine Anforderung an den Protoypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. 
 Wie in :ref:`modellhierarchie` angesprochen werden in I>PM3D Modelle eingesetzt, die in der Sprache LMMLight verfasst werden.
+
 Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
 
-Für das Laden wird der in :ref:`implementierung-lmmlight` vorgestellte Parser genutzt.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [II]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
+Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
+
+Um die Modelle in der Anwendung verändern zu können werden diese in eine andere Struktur überführt. 
+Der so erzeugte Objektbaum ist an die an die EMF-Repräsentation zur Laufzeit angelehnt, wie sie in OMME von XText erzeugt wird.
+
+Die Wurzel wird durch eine Instanz von MModel gebildet, der sich MLevels unterordnen, die wiederum MPackages enthalten usw. 
+
+Der Vorteil zur Nutzung von XText ist, dass es sich hier Objekte, die die Vorteile von Scala nutzen und daher in einer Scala-Umgebung bequem genutzt werden können. 
+Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr Funktionalität bieten als die von Java oder EMF bereitgestellten.
+
+Die **ResourceUtils**\ [II]_ stellen Methoden für das Laden von Modellen aus Dateien bereit, die dem Aufrufer eine Referenz auf eine MModel-Instanz geben.
 
 Laden von Metamodellen
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -55,7 +74,7 @@ Laden von Metamodellen
 Wie in :ref:`modellhierarchie` beschrieben wurde, werden Metamodelle für die Spezifikation der verwendeten Modellierungssprache und deren Repräsentation eingesetzt. 
 Diese sollen prinzipiell austauschbar sein. Dazu wird von der ModelComponent die Funktion bereitgestellt, Metamodelle zur Laufzeit zu laden.
 
-Dafür wird das Command benutzt, das wie folgt definiert ist:
+Um das Laden der Modelle anzustoßen ist folgendes Command definiert:
 
 .. code-block:: scala
 
@@ -75,8 +94,8 @@ Die ModelComponent lässt prinzipiell das Laden von mehreren Metamodell-Paaren z
 Nachdem Metamodelle geladen werden, werden von der ModelComponent Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
 
 
-Laden von Usage-Modellen und Umgang mit mehreren Modellen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Laden und Schließen von Usage-Modellen und Umgang mit mehreren Modellen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Usage-Modelle umfassen den aktuellen Zustand eines Prozessmodells und dessen Repräsentation im Editor. 
 Ein konkretes "Prozesmodell" wird geladen, indem das zugehörige Domain- und Editor-Usage-Model geladen werden.
@@ -96,6 +115,17 @@ Speichern von Usage-Modellen
 
 "Speichern" bedeutet hier, dass die Änderungen an Modellelementen in das Usage-Model zurückgeschrieben werden und das Modell anschließend in textueller Form persistiert wird.
 Analog zum Lade-Command *LoadUsageModels* werden bei *SaveUsageModels* zwei Dateinamen für Domänen- und Editormodell angegeben. Java-Resource-Pfade sind hier nicht erlaubt.
+
+Vereinfachung des Umgangs mit Modellen
+--------------------------------------
+
+Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern wurde eine Reihe von Adaptern\ [III]_ für die in der Scala-Repräsentation der Modelle genutzten Klassen implementiert.
+Beispielsweise gibt es einen MConceptAdapter, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (*assignableAttributes*), das Setzen von Werten (*setValue*) oder die Abfrage von Concept-Relationen (*instanceOf*) erlauben.
+
+[#f6]_
+
+Für alle Adapter werden :ref:`implicit` angeboten, die die gekapselten Objekte direkt um die Methoden "erweitern", die in den Adaptern definiert sind.
+
 
 Modell-Entitäten
 ================
@@ -155,6 +185,8 @@ Mit "Ersteller" ist hier der Absender des entsprechenden Commands oder die Model
 
 Diese ID kann von diesem dafür benutzt werden, neu erstellte Entities in internen Datenstrukturen richtig zuzuordnen.
 
+.. _modellanbindung-svars:
+
 SVars
 -----
 
@@ -164,15 +196,18 @@ Die von einer ModelEntity angebotenen SVars lassen sich in drei Gruppen einteile
 SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen abbilden oder statisch von der ModelComponent definiert sein.
 
 #. *Domain-Model-SVars* 
-   Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im Usage-Model Werte zugewiesen werden können [#f2]_\ . 
+   Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im Usage-Model Werte zugewiesen werden können [#f3]_\ . 
    Sie stellen somit die Schnittstelle dar, über die Modellattribute wie die Funktion eines Prozesses oder der Name eines Konnektors verändert werden können.
    Unterstützt werden alle literalen Datentypen; den SVars werden die passenden Scala-Datentypen zugewiesen.
 
 #. *Editor-Model-SVars* 
-   Diese SVars werden nach Bedarf aus den Attributen des Editor-Metamodells erstellt.
+   Diese SVars werden nach Bedarf aus den Attributen des Editor-Metamodells erstellt. 
+   Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird. [#f4]_
+   Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Diese werden für die meisten hier genannten SVars benötigt.
 
-   Diese SVars werden aus den im :ref:`emm-metamodell` für einen Typ definierten Attributen erstellt. 
-   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt. Das sind im Einzelnen:
+   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt.[#f5]_ 
+   
+   Das sind im Einzelnen:
 
     * Hintergrundfarbe *backgroundColor*
     * Schrift *font*
@@ -181,8 +216,9 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
     * Liniendicke *thickness*
     * Spekulare Farbe *specularColor*
 
-#. Statische definierte *Editor-SVars*: Die sind SVars, die für alle Modellelemente definiert sind.
-
+#. *Editor-SVars*
+   Dies sind SVars, die keine direkte Entsprechung im Modell haben und deren Werte daher auch nicht persistiert werden. 
+   Sie sind automatisch für alle Modellelemente definiert oder werden durch Modellattribute "aktiviert". 
    Dabei handelt es sich um:
 
    * SVars für die Auswahl von Visualisierungsvarianten (siehe :ref:`visualisierungsvarianten`): 
@@ -191,22 +227,22 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
      * Hervorhebung (*highlighted*)
      * Selektion (*selected*)
 
-   * Parameter für Visualisierungsvarianten 
+   * Parameter für die Visualisierungsvarianten 
      
      * Breite des Selektionsrahmens (*borderWidth*)
      * Hevorhebungsfaktor (*highlightFactor*)
      * Transluzenzfaktor bei deaktivierten Elementen (*deactivatedAlpha*)
+    
+   Alle hier genannten SVars werden von der ModelComponent aktiviert, wenn im Modell das Attribut *interactionAllowed* auf "true" gesetzt ist.
    
 
-Alle SVars müssen eindeutig durch einen SVar-Typ beschrieben werden, der ein Symbol zur Identifizierung und einen Scala-Datentyp umfasst. Die Symbole für Editor-SVars beginnen mit 'editor', die Symbole für Domänenmodell-SVars werden mit 'model' gekennzeichnet. Daran wird der Attributname aus dem Modell oder im Falle der statischen Editor-SVars die oben genannten Bezeichner angehängt, abgetrennt durch einen Punkt.V
+Alle SVars müssen eindeutig durch einen SVar-Typ beschrieben werden, der ein Symbol zur Identifizierung und einen Scala-Datentyp umfasst. Die Symbole für Editor-SVars beginnen mit 'editor', die Symbole für Domänenmodell-SVars werden mit 'model' gekennzeichnet. Daran wird der Attributname aus dem Modell oder im Falle der statischen Editor-SVars die oben genannten Bezeichner angehängt, abgetrennt durch einen Punkt.
 
-Beispiele für SVar-Bezeichner: 
+Beispiele für SVar-Bezeichner aus den vorher genannten SVar-Kategorien: 
 
-#. ``editor.disabled``
-#. ``editor.color``
 #. ``model.function``
-
-
+#. ``editor.color``
+#. ``editor.disabled``
 
 .. _lebenszyklus:
 
@@ -219,6 +255,16 @@ Beispiele für SVar-Bezeichner:
 
 .. [f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
 
-.. [f3] Näheres zur Zuweisbarkeit siehe :ref:`implementierung-lmmlight`.
+.. [f3] Die Regeln für die Zuweisbarkeit 
 
-.. [I] Alle Commands sind in Package mmpe.model.commands definiert.
+.. [f4] Es wären natürlich auch möglich Attribute zu integrieren, die nicht direkt die Visualisierung betreffen, aber das Editor-Verhalten modifizieren. Dies wird bisher aber nicht genutzt.
+
+.. [f5] Es war nicht möglich, die Implementierung (auf einfachem Wege) so flexibel zu gestalten wie bei Domain-Model-SVars, was leider dazu führt, dass man keine Attribute hinzufügen kann ohne die ModelComponent anzupassen.
+
+.. [f6] Gewisse Ähnlichkeiten mit anderen Projekten sind rein zufällig ;-)
+
+.. [I] Zu finden im Scala-Package mmpe.lmmlight.parser
+
+.. [II] Alle Commands sind in Scala-Package mmpe.model.commands definiert.
+
+.. [III] Die Adapter sind im Package mmpe.lmmlight zu finden.

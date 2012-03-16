@@ -14,13 +14,24 @@ Scala wird als objektfunktionale Programmiersprache charakterisiert. "Objektfunk
 Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. 
 I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
 
+.. _traits:
+
+Traits
+------
+
+Gegenüber Java unterstützt Scala eine (eingeschränkte) Mehrfachvererbung von Implementierungscode über sogenannte **traits**. 
+Traits kann man sich als ein Java-Interface vorstellen, in dem gewisse Methoden schon vorimplementiert sind.
+
+Traits dürfen selbst keinen Konstruktor definieren.
+
 Actors
 ------
 
 Ein sinnvoller Einsatzbereich von Scala ist unter Anderem die Erstellung von parallelen und verteilten Anwendungen.
 Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
-Grundlage für das Actor-Patterns ist das *message passing*, das bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen. In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem dazu benutzt werden, Daten zu unveränderlichen Objekten zusammenzufassen.
+Grundlage für das Actor-Patterns ist das *message passing*, das bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen. 
+In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem dazu benutzt werden, Daten zu unveränderlichen Objekten zusammenzufassen.
 
 .. code-block:: scala
 
@@ -30,6 +41,24 @@ Grundlage für das Actor-Patterns ist das *message passing*, das bedeutet, dass 
 
 Actors können mit Hilfe von Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung.
 
+.. _implicit:
+
+Implizite Funktionen
+--------------------
+
+Es ist möglich, sogenannte "implizite Funktionen zu definieren, indem ein "implicit" vorangestellt wird. 
+Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden. Dazu müssen die Funktion im der scala-Quelldatei direkt importiert worden.
+
+
+Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden.
+
+.. code-block:: scala
+    implicit def conceptToAdapter(m: MConcept) = new MConceptAdapter(m)
+
+Mit dieser Definition lassen sich nun Methoden, die für MConceptAdapter definiert sind auch auf Objekten des Typs MConcept aufrufen als wären sie Teil von MConcept. [#f4]_
+
+.. _parser-kombinatoren:
+
 Parser-Kombinatoren
 -------------------
 
@@ -37,7 +66,9 @@ Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe
 
 Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
 
-In Scala werden die Bestandteile einer textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen Syntaxbaum der Eingabe ergeben.
+Anders ausgedrückt stellen Parserkombinator-Ausdrücke direkt die Grammatik der Sprache dar. Die Form erinnert an die Weise, wie Grammatiken in der Backus-Naur-Form spezifiziert werden.
+
+In Scala werden die Bestandteile der textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen Syntaxbaum der Eingabe ergeben.
 
 Folgende Parser-Funktion 
 
@@ -182,3 +213,4 @@ Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht einem Pixel auf dem Bildschirm, wenn man Antialiasing vernachlässigt
+.. [#f4] Dies wird (auch von offizieller Seite) als "Pimp my Library" bezeichnet. Näheres zu impliziten Funktionen: :cite:`odersky_programming_2011`

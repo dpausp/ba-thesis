@@ -1,7 +1,7 @@
 .. _modellhierarchie:
 
 *****************
-Modell-Hierarchie
+Modelle in I>PM3D
 *****************
 
 Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :cite:`jablonski` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
@@ -22,20 +22,22 @@ Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett aus
 
 Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im vorliegenden und nächsten Kapitel :ref:`metamodelle` näher erläutert
 
-Die Modelle werden mit Hilfe einer textuellen Modellierungssprache spezifiziert, die vom Linguistic Meta Model (LMM) der Open Meta Modeling Environment (OMME) abgeleitet ist. 
-
-Die hier verwendete Sprache, im Folgenden *LMMLight* genannt folgt in vielen Aspekten LMM, ohne jedoch alle weiterführenden Modellierungsmuster zu unterstützen. Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die Erstellung von LMMLight-Modellen sinnvoll genutzt werden kann wenn auf die nicht unterstützten Modellierungsmuster verzichtet wird.
-
-Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie in :ref:`metamodellierung` kurz vorgestellt oder von :cite:`volz_werkzeugunterstuetzung_2011` detailliert beschrieben werden.
-
-Zusätzlich sei noch gesagt, dass *LMMLight* das Muster der Instanz-Spezialisierung ("concreteUseOf") unterstützt, da dieses für die Realisierung des  genutzten Typ-Verwendungs-Konzepts hilfreich ist.
-
-Details zu LMMLight und der Implementierung finden sich im späteren Kapitel :ref:`implementierung_lmmlight`.
-
-:num:`Abbildung #modellhierarchie` zeigt wie die für I>PM3D genutzte Hierarchie der Modelle aussieht, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
-Im Rest dieses Kapitels wird eine Übersicht über die beiden abgegrenzten *Model-Stacks* gegeben.
+:num:`Abbildung #modellhierarchie` zeigt wie sich die für I>PM3D genutzte Hierarchie der Modelle darstellt, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
+Nach einer kurzen Vorstellung der Modellierungssprache wird im Rest dieses Kapitels wird eine Übersicht über die beiden abgegrenzten *Model-Stacks* gegeben.
 
 Die detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel vorgestellt. 
+
+LMMLight
+========
+
+Die Modelle werden mit Hilfe einer textuellen Modellierungssprache spezifiziert, die vom Linguistic Meta Model (LMM) der Open Meta Modeling Environment (OMME) abgeleitet ist. 
+
+Die hier verwendete Sprache, im Folgenden *LMMLight* genannt, folgt in vielen Aspekten LMM, ohne jedoch alle weiterführenden Modellierungsmuster wie Powertypes, Materialization und Deep Instantiation zu unterstützen. 
+Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die Erstellung von LMMLight-Modellen sinnvoll genutzt werden kann, solange auf die nicht unterstützten Modellierungsmuster verzichtet wird.
+
+*LMMLight* unterstützt allerdings das Muster der Instanz-Spezialisierung ("concreteUseOf"), da dies unter Anderem für die Realisierung des genutzten Typ-Verwendungs-Konzepts hilfreich ist.
+
+Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie in :ref:`metamodellierung` kurz vorgestellt oder von :cite:`volz_werkzeugunterstuetzung_2011` detailliert beschrieben werden.
 
 .. _editor-model-stack:
 
@@ -58,17 +60,22 @@ Im Vergleich zu der Modellhierarchie von MDF ist zu sehen, dass das im *Designer
 
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
-
 Um die Implementierung zu vereinfachen wurde jedoch darauf verzichtet. 
+Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente (auch "Figuren" genannt) für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
 
-Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
+Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der Modell-Komponente nur ein feste Auswahl an Visualisierungsparametern angeboten wird. 
+Welche dies sind kann im späteren Kapitel zur Modellanbindung unter :ref:`modellanbindung-svars` nachgelesen werden.
 
-Die in :num:`Abbildung #modellhierarchie` angegebenen Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden, jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell definiert werden, das im Folgenden vereinfachend als Editor-Metamodell bezeichnet wird.
+Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden; 
+jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell definiert werden, welches hier als das **Editor-Metamodell** bezeichnet wird. 
 
-Um eine andere Visualisierung festzulegen müsste daher das komplette Editor-Metamodell neu definiert werden, sinnvollerweise auf Basis des bestehenden Metamodells\ [#f1]_.
+Um eine andere Visualisierung festzulegen müsste das komplette Editor-Metamodell neu definiert werden, sinnvollerweise auf Basis des bestehenden Metamodells\ [#f1]_.
 
 Übersicht über die Editor-Model-Ebenen
 --------------------------------------
+
+In :num:`Abbildung #modellhierarchie` wird dargestellt, wie die Editor-Model-Ebenen, die im Folgenden vorgestellt werden von "oben nach unten" definiert sind. 
+**Editor-Base-Level** und **Editor-Definition-Level** ergeben zusammen das **Editor-Metamodell**.
 
 Programming-Language-Mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,9 +137,9 @@ Domain-Meta-Model
 
 Durch das **Domäin-Meta-Model** wird eine Sprache definiert, mit der ein Modell in der spezifischen Domäne erstellt werden kann. Es legt also die Syntax, also die verwendbaren Konstrukte sowie deren Beziehungen fest. 
 
-Es wird davon ausgegangen, dass sich das Metamodell auf eine graphbasierte Darstellung, die vom Editor-Metamodell bereitgestellt wird, abbilden lässt. 
 An die Struktur des Modells, also den Aufbau aus Levels und Packages werden keine besonderen Anforderungen gestellt.
 
+Es wird davon ausgegangen, dass sich das Metamodell auf eine graphbasierte Darstellung, die vom Editor-Metamodell bereitgestellt wird, abbilden lässt. 
 Also gilt das Prinzip, dass Knoten definiert werden können, die mittels Kanten verbunden sind.
 
 Knoten und Kanten werden über spezielle Attribute der Knoten logisch miteinander verbunden. 
@@ -144,6 +151,9 @@ Die Namen dieser Attribute können frei gewählt werden; jedoch wird in dieser A
 
 Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein "outbound"-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes "inbound"-Attribut besitzt.\ [#f2]_
 
+Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur literale Datentypen unterstützt werden. 
+Concept-Attribute können im Editor nicht angezeigt oder verändert werden und werden ignoriert. \ [#f3]_
+
 Domain-Usage-Model
 -----------------
 
@@ -153,7 +163,7 @@ Zusammen mit dem Editor-Usage-Model ergibt das den aktuellen Zustand des Editors
 
 Für die Erzeugung von Knoten im Domain-Usage-Modell wird ausschließlich das Typ-Verwendungs-Konzept verwendet. 
 
-Konkret bedeutet das hier, dass im Domain-Meta-Model Concepts\ [#f3]_ definiert werden, zu denen ein Typ-Concept als Instanz im Domain-Usage-Model erzeugt werden muss. 
+Konkret bedeutet das hier, dass im Domain-Meta-Model Concepts\ [#f4]_ definiert werden, zu denen ein Typ-Concept als Instanz im Domain-Usage-Model erzeugt werden muss. 
 Von diesen Type-Concepts kann dann eine Verwendung im Usage-Model – also im Sinne von LMM eine Spezialisierung des Type-Concepts – erzeugt werden.
 
 Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz. Kanten sind daher direkte Instanzen von Typen aus dem Domain-Meta-Modell.
@@ -164,4 +174,6 @@ Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsat
 .. [#f2] Technisch gesehen sind Kanten also immer "gerichtet"; jedoch können auch "ungerichtete" Kantentypen erstellt werden, indem in allen beteiligten Knotentypen beide Attribute definiert werden und die Unterschiedung zwischen Kanten, die dem "outbound" oder "inbound"-Attribut zugewiesen werden einfach ignoriert wird. Die Visualisierung der Kanten sollte dann allerdings auch unabhängig von der Richtung sein.
 
 .. [#f3] kann und sollte man das "Metatyp" nennen?
+
+.. [#f4] Als "Ausweg" kann natürlich ein zusätzlicher Knotentyp und eine passende Verbindung definiert werden, was vom Editor visualisiert und modifiziert werden kann.
 

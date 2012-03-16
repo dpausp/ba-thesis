@@ -12,8 +12,8 @@ Bla
     modellhierarchie
     metamodelle
     konzept_visualisierung
-    konzept_modellanbindung
-    implementierung
+    modellanbindung
+    implementierung_visualisierung
     schluss
     anhang_a
     anhang_b
