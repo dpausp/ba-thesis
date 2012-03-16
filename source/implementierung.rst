@@ -67,13 +67,14 @@ Hier eine Übersicht über die in dieser Arbeit genutzte Funktionalität:
 
 * Darstellung von Text, auch mehrzeilig 
 * Texturierung mit Unterstützung für Mipmapping und anisotropisches Filtern: für Text und Symbole auf Modellelementen
-* Phong-Beleuchtungsmodell, pixelgenau
+* Lichtquellen nach dem Phong-Beleuchtungsmodell, pixelgenau
 * Unterstützung für beliebig viele Lichtquellen
 * Transluzenz auf Objektebene (deaktivierte Modellelemente)
 * COLLADA-Loader
 * COLLADA2Scala-Compiler
-* Rendern in Texturen (render-to-texture, offscreen rendering): genutzt für Eightpen-Menü
-* Unterstützung für deaktivierte, hervorgehobene und selektierte Elemente
+* Rendern in Texturen (render-to-texture, offscreen rendering): genutzt für Eightpen-Menü.
+* Unterstützung für deaktivierte, hervorgehobene und selektierte Elemente.
+* Darstellung von transluzenten Flächen im Raum, auf denen ein Gitter gezeichnet wird. Die Dichte und Dicke der Linien kann konfiguriert werden.
 
 
 Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
@@ -126,6 +127,26 @@ Der Text wird zentriert angezeigt und wird am Wortende umgebrochen, falls der ho
 Aufwändigere Rendertechniken wurden in Betracht gezogen (-> Vektorrendering), jedoch war die Darstellungsqualität des umgesetzten, einfachen Ansatzes gut genug für den hier entwickelten Prototypen. 
 Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werden. Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit zu erzeugen könnten für die Implementierung von sehr gut lesbaren und trotzdem performanten Schrift-Renderern interessant sein.
 
+Betrachtungswinkelabhängige Darstellung von Texturen
+----------------------------------------------------
+
+
+Um dieses Problem abzumildern wird jedoch die Anzeige von der Blickrichtung des Benutzers (der Kamera) abhängig gemacht. Das hat zur Folge, dass die Information nur auf der dem Benutzer zugewandten Seite mit hoher Intensität dargestellt wird. Zur Berechnung wird der Winkel bzw. das Skalarprodukt zwischen Kameravektor und der Normalen der jeweiligen Objektfläche herangezogen. Dessen Wert bestimmt, zu welchem Anteil die Vordergrundfarbe (Schriftfarbe bzw. Texturfarbe) zur Hintergrundfarbe gemischt wird und welchen Einfluss sie damit auf den endgültig sichtbaren Farbton hat hat. 
+
+Ab einem gewissen Winkel wird nur noch die Hintergrundfarbe angezeigt.
+
+
+.. _lichtquellen:
+
+Lichtquellen
+------------
+
+Die Renderbibliothek stellt eine Abstraktion für Lichtquellen bereit, die sich an den Konzepten der alten OpenGL-Beleuchtungsparameter orientieren.
+Es wird Phong-Lichtmodell benutzt, wobei die Berechnung pixelgenau durchgeführt wird. 
+Darstellung von Flächen im Raum
+-------------------------------
+
+
 COLLADA2Scala-Compiler
 ----------------------
 
@@ -142,3 +163,8 @@ Für den Protoypen wurde die Anbindung an eine textuelle Modellierungssprache be
 
 
 Die Sprache ist vollständig kompatibel zum textuellen Editor von OMME. Das heißt, dass gültige LMMLight-Modelle vom Editor nicht beanstandet werden. Dies ermöglicht ein einfaches Bearbeiten der Modelle ohne einen eigenen Editor entwickeln zu müssen.
+
+LMM2Scala
+=========
+
+bla

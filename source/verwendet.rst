@@ -82,11 +82,17 @@ Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handha
 Simulator-X-Anwendungen sind aus Komponenten aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
 Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
 
-Komponenten können Aspekte zu Entitäten hinzufügen. 
+Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann.
 
-Bei der Erzeugung einer Entity können über einen Aspekt Werte durch den Benutzer vorgegeben werden, die für eine bestimmte Komponente bestimmt sind; beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
+Aspects beschreiben sozusagen eine Facette der Entity und sind einer bestimmten Komponente zugeordnet. So gibt es beispielsweise Grafik- oder Physik-Aspects.
+Über die Aspekt-Definition können Werte durch den Benutzer vorgegeben werden, die einer Komponente weitere Informationen geben, wie die komponenten-internen Entity-Repräsentation erstellt werden soll.
+Beispiele hierfür sind die Masse des Objekts für eine Physikkomponente oder der Pfad zu einer Modell-Datei für die Grafikkomponente.
 
-*Simulator X* befindet sich gerade in der Entwicklung. Für das Projekt wird eine Version von August 2011 genutzt.
+Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die zugeordnete Komponente weitergegeben. Daneben können allerdings auch noch andere
+
+ beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
+
+*Simulator X* befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
 
 .. _opengl:
 

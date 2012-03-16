@@ -24,8 +24,16 @@ Die oberste Ebene des Editor-Model-Stacks beinhaltet nur ein Paket ("base") mit 
 
 Dieses Konzept definiert Attribute, die festlegen, wie Konzepte aus dem Modell auf die verwendete Programmiersprache, hier Scala, abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
 
-Für jedes Konzept, das sich auf den weiter unten liegenden Ebenen befindet muss das Attribut "scalaType" definiert werden, das den korrespondierenden Scala-Typ angibt. 
-Optional ist das Attribut "typeConverter", welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Konzept in ein passendes Scala-Objekt umzuwandeln und umgekehrt. 
+Für jedes Konzept, das sich auf den weiter unten liegenden Ebenen befindet muss das Attribut *scalaType* definiert werden, das den korrespondierenden Scala-Typ angibt. 
+
+Optional ist das Attribut *typeConverter*, welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Konzept in ein passendes Scala-Objekt umzuwandeln und umgekehrt. 
+
+Ohne TypeConverter-Angabe wird *scalaType* direkt als voll qualifizierter Klassenname interpretiert. 
+Von dieser so angegebenen Klasse wird ein Objekt erstellt, welches das entsprechende Concept in der Anwendung vertritt.
+
+Wird ein TypeConverter genutzt, muss der *scalaType* nicht zwingend ein Klassenname sein. Wie das Attribut interpretiert wird hängt vom TypeConverter ab.
+
+Näheres zum Mapping auf Scala-Objekte, das in der Implementierung von **LMM2Scala** geleistet wird und zu Typ-Konvertern findet sich im unter :ref:`implementierung`.
 
 .. _emm-base:
 
@@ -33,6 +41,9 @@ Editor-Base-Model
 -----------------
 
 Die Ebene D2 ist als Instanz der Ebene D3 definiert. Daraus folgt, dass alle hier definierten Konzepte Instanzen von ScalaMapping sein müssen.
+
+Die auf dieser Ebene definierten Konzepte sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
+
 Auf Level D2 werden zwei Packages, *types* und *figures*, definiert.
 
 .. _emm-types:
@@ -63,7 +74,7 @@ Dazu werden folgeden Typen angeboten:
 
 
   * PhysicsSettings: Unterkonzepte dieses abstrakten Konzept werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
-
+.
     Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien angeboten, wie sie von der von :ref:`simulator-x` bereitgestellten Physikkomponente unterstützt werden.
     Für eine *PhysSphere* muss der Radius angegeben werden; eine *PhysBox* wird analog über die halben Seitenlängen (Attribut *halfExtends*, Typ *Dimension*) festgelegt.
 
@@ -73,13 +84,20 @@ Dazu werden folgeden Typen angeboten:
 Paket "figures"
 ^^^^^^^^^^^^^^
 
-Im *figures*-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Konzepte bereitgestellt werden. Die auf dieser Ebene definierten Konzepte sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
+Im *figures*-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. 
+
+Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Konzepte bereitgestellt werden. 
 
 Das Package wird durch 2 abstrakte Basistypen, EditorElement und SceneryObject strukturiert. 
 
-*EditorElement* ist der Basistyp aller Graphmodellelemente, welche sich wiederum in Kanten (*Edge*) und Knoten (*Node*) aufteilen.
+*EditorElement* ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (*Edge*) und Knoten (*Node*) aufteilen.
 
 Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. Dadurch wäre es prinzipell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Konzepten besteht.
+
+Das von *ScalaMapping* definierte Attribut *scalaType* legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
+Es ist zu beachten, dass die Interpretation von *scalaType* hier nicht den :ref:`emm-scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
+
+Wie die Werte interpretiert werden wird später in :ref:`implementierung` beschrieben.
     
 Knoten
 ^^^^^^
@@ -108,12 +126,13 @@ Wie in :ref:`ipm3d-gui` erwähnt sollen verfügbare Knotentypen in einem Menü a
 
 Im Kontext des Typ-Verwendungskonzepts werden Knotentypen ebenfalls "Typ" genannt, die konkreten Modellelemente, die in einem Modell genutzt werden, stellen "Verwendungen" der vorher definierten Typen dar.
 
-Daher müssen Nodes folgende Attribute setzen:
+Daher müssen alle Nodes folgende Attribute setzen:
 
   * toolingAttrib: Legt fest, welches (String)-Attribut aus dem Domänenkonzept zur Identifikation des Node-Typs in einer Palette angezeigt werden soll.
   * toolingTitle: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im Domain-Meta-Model definiert werden.
 
+.. _emm-figures-kanten:
 
 Kanten
 ^^^^^^
@@ -127,28 +146,32 @@ Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungskonzept im Domänenmo
 
 Wie Kantentypen innerhalb der grafischen Benutzeroberfläche bezeichnet werden sollen wird durch das Attribute *toolingName* festgelegt.
 
-
-In Konzepten, die Kantentypen repräsentieren müssen außerdem die Attribute von Knotentypen aus dem Domänenmodell angegeben werden, denen die Konzepte der zugehörigen Verbindungen zugewiesen werden.
-
-  * inboundAttrib: 
-  * outboundAttrib: Legen die Namen der Attribute im Domänenmodell fest, 
+In Konzepten, die Kantentypen repräsentieren müssen außerdem die Attribute von Knotentypen aus dem Domänenmodell angegeben werden, denen die Domain-Concepts der zugehörigen Verbindungen zugewiesen werden.
+*InboundAttrib* legt den Namens des Attributs fest, dem eingehende Kanten zugewiesen werden; *outboundAttrib* ist entsprechend das Attribut für die ausgehenden Kanten.
 
 Außerdem sind für Kanten noch die beiden Attribute **startNode** und **endNode** definiert, denen im Editor-Usage-Model das Editor-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten darstellt.
 
 Szenenobjekte
 ^^^^^^^^^^^^^
 
-Szenenobjekte werden vom Basistyp SceneryObject abgeleitet. In dieser Kategorie stehen momentan nur Objekte zur Verfügung, die aus einer COLLADA-Datei geladen werden.
-Für Szenenobjekte kann eine Physikrepräsentation definiert werden.
+Typen für Szenenobjekte werden vom Basistyp SceneryObject abgeleitet. Wie für Knoten werden Attribute für die Position, Größe und Rotation definiert.
+Wie der Typ innerhalb der grafischen Benutzeroberfläche bezeichnet werden soll wird durch das Attribut *toolingName* festgelegt.
 
-Details zur Visualisierung und den zur Verfügung stehenden grafischen Objekten sind im nächsten Kapitel :ref:`konzept_visualisierung` zu finden.
+Für Szenenobjekte kann eine Physikrepräsentation (Typ *PhysicsSettings*) definiert werden, falls diese nicht anderweitig festgelegt wird.
+
+Es gibt momentan nur eine Art von Szenenobjekten, das *ColladaSceneryObject*. Über das Attribut *modelPath* kann ein Pfad zu einer COLLADA-Datei angegeben werden.
+Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt. 
+
+Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden und Selektion durch den Benutzer möglich sein soll.
+
+Näheres zur COLLADA-Unterstützung von I>PM3D findet sich bei :cite:`uli` im Kapitel ???.
 
 
 Editor-Definition-Model
 -----------------------
 
 Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine gesonderte Beschreibung verzichtet.
-Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu der auf diesen spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
+Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu den hier spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
 
 
 Prozess-Meta-Modell
@@ -184,7 +207,10 @@ Im Unterschied zu den Metamodellen von POPM werden Beziehungen zwischen Knoten i
 
 Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an einen Node, also Prozess- oder Entscheidungsknoten angebunden werden.
 
-Zur Verdeutlichung soll das Concept *DataItem* dienen:
+Beispiel für ein Editor- und Domain-Concept
+===========================================
+
+Zur Verdeutlichung des bisher gesagten soll das Concept *DataItem* dienen:
 
 .. code-block:: java
 
@@ -195,9 +221,15 @@ Zur Verdeutlichung soll das Concept *DataItem* dienen:
         0..* concept NodeDataItemConnection inboundNodeDataItemConnection;
     }
 
-Die Attribute **inboundDataFlows** und *outboundDataFlows* legen fest, dass DataItems untereinander verbunden werden können. 
+Die Attribute *inboundDataFlows* und *outboundDataFlows* legen fest, dass DataItems untereinander verbunden werden können. 
 
-Durch **inboundNodeDataItemConnection** wird ausgedrückt, dass ein DataItem Endpunkt einer NodeDataConnection sein kann. Der Startpunkt ist entsprechend in *Node* definiert.
+Durch *inboundNodeDataItemConnection* wird ausgedrückt, dass ein DataItem Endpunkt einer NodeDataConnection sein kann. Der Startpunkt ist entsprechend in *Node* definiert.
+
+
+Wie unter :ref:`emm-figures-kanten` erwähnt müssen in einem zu einer Kante gehörenden Editor-Concept die Attribute des Knoten-Concepts aus dem Domänenmodell angegeben werden, denen Kanten zugewiesen werden.
+
+Damit müssen beispielsweise im DataFlowConnection-Concept im Editor-Definition-Model die Attribute *inboundAttrib*  und *outboundAttrib* auf "inboundDataFlows" beziehungsweise "outboundDataFlows" gesetzt werden.
+
 
 Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 

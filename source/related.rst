@@ -46,7 +46,8 @@ Ein solches Diagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
     3D-UML-Klassendiagramm aus :cite:`dwyer_three_2001`
 
 
-In einer Studie zur Benutzbarkeit seien die 3D-Diagramme von Beteiligten als nützlich für das Verständnis des Modells eingestuft worden und konkrete Fragen zu verschiedenen Modellen seien von den Probanden sehr gut beantwortet worden. 
+In einer Studie zur Benutzbarkeit seien die 3D-Diagramme von Beteiligten als nützlich für das Verständnis des Modells eingestuft worden.
+Konkrete Fragen zu verschiedenen Modellen seien von den Probanden sehr gut beantwortet worden. 
 Es wird ein Benutzer zitiert, der die Möglichkeit, das Diagramm aus verschiedenen Richtungen betrachten zu können besonders positiv kommentiert.
 
 Auch seien Benutzer gebeten worden, selbst ein 3D-Diagramm nach einer textuellen Vorlage zu modellieren. Dabei sei aufgefallen, dass die meisten Benutzer wenig Probleme mit der Aufgabe hatten. Es wird jedoch vermutet, dass die 3D-Darstellung bei einigen Benutzern eine gewisse Eingewöhnungszeit voraussetzen könnte.
@@ -287,6 +288,13 @@ Darstellung von Verbindungen
 -----------------------------
 
 Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Verbindungen als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. Andere Möglichkeiten werden von :cite:``
+
+Dynamische Transparenz
+----------------------
+
+Das ebenfalls für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
+
+Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. Unwichtige, die Ansicht störende Objekte werden als "distractors", informationstragende Elemente als "targets" bezeichnet. Das Ziel ist nun, sicherzustellen, dass "targets" nie von "distractors" verdeckt werden können. Letztere werden, sobald sie wichtige Objekte verdecken transparent dargestellt, damit das relevante Element jederzeit erkannt werden kann. Dazu wird ein Algorithmus angegeben, der diesen Effekt in Echtzeit auf Sub-Objekt-Ebene berechnen kann.
 
 Zusammenfassung
 ===============

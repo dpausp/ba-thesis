@@ -6,7 +6,7 @@ Modell-Hierarchie
 
 Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :cite:`jablonski` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
-Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :ref:`volz_werkzeugunterstuetzung_2011` beschrieben wird. 
+Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstuetzung_2011` beschrieben wird. 
 
 Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Diesem Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :ref:`ma-bastian`
 mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen. 
@@ -76,18 +76,18 @@ Programming-Language-Mapping
 Auf der obersten Ebene des Stacks, die im Modell als Level D3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`emm-scalamapping` beschrieben wird.
 In der :num:`Abbildung #modellhierarchie` wird diese Ebene als **Programming-Language-Mapping** bezeichnet.
 
-Editor-Base-Model
+Editor-Base-Level
 ^^^^^^^^^^^^^^^^^
 
 Darunter befindet sich auf Level D2 der prinzipiell von der Modellierungsdomäne unabhängige Teil der Editor-Spezifikation 
-Hier werden Concepts bereitgestellt, die die Grundlagen der Repräsentation für Typen aus dem Domänenmodell darstellen.
+Hier werden Concepts bereitgestellt, die die Grundlage der Repräsentation für Typen aus dem Domänenmodell darstellen.
 
-In der :num:`Abbildung #modellhierarchie` ist diese Ebene als **Editor-Base-Model** zu finden.
-Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werdenwird in :ref:`emm-meta` näher beschrieben.
+In der :num:`Abbildung #modellhierarchie` ist diese Ebene als **Editor-Base-Level** zu finden.
+Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werden, wird in :ref:`emm-meta` näher beschrieben.
 
 Die beiden Ebenen D3 und D2, die bisher beschrieben worden sind können prinzipiell beliebig definiert werden, soweit dies von LMMLight unterstützt wird. 
 
-Editor-Definition-Model
+Editor-Definition-Level
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Level D1 enthält die Modellebene, die festlegt, auf welche Weise ein Typ aus dem Domänenmodell repräsentiert wird, wie in :ref:`emm-definition` dargestellt wird. 
@@ -98,7 +98,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein:
     * package "connectionFigures" definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
     * Das package "sceneryObjects" enthält die verwendbaren Szenenobjekte. Szenenobjekte haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
-Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte **Editor-Definition-Model**. 
+Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte **Editor-Definition-Level**. 
 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, die von Concepts aus den obigen Packages referenziert werden. 
 Dies können beispielsweise Concepts für die Definition von Farben oder der Größe eines Objekts sein.
@@ -106,10 +106,10 @@ Dies können beispielsweise Concepts für die Definition von Farben oder der Gr�
 Editor-Usage-Model
 ^^^^^^^^^^^^^^^^^^
 
-Auf demselben Level befindet sich das **Editor-Usage-Model**, das Verwendungen, also Spezialisierungen der Instanzen aus dem Editor-Definition-Model enthält. 
+Ebenfalls auf Level D1 befindet sich das **Editor-Usage-Model**, das Verwendungen, also Spezialisierungen der Instanzen aus dem Editor-Definition-Level enthält. 
 Diese Concepts dürfen alle in der Instanz definierten Attributzuweisungen überschreiben.
 
-Analog zum Editor-Definition-Model sind die Verwendungen in drei Packages eingeteilt, die hier "nodeUsages", "connectionUsages" und "sceneryObjectsUsages" genannt werden müssen.
+Analog zum Editor-Definition-Level sind die Verwendungen in drei Packages eingeteilt, die hier "nodeUsages", "connectionUsages" und "sceneryObjectsUsages" genannt werden müssen.
 
 Zusammen ergeben diese Verwendungen die konkrete Repräsentation eines Domänenmodells. Diese Concepts spezifizieren hier also die Objekte, die vom Modellierungswerkzeug erstellt und angezeigt werden.
 
