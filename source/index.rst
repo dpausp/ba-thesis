@@ -16,10 +16,12 @@ I>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen - Repräsentati
     grundlagen
     related
     verwendet
-    konzept_visualisierung
-    konzept_modellanbindung
+    ipm3d
+    modellhierarchie
     metamodelle
-    implementierung
+    konzept-visualisierung
+    modellanbindung
+    implementierung-visualisierung
     schluss
 
 .. toctree::

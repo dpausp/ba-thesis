@@ -37,7 +37,7 @@ Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die E
 
 *LMMLight* unterstützt allerdings das Muster der Instanz-Spezialisierung ("concreteUseOf"), da dies unter Anderem für die Realisierung des genutzten Typ-Verwendungs-Konzepts hilfreich ist.
 
-Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie in :ref:`metamodellierung` kurz vorgestellt oder von :cite:`volz_werkzeugunterstuetzung_2011` detailliert beschrieben werden.
+Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie von :cite:`volz_werkzeugunterstuetzung_2011` detailliert beschrieben werden.
 
 .. _editor-model-stack:
 

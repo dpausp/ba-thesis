@@ -5,7 +5,7 @@ Verwendete Techniken und Software
 Scala
 *****
 
-Die Implementierung der Konzepte dieser Arbeit erfolge nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala` 
+Die Implementierung der Konzepte dieser Arbeit erfolgte nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala` 
 
 Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulator_x` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
@@ -30,7 +30,8 @@ Actors
 Ein sinnvoller Einsatzbereich von Scala ist unter Anderem die Erstellung von parallelen und verteilten Anwendungen.
 Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
-Grundlage für das Actor-Patterns ist das *message passing*, das bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen. 
+Grundlage für das Actor-Patterns ist das *message passing*. 
+Dies bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen und nicht auf gemeinsame, veränderliche Datenstrukturen zugreifen. 
 In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem dazu benutzt werden, Daten zu unveränderlichen Objekten zusammenzufassen.
 
 .. code-block:: scala
@@ -39,7 +40,8 @@ In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem d
     receivingActor ! Message("hello!", 42)
 
 
-Actors können mit Hilfe von Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung.
+Actors können mit Hilfe von Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung. 
+
 
 .. _implicit:
 
@@ -53,16 +55,18 @@ Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötig
 Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden.
 
 .. code-block:: scala
+
     implicit def conceptToAdapter(m: MConcept) = new MConceptAdapter(m)
 
 Mit dieser Definition lassen sich nun Methoden, die für MConceptAdapter definiert sind auch auf Objekten des Typs MConcept aufrufen als wären sie Teil von MConcept. [#f4]_
+
 
 .. _parser-kombinatoren:
 
 Parser-Kombinatoren
 -------------------
 
-Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen, welche im Rahmen dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation genutzt wurde. Parser-Kombinatoren werden in funktionalen Programmiersprachen genutzt um rekursiv absteigende Parser zu realisieren.
+Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen. Dies wurde in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation verwendet. Parser-Kombinatoren werden in funktionalen Programmiersprachen genutzt um rekursiv absteigende Parser zu realisieren.
 
 Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
 
@@ -90,6 +94,7 @@ erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen. D
 .. code-block:: scala
 
     case class LiteralTypeAssignment(id: String, stringLiterals: List[String])
+
 
 .. _simulator_x:
 
@@ -119,9 +124,8 @@ Aspects beschreiben sozusagen eine Facette der Entity und sind einer bestimmten 
 Über die Aspekt-Definition können Werte durch den Benutzer vorgegeben werden, die einer Komponente weitere Informationen geben, wie die komponenten-internen Entity-Repräsentation erstellt werden soll.
 Beispiele hierfür sind die Masse des Objekts für eine Physikkomponente oder der Pfad zu einer Modell-Datei für die Grafikkomponente.
 
-Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die zugeordnete Komponente weitergegeben. Daneben können allerdings auch noch andere
-
- beispielsweise sind das die Masse und die Abmessungen eines Objekts für die Physik-Komponente.
+Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die zugeordnete Komponente weitergegeben. 
+Andere Komponenten können sich allerdings beim *WorldInterface* registrieren um Informationen über alle Aspects zu bekommen.
 
 *Simulator X* befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
 
@@ -131,8 +135,6 @@ OpenGL / LWJGL
 **************
 
 Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
-
-Die :ref:`render_bibliothek` nutzt ausschließlich Funktionalitäten, die in Version 3.3 des OpenGL-Standards nicht als "deprecated" markiert sind. Die im Projekt von :cite:`uli` für Menüs genutzte Nifty-GUI-Bibliothek erfordert allerdings noch OpenGL-Funktonen der Version 1.x. Somit muss die Anwendung in einem abwärtskompatiblen Grafikmodus gestartet werden.
 
 Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff Tastatur und Maus zur Verfügung.
@@ -144,7 +146,7 @@ In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionen
 Mit Version 3.0 wurde die *fixed-function-Pipeline* aus dem Kern von OpenGL entfernt. In neueren Versionen müssen diese Berechnung selbst durch den Programmierer in *Shadern* implementiert werden. 
 
 Das neue Konzept gibt jedoch dem Programmierer auch die Freiheit, neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
-Diese Möglichkeit wurde in dieser Arbeit häufig genutzt, wie in :ref:`render_Bibliothek` beschrieben wird.
+Diese Möglichkeit wurde in dieser Arbeit ausgiebig genutzt, wie in :ref:`implementierung` beschrieben wird.
 
 
 Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von den *Shader-Einheiten* ausgeführt werden.

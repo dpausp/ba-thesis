@@ -178,7 +178,7 @@ ModelAspects sind der *ModelComponent* zugeordnet und enthalten für Nutzer der 
 Für alle Elemente, die von ModelEntities repräsentiert werden wird ein vollqualifizierter Name (*modelTypes.Fqn*) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
 Dieser Name wird in Commands verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
 
-Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem Domänenmodell genutzt. Szenenobjekte werden über die FQN des Editor-Usage-Concepts identifiziert. [#f2]_
+Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem Domänenmodell genutzt. Szenenobjekte werden über die FQN des Editor-Usage-Concepts identifiziert.\ [#f2]_
 
 Außerdem wird ein Identifikationsstring (modelTypes.CreatorId*) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
 Mit "Ersteller" ist hier der Absender des entsprechenden Commands oder die ModelComponent selbst gemeint. 
@@ -202,10 +202,10 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
 
 #. *Editor-Model-SVars* 
    Diese SVars werden nach Bedarf aus den Attributen des Editor-Metamodells erstellt. 
-   Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird. [#f4]_
+   Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird.\ [#f4]_
    Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Diese werden für die meisten hier genannten SVars benötigt.
 
-   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt.[#f5]_ 
+   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt.\ [#f5]_ 
    
    Das sind im Einzelnen:
 
@@ -221,7 +221,7 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
    Sie sind automatisch für alle Modellelemente definiert oder werden durch Modellattribute "aktiviert". 
    Dabei handelt es sich um:
 
-   * SVars für die Auswahl von Visualisierungsvarianten (siehe :ref:`visualisierungsvarianten`): 
+   * SVars für die Auswahl von :ref:`visualisierungsvarianten`: 
 
      * Deaktivierung (*disabled*), 
      * Hervorhebung (*highlighted*)
@@ -251,17 +251,17 @@ Beispiele für SVar-Bezeichner aus den vorher genannten SVar-Kategorien:
 
 
 
-.. [f1] Prinzipiell können dies in der Implementierung auch mehrere Objekte sein, jedoch ist diese vereinfachte Darstellung hier ausreichend.
+.. [#f1] Prinzipiell können dies in der Implementierung auch mehrere Objekte sein, jedoch ist diese vereinfachte Darstellung hier ausreichend.
 
-.. [f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
+.. [#f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
 
-.. [f3] Die Regeln für die Zuweisbarkeit 
+.. [#f3] Die Regeln für die Zuweisbarkeit 
 
-.. [f4] Es wären natürlich auch möglich Attribute zu integrieren, die nicht direkt die Visualisierung betreffen, aber das Editor-Verhalten modifizieren. Dies wird bisher aber nicht genutzt.
+.. [#f4] Es wäre auch erlaubt, Attribute zu integrieren, die nicht direkt die Visualisierung betreffen, aber das Editor-Verhalten modifizieren. Dies wird bisher aber nicht genutzt.
 
-.. [f5] Es war nicht möglich, die Implementierung (auf einfachem Wege) so flexibel zu gestalten wie bei Domain-Model-SVars, was leider dazu führt, dass man keine Attribute hinzufügen kann ohne die ModelComponent anzupassen.
+.. [#f5] Es war nicht möglich, die Implementierung (auf einfachem Wege) so flexibel zu gestalten wie bei Domain-Model-SVars, was leider dazu führt, dass man keine Attribute hinzufügen kann ohne die ModelComponent anzupassen.
 
-.. [f6] Gewisse Ähnlichkeiten mit anderen Projekten sind rein zufällig ;-)
+.. [#f6] Gewisse Ähnlichkeiten mit anderen Projekten sind rein zufällig ;-)
 
 .. [I] Zu finden im Scala-Package mmpe.lmmlight.parser
 

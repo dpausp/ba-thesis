@@ -1,8 +1,8 @@
 .. _konzept_visualisierung:
 
-***************************************
-Konzept 3D-Visualisierung von Prozessen
-***************************************
+*******************************
+3D-Visualisierung von Prozessen
+*******************************
 
 Nachdem die allgemeinen und prinzipiell von der Prozessmodellierung unabhängigen Teile des Editor-Meta-Models in den beiden vorherigen Kapiteln besprochen wurden, wird hier nun die Visualisierung von Prozessen im I>PM3D-Prototypen vorgestellt. 
 
@@ -27,11 +27,23 @@ Für die Darstellung von Informationen auf den Knoten wurden gibt es durch die i
 Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus dem Prozessmodell direkt anzuzeigen, beispielsweise die Funktion eines Prozesses oder den Namen einer Dateneinheit. 
 Ein Beispiel für zwei Prozessknoten ist in :num:`prozessknoten` zu sehen.
 
-.. BILD
+.. _prozessknoten:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 8cm
+
+    Zwei Prozessknoten (Screenshot aus I>PM3D)
+
 
 Andererseits können Grafiken (Texturen) genutzt werden, die Bedeutung eines Knotentyps zu visualisieren. So steht ein Pluszeichen beispielsweise für einen AND-Connector, wie in :num:`Abbildung #and-connector` gezeigt wird. 
 
-.. BILD
+.. _and-connector:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 8cm
+
+    AND-Connector (Screenshot aus I>PM3D)
+
 
 Durch die freie Beweglichkeit der Kamera und der Objekte (siehe :ref:`ipm3d-visualisierung`) ergeben sich sehr unterschiedliche Beobachtungsperspektiven. So können die Entfernungen zwischen Kamera und Modellelementen sehr groß sein; auch können die Objekte durch die freien Rotationsmöglichkeiten von allen Seiten betrachtet werden. 
 
@@ -63,6 +75,8 @@ Vor allem ungeübten Benutzern kann es durchaus schwer fallen, Objekte zu selekt
 
 Daher sollten die Modellelemente möglichst groß sein\ [#f1]_ und eine geringe geometrische Komplexität\ [#f2]_ aufweisen damit die Arbeit mit dem Modell für den Benutzer nicht zu anstrengend wird.
 
+.. bisschen umbauen und sagen, dass geometriebasierte Elemente daher ungünstig sind
+
 Darstellung von Kanten
 ======================
 
@@ -72,11 +86,17 @@ In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader
 
 Die durch das Concept *TexturedConnection*  (:ref:`emm-base`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 
-Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert ist, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
+Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert sind, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
 
 :num:`Abbildung #gerichtete-verbindung` zeigt als Beispiel zwei Prozesse, die mit einem Kontrollfluss verbunden sind. Der Kontrollfluss läuft von Prozess A zu Prozess B.
 
-.. BILD
+.. _gerichtete-verbindung:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 8cm
+
+    Gerichtete Kontrollflusskante (Screenshot aus I>PM3D)
+
 
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als *SceneryObject* bezeichnet werden. 
 
@@ -125,7 +145,31 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 
 :num:`Abbildung #deaktivierung` zeigt einen deaktivierten Prozess, hinter dem sich ein anderer Prozess befindet.
 
-Die drei vorgestellen Visualisierungsvarianten können frei kombiniert werden. Damit ist es zum Beispiel auch möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
+.. _hervorhebung:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 5cm
+
+    Hevorgehobener und AND-Konnektor im Normalzustand (rechts) (Screenshot aus I>PM3D)
+
+
+.. _selektion:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 5cm
+
+    Prozess und AND-Connector im selektierten Zustand (Screenshot aus I>PM3D)
+
+
+.. _deaktivierung:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 5cm
+
+    Deaktivierter Prozessknoten (vorne) und aktivierter Prozess (hinten) (Screenshot aus I>PM3D)
+
+Die drei vorgestellen Visualisierungsvarianten können frei kombiniert werden. 
+Damit ist es zum Beispiel auch möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
 
 
 Maßnahmen zu Verbesserung der Benutzerfreundlichkeit
@@ -150,6 +194,15 @@ Näheres zur Implementierung dieser "Gravitationsflächen" findet sich in :cite:
 
 Grafisch werden diese Ebenen transluzent dargestellt, wobei darauf Gitterlinien zu erkennen sind. 
 Diese Linien haben allerdings keine physikalische Bedeutung sondern diesen nur als optische Platzierungshilfe.
+
+:num:`Abbildung #modellierungsflaeche` zeigt eine solche Ebene.
+
+.. _modellierungsflaeche:
+
+.. figure:: _static/screenshots/dummy.png
+    :height: 5cm
+
+    Modellierungsfläche, grün (Screenshot aus I>PM3D)
 
 Beleuchtung
 -----------
@@ -188,8 +241,8 @@ Insgesamt hat sich bei Versuchen gezeigt, dass es relativ schwierig ist, die Lic
 
 .. Konfigurierbarkeit?
 
-Nicht umgesetze Erweiterungsmöglichkeiten
------------------------------------------
+Erweiterungsmöglichkeiten
+=========================
 
 Zur besseren Orientierung könnten noch andere Grafikeffekt genutzt werden, die jedoch im vorliegenden Prototypen noch nicht realisiert sind. Dazu gehört die Stereoskopie, Schattenberechnungen und die bereits erwähnte dynamische Transparent (->).
 

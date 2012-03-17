@@ -1,8 +1,8 @@
-***************
-Implementierung
-***************
+**********************************
+Implementierung der Visualisierung
+**********************************
 
-.. _render_bibliothek:
+.. _render-bibliothek:
 
 Render-Bibliothek
 =================
@@ -63,8 +63,7 @@ Die Renderkomponente ersetzt die von Simulator X bereitgestellte Komponente, ste
 
 Dazu gehören:
 
-    Laden von COLLADA-Modellen
-
+    * Laden von COLLADA-Modellen
 
 
 

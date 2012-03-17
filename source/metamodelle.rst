@@ -8,8 +8,8 @@ Anschließend wird das verwendete Prozess-Metamodell näher vorgestellt.
 
 Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`konzept-visualisierung` dargestellt.
 
-Editor-Meta-Modelle
-===================
+Editor-Meta-Modell
+==================
 
 Das Editor-Metamodell enthält alle Informationen, die für die Spezifikation eines Editors und damit auch der Visualisierung eines Domänenmodells nötig sind.
 
@@ -207,8 +207,10 @@ Im Unterschied zu den Metamodellen von POPM werden Beziehungen zwischen Knoten i
 
 Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an einen Node, also Prozess- oder Entscheidungsknoten angebunden werden.
 
-Beispiel für ein Editor- und Domain-Concept
-===========================================
+Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
+
+Beispiel
+========
 
 Zur Verdeutlichung des bisher gesagten soll das Concept *DataItem* dienen:
 
@@ -231,7 +233,6 @@ Wie unter :ref:`emm-figures-kanten` erwähnt müssen in einem zu einer Kante geh
 Damit müssen beispielsweise im DataFlowConnection-Concept im Editor-Definition-Model die Attribute *inboundAttrib*  und *outboundAttrib* auf "inboundDataFlows" beziehungsweise "outboundDataFlows" gesetzt werden.
 
 
-Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
 .. [#f1] Die Implementierung stellt momentan TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
 

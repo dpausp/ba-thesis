@@ -3,6 +3,7 @@ Bla
 ###
 
 .. toctree::
+    abbildungsverzeichnis
     zusammenfassung-latex
     einleitung
     grundlagen
@@ -11,9 +12,9 @@ Bla
     ipm3d
     modellhierarchie
     metamodelle
-    konzept_visualisierung
+    konzept-visualisierung
     modellanbindung
-    implementierung_visualisierung
+    implementierung-visualisierung
     schluss
     anhang_a
     anhang_b

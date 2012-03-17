@@ -213,7 +213,7 @@ latex_elements = {
 # Additional stuff for the LaTeX preamble.
 'preamble' : preamble_normal,
 
-'classoptions': 'openany',
+'classoptions': '',
 
 'babel': '\\usepackage[ngerman]{babel}'
 }

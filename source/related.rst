@@ -38,7 +38,7 @@ Verbindungen zwischen Klassen werden durch gestreckte 3D-Zylinder ("Röhren") da
 
 Ein solches Diagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
 
-.. _dywer_classdiag:
+.. _dywer-classdiag:
 
 .. figure:: _static/ext_pics/dywer_classdiag.png
     :height: 11.5cm
@@ -58,7 +58,7 @@ X3D-UML: 3D UML State Machine Diagrams
 
 In :cite:`mcintosh_x3d-uml:_2008` werden Zustandsdiagramme (state machine diagrams) der UML in den 3D-Raum übertragen.
 
-Zu Beginn seien Zustandsdiagramme von 4 Unternehmen untersucht worden, die mit dem Modellierungswerkzeug IBM Rational Rose RealTime erstellt wurden. Daraus habe sich ergeben, dass die Modelle oft hierarchisch aus Unterzuständen aufgebaut seien. 
+Zu Beginn seien von vier Unternehmen erhaltene Zustandsdiagramme untersucht worden, die mit dem Modellierungswerkzeug IBM Rational Rose RealTime erstellt wurden. Daraus habe sich ergeben, dass die Modelle oft hierarchisch aus Unterzuständen aufgebaut seien. 
 In RationalRose würden diese Unterdiagramme jedoch in separaten Tabs dargestellt, was dazu führt, dass Benutzer ständig zwischen einzelnen Diagrammen hin- und herwechseln müssten.
 
 Das erschwere das Erkennen von Zusammenhängen und groben Strukturen. Diese Einschränkungen der 2D-Ansicht würde von Benutzern auf verschiedenem Wege "umgangen", etwa indem separate Handskizzen angefertigt würden oder Benutzer "in die Luft starren" würden, um sich die Zusammenhänge und Auswirkungen von Änderungen besser vorstellen zu können.
@@ -208,7 +208,7 @@ Außerdem könnten hierarchische Prozessdiagramme gut im dreidimensionalen Raum 
 
 .. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
 
-   4 Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
+   Vier Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
 
 3D gadgets for business process visualization — a case study
 ------------------------------------------------------------
@@ -294,7 +294,10 @@ Dynamische Transparenz
 
 Das ebenfalls für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
 
-Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. Unwichtige, die Ansicht störende Objekte werden als "distractors", informationstragende Elemente als "targets" bezeichnet. Das Ziel ist nun, sicherzustellen, dass "targets" nie von "distractors" verdeckt werden können. Letztere werden, sobald sie wichtige Objekte verdecken transparent dargestellt, damit das relevante Element jederzeit erkannt werden kann. Dazu wird ein Algorithmus angegeben, der diesen Effekt in Echtzeit auf Sub-Objekt-Ebene berechnen kann.
+Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. Unwichtige, die Ansicht störende Objekte werden als "distractors", informationstragende Elemente als "targets" bezeichnet. 
+Das Ziel sei nun, sicherzustellen, dass "targets" nie von "distractors" verdeckt werden können. 
+Letztere würden, sobald sie wichtige Objekte verdecken transparent dargestellt, damit das relevante Element jederzeit erkannt werden kann. 
+Es wird ein Algorithmus angegeben, der diesen Effekt in Echtzeit auf Sub-Objekt-Ebene berechnen kann.
 
 Zusammenfassung
 ===============
