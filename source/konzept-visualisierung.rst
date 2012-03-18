@@ -76,22 +76,21 @@ Außerdem ist es sinnvoll, auf Quader oder annähernd quaderförmige Geometrien 
 
 Da dieser Prototyp neben der klassischen Desktop-Bedienung mit Maus und Tastatur auch zur Evaluierung von neuartigen Eingabegeräten eingesetzt werden soll müssen auch die Besonderheiten dieser Eingabemethoden berücksichtigt werden. 
 
-Die hier verwendeten 3D-Eingabegeräte, die Kinect und WiiMote haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. 
-Vor allem ungeübten Benutzern kann es durchaus schwer fallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
+Die im Projekt verwendeten 3D-Eingabegeräte :cite:`buchi` haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. 
+Vor allem ungeübten Benutzern kann es schwer fallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
 
-Daher sollten die Elemente, mit denen der Benutzer interagiert möglichst groß sein\ [#f1]_ und eine geringe geometrische Komplexität\ [#f2]_ aufweisen.
+Dies ist auch ein Grund, warum hier eine reine Graphdarstellung mit möglichst einfachen Objekten verwendet wird. 
+Es wird also darauf verzichtet, Elemente ineinander zu schachteln, wie es in 2D-Werkzeugen wie IPM2 (siehe :ref:`prozessmodellierungssprachen`) üblich ist.  
 
-Dies ist auch der Grund, warum darauf verzichtet wurde, Elemente ineinander zu schachteln, wie es dem geometriebasierten Ansatz entspricht, wie in :ref:`prozessmodellierungssprachen` gezeigt.
-
-
-.. bisschen umbauen und sagen, dass geometriebasierte Elemente daher ungünstig sind
 
 Kanten
 ------
 
 Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können, die auch gerichteter Natur sein kann.
 
-In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. Dies wird von der von :cite:`uli` beschriebenen Editor-Komponente durchgeführt.
+In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
+Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. 
+Dies wird von der von :cite:`uli` beschriebenen Editor-Komponente durchgeführt.
 
 Die durch das Concept *TexturedConnection*  (:ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 
@@ -125,10 +124,8 @@ Visualisierungsvarianten für interaktive Modelleditoren
 
 Da das hier vorgestellte Visualisierungskonzept in einem interaktiven Modelleditor eingesetzt wird ergibt sich noch die weitere Anforderung, Visualisierungsvarianten der Modellelemente zu unterstützen.
 
-So sollen Interaktionen des Benutzers mit den Modellobjekten sichtbar gemacht werden, indem die Visualisierung der Objekte temporär modifiziert wird. 
-Diese Modifikationen werden nicht im Editor-Usage-Model abgelegt und gehen damit bei Beendigung des Programms verloren.
-
-Nachdem ein Modell neu geladen wurde werden also alle Objekte im Normalzustand angezeigt.
+So sollen Interaktionen des Benutzers mit den Modellobjekten sichtbar gemacht werden, indem die Visualisierung der Objekte temporär verändert wird. 
+Diese Modifikationen werden nicht im Editor-Usage-Model persistiert; daher werden alle Objekte im Normalzustand angezeigt nachdem ein Modell neu geladen wurde.
 
 Hervorhebung
 ------------
@@ -254,8 +251,8 @@ Genauso ergibt sich bei gerichteten Verbindungen, die sich weit im Hintergrund b
 
 Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparameter so zu setzen, dass eine in allen Situationen nahezu optimale Beleuchtung entsteht.
 
-Diskussion und Erweiterungsmöglichkeiten
-========================================
+Zusätzliche Aspekte und Erweiterungsmöglichkeiten
+=================================================
 
 Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
 Allerdings kann das bisherige Konzept und die Implementierung nur der Anfang sein. 
@@ -280,6 +277,10 @@ Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werd
 Bei ungünstigen Beobachtungssituationen, also bei großer Entfernung und schräger Betrachtung von Flächen, wird es im Prototypen schnell schwierig, Texte ohne Anstrengung zu lesen.  
 Es müssen eher große Schriften gewählt werden und daher lässt sich relativ wenig Information auf den Knoten darstellen.
 
+Eine andere sinnvolle Erweiterungsmöglichkeit wäre, die Anzeige von Informationen bei weit entfernten Objekten automatisch zu vereinfachen\ [#f2]_, zum Beispiel indem ein Text abgekürzt und größer dargestellt wird. 
+So wäre es möglich, Knoten mit größerem Abstand immerhin noch zu unterscheiden. 
+Dafür könnte ein zusätzliches Attribut im Prozessmodell genutzt werden, dass eine Abkürzung für ein längeres Textattribut angibt.
+
 Konfigurierbarkeit
 ------------------
 
@@ -299,37 +300,57 @@ Es sollte darüber nachgedacht werden, die aktuellen Einstellungen für Lichtque
 Räumliche Darstellung
 ---------------------
 
-Modellierungsflächen und eine passende Beleuchtung können schon sehr hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern.
+.. TODO cite oder Verweis auf related work
 
-Jedoch darf nicht vergessen werden, dass die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion ist, bei der ein realistischer Tiefeneindruck fehlt.
+Die räumliche Darstellung, vor allem der Tiefeneindruck ist für das Verständnis von 3D-Visualisierungen wichtig. 
+Der Vorteil der zusätzlichen Dimension ist es eben, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
+
+Modellierungsflächen und eine passende Beleuchtung können schon hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern.
+
+Jedoch ist die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion, bei der ein realistischer Tiefeneindruck fehlt.
 Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachter liegen und welche sich im Hintergrund befinden. 
 
 Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jedoch kann dies auch scheitern, wenn Objekte unterschiedlich groß sein dürfen, wie es momentan der Fall ist. 
 Die Skalierung von Modellelementen allerdings komplett zu verbieten ist wohl auch unpraktikabel.
 
-Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Stereoskopie und Schatten.
+Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie und Schatten.
+
+Die Nutzung von stereoskopischer Darstellung und Bewegungsparallaxe für die Darstellung von Graphen wurde im Abschnitt :ref:`ware-graphs` vorgestellt.
+
+Der Bewegungsparallaxen-Effekt lässt sich durch die Bewegung des Benutzers in der Szene erzeugen und gibt einen Eindruck davon, wie weit Objekte von ihm entfernt sind.
 
 Ein Schattenwurf der Objekte könnte zum Beispiel verdeutlichen, wie weit Objekte von einer Fläche entfernt sind und wie der Betrachter zur Lichtquelle orientiert ist.
 Jedoch müsste getestet werden, inwieweit dies hilfreich ist und ob Schatten nicht zu häufig dazu führen, dass sich Informationen im Modell schlecht erkennen lassen. 
 Eine Konfigurationsmöglichkeit oder eine "intelligente" Schattenberechnung, die weniger auf realistische Effekte setzt aber dafür Lesbarkeitsaspekte berücksichtigt könnte hier interessant sein.
 
+Eine weitere Entwicklungsmöglichkeit wäre es, voll immersive virtuelle Welten zu nutzen wie es im Abschnitt :ref:`halpin-social-net` gezeigt wurde. 
+Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt werden soll.
 
-Darstellung von Verbindungen
-----------------------------
+Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und vor allem eine Lösung für die "breite Masse" bereitzustellen.
+Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
 
-Ein "Ärgernis" in 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu erkennen kann bei weit entfernten Kanten ein Problem darstellen.
+
+Darstellung und Editieren von Kanten
+------------------------------------
+
+Ein "Ärgernis" in 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen.
 Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
 
-Wie unter :ref:`kanten` beschrieben werden gerichtete Kanten durch eine "Pfeiltextur" auf den Verbindungen dargestellt. 
+Wie unter :ref:`kanten` gezeigt werden gerichtete Kanten durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt. 
+Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung zu großen Teilen durch andere Objekte verdeckt wird.   
 
-Eine andere Möglichkeit, den gerichteten Charakter einer Verbindung darzustellen wäre das Anzeigen einer dreidimensionalen Pfeilspitze am Ende der Linie oder innerhalb der Verbindung. 
+Der Ansatz, die Richtung durch eine dreidimensionalen Pfeilspitze darzustellen leidet beispielsweise unter dem Problem der Verdeckung. 
+Eine solche Darstellung liegt aber näher an den bekannten Visualisierungssprachen und sollte wohl noch unterstützt werden.
 
-Andere Varianten, um Kanten darzustellen: "Bezier-Röhren" :cite:`spratt_using_1994`
+Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
+Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
-Benutzerstudie zur Darstellung von Verbindungen: :cite:`holten_user_2009`
+Andere Darstellungsformen wurden unter :ref:`related-verbindungen` vorgestellt.
 
-Level of Detail: Anzeige automatisch vereinfachen bei weit entfernten Objekten, Text abkürzen (automatisch nach bestimmten Regeln oder Attribut für Abkürzung definieren)
+Kanten sind nicht in die physikalische Simulation eingebunden und können daher im Moment nicht direkt ausgewählt werden. 
+Der Editor unterstützt das Verändern von Attributen bisher nur für selektierbare Elemente und es gibt keinen anderen Weg, Attribute zu ändern.
 
-.. [#f1] a
+Hier sollte bei einer Erweiterung eine Lösung gefunden werden, da dies von einem sinnvoll benutzbarem Modellierungswerkzeug erwartet werden kann. 
+Falls es nicht praktikabel sein sollte, Verbindungen in dies Physikberechnung einzubinden könnte eine indirekte Selektion über die Auswahl der verbundenen Knoten angeboten werden.
 
-.. [#f2] b
+.. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 

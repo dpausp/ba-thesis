@@ -263,13 +263,16 @@ Es gebe die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige Te
 Visualisierung von Graphen in 3D
 ================================
 
+.. _ware-graph:
+
 Visualizing Graphs in Three Dimensions
 --------------------------------------
 
 In :cite:`ware_visualizing_2008` wird an Probanden untersucht, wie groß die Vorteile einer stereoskopischen 3D-Darstellung von umfangreichen Graphen im Vergleich zu einer 2D-Darstellung sind. 
 Als Maß für die "Lesbarkeit" wird hier das Abschneiden bei der Aufgabe, die Pfadlänge zwischen zwei markierten Knoten zu erkennen genutzt. 
 
-Eine stereoskopische 3D-Darstellung sei besonders hilfreich, um dem Betrachter einen realistischen Tiefeneindruck zu vermitteln und damit das Erkennen von Verbindungen zu erleichtern. Eine weitere Maßnahme, um den Tiefeneindruck zu verbessern sei es, den Graphen ständig zu rotieren und damit die Bewegungsparallaxe zu nutzen\ [#f2]_.
+Eine stereoskopische 3D-Darstellung sei besonders hilfreich, um dem Betrachter einen realistischen Tiefeneindruck zu vermitteln und damit das Erkennen von Verbindungen zu erleichtern. 
+Eine weitere Maßnahme, um den Tiefeneindruck zu verbessern sei es, den Graphen ständig zu rotieren und damit die Bewegungsparallaxe zu nutzen\ [#f2]_.
 
 Es zeigte sich, dass die Probanden – bei gleicher Fehlerrate – Verbindungen in 3D-Graphen erkennen hätten können, die um eine Größenordung größer gewesen seien als die entsprechenden 2D-Graphen.
 
@@ -277,17 +280,21 @@ Dabei sei eine Anzeige mit einer sehr hohen Auflösung verwendet worden, die nah
 
 Eine frühere Untersuchung mit ähnlicher Konzeption :cite:`ware_evaluating_1996` zeigte deutlich kleinere Vorteile für die stereoskopische 3D-Darstellung. Dies wird in der späteren Arbeit auf den Umstand zurückgeführt, dass hierbei Anzeigen mit einer viel niedrigeren Auflösung verwendet worden seien. 
 
+.. _halpin-social-net:
+
 Exploring Semantic Social Networks Using Virtual Reality
 --------------------------------------------------------
 
 Neben der Anzeige von 3D-Graphvisualisierungen auf handelsüblichen Arbeitsplatz-Rechnern könnten dafür auch immersive 3D-Umgebungen (fully immersive virtual reality) genutzt werden. 
 
-So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-artigen\ [#f3]_ Umgebung. Benutzer könnten so direkt mit der Graphdarstellung der Daten in einer natürlichen Art und Weise interagieren. 
+So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-artigen\ [#f3]_ Umgebung. 
+Benutzer könnten so direkt mit der Graphdarstellung der Daten in einer natürlichen Art und Weise interagieren und einen realitätsnahen räumlichen Eindruck von der virtuellen Welt bekommen. 
 
 Der Graph würde zu Beginn in einer "2D-Darstellung" in einer Ebene vor dem Benutzer angezeigt, wie in der Mitte von :num:`Abbildung #halpin-extrude` zu sehen ist. 
 Links ist zu sehen, wie durch das "Berühren" mit einem virtuellen Werkzeug (grauer Quader) die mit dem Knoten assoziierten Daten angezeigt werden können (:num:`Abbildung #halpin-extrude` links).
 
-Wenn sich ein Benutzer speziell für die Verbindungen eines bestimmten Knoten interessiere, sei es möglich aus dieser Darstellung, den gewünschten Knoten zu "extrudieren", also zu sich heranzuziehen. Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die Verbindungen des Knotens hervorgehoben.
+Wenn sich ein Benutzer speziell für die Verbindungen eines bestimmten Knoten interessiere, sei es möglich aus dieser Darstellung, den gewünschten Knoten zu "extrudieren", also zu sich heranzuziehen. 
+Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die Verbindungen des Knotens hervorgehoben.
 
 .. _halpin-extrude:
 
@@ -297,10 +304,20 @@ Wenn sich ein Benutzer speziell für die Verbindungen eines bestimmten Knoten in
     Visualisierung von semantischen Netzwerken aus :cite:`halpin_exploring_2008`
 
 
+.. _related-verbindungen:
+
 Darstellung von Verbindungen
 -----------------------------
 
-Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Verbindungen als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. Andere Möglichkeiten werden von :cite:``
+Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Verbindungen als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. 
+
+Andere Möglichkeiten werden von :cite:``
+
+Andere Varianten, um Kanten darzustellen: "Bezier-Röhren" :cite:`spratt_using_1994`
+
+Benutzerstudie zur Darstellung von Verbindungen: :cite:`holten_user_2009`
+
+.. _dynamische-Transparenz:
 
 Dynamische Transparenz
 ----------------------

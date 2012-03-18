@@ -1,20 +1,15 @@
-******************************************
-Implementierungsdetails zur Visualisierung
-******************************************
+*****************
+Render-Komponente
+*****************
 
-In diesem Kapitel werden die Renderkomponente, die die Grafikfunktionen für I>PM3D bereitstellt sowie weitere Details zur Implementierung der Grafikausgabe, wie sie für die Visualisierung von Prozessmodellen benötigt wurde vorgestellt. 
+In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für I>PM3D bereitstellt.
+Anhang A beschreibt die :ref:`render-bibliothek`, die von dieser Komponente für die Grafikausgabe genutzt wird.
+Die 
 
-In Anhang A wird die :ref:`render-bibliothek` beschrieben, die von der Renderkomponente für die Grafikausgabe genutzt wird.
+Dadurch wird die die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
 
-Anbindung der Render-Bibliothek - Renderkomponente
-==================================================
-
-.. _renderkomponente:
-
-Um die für das Projekt nutzbar zu machen wurde eine Anbindung an den Simulator X erstellt, die in dieser Arbeit als Renderkomponente bezeichnet wird. 
-Diese Renderkomponente ersetzt die von Simulator X bereitgestellte Komponente für die grafische Darstellung.
-
-Die Renderkomponente (Klasse *MMPERConnector*) delegiert die eigentlichen Render-Aufgaben an einen Actor (*MMPERenderActor*), der von der Renderkomponente gestartet wird.\ [#f1]_
+Die eigentlichen Render-Aufgaben werden an einen Actor (*MMPERenderActor*) delegiert, der von der Renderkomponente (Klasse *MMPERConnector*) gestartet wird.\ [#f2]_
+Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an die Renderkomponente geschickt und an den RenderActor weitergeleitet. 
 
 RenderActor
 -----------
@@ -75,30 +70,13 @@ Simulator X stellt eine User-Entity bereit, über deren SVars *HeadTransform* un
 Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport- (*ViewportSettings*) und Render-Frustum-Einstellungen (*FrustumSettings*) abgefragt werden können.\ [#f3]_
 
 
-Implementierungsdetails zur Visualisierung von Modellelementen
-==============================================================
-
-* weitere Aspekte, die für die Implementierung der Visualisierung speziell von Modellelementen relevant sind
-
-SVarSupport
------------
-
-.. nach Modellanbindung verschieben
-
-Um den Umgang mit den Drawables für Modellelemente zu vereinfachen wurden verschiedene traits erstellt, die das abstrakte trait SVarSupport implementieren. 
-
-Damit lassen sich SVars direkt mit Attributen der Drawables verbinden.
-
-In den SVarSupports werden in der Methode connectSVars für passende SVar-Typen Observe-Handler registriert. 
-
-Im einfachsten Fall bestehen diese Handler nur aus einem Setter, der direkt Attribute des Drawables setzt sobald sich der Wert der SVar ändert.
-
-
-
 .. [#I] Zu finden im Package mmpe.renderer.gl
+
 
 .. [#f1] Dieser Aufbau ergibt sich aus der Idee, für die Darstellung der Szene mehrere Bildschirme nutzen zu können, wie es unter Anderem für ein CAVE-System nötig wäre. Dazu könnten der Renderkomponente mehrere RenderActors zugeordnet werden. Dies war vorgesehen, wird jedoch nicht überall in der Implementierung umgesetzt und daher nicht unterstützt.
 
 .. [#f2] Oder darauf zu hoffen, dass sich bei Nifty-GUI etwas ändert...
 
 .. [#f3] Die Werte lassen im Prinzip sich auch verändern, nur wird dies von der Implementierung noch nicht vollständig unterstützt.
+
+.. [#f4] Die Implementierung umfasst auch die Übersetzung von Tastatur- und Mausdaten, die von LWJGL geliefert werden, in Simulator X - Events. Für dieses Kapitel sind aber nur die Grafikfunktionen relevant.

@@ -11,7 +11,7 @@ Jedoch werden in diesem Kapitel einige Hinweise zur Implementierung gegeben, sow
 
 Details zu Implementierungsfragen und Verweise auf Pakete des Projekts werden in Fußnoten angegeben, die mit römischen Ziffern bezeichnet sind.
 
-Insbesonders soll hier verdeutlicht werden, wie andere Teile des Systems diese Modellanbindung nutzen.
+Insbesondere soll hier verdeutlicht werden, wie andere Teile des Systems diese Modellanbindung nutzen.
 
 Da das Ziel des Projekts I>PM3D ist, einen interaktiven Prozessmodelleditor zu erstellen ergeben sich die folgenden funktionalen Anforderungen:
 
@@ -249,13 +249,24 @@ Beispiele für SVar-Bezeichner aus den vorher genannten SVar-Kategorien:
 Übersicht über den Lebenszyklus von Model-Entitäten
 ===================================================
 
+SVarSupport
+-----------
+
+.. TODO
+
+Um den Umgang mit den Drawables für Modellelemente zu vereinfachen wurden verschiedene traits erstellt, die das abstrakte trait SVarSupport implementieren. 
+
+Damit lassen sich SVars direkt mit Attributen der Drawables verbinden.
+
+In den SVarSupports werden in der Methode connectSVars für passende SVar-Typen Observe-Handler registriert. 
+
+Im einfachsten Fall bestehen diese Handler nur aus einem Setter, der direkt Attribute des Drawables setzt sobald sich der Wert der SVar ändert.
 
 
-.. [#f1] Prinzipiell können dies in der Implementierung auch mehrere Objekte sein, jedoch ist diese vereinfachte Darstellung hier ausreichend.
 
 .. [#f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
 
-.. [#f3] Die Regeln für die Zuweisbarkeit 
+.. [#f3] Die Regeln für die Zuweisbarkeit ...
 
 .. [#f4] Es wäre auch erlaubt, Attribute zu integrieren, die nicht direkt die Visualisierung betreffen, aber das Editor-Verhalten modifizieren. Dies wird bisher aber nicht genutzt.
 
