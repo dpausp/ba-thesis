@@ -7,7 +7,7 @@ Scala
 
 Die Implementierung der Konzepte dieser Arbeit erfolgte nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala` 
 
-Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulator_x` als Basis für den I>PM3D-Prototypen zu verwenden. 
+Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulatorx` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
 Scala wird als objektfunktionale Programmiersprache charakterisiert. "Objektfunktional" soll die Bestrebungen ausdrücken, Aspekte aus funktionalen und objektorientierten Programmiersprachen zu einer effektiven Programmiersprache zu kombinieren.
 
@@ -96,7 +96,7 @@ erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen. D
     case class LiteralTypeAssignment(id: String, stringLiterals: List[String])
 
 
-.. _simulator_x:
+.. _simulatorx:
 
 Simulator X
 ***********
@@ -146,7 +146,7 @@ In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionen
 Mit Version 3.0 wurde die *fixed-function-Pipeline* aus dem Kern von OpenGL entfernt. In neueren Versionen müssen diese Berechnung selbst durch den Programmierer in *Shadern* implementiert werden. 
 
 Das neue Konzept gibt jedoch dem Programmierer auch die Freiheit, neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
-Diese Möglichkeit wurde in dieser Arbeit ausgiebig genutzt, wie in :ref:`implementierung` beschrieben wird.
+Diese Möglichkeit wurde in dieser Arbeit ausgiebig genutzt, wie in :ref:`implementierung-vis` beschrieben wird.
 
 
 Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von den *Shader-Einheiten* ausgeführt werden.
@@ -197,6 +197,8 @@ Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
         "value" -> "test")
     val output = assignST.render
 
+
+.. _simplex3d:
 
 Simplex3D-Math
 --------------

@@ -1,4 +1,4 @@
-.. _ref_konzept_modellanbindung:
+.. _modellanbindung:
 
 ***************
 Modellanbindung
@@ -26,17 +26,17 @@ Da das Projekt auf der Grundlage von Simulator X entwickelt wurde folgt das hier
 Modell-Funktionalitäten - ModelComponent
 ========================================
 
-Wie in :ref:`simulator_x` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die eine bestimmte Funktionalität dem restlichen System bereitstellen.
+Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die eine bestimmte Funktionalität dem restlichen System bereitstellen.
 
 Die ModelComponent stellt folglich dem System alle Funktionen zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
 
 So wird der Zugriff auf die Modelle wird vollständig von der ModelComponent gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
 Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die actor-basierte und damit parallele Architektur von Simulator X vorgegeben.
 
-Die Funktionen werden zum Teil als sogenannte *Commands* bereitgestellt, die über das Kommunikationssystem von :ref:`simulator X` an die ModelComponent geschickt werden.
+Die Funktionen werden zum Teil als sogenannte *Commands* bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ModelComponent geschickt werden.
 In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
-Es existieren Commands für die folgenden Funktionen [I]_\ :
+Es existieren Commands für die folgenden Funktionen [#I]_\ :
 
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von Usage-Modellen
@@ -55,7 +55,7 @@ Wie in :ref:`modellhierarchie` angesprochen werden in I>PM3D Modelle eingesetzt,
 
 Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
 
-Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [II]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [#II]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
 
 Um die Modelle in der Anwendung verändern zu können werden diese in eine andere Struktur überführt. 
@@ -66,7 +66,7 @@ Die Wurzel wird durch eine Instanz von MModel gebildet, der sich MLevels unteror
 Der Vorteil zur Nutzung von XText ist, dass es sich hier Objekte, die die Vorteile von Scala nutzen und daher in einer Scala-Umgebung bequem genutzt werden können. 
 Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr Funktionalität bieten als die von Java oder EMF bereitgestellten.
 
-Die **ResourceUtils**\ [II]_ stellen Methoden für das Laden von Modellen aus Dateien bereit, die dem Aufrufer eine Referenz auf eine MModel-Instanz geben.
+Die **ResourceUtils**\ [#II]_ stellen Methoden für das Laden von Modellen aus Dateien bereit, die dem Aufrufer eine Referenz auf eine MModel-Instanz geben.
 
 Laden von Metamodellen
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -119,7 +119,7 @@ Analog zum Lade-Command *LoadUsageModels* werden bei *SaveUsageModels* zwei Date
 Vereinfachung des Umgangs mit Modellen
 --------------------------------------
 
-Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern wurde eine Reihe von Adaptern\ [III]_ für die in der Scala-Repräsentation der Modelle genutzten Klassen implementiert.
+Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern wurde eine Reihe von Adaptern\ [#III]_ für die in der Scala-Repräsentation der Modelle genutzten Klassen implementiert.
 Beispielsweise gibt es einen MConceptAdapter, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (*assignableAttributes*), das Setzen von Werten (*setValue*) oder die Abfrage von Concept-Relationen (*instanceOf*) erlauben.
 
 [#f6]_
@@ -263,8 +263,8 @@ Beispiele für SVar-Bezeichner aus den vorher genannten SVar-Kategorien:
 
 .. [#f6] Gewisse Ähnlichkeiten mit anderen Projekten sind rein zufällig ;-)
 
-.. [I] Zu finden im Scala-Package mmpe.lmmlight.parser
+.. [#I] Zu finden im Scala-Package mmpe.lmmlight.parser
 
-.. [II] Alle Commands sind in Scala-Package mmpe.model.commands definiert.
+.. [#II] Alle Commands sind in Scala-Package mmpe.model.commands definiert.
 
-.. [III] Die Adapter sind im Package mmpe.lmmlight zu finden.
+.. [#III] Die Adapter sind im Package mmpe.lmmlight zu finden.

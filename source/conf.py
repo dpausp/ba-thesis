@@ -195,6 +195,7 @@ preamble_normal =  r"""
 
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{links.bib}
+\addbibresource{ai4.bib}
 \addbibresource{komplett.bib}
 
 \setlength{\parskip}{\medskipamount}

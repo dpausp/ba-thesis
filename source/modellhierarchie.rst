@@ -6,9 +6,9 @@ Modelle in I>PM3D
 
 Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :cite:`jablonski` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
-Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstuetzung_2011` beschrieben wird. 
+Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstutzung_2011` beschrieben wird. 
 
-Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Diesem Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :ref:`ma-bastian`
+Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Diesem Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :cite:`roth_konzeption_2011`
 mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen. 
 
 Die hier vorgestellte Modellhierarchie ist prinzipiell ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
@@ -37,7 +37,7 @@ Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die E
 
 *LMMLight* unterstützt allerdings das Muster der Instanz-Spezialisierung ("concreteUseOf"), da dies unter Anderem für die Realisierung des genutzten Typ-Verwendungs-Konzepts hilfreich ist.
 
-Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie von :cite:`volz_werkzeugunterstuetzung_2011` detailliert beschrieben werden.
+Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie von :cite:`volz_werkzeugunterstutzung_2011` detailliert beschrieben werden.
 
 .. _editor-model-stack:
 
@@ -80,7 +80,7 @@ In :num:`Abbildung #modellhierarchie` wird dargestellt, wie die Editor-Model-Ebe
 Programming-Language-Mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Auf der obersten Ebene des Stacks, die im Modell als Level D3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`emm-scalamapping` beschrieben wird.
+Auf der obersten Ebene des Stacks, die im Modell als Level D3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`scalamapping` beschrieben wird.
 In der :num:`Abbildung #modellhierarchie` wird diese Ebene als **Programming-Language-Mapping** bezeichnet.
 
 Editor-Base-Level
@@ -90,14 +90,14 @@ Darunter befindet sich auf Level D2 der prinzipiell von der Modellierungsdomäne
 Hier werden Concepts bereitgestellt, die die Grundlage der Repräsentation für Typen aus dem Domänenmodell darstellen.
 
 In der :num:`Abbildung #modellhierarchie` ist diese Ebene als **Editor-Base-Level** zu finden.
-Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werden, wird in :ref:`emm-meta` näher beschrieben.
+Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werden, wird in :ref:`ebl` näher beschrieben.
 
 Die beiden Ebenen D3 und D2, die bisher beschrieben worden sind können prinzipiell beliebig definiert werden, soweit dies von LMMLight unterstützt wird. 
 
 Editor-Definition-Level
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Level D1 enthält die Modellebene, die festlegt, auf welche Weise ein Typ aus dem Domänenmodell repräsentiert wird, wie in :ref:`emm-definition` dargestellt wird. 
+Level D1 enthält die Modellebene, die festlegt, auf welche Weise ein Typ aus dem Domänenmodell repräsentiert wird, wie in :ref:`edl` dargestellt wird. 
 
 Auf dieser Ebene müssen die folgenden Packages definiert sein:
 

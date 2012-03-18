@@ -43,7 +43,8 @@ Modellanbindung
 
 Ein Modellierungswerkzeug muss die Möglichkeit haben, bestehende Modelle in einer physischen Repräsentation zu laden, das Modell beziehungsweise dessen Elemente zu bearbeiten und wieder zu speichern. Außerdem sollen neue Modelle erstellt werden können. 
 
-Das Konzept für die Einbindung dieser Modell-Funktionen in den Prototypen und die Implementierung zu erstellen ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`konzept-modellanbindung` beziehungsweise :ref:`implementierung` behandelt. In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Abschnitt als "Modellanbindung" bezeichnet.
+Das Konzept für die Einbindung dieser Modell-Funktionen in den Prototypen und die Implementierung zu erstellen ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`modellanbindung` beziehungsweise :ref:`implementierung-vis` behandelt. 
+In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Abschnitt als "Modellanbindung" bezeichnet.
 
 .. _ipm3d-gui:
 
@@ -84,7 +85,7 @@ Diese Beiträge sind in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptione
 I>PM3D als Simulator X - Applikation
 ====================================
 
-I>PM3D ist als Anwendung auf Basis von :ref:`simulator_x` konzipiert. 
+I>PM3D ist als Anwendung auf Basis von :ref:`simulatorx` konzipiert. 
 
 :num:`Abbildung #ipm3d-simulatorx` zeigt, wie die Architektur des Projekts auf den von Simulator X bereitgestellten Funktionalitäten aufbaut. 
 In den beiden folgenden Abschnitten wird zusammengefasst, welche Änderungen am Simulator-X-Basissystem vorgenommen worden sind und wie die im letzten Abschnitt dargestellten Projektteile im Kontext von *Simulator X* umgesetzt werden.
@@ -100,7 +101,7 @@ Modifikationen an Simulator X
 
 Für I>PM3D wurde die von :ref:`Simulator X` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
 
-Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine im Rahmen dieser Arbeit entwickelte :ref:`render-bibliothek` ersetzt. Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. Die Anbindung wird unter :ref:`render-komponente` beschrieben.
+Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine im Rahmen dieser Arbeit entwickelte :ref:`render-bibliothek` ersetzt. Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. Die Anbindung wird unter :ref:`renderkomponente` beschrieben.
 
 Modell-Komponente und Modell-Entities
 -------------------------------------
@@ -109,6 +110,6 @@ Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten
 Die Modellelemente selbst zu bearbeiten, also deren Visualisierungs und Prozessmodellattribute sowie die Position, Größe und Orientierung im Raum zu ändern wird durch die von der Modell-Komponente bereitgestellten *Modell-Entitäten* ermöglicht. Die ist ausschließlich dem Editor vorbehalten.
 Dem Simulator X - Konzept folgend beschreiben diese Entities außerdem, wie die dazugehörigen Objekte von der Physikkomponente behandelt und wie sie von der Renderkomponente angezeigt werden.
 
-Näheres zur Modellkomponente und den Modell-Entitäten in :ref:`konzept-modellanbindung` dargestellt.
+Näheres zur Modellkomponente und den Modell-Entitäten in :ref:`modellanbindung` dargestellt.
 
 .. [#f1] Dies bedeutet in diesem Zusammenhang, dass die Geräte einen Cursor ("Mauszeiger") steuern, der die aktuelle Position in einer zweidimensionalen Ebene anzeigt. Bei einem "Klick" wird eine Aktion auf dem darunter befindlichen Objekt ausgelöst.

@@ -1,4 +1,4 @@
-.. _konzept_visualisierung:
+.. _konzept-visualisierung:
 
 *******************************
 3D-Visualisierung von Prozessen
@@ -12,20 +12,26 @@ Anwender, die bereits Erfahrung mit verbreiteten grafischen 2D-Prozessmodellieru
 
 .. sollte man das als Anforderung definieren?
 
-Wie im vorherigen Kapitel unter :ref:`emm-base` erläutert werden im Editor-Base-Model grundlegende Figuren und deren Darstellung durch grafische Objekte im Modellierungswerkzeug definiert.
 
-Die konkreten Repräsentationen für bestimmte Typen aus dem Prozessmodell werden im Editor-Definition-Model festgelegt. 
+Grundlegende Darstellung der grafischen Elemente
+================================================
 
-Durch die Metamodelle wurde schon vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird. Wie nun Knoten und Kanten konkret dargestellt werden ist Gegenstand der folgenden Abschnitte.
+Wie im vorherigen Kapitel unter :ref:`ebl` erläutert werden auf dem Editor-Base-Level grundlegende Figuren und deren Darstellung durch grafische Objekte im Modellierungswerkzeug definiert.
+Die konkreten Repräsentationen für bestimmte Typen aus dem Prozessmodell werden auf dem Editor-Definition-Level festgelegt. 
+Durch die Metamodelle wurde schon vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird. 
 
+Wie nun die Modellelemente – also Knoten und Kanten – und Szenenobjekte prinzipiell dargestellt werden ist Gegenstand der folgenden Abschnitte.
 
-Darstellung von Knoten
-======================
+Knoten
+------
 
-Für die Darstellung von Informationen auf den Knoten wurden gibt es durch die im :ref:`emm-base` definierten *TextLabelNode* und *TexturedNode* grundsätzlich zwei Möglichkeiten.
+Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren *TextLabelNode* und *TexturedNode* grundsätzlich zwei Möglichkeiten.
 
-Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus dem Prozessmodell direkt anzuzeigen, beispielsweise die Funktion eines Prozesses oder den Namen einer Dateneinheit. 
-Ein Beispiel für zwei Prozessknoten ist in :num:`prozessknoten` zu sehen.
+Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus dem Prozessmodell direkt anzuzeigen.
+:num:`prozessknoten` zeigt zwei Prozesse, auf denen deren Funktion als Text angezeigt wird. 
+Texte werden nach Bedarf an Wortgrenzen auf mehrere Zeilen verteilt und zentriert angezeigt. 
+
+Weitere Informationen hierzu können unter :ref:`darstellung-von-schriften` nachgelesen werden.
 
 .. _prozessknoten:
 
@@ -56,7 +62,7 @@ Jedoch führt dies bei bestimmten Drehpositionen zu recht unschönen Darstellung
 Um dies etwas zu verbessern werden die Seiten abhängig von Betrachtungswinkel dargestellt. Wird eine Seite vom Benutzer weggedreht, wird die Schrift oder Textur nach und nach ausgeblendet.
 Ab einer gewissen Abweichung wird nur noch die Hintergrundfarbe angezeigt.
 
-Näheres dazu siehe :ref:`implementierung`.
+Näheres dazu siehe :ref:`implementierung-vis`.
 
 
 An die für Knoten verwendbaren geometrischen Objekte gibt es einige Anforderungen, die davon bestimmt sind, dass die Lesbarkeit und die Verständlichkeit des Prozessmodells möglichst hoch sein soll.
@@ -73,18 +79,21 @@ Da dieser Prototyp neben der klassischen Desktop-Bedienung mit Maus und Tastatur
 Die hier verwendeten 3D-Eingabegeräte, die Kinect und WiiMote haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. 
 Vor allem ungeübten Benutzern kann es durchaus schwer fallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
 
-Daher sollten die Modellelemente möglichst groß sein\ [#f1]_ und eine geringe geometrische Komplexität\ [#f2]_ aufweisen damit die Arbeit mit dem Modell für den Benutzer nicht zu anstrengend wird.
+Daher sollten die Elemente, mit denen der Benutzer interagiert möglichst groß sein\ [#f1]_ und eine geringe geometrische Komplexität\ [#f2]_ aufweisen.
+
+Dies ist auch der Grund, warum darauf verzichtet wurde, Elemente ineinander zu schachteln, wie es dem geometriebasierten Ansatz entspricht, wie in :ref:`prozessmodellierungssprachen` gezeigt.
+
 
 .. bisschen umbauen und sagen, dass geometriebasierte Elemente daher ungünstig sind
 
-Darstellung von Kanten
-======================
+Kanten
+------
 
-Kanten sollen optisch leicht als Verbindungen zwischen zwei Knoten erkannt werden können. 
+Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können, die auch gerichteter Natur sein kann.
 
 In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. Dies wird von der von :cite:`uli` beschriebenen Editor-Komponente durchgeführt.
 
-Die durch das Concept *TexturedConnection*  (:ref:`emm-base`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
+Die durch das Concept *TexturedConnection*  (:ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 
 Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert sind, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
 
@@ -98,9 +107,15 @@ Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen D
     Gerichtete Kontrollflusskante (Screenshot aus I>PM3D)
 
 
+Szenenobjekte
+-------------
+
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als *SceneryObject* bezeichnet werden. 
 
-Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen, die zur Illustration von Prozessschritten dienen. 
+Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
+Diese können zur Illustration von Prozessschritten dienen, wie von :cite:`brown_conceptual_2010` vorgeschlagen wurde (siehe :ref:`ross-brown`).
+
+Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden, besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
 
 .. _visualisierungsvarianten:
@@ -171,12 +186,10 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 Die drei vorgestellen Visualisierungsvarianten können frei kombiniert werden. 
 Damit ist es zum Beispiel auch möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
 
-
-Maßnahmen zu Verbesserung der Benutzerfreundlichkeit
-====================================================
+.. _modellierungsflaechen:
 
 2D-Modellierungsflächen
------------------------
+=======================
 
 Für eine übersichtliche Darstellung des Prozessmodells ist es häufig erwünscht, Elemente in einer bestimmten Weise anzuordnen. 
 
@@ -204,16 +217,18 @@ Diese Linien haben allerdings keine physikalische Bedeutung sondern diesen nur a
 
     Modellierungsfläche, grün (Screenshot aus I>PM3D)
 
+
+.. _beleuchtung:
+
 Beleuchtung
------------
+===========
 
 Für die Beleuchtung der Szene werden mehrere Lichtquellen eingesetzt. Die primäre Lichtquelle befindet direkt an der Kamera sich und bewegt sich mit dieser. 
 Die Lichtfarbe ist weiß, also wird der Farbton der beleuchteten Objekte unverfälscht dargestellt. 
 
-Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive Lichtquelle an drei festen Position unterhalb, links und rechts der Szene. 
-Dadurch ist es für den Benutzer leichter zu erkennen, welche Seite der Objekte nach unten, links beziehungsweise nach rechts zeigt. 
-
-Hiermit soll vermieden werden, dass der Benutzer bei Rotationen der Kamera schnell die Orientierung verliert.
+Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive, farbige Lichtquelle an drei festen Positionen unterhalb(), links() und rechts() der Szene. 
+Dadurch wird also eine "Standard-Ansicht" auf die Szene definiert. 
+So soll es für den Benutzer leichter zu erkennen sein, welche Seite der Objekte nach unten, links beziehungsweise nach rechts zeigt. 
 
 Die von der Renderbibliothek bereitgestellten Lichtquellen nach dem Phong-Lichtmodell sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
 
@@ -224,28 +239,88 @@ Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beitr�
 Der "ambient"-Anteil (Umgebungslicht) ist unabhängig von der Ausrichtung des Objekts relativ zur Lichtquelle.
 
 Üblicherweise wird der Hauptanteil des reflektierten Lichts vom "diffuse"-Anteil (diffuses Licht) beigesteuert. 
-Dieser Beitrag ist abhängig vom Winkel zur Lichtquelle und ist für den räumlichen Eindruck besonders wichtig.
+Dieser Beitrag ist abhängig vom Winkel zur Lichtquelle und ist für den räumlichen Eindruck wichtig.
 
 Der "specular-Anteil" erzeugt spiegelnde Reflexionen auf Objekten, die auch von der Betrachterposition relativ zum Objekt abhängen. 
 Dieser Anteil kann deshalb die räumliche Orientierung unterstützen, was auch für die Darstellung der Prozessdiagramme hilfreich ist. 
 Allerdings führt die starke Aufhellung an bestimmten Stellen dazu, dass sich vor allem Text dort schlecht ablesen lässt.
 
-Außerdem kann bei den Lichtquellen noch angegeben werden, wie stark die Helligkeit mit steigender Entfernung von der Lichtquelle abfällt. 
+Außerdem kann bei Lichtquellen noch angegeben werden, wie stark die Helligkeit mit steigender Entfernung von der Lichtquelle abfällt. 
 Hierdurch kann ebenfalls den Tiefeneindruck und die räumliche Darstellung verbessert werden. 
 
 Ein starker Abfall der Beleuchtung führt aber beispielsweise zu Problemen, wenn gleichzeitig Objekte mit Text in der Nähe der Lichtquelle und weit entfernt in lesbarer Form dargestellt werden sollen.
 Objekte in der Nähe werden zu hell dargestellt, während weit entfernte Objekte zu dunkel sind.
 Genauso ergibt sich bei gerichteten Verbindungen, die sich weit im Hintergrund befinden das Problem, dass die darauf abgebildeten Richtungsmarkierungen schlecht zu erkennen sind.
 
-Insgesamt hat sich bei Versuchen gezeigt, dass es relativ schwierig ist, die Lichtparameter so zu setzen, dass eine in allen Situationen optimale Beleuchtung entsteht.
+Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparameter so zu setzen, dass eine in allen Situationen nahezu optimale Beleuchtung entsteht.
 
-.. Konfigurierbarkeit?
+Diskussion und Erweiterungsmöglichkeiten
+========================================
 
-Erweiterungsmöglichkeiten
-=========================
+Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
+Allerdings kann das bisherige Konzept und die Implementierung nur der Anfang sein. 
+Es zeigten sich einige Probleme, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
 
-Zur besseren Orientierung könnten noch andere Grafikeffekt genutzt werden, die jedoch im vorliegenden Prototypen noch nicht realisiert sind. Dazu gehört die Stereoskopie, Schattenberechnungen und die bereits erwähnte dynamische Transparent (->).
+Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
+Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden könnten.
 
+Darstellung von Text
+--------------------
+
+Von der :ref:`render-bibliothek` wird für das Projekt das Rendern von Schrift auf 3D-Objekten zur Verfügung gestellt. 
+Die Implementierung nutzt dafür die von java.awt.Graphics2D bereitgestellten Funktionen. 
+Text wird in ein 2D-Bild geschrieben und dieses als Textur auf dem zu beschriftenden Objekt angezeigt. (siehe :ref:`schrift-rendering`).
+
+Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beispielsweise von :ref:`gef3d` genutzt oder von :cite:`font` vorgestellt werden, wurden ebenfalls in Betracht gezogen. 
+Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit zu erzeugen könnten für die Implementierung von gut lesbaren und dennoch performanten Darstellungstechniken interessant sein.
+
+Jedoch war die Schriftqualität des verwendeten texturbasierten Ansatzes ausreichend für den hier entwickelten Prototypen und lies sich einfach implementieren. 
+
+Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werden, da die Schriftqualität wichtig für Verständlichkeit und Nutzen der grafischen Repräsentation ist. 
+Bei ungünstigen Beobachtungssituationen, also bei großer Entfernung und schräger Betrachtung von Flächen, wird es im Prototypen schnell schwierig, Texte ohne Anstrengung zu lesen.  
+Es müssen eher große Schriften gewählt werden und daher lässt sich relativ wenig Information auf den Knoten darstellen.
+
+Konfigurierbarkeit
+------------------
+
+Abgesehen von den im Metamodell konfigurierbaren Visualisierungsparametern fehlt es noch an weiteren Möglichkeiten, die grafische Darstellung zu beeinflussen. 
+
+Sehr sinnvoll wäre es, die :ref:`beleuchtung` konfigurieren zu können. 
+Wie in jenem Abschnitt gesagt ist es schwierig, Einstellungen zu finden, die für alle Situationen gut geeignet sind.
+Diese hängen auch von der verwendeten Anzeige und von Einflüssen wie Umgebungslicht oder der persönlichen Wahrnehmung des Benutzers ab.
+In der grafischen Oberfläche sollte es hierzu eine Möglichkeit geben, Lichtquellen zu setzen und deren Parameter zu verändern, aber auch sinnvolle Standardeinstellungen oder auswählbare Profile anbieten. 
+Lichtquellen sind in Simulator X über zugehörige Licht-Entities erstell- und konfigurierbar, wie es auch von der :ref:`renderkomponte` unterstützt wird.
+
+Ähnliches gilt für :ref:`modellierungsflaechen`. Sie sind momentan in der Implementierung fest vorgegeben, da es in der GUI noch keine Konfigurationsmöglichkeit gibt.
+Die Flächen können aber ebenfalls nach Bedarf erstellt und über zugehörige Entities konfiguriert werden.
+
+Es sollte darüber nachgedacht werden, die aktuellen Einstellungen für Lichtquellen und Modellierungsflächen auch in die Editor-Modelle aufzunehmen und damit persistent zu machen.
+
+Räumliche Darstellung
+---------------------
+
+Modellierungsflächen und eine passende Beleuchtung können schon sehr hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern.
+
+Jedoch darf nicht vergessen werden, dass die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion ist, bei der ein realistischer Tiefeneindruck fehlt.
+Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachter liegen und welche sich im Hintergrund befinden. 
+
+Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jedoch kann dies auch scheitern, wenn Objekte unterschiedlich groß sein dürfen, wie es momentan der Fall ist. 
+Die Skalierung von Modellelementen allerdings komplett zu verbieten ist wohl auch unpraktikabel.
+
+Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Stereoskopie und Schatten.
+
+Ein Schattenwurf der Objekte könnte zum Beispiel verdeutlichen, wie weit Objekte von einer Fläche entfernt sind und wie der Betrachter zur Lichtquelle orientiert ist.
+Jedoch müsste getestet werden, inwieweit dies hilfreich ist und ob Schatten nicht zu häufig dazu führen, dass sich Informationen im Modell schlecht erkennen lassen. 
+Eine Konfigurationsmöglichkeit oder eine "intelligente" Schattenberechnung, die weniger auf realistische Effekte setzt aber dafür Lesbarkeitsaspekte berücksichtigt könnte hier interessant sein.
+
+
+Darstellung von Verbindungen
+----------------------------
+
+Ein "Ärgernis" in 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu erkennen kann bei weit entfernten Kanten ein Problem darstellen.
+Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
+
+Wie unter :ref:`kanten` beschrieben werden gerichtete Kanten durch eine "Pfeiltextur" auf den Verbindungen dargestellt. 
 
 Eine andere Möglichkeit, den gerichteten Charakter einer Verbindung darzustellen wäre das Anzeigen einer dreidimensionalen Pfeilspitze am Ende der Linie oder innerhalb der Verbindung. 
 
@@ -254,11 +329,6 @@ Andere Varianten, um Kanten darzustellen: "Bezier-Röhren" :cite:`spratt_using_1
 Benutzerstudie zur Darstellung von Verbindungen: :cite:`holten_user_2009`
 
 Level of Detail: Anzeige automatisch vereinfachen bei weit entfernten Objekten, Text abkürzen (automatisch nach bestimmten Regeln oder Attribut für Abkürzung definieren)
-
-
-
-Auf die in diesem Projekt realisierten geometrischen Ansatz, also Beziehungen zwischen Elementen durch grafisches Enthaltensein darzustellen wurde hier aus Gründen der einfacheren Implementierung verzichtet. Dies könnte später noch hinzugefügt werden jedoch ist dabei zu beachten, dass dies im 3D-Raum wohl deutlich schwieriger darzustellen und zu verstehen ist als in 2D-Diagrammen. [Beispiel? oder irgendein Beleg?]
-
 
 .. [#f1] a
 

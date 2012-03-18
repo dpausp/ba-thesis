@@ -68,15 +68,21 @@ In diesem Zusammenhang soll auch erwähnt werden, dass es oft notwendig ist, die
 Metamodellierung
 ================
 
-Die schon erwähnte, nötige Flexibilität von Prozessmodellen (eigentlich Modellierungssprachen allgemein) erfordert oft, dass die Modellierungssprache selbst verändert werden kann. Dies wird allgemein mit dem Begriff Metamodellierung bezeichnet. Das Metamodell stellt wiederum ein Modell für Modelle dar, die oft als Instanzen des Metamodells bezeichnet werden.
+Die schon erwähnte, nötige Flexibilität von Prozessmodellen (eigentlich Modellierungssprachen allgemein) erfordert oft, dass die Modellierungssprache selbst verändert werden kann. 
+
+Dies wird allgemein mit dem Begriff Metamodellierung bezeichnet. Das Metamodell stellt wiederum ein Modell für Modelle dar, die oft als Instanzen des Metamodells bezeichnet werden.
 
 
-Ein Beispiel für eine Metamodellierungsumgebung ist das OMME, Open Meta Modelling Environment, das an demselben Lehrstuhl wie diese Arbeit entstanden ist und von Volz in [Bla] beschrieben wurde. Ein Hauptbeitrag dieser Arbeit ist dasLinguistic Meta Model (LMM), dass der Idee der orthogonale Klassifikation folgt. 
+Ein Beispiel für eine Metamodellierungsumgebung ist das OMME, Open Meta Modelling Environment, das an demselben Lehrstuhl wie diese Arbeit entstanden ist in :cite:`volz_werkzeugunterstuetzung_2011` beschrieben wurde. 
+
+Ein Hauptbeitrag dieser Arbeit ist dasLinguistic Meta Model (LMM), dass der Idee der orthogonale Klassifikation folgt. 
 
 Von den speziellen Modellierungskontrukten dieser Arbeit ist besonders die Spezialisierung von Instanzen für die Prozessmodellierung und auch für diese Arbeit interessant. Diese erlaubt es, von schon vorhandenen Konzepten neue Verwendungen anzulegen, in denen Parameter des spezialisierten Original-Konzepts überschrieben bzw. ergänzt werden können. Wird keine Wertzuweisung in der Verwendung vorgenommen gelten die Werte des orginalen Konzepts.
 
 Mit diesem Modellierungsmuster lässt sich das "Typ-Verwendungs-Konzept" [Jabl?!] in der (perspektivenorientierten) Prozessmodellierung realisieren. Dies bedeutet, dass von Modellelementen, beispielsweise für einen Prozess erst ein Typ als Instanz angelegt werden muss, von welchem dann beliebig viele Verwendungen erzeugt werden können. Diese Verwendungen werden dann in einem konkreten Prozessmodell genutzt. Diese Paradigma wird auch in dieser Arbeit umgesetzt.
 
-Ein Bestandteil von OMME ist das Model Designer Framework, mit dessen Hilfe grafische Editoren für beliebige Modellierungssprachen definiert werden können. Der Editor wird selbst als Metamodell beschrieben, wobei das Graphical Meta Model die grafischen Modellelemente definiert und das  Editor Meta Model die Verbindung zu einem Metamodell der Domäne herstellt. Diese Arbeit folgt einem ähnlichen Muster, um auf Änderungen an der Prozessmodellierungssprache zu reagieren und die Adaption von neuen Domänenmodellen zu ermöglichen.
+Ein Bestandteil von OMME ist das Model Designer Framework, mit dessen Hilfe grafische Editoren für beliebige Modellierungssprachen definiert werden können.
+
+Der Editor wird selbst als Metamodell beschrieben, wobei das Graphical Meta Model die grafischen Modellelemente definiert und das  Editor Meta Model die Verbindung zu einem Metamodell der Domäne herstellt. Diese Arbeit folgt einem ähnlichen Muster, um auf Änderungen an der Prozessmodellierungssprache zu reagieren und die Adaption von neuen Domänenmodellen zu ermöglichen.
 
 Mit Hilfe von MDF wurde beispielsweise neben einem Editor für ER-Modelle ein Prozessmodellierungswerkzeug basierend auf dem POPM-Konzept erstellt (IPM2). Dieser Editor diente ebensfalls als Vorbild für diese Arbeit (und auch fürs ganze Projekt).

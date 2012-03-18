@@ -1,3 +1,5 @@
+.. _metamodelle:
+
 *****************************
 Spezifikation der Metamodelle
 *****************************
@@ -8,17 +10,11 @@ Anschließend wird das verwendete Prozess-Metamodell näher vorgestellt.
 
 Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`konzept-visualisierung` dargestellt.
 
-Editor-Meta-Modell
-==================
 
-Das Editor-Metamodell enthält alle Informationen, die für die Spezifikation eines Editors und damit auch der Visualisierung eines Domänenmodells nötig sind.
-
-Das vollständige Editor-Metamodell, wie es im realisierten Protoypen im Einsatz ist, kann in :ref:`anhang_emm` nachgelesen werden.
-
-.. _emm-scalamapping:
+.. _scalamapping:
 
 Scala-Mapping
--------------
+=============
 
 Die oberste Ebene des Editor-Model-Stacks beinhaltet nur ein Paket ("base") mit einem einzelnen Konzept, ScalaMapping. 
 
@@ -34,10 +30,10 @@ Von dieser so angegebenen Klasse wird ein Objekt erstellt, welches das entsprech
 Wird ein TypeConverter genutzt, muss der *scalaType* nicht zwingend ein Klassenname sein. 
 Wie das Attribut interpretiert wird hängt vom TypeConverter ab. 
 
-.. _emm-base:
+.. _ebl:
 
-Editor-Base-Model
------------------
+Editor-Base-Level
+=================
 
 Die Ebene D2 ist als Instanz der Ebene D3 definiert. Daraus folgt, dass alle hier definierten Konzepte Instanzen von ScalaMapping sein müssen.
 
@@ -45,10 +41,10 @@ Die auf dieser Ebene definierten Konzepte sind prinzipiell von der Prozessmodell
 
 Auf Level D2 werden zwei Packages, *types* und *figures*, definiert.
 
-.. _emm-types:
+.. _ebl-types:
 
 Paket "types"
-^^^^^^^^^^^^
+------------
 
 Das *types*-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
 
@@ -57,7 +53,7 @@ Dazu werden folgeden Typen angeboten:
   * Dimension, Position: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
     Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp *Vec3* von :ref:`Simplex3D` angeboten.
 
-  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum\ [#f2]_ :ref:`quaternions`.
+  * Rotation: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum\ [#f2]_ :cite:`quaternions`.
     Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt *Quat4*  abgebildet, das ebenfalls von Simplex3D bereitgestellt wird.
 
   * Color: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzfaktor) angegeben werden.
@@ -74,14 +70,14 @@ Dazu werden folgeden Typen angeboten:
 
   * PhysicsSettings: Unterkonzepte dieses abstrakten Konzept werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
 .
-    Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien angeboten, wie sie von der von :ref:`simulator-x` bereitgestellten Physikkomponente unterstützt werden.
+    Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien angeboten, wie sie von der von :ref:`simulatorx` bereitgestellten Physikkomponente unterstützt werden.
     Für eine *PhysSphere* muss der Radius angegeben werden; eine *PhysBox* wird analog über die halben Seitenlängen (Attribut *halfExtends*, Typ *Dimension*) festgelegt.
 
 
-.. _emm-figures:
+.. _ebl-figures:
 
 Paket "figures"
-^^^^^^^^^^^^^^
+--------------
 
 Im *figures*-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. 
 
@@ -95,9 +91,9 @@ Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll 
 Über das Attribut *interactionAllowed* lässt sich festlegen, ob eine Interaktion mit dem Modellelement durch den Benutzer erlaubt ist. Dies ist standardmäßig für alle Element auf "true" gesetzt.
 
 Das von *ScalaMapping* definierte Attribut *scalaType* legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
-Es ist zu beachten, dass die Interpretation von *scalaType* hier nicht den :ref:`emm-scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
+Es ist zu beachten, dass die Interpretation von *scalaType* hier nicht den :ref:`scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
 
-Wie die Werte interpretiert werden wird später in :ref:`implementierung` beschrieben.
+Wie die Werte interpretiert werden wird später in :ref:`implementierung-vis` beschrieben.
     
 Knoten
 ^^^^^^
@@ -111,7 +107,7 @@ Für die Visualisierung von **Knoten** sind ein texturierter (TexturedNode) und 
 
     * TexturedNode: 
 
-      * texture: Pfad zu einer Bilddatei, die auf dem Knoten angezeigt wird. Näheres zu unterstützten Formaten lässt sich in :ref:`implementierung` nachlesen.
+      * texture: Pfad zu einer Bilddatei, die auf dem Knoten angezeigt wird. Näheres zu unterstützten Formaten lässt sich in :ref:`implementierung-vis` nachlesen.
       * backgroundColor: Hintergrundfarbe des Knoten. Die Interpretation ist von der Implementierung der Visualisierung des Knotens abhängig.
 
     * TextLabelNode:
@@ -121,7 +117,7 @@ Für die Visualisierung von **Knoten** sind ein texturierter (TexturedNode) und 
       * backgroundColor: Hintergrundfarbe, die an nicht von der Schrift abgedeckten Stellen angezeigt wird oder bei Transluzenz-Effekten mit der Schriftfarbe gemischt wird.
       * font: Schriftart, als Font-Instanz
 
-Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungskonzept genutzt wird. Siehe :ref:`domaenenmodell`.
+Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungskonzept genutzt wird. Siehe :ref:`pmm`.
 Wie in :ref:`ipm3d-gui` erwähnt sollen verfügbare Knotentypen in einem Menü angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
 
 Im Kontext des Typ-Verwendungskonzepts werden Knotentypen ebenfalls "Typ" genannt, die konkreten Modellelemente, die in einem Modell genutzt werden, stellen "Verwendungen" der vorher definierten Typen dar.
@@ -132,7 +128,7 @@ Daher müssen alle Nodes folgende Attribute setzen:
   * toolingTitle: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im Domain-Meta-Model definiert werden.
 
-.. _emm-figures-kanten:
+.. _ebl-figures-kanten:
 
 Kanten
 ^^^^^^
@@ -166,13 +162,16 @@ Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation geset
 
 Näheres zur COLLADA-Unterstützung von I>PM3D findet sich bei :cite:`uli` im Kapitel ???.
 
+.. _edl:
 
-Editor-Definition-Model
------------------------
+Editor-Definition-Level
+=======================
 
 Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine gesonderte Beschreibung verzichtet.
 Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu den hier spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
 
+
+.. _pmm:
 
 Prozess-Meta-Modell
 ===================
@@ -228,7 +227,7 @@ Die Attribute *inboundDataFlows* und *outboundDataFlows* legen fest, dass DataIt
 Durch *inboundNodeDataItemConnection* wird ausgedrückt, dass ein DataItem Endpunkt einer NodeDataConnection sein kann. Der Startpunkt ist entsprechend in *Node* definiert.
 
 
-Wie unter :ref:`emm-figures-kanten` erwähnt müssen in einem zu einer Kante gehörenden Editor-Concept die Attribute des Knoten-Concepts aus dem Domänenmodell angegeben werden, denen Kanten zugewiesen werden.
+Wie unter :ref:`ebl-figures-kanten` erwähnt müssen in einem zu einer Kante gehörenden Editor-Concept die Attribute des Knoten-Concepts aus dem Domänenmodell angegeben werden, denen Kanten zugewiesen werden.
 
 Damit müssen beispielsweise im DataFlowConnection-Concept im Editor-Definition-Model die Attribute *inboundAttrib*  und *outboundAttrib* auf "inboundDataFlows" beziehungsweise "outboundDataFlows" gesetzt werden.
 

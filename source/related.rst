@@ -142,6 +142,8 @@ Zusätzlich wird die Nutzung von Animationen vorgeschlagen, um Übergänge zwisc
     Diagramm mit nach hinten verschobenen Klassen aus :cite:`gogolla_towards_1999`
 
 
+.. _gef3d:
+
 Graphical Editing Framework 3D
 ------------------------------
 
@@ -213,7 +215,7 @@ Außerdem könnten hierarchische Prozessdiagramme gut im dreidimensionalen Raum 
 3D gadgets for business process visualization — a case study
 ------------------------------------------------------------
 
-In :cite:`schoenhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vorgestellt, der dafür genutzt werden könne, Simulationen von Prozessen zu kontrollieren und dabei anfallende Daten zu visualisieren.
+In :cite:`schonhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vorgestellt, der dafür genutzt werden könne, Simulationen von Prozessen zu kontrollieren und dabei anfallende Daten zu visualisieren.
 
 Der Prozess selbst wird, wie in :num:`Abbildung #schoenhage-graph` gezeigt, als 3D-Graph dargestellt, wobei Subgraphen durch den Benutzer nach Bedarf auf- und zugeklappt werden könnten. 
 
@@ -225,14 +227,16 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern um später wieder
 
 .. figure:: _static/ext_pics/schoenhage_drilldown.png
 
-   Prozessgraph mit "Datenflusskugeln" aus :cite:`schoenhage_3d_2000`
+   Prozessgraph mit "Datenflusskugeln" aus :cite:`schonhage_3d_2000`
 
 .. _schoenhage-drilldown:
 
 .. figure:: _static/ext_pics/schoenhage_drilldown.png
 
-   Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schoenhage_3d_2000`
+   Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schonhage_3d_2000`
 
+
+.. _ross-brown:
 
 Conceptual Modelling in 3D Virtual Worlds for Process Communication
 -------------------------------------------------------------------
@@ -247,7 +251,8 @@ Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das M
 
 Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolge mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befänden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
 
-Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum. Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
+Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
+Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 
 Auf den Objekten sind rote Kugeln als Anker für Verbindungen zu anderen Modellobjekten angeordnet.
 
@@ -280,9 +285,17 @@ Neben der Anzeige von 3D-Graphvisualisierungen auf handelsüblichen Arbeitsplatz
 So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-artigen\ [#f3]_ Umgebung. Benutzer könnten so direkt mit der Graphdarstellung der Daten in einer natürlichen Art und Weise interagieren. 
 
 Der Graph würde zu Beginn in einer "2D-Darstellung" in einer Ebene vor dem Benutzer angezeigt, wie in der Mitte von :num:`Abbildung #halpin-extrude` zu sehen ist. 
-Links ist zu sehen, wie durch das "Berühren" mit einem virtuellen Werkzeug (grauer Quader) die mit dem Knoten assoziierten Daten angezeigt werden könnten (:num:`Abbildung #halpin-extrude` links).
+Links ist zu sehen, wie durch das "Berühren" mit einem virtuellen Werkzeug (grauer Quader) die mit dem Knoten assoziierten Daten angezeigt werden können (:num:`Abbildung #halpin-extrude` links).
 
 Wenn sich ein Benutzer speziell für die Verbindungen eines bestimmten Knoten interessiere, sei es möglich aus dieser Darstellung, den gewünschten Knoten zu "extrudieren", also zu sich heranzuziehen. Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die Verbindungen des Knotens hervorgehoben.
+
+.. _halpin-extrude:
+
+.. figure:: _static/ext_pics/halpin_extrude.png
+    :height: 6cm
+
+    Visualisierung von semantischen Netzwerken aus :cite:`halpin_exploring_2008`
+
 
 Darstellung von Verbindungen
 -----------------------------
