@@ -14,15 +14,27 @@ Scala wird als objektfunktionale Programmiersprache charakterisiert. "Objektfunk
 Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. 
 I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
 
+Hier werden nur Features kurz vorgestellt, die für die Implementierung besonders hilfreich waren und in späteren Kapiteln erwähnt werden.
+
+
 .. _traits:
 
 Traits
 ------
 
 Gegenüber Java unterstützt Scala eine (eingeschränkte) Mehrfachvererbung von Implementierungscode über sogenannte **traits**. 
-Traits kann man sich als ein Java-Interface vorstellen, in dem gewisse Methoden schon vorimplementiert sind.
+Traits kann man sich auch als ein Java-Interface vorstellen, in dem Methoden schon vorimplementiert sein können.
 
-Traits dürfen selbst keinen Konstruktor definieren.
+Zur Vereinfachung dürfen Traits keinen Konstruktor definieren.
+
+Neben der Verwendung als "Interface" wie in Java werden diese oft genutzt um wiederverwendbare Code-Einheiten zu realisieren, die sich in verschiedenen Klassen verwenden lassen. 
+Traits werden daher oft als "Mixin" bezeichnet.
+Der "Vorgang", einen trait zu einer Klasse hinzuzufügen – wie im folgenden Code gezeigt wird – wird in dieser Arbeit "einmischen" genannt.
+.. code-block:: scala
+
+    class Example extends BaseClass with MixinTrait
+
+Example wird also von BaseClass abgeleitet und MixinTrait eingemischt.
 
 Actors
 ------
@@ -31,16 +43,20 @@ Ein sinnvoller Einsatzbereich von Scala ist unter Anderem die Erstellung von par
 Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
 Grundlage für das Actor-Patterns ist das *message passing*. 
-Dies bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen und nicht auf gemeinsame, veränderliche Datenstrukturen zugreifen. 
-In Scala ist dies üblicherweise ein Objekt einer *case class*, die  vor Allem dazu benutzt werden, Daten zu unveränderlichen Objekten zusammenzufassen.
+Dies bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen.
+Umgekehrt bedeutet das, dass nicht auf gemeinsame, veränderliche Datenstrukturen zugegriffen wird ("shared nothing"). 
+Die Kommunikation der Actors erfolgt überlicherweise asynchron.
+
+In Scala wird eine Nachricht oft durch ein Objekt einer *case class* dargestellt.
+
+Case Classes fassen Daten zu unveränderlichen Objekten zusammen, wie im folgenden Code gezeigt wird:
 
 .. code-block:: scala
 
     case class Message(data: String, number: Int)
     receivingActor ! Message("hello!", 42)
 
-
-Actors können mit Hilfe von Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung. 
+Ein Actor kann auf Basis eines (Java)-Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung. 
 
 
 .. _implicit:
@@ -66,12 +82,13 @@ Mit dieser Definition lassen sich nun Methoden, die für MConceptAdapter definie
 Parser-Kombinatoren
 -------------------
 
-Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen. Dies wurde in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation verwendet. Parser-Kombinatoren werden in funktionalen Programmiersprachen genutzt um rekursiv absteigende Parser zu realisieren.
+Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen. 
+Dies wurde in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation verwendet. 
 
 Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. 
 Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
 
-Anders ausgedrückt stellen Parserkombinator-Ausdrücke direkt die Grammatik der Sprache dar. Die Form erinnert an die Weise, wie Grammatiken in der Backus-Naur-Form spezifiziert werden.
+Anders ausgedrückt stellen Parserkombinator-Ausdrücke direkt die Grammatik der Sprache dar.
 
 In Scala werden die Bestandteile der textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen Syntaxbaum der Eingabe ergeben.
 
@@ -142,17 +159,16 @@ Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und M
 
 Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
 
-In älteren OpenGL-Versionen wurden von OpenGL viele, fest eingebaute Funktionen wie die Berechnung der Beleuchtung und Nebel, Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. Diese "alten" OpenGL-Funktionlitäten werden mit dem Begriff *fixed-function-Pipeline* bezeichnet.
+In älteren OpenGL-Versionen (1.x) wurden von OpenGL viele, fest eingebaute Funktionen wie die Berechnung der Beleuchtung und Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. 
+Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* in Verbindung gebracht.
 
-Mit Version 3.0 wurde die *fixed-function-Pipeline* aus dem Kern von OpenGL entfernt. In neueren Versionen müssen diese Berechnung selbst durch den Programmierer in *Shadern* implementiert werden. 
+Mit Version 3.0 wurden viele dieser Funktionen aus dem Kern von OpenGL entfernt. In neueren Versionen müssen die Berechnungen selbst durch den Programmierer in *Shadern* implementiert werden. 
 
-Das neue Konzept gibt jedoch dem Programmierer auch die Freiheit, neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
-Diese Möglichkeit wurde in dieser Arbeit ausgiebig genutzt, wie in :ref:`implementierung-vis` beschrieben wird.
-
+Das neue Konzept gibt jedoch dem Programmierer die Freiheit, auch völlig neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
+Diese Möglichkeit wurde in dieser Arbeit auch für einige "Spezialeffekte" genutzt, wie in :ref:`render-bibliothek` beschrieben wird.
 
 Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sogenannten *Shader-Einheiten* ausgeführt werden.
-
-*Shader* erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. In OpenGL 4 werden folgende Typen unterstützt:
+Diese Programme erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. In OpenGL 4 werden folgende Typen unterstützt:
 
 Vertex-Shader  
     arbeiten auf einzelnen Modell-Vertices und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
@@ -167,7 +183,7 @@ Tesselation-Shader (ab OpenGL 4)
     können komplett neue Geometrien erzeugen.
 
 Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex, an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
-Vertex-Attribute werden vom Shader aus Puffer-Objekten im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.
+Vertex-Attribute werden vom Shader aus Puffern im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.
 
 *Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein komplettes Grafikobjekt konstant bleiben. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
 

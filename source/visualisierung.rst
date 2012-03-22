@@ -266,7 +266,6 @@ Darstellung von Text
 --------------------
 
 Von der :ref:`render-bibliothek` wird für das Projekt das Rendern von Schrift auf 3D-Objekten zur Verfügung gestellt. 
-Die Implementierung nutzt dafür die von java.awt.Graphics2D bereitgestellten Funktionen. 
 Text wird in ein 2D-Bild geschrieben und dieses als Textur auf dem zu beschriftenden Objekt angezeigt. (siehe :ref:`schrift-rendering`).
 
 Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beispielsweise von :ref:`gef3d` genutzt oder von :cite:`font` vorgestellt werden, wurden ebenfalls in Betracht gezogen. 
