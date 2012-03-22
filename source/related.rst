@@ -2,7 +2,7 @@
 Related Work
 ************
 
-Neben den (relativ wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche Arbeiten vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten beschäftigen und für die Realisierung der Aufgabenstellung oder für zukünftige Arbeiten in dieser Richtung hilfreich sein könnten. 
+Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche Arbeiten vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten beschäftigen und für die Realisierung der Aufgabenstellung oder für zukünftige Arbeiten in dieser Richtung hilfreich sein könnten. 
 Dies umfasst unter Anderem die Visualisierung von Graphen in 3D, 3D-Softwarevisualisierung oder Frameworks für die Erstellung von 3D-Editoren wie GEF3D.
 
 3D-Softwarevisualisierung
@@ -41,7 +41,7 @@ Ein solches Diagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
 .. _dywer-classdiag:
 
 .. figure:: _static/ext_pics/dywer_classdiag.png
-    :height: 11.5cm
+    :height: 13cm
 
     3D-UML-Klassendiagramm aus :cite:`dwyer_three_2001`
 
@@ -76,6 +76,8 @@ Solche Diagramme seien Benutzern mit Erfahrung in Rational Rose vorgelegt worden
 
     Hierarchisch aufgebautes 3D-UML-Zustandsdiagramm aus :cite:`mcintosh_x3d-uml:_2008`
 
+.. _krolovitsch:
+
 3D Visualization for Model Comprehension
 ----------------------------------------
 
@@ -86,7 +88,7 @@ In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagram
 .. _krolovitsch-sm:
 
 .. figure:: _static/ext_pics/krolovitsch_sm.png
-    :width: 16cm
+    :width: 17cm
 
     3D-Zustandsdiagramm aus :cite:`krolovitsch_3d_2009`
 
@@ -94,7 +96,7 @@ In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagram
 .. _krolovitsch-sm-nodes:
 
 .. figure:: _static/ext_pics/krolovitsch_sm_nodes.png
-    :width: 16cm
+    :width: 17cm
 
     Zustandsdiagramm mit ausgeblendeten Diagrammteilen (dargestellt durch blaue Würfel) aus :cite:`krolovitsch_3d_2009`
 
@@ -107,12 +109,13 @@ Problematisch sei die Repräsentation von Zusammenhängen zwischen unterschiedli
 
 Hierfür lasse sich die dritte Dimension, also die z-Richtung sinnvoll nutzen. Verbindungen in der x-y-Ebene hätten eine andere Bedeutung als die, die aus der Ebene heraus in z-Richtung verlaufen. So würden sich mehrere Diagrammtypen in eine Darstellung integrieren lassen.
 
-Die 3. Dimension ließe sich auch als Zeitachse interpretieren. So sei es möglich, in 3D-Sequenzdiagrammen (:num:`Abbildung #gil-sequencediag`) die Zustände des Systems zu bestimmten Zeitpunkten auf parallelen Flächen darzustellen, zu denen die Zeitachse senkrecht steht.
+Die 3. Dimension ließe sich auch als Zeitachse interpretieren. 
+So sei es möglich, in 3D-Sequenzdiagrammen die Zustände des Systems zu bestimmten Zeitpunkten auf parallelen Flächen darzustellen, zu denen die Zeitachse senkrecht steht wie in :num:`Abbildung #gil-sequencediag` gezeigt wird.
 
 .. _gil-sequencediag:
 
 .. figure:: _static/ext_pics/gil_sequencediag.png
-    :height:8cm
+    :height: 8cm
 
     3D-UML-Sequenzdiagramm; Ausschnitt aus :cite:`gil_three_1998`
 
@@ -129,15 +132,14 @@ Zusätzlich wird die Nutzung von Animationen vorgeschlagen, um Übergänge zwisc
 .. _gogolla-classdiag-a:
 
 .. figure:: _static/ext_pics/gogolla_classdiag_a.png
-    :height: 11.5cm
+    :height: 10cm
 
     3D-UML-Klassendiagramm aus :cite:`gogolla_towards_1999`
 
 .. _gogolla-classdiag-b:
 
 .. figure:: _static/ext_pics/gogolla_classdiag_b.png
-    :height: 11.5cm
-
+    :height: 10cm
 
     Diagramm mit nach hinten verschobenen Klassen aus :cite:`gogolla_towards_1999`
 
@@ -189,8 +191,9 @@ Neben den Beziehungen zwischen Aktivitäten im Prozessmodell und den Rollen des 
 .. _betz-org-process:
 
 .. figure:: _static/ext_pics/betz_org_process.png
+    :height: 8cm
 
-   Darstellung von Beziehungen zwischen Prozess- und Organisationsmodell aus :cite:`betz_3d_2008` 
+    Darstellung von Beziehungen zwischen Prozess- und Organisationsmodell aus :cite:`betz_3d_2008` 
 
 Ein weiteres Anwendungsszenario für 3D-Visualisierungen sei es, Ähnlichkeiten zwischen verschiedenen Prozessmodellen aufzuzeigen. 
 
@@ -198,19 +201,23 @@ Im 3D-Raum sei es einfach möglich, die zu vergleichenden Prozesse nebeneinander
 Verbindungen zwischen Modellelementen der gegenüber gestellten Prozessmodelle könnten dafür genutzt werden, mit verschiedenen Metriken berechnete Ähnlichkeitswerte anzuzeigen. 
 Wie in :num:`Abbildung #betz-vergleich-pm` zu sehen ist werden die Werte sowohl durch die Beschriftung als auch durch die Dicke der Verbindungslinien visualisiert. 
 
+
 .. _betz-vergleich-pm:
 
 .. figure:: _static/ext_pics/betz_vergleich_pm.png
+    :height: 8cm
 
-   Visualisierung von Ähnlichkeiten zwischen Prozessmodellen aus :cite:`betz_3d_2008` 
+    Visualisierung von Ähnlichkeiten zwischen Prozessmodellen aus :cite:`betz_3d_2008` 
 
 Außerdem könnten hierarchische Prozessdiagramme gut im dreidimensionalen Raum dargestellt werden. Der Benutzer könne mehrere Verfeinerungsstufen des Modells in einer Ansicht sehen, wie in :num:`Abbildung #betz-prozess-verfeinerung` gezeigt wird. 
+
 
 .. _betz-prozess-verfeinerung:
 
 .. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
+    :height: 8cm
 
-   Vier Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
+    Vier Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
 
 3D gadgets for business process visualization — a case study
 ------------------------------------------------------------
@@ -225,23 +232,27 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern um später wieder
 
 .. _schoenhage-graph:
 
-.. figure:: _static/ext_pics/schoenhage_drilldown.png
+.. figure:: _static/ext_pics/schoenhage_process.png
+    :height: 8cm
 
-   Prozessgraph mit "Datenflusskugeln" aus :cite:`schonhage_3d_2000`
+    Prozessgraph mit "Datenflusskugeln" aus :cite:`schonhage_3d_2000`
+
 
 .. _schoenhage-drilldown:
 
 .. figure:: _static/ext_pics/schoenhage_drilldown.png
+    :height: 8cm
 
-   Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schonhage_3d_2000`
-
+    Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schonhage_3d_2000`
 
 .. _ross-brown:
 
 Conceptual Modelling in 3D Virtual Worlds for Process Communication
 -------------------------------------------------------------------
 
-In :cite:`brown_conceptual_2010` wird ein Prototyp eines BPMN-Editors vorgestellt, der Prozesse innerhalb eine virtuellen 3D-Umgebung darstellt. Besonderen Wert sei auf die Zusammenarbeit zwischen mehreren Modellierern und die Prozesskommunikation, auch unter Beteiligung von Personen, die keine Modellierungsexperten sind, gelegt worden. 
+In :cite:`brown_conceptual_2010` wird ein Prototyp eines BPMN-Editors vorgestellt, der Prozesse innerhalb eine virtuellen 3D-Umgebung darstellt
+
+Besonderer Wert sei auf die Zusammenarbeit zwischen mehreren Modellierern und die Prozesskommunikation, auch unter Beteiligung von Personen, die keine Modellierungsexperten sind, gelegt worden. 
 "Naive stakeholders" hätten oft Probleme, die abstrakte Welt der konzeptuellen Modellierung zu verstehen, weil der Bezug zu realen Gegenständen fehle. Durch Zuhilfennahme einer virtuellen Welt, in der abstrakte Prozessmodelle eingebettet sind solle dies abgemildert werden. 
 
 In dieser Umgebung können Abbilder von realen Entitäten, die mit dem Prozess in Beziehung stehen oder mit diesem interagieren – beispielsweise verwendete Betriebsmittel oder ausführende Personen – dargestellt werden. Dies könne auch dazu dienen, den Ort und die räumliche Anordnung von Prozessschritten, beispielsweise durch die Einbettung in ein virtuelles Gebäude, zu visualisieren. 
@@ -251,14 +262,39 @@ Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das M
 
 Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolge mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befänden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
 
+:num:`Abbildung #brown-process` zeigt ein Beispiel für einen Prozessgraphen. 
+
+.. _brown-process:
+
+.. figure:: _static/ext_pics/brown_prozessgraph.png
+    :height: 6cm
+
+    BPMN-Prozessgraph in virtueller Welt aus :cite:`brown_conceptual_2010` 
+
 Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
 Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 
 Auf den Objekten sind rote Kugeln als Anker für Verbindungen zu anderen Modellobjekten angeordnet.
 
-Die Benutzer selbst werden als Avatar gezeigt, welche die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen sollen.
+Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen soll.
+
+.. _brown-nodes:
+
+.. figure:: _static/ext_pics/brown_nodes.png
+    :height: 6cm
+
+    Benutzer-Avatar vor 3D-BPMN-Elementen aus :cite:`brown_conceptual_2010` 
 
 Es gebe die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige Texte zur Kommunikation zwischen den Beteiligten dargestellt werden können. Daneben könnten auch andere Multimediainhalte wie Videos, Tonaufnahmen oder Statistiken zur Prozessausführung (über Web-Services) eingebettet werden.
+Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
+
+.. _brown-datadisplay:
+
+.. figure:: _static/ext_pics/brown_datadisplay.png
+    :height: 6cm
+
+    Kommentarwände und Multimedia-Inhalte in der virtuellen Welt aus :cite:`brown_conceptual_2010` 
+
 
 Visualisierung von Graphen in 3D
 ================================
@@ -290,16 +326,16 @@ Neben der Anzeige von 3D-Graphvisualisierungen auf handelsüblichen Arbeitsplatz
 So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-artigen\ [#f3]_ Umgebung. 
 Benutzer könnten so direkt mit der Graphdarstellung der Daten in einer natürlichen Art und Weise interagieren und einen realitätsnahen räumlichen Eindruck von der virtuellen Welt bekommen. 
 
-Der Graph würde zu Beginn in einer "2D-Darstellung" in einer Ebene vor dem Benutzer angezeigt, wie in der Mitte von :num:`Abbildung #halpin-extrude` zu sehen ist. 
-Links ist zu sehen, wie durch das "Berühren" mit einem virtuellen Werkzeug (grauer Quader) die mit dem Knoten assoziierten Daten angezeigt werden können (:num:`Abbildung #halpin-extrude` links).
+Der Graph würde zu Beginn in einer "2D-Darstellung" in einer Ebene vor dem Benutzer angezeigt, wie in der :num:`Abbildung #halpin-extrude` unten zu sehen ist. 
+Links ist zu sehen, wie durch das "Berühren" mit einem virtuellen Werkzeug (grauer Quader) die mit dem Knoten assoziierten Daten angezeigt werden können.
 
 Wenn sich ein Benutzer speziell für die Verbindungen eines bestimmten Knoten interessiere, sei es möglich aus dieser Darstellung, den gewünschten Knoten zu "extrudieren", also zu sich heranzuziehen. 
 Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die Verbindungen des Knotens hervorgehoben.
 
 .. _halpin-extrude:
 
-.. figure:: _static/ext_pics/halpin_extrude.png
-    :height: 6cm
+.. figure:: _static/ext_pics/halpin_extrude_mod.png
+    :height: 11cm
 
     Visualisierung von semantischen Netzwerken aus :cite:`halpin_exploring_2008`
 

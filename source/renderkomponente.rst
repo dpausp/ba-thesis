@@ -8,7 +8,7 @@ Die
 
 Dadurch wird die die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
 
-Die eigentlichen Render-Aufgaben werden an einen Actor (*MMPERenderActor*) delegiert, der von der Renderkomponente (Klasse *MMPERConnector*) gestartet wird.\ [#f2]_
+Die eigentlichen Render-Aufgaben werden an einen Actor (*MMPERenderActor*) delegiert, der von der Renderkomponente (Klasse *MMPERConnector*) gestartet wird.\ [#f1]_
 Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an die Renderkomponente geschickt und an den RenderActor weitergeleitet. 
 
 RenderActor
@@ -36,7 +36,7 @@ Von der Render-Bibliothek werden nur Funktionen genutzt, die in OpenGL 3.3 verf�
 Wegen Nifty-GUI muss der RenderActor OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated" Funktionen unterstützt. 
 Es ist daher möglich, dass dies auf manchen Hardwareplattformen zu Geschwindigkeits- oder Darstellungsproblemen führt.
 
-Für zukünftige Weiterentwicklungen des Projekts wäre es daher angebracht, eine eigene Menüimplementierung auf Basis der Renderbibliothek zu erstellen.\ [#f2]_
+Für eine zukünftige Weiterentwicklung des Projekts wäre es daher wohl angebracht, eine eigene Menüimplementierung auf Basis der Renderbibliothek zu erstellen.
 
 Projektspezifische Erweiterungen
 --------------------------------
@@ -70,13 +70,8 @@ Simulator X stellt eine User-Entity bereit, über deren SVars *HeadTransform* un
 Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport- (*ViewportSettings*) und Render-Frustum-Einstellungen (*FrustumSettings*) abgefragt werden können.\ [#f3]_
 
 
-.. [#I] Zu finden im Package mmpe.renderer.gl
-
-
 .. [#f1] Dieser Aufbau ergibt sich aus der Idee, für die Darstellung der Szene mehrere Bildschirme nutzen zu können, wie es unter Anderem für ein CAVE-System nötig wäre. Dazu könnten der Renderkomponente mehrere RenderActors zugeordnet werden. Dies war vorgesehen, wird jedoch nicht überall in der Implementierung umgesetzt und daher nicht unterstützt.
-
-.. [#f2] Oder darauf zu hoffen, dass sich bei Nifty-GUI etwas ändert...
 
 .. [#f3] Die Werte lassen im Prinzip sich auch verändern, nur wird dies von der Implementierung noch nicht vollständig unterstützt.
 
-.. [#f4] Die Implementierung umfasst auch die Übersetzung von Tastatur- und Mausdaten, die von LWJGL geliefert werden, in Simulator X - Events. Für dieses Kapitel sind aber nur die Grafikfunktionen relevant.
+.. [#f4] Die Implementierung umfasst auch die Übersetzung von Tastatur- und Mausdaten, die von LWJGL geliefert werden, in Simulator X - Events. Für diese Arbeit sind aber nur die Grafikfunktionen relevant.

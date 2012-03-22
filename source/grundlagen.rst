@@ -12,8 +12,6 @@ Prozessmodellierung
 
 * Prozess, Kontrollfluss und so
 
-* Darstellung von Modellen mit Hilfe von Modellierungssprachen
-
 Klassifikation von Modellierungssprachen
 ----------------------------------------
 
@@ -29,15 +27,6 @@ Im geometriebasierten Fall wird Zusammengehörigkeit durch "Enthaltensein" darge
 
 Es ist auch möglich, beide Ansätze in einer Modellierungssprache zu kombinieren (Hybrid).
 
-BPMN
-----
-
-Business Process Model and Notation, kurz BPMN ist eine von der Object Management Group spezifizierte, grafische Repräsentation für Prozessmodelle, die in den letzten Jahren eine hohe Verbreitung in der Forschung und im praktischen Einsatz erlebt. [Quelle?]
-
-Die Notation zeichnet sich durch die Verwendung von unterschiedlichen, eher einfachen geometrischen Objekten aus, welche unter anderem Prozesschritte darstellen (flow objects).
-Beziehungen verschiedener Art zwischen Elementen werden durch Kanten (connecting objects) repräsentiert werden. Es existieren insgesamt 38 verschiedene Elemente, die zum Teil Informationen über eine frei wählbare Beschriftung oder über statische grafische Symbole darstellen.
-
-Neben den beiden genannten Elementkategorien stehen noch "Swim Lanes", die eine Gruppierung von flow objects nach ausführender Instanz erlauben und artifacts, die unter Anderem Daten repräsentieren, zur Verfügung.
 
 .. _popm:
 

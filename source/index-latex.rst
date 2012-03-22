@@ -3,6 +3,8 @@ Bla
 ###
 
 .. toctree::
+    :maxdepth: 3
+
     abbildungsverzeichnis
     zusammenfassung-latex
     einleitung
@@ -12,10 +14,11 @@ Bla
     ipm3d
     modellhierarchie
     metamodelle
-    konzept-visualisierung
+    visualisierung
     modellanbindung
-    implementierung-visualisierung
+    renderkomponente
     schluss
     anhang_a
     anhang_b
+    anhang_c
     literaturverzeichnis

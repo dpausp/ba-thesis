@@ -82,6 +82,7 @@ Vor allem ungeübten Benutzern kann es schwer fallen, Objekte zu selektieren und
 Dies ist auch ein Grund, warum hier eine reine Graphdarstellung mit möglichst einfachen Objekten verwendet wird. 
 Es wird also darauf verzichtet, Elemente ineinander zu schachteln, wie es in 2D-Werkzeugen wie IPM2 (siehe :ref:`prozessmodellierungssprachen`) üblich ist.  
 
+.. _kanten:
 
 Kanten
 ------
@@ -112,7 +113,7 @@ Szenenobjekte
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als *SceneryObject* bezeichnet werden. 
 
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
-Diese können zur Illustration von Prozessschritten dienen, wie von :cite:`brown_conceptual_2010` vorgeschlagen wurde (siehe :ref:`ross-brown`).
+Diese können zur Illustration von Prozessschritten dienen, wie unter :ref:`ross-brown` erwähnt wurde.
 
 Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden, besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
@@ -269,7 +270,7 @@ Die Implementierung nutzt dafür die von java.awt.Graphics2D bereitgestellten Fu
 Text wird in ein 2D-Bild geschrieben und dieses als Textur auf dem zu beschriftenden Objekt angezeigt. (siehe :ref:`schrift-rendering`).
 
 Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beispielsweise von :ref:`gef3d` genutzt oder von :cite:`font` vorgestellt werden, wurden ebenfalls in Betracht gezogen. 
-Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit zu erzeugen könnten für die Implementierung von gut lesbaren und dennoch performanten Darstellungstechniken interessant sein.
+Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit per Tesselation-Shader zu erzeugen, könnten für die Implementierung von gut lesbaren und dennoch performanten Darstellungstechniken interessant sein.
 
 Jedoch war die Schriftqualität des verwendeten texturbasierten Ansatzes ausreichend für den hier entwickelten Prototypen und lies sich einfach implementieren. 
 
@@ -277,7 +278,7 @@ Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werd
 Bei ungünstigen Beobachtungssituationen, also bei großer Entfernung und schräger Betrachtung von Flächen, wird es im Prototypen schnell schwierig, Texte ohne Anstrengung zu lesen.  
 Es müssen eher große Schriften gewählt werden und daher lässt sich relativ wenig Information auf den Knoten darstellen.
 
-Eine andere sinnvolle Erweiterungsmöglichkeit wäre, die Anzeige von Informationen bei weit entfernten Objekten automatisch zu vereinfachen\ [#f2]_, zum Beispiel indem ein Text abgekürzt und größer dargestellt wird. 
+Eine andere sinnvolle Erweiterungsmöglichkeit wäre, die Anzeige von Informationen bei weit entfernten Objekten automatisch zu vereinfachen\ [#f1]_, zum Beispiel indem ein Text abgekürzt und größer dargestellt wird. 
 So wäre es möglich, Knoten mit größerem Abstand immerhin noch zu unterscheiden. 
 Dafür könnte ein zusätzliches Attribut im Prozessmodell genutzt werden, dass eine Abkürzung für ein längeres Textattribut angibt.
 
@@ -330,8 +331,8 @@ Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
 
 
-Darstellung und Editieren von Kanten
-------------------------------------
+Darstellung von Kanten
+----------------------
 
 Ein "Ärgernis" in 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen.
 Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
@@ -345,12 +346,8 @@ Eine solche Darstellung liegt aber näher an den bekannten Visualisierungssprach
 Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
 Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
-Andere Darstellungsformen wurden unter :ref:`related-verbindungen` vorgestellt.
+Andere Darstellungsformen wurden unter :ref:`related-verbindungen` genannt.
 
-Kanten sind nicht in die physikalische Simulation eingebunden und können daher im Moment nicht direkt ausgewählt werden. 
-Der Editor unterstützt das Verändern von Attributen bisher nur für selektierbare Elemente und es gibt keinen anderen Weg, Attribute zu ändern.
-
-Hier sollte bei einer Erweiterung eine Lösung gefunden werden, da dies von einem sinnvoll benutzbarem Modellierungswerkzeug erwartet werden kann. 
-Falls es nicht praktikabel sein sollte, Verbindungen in dies Physikberechnung einzubinden könnte eine indirekte Selektion über die Auswahl der verbundenen Knoten angeboten werden.
+So könnten Verbindungen auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden um die Überdeckung von Knoten oder das Schneiden von anderen Verbindungen zu vermeiden. 
 
 .. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 

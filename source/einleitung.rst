@@ -37,3 +37,9 @@ Aufbau
 Zu Beginn werdeb die grundlegenden Begriffe aus dem Bereich der Prozessmodellierung, der Modellierungssprachen und der Metamodellierung vorgestellt. Danach werden verschiedene für diese Arbeit relevante Arbeiten aus dem Bereich der 3D-Visualisierung und Vorarbeiten zum Thema 3D-Prozessvisualisierung bzw -modellierung und verwandten Gebieten besprochen. 
 Darauf aufbauend wird ein Konzept zur dreidimensionalen Visualisierung von Prozessmodellen sowie zur Anbindung der Visualisierungskomponente an das Gesamtsystem, das mit Hilfe von Simulator X realisiert wurde entwickelt. Danach werden einige Details aus der Implementierung des Prototypen dargestellt und ein kleines Anwendungsbeispiel gegeben. 
 Die Arbeit schließt mit einem Ausblick auf die zahlreichen Erweiterungsmöglichkeiten und zukünftigen Forschungs- und Entwicklungsthemen, die sich aus diesen Arbeit und dem Projekt ergeben.
+
+Konventionen
+============
+
+
+Details zu Implementierungsfragen und Verweise auf Pakete des Projekts werden in Fußnoten angegeben, die mit römischen Ziffern bezeichnet sind.

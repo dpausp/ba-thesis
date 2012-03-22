@@ -178,7 +178,7 @@ htmlhelp_basename = 'IPM3D'
 # -- Options for LaTeX output --------------------------------------------------
 
 preamble_normal =  r"""
-\usepackage[a4paper,margin=2cm,tmargin=2.5cm]{geometry}
+\usepackage[a4paper,margin=2cm,rmargin=2.3cm,tmargin=2cm]{geometry}
 %% \geometry{verbose,tmargin=1cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,headheight=3cm,headsep=1cm,footskip=1cm}
 
 \definecolor{TitleColor}{rgb}{0.212, 0.376, 0.569}
@@ -200,6 +200,8 @@ preamble_normal =  r"""
 
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 
+
+\setcounter{tocdepth}{1}
 """
 
 preamble_simple = ""

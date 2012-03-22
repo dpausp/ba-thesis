@@ -68,7 +68,8 @@ Parser-Kombinatoren
 
 Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen. Dies wurde in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation verwendet. Parser-Kombinatoren werden in funktionalen Programmiersprachen genutzt um rekursiv absteigende Parser zu realisieren.
 
-Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
+Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. 
+Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
 
 Anders ausgedrückt stellen Parserkombinator-Ausdrücke direkt die Grammatik der Sprache dar. Die Form erinnert an die Weise, wie Grammatiken in der Backus-Naur-Form spezifiziert werden.
 
@@ -137,7 +138,7 @@ OpenGL / LWJGL
 Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
 Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
-Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff Tastatur und Maus zur Verfügung.
+Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
 
 Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
 
@@ -149,12 +150,12 @@ Das neue Konzept gibt jedoch dem Programmierer auch die Freiheit, neue Grafikeff
 Diese Möglichkeit wurde in dieser Arbeit ausgiebig genutzt, wie in :ref:`implementierung-vis` beschrieben wird.
 
 
-Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von den *Shader-Einheiten* ausgeführt werden.
+Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sogenannten *Shader-Einheiten* ausgeführt werden.
 
-*Shader* erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. 
+*Shader* erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. In OpenGL 4 werden folgende Typen unterstützt:
 
 Vertex-Shader  
-    arbeiten auf einzelnen Modell-Vertices sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL intern benutzte Koordinatensystem zuständig.
+    arbeiten auf einzelnen Modell-Vertices und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
 
 Geometry-Shader
     könnnen aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
@@ -166,8 +167,9 @@ Tesselation-Shader (ab OpenGL 4)
     können komplett neue Geometrien erzeugen.
 
 Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex, an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
+Vertex-Attribute werden vom Shader aus Puffer-Objekten im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.
 
-*Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein komplettes Objekt konstant bleiben. Dies können beispielsweise Lichtparameter sein.
+*Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein komplettes Grafikobjekt konstant bleiben. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
 
 
 Sonstiges

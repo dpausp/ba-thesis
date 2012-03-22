@@ -9,7 +9,7 @@ Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchhol
 
 .. _ipm3d-konzeptionelle-uebersicht:
 
-.. figure:: _static/ext_pics/betz_prozess_verfeinerung.png
+.. figure:: _static/diags/ipm3d-simulatorx.png
 
    Übersicht über die Bestandteile von I>PM3D
 

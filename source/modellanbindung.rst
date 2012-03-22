@@ -4,16 +4,10 @@
 Modellanbindung
 ***************
 
-In diesem Kapitel werden die Anforderungen an die Modellanbindung und deren Realisierung besprochen. 
+In diesem Kapitel werden die Anforderungen an die "Modellanbindung" und deren Realisierung besprochen. 
+Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar.
 
-Auf eine vollständige Erläuterung der Implementierung wird in dieser Arbeit aus Platzgründen verzichtet. 
-Jedoch werden in diesem Kapitel einige Hinweise zur Implementierung gegeben, soweit diese für das Verständnis hilfreich sind.
-
-Details zu Implementierungsfragen und Verweise auf Pakete des Projekts werden in Fußnoten angegeben, die mit römischen Ziffern bezeichnet sind.
-
-Insbesondere soll hier verdeutlicht werden, wie andere Teile des Systems diese Modellanbindung nutzen.
-
-Da das Ziel des Projekts I>PM3D ist, einen interaktiven Prozessmodelleditor zu erstellen ergeben sich die folgenden funktionalen Anforderungen:
+Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen:
 
 #. Erstellen und Löschen von Modellelementen
 #. Bewegen, Rotieren und Skalieren von Modellelementen
@@ -21,14 +15,12 @@ Da das Ziel des Projekts I>PM3D ist, einen interaktiven Prozessmodelleditor zu e
 #. Modifizieren der Visualisierungsparameter von Modellelementen; beispielsweise Farbe oder Schriftart
 #. Laden und Speichern von Prozessmodellen und deren visuelle Repräsentation
 
-Da das Projekt auf der Grundlage von Simulator X entwickelt wurde folgt das hier vorgestellte Konzept der Architektur von Simulator-X-Anwendungen.
-
 Modell-Funktionalitäten - ModelComponent
 ========================================
 
-Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die eine bestimmte Funktionalität dem restlichen System bereitstellen.
+Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die jeweils ein begrenztes Aufgabengebiet abdecken.
 
-Die ModelComponent stellt folglich dem System alle Funktionen zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
+Die ModelComponent stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
 
 So wird der Zugriff auf die Modelle wird vollständig von der ModelComponent gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
 Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die actor-basierte und damit parallele Architektur von Simulator X vorgegeben.
@@ -36,16 +28,16 @@ Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch du
 Die Funktionen werden zum Teil als sogenannte *Commands* bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ModelComponent geschickt werden.
 In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
-Es existieren Commands für die folgenden Funktionen [#I]_\ :
+Es existieren Commands für die folgenden Funktionen\ [#II]_\ :
 
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von Usage-Modellen
 * Erstellen und Löschen von Knoten und Szenenobjekten
 * Erstellen einer Kante zwischen zwei Knoten
 
-Alle anderen Manipulationsmöglichkeiten, das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen werden über Modell-Entitäten bereitgestellt.
+Alle anderen Manipulationsmöglichkeiten, das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen werden über sogenannte ModelEntities bereitgestellt, welche weiter unten in diesem Kapitel erläutert werden.
 
-Im Folgenden wird das Laden und Speichern von Modellen sowie die dafür genutzte Funktionen beschrieben, soweit diese an keiner anderen Stelle in dieser Arbeit vorgestellt wurden.
+Im Folgenden wird das Laden und Speichern von Modellen sowie die dafür genutzten Funktionen beschrieben, soweit diese an keiner anderen Stelle in dieser Arbeit vorgestellt wurden.
 
 Modell-Persistenz
 -----------------
@@ -55,7 +47,7 @@ Wie in :ref:`modellhierarchie` angesprochen werden in I>PM3D Modelle eingesetzt,
 
 Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
 
-Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [#II]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [#I]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
 
 Um die Modelle in der Anwendung verändern zu können werden diese in eine andere Struktur überführt. 
@@ -78,7 +70,8 @@ Um das Laden der Modelle anzustoßen ist folgendes Command definiert:
 
 .. code-block:: scala
 
-    final case class LoadMetaModels(domainModelPath: String, editorModelPath: String, loadAsResource: Boolean) extends Command
+    case class LoadMetaModels(domainModelPath: String, editorModelPath: String, loadAsResource: Boolean) 
+        extends Command
 
 LoadAsResource gibt an, ob die Pfade als Java-Resource-Path zu einer Metamodell-Datei interpretiert ("true") oder direkt im Dateisystem gesucht werden sollen ("false").
 
@@ -93,14 +86,16 @@ Die ModelComponent lässt prinzipiell das Laden von mehreren Metamodell-Paaren z
 
 Nachdem Metamodelle geladen werden, werden von der ModelComponent Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
 
+.. TODO und weiter?
+
 
 Laden und Schließen von Usage-Modellen und Umgang mit mehreren Modellen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Usage-Modelle umfassen den aktuellen Zustand eines Prozessmodells und dessen Repräsentation im Editor. 
-Ein konkretes "Prozesmodell" wird geladen, indem das zugehörige Domain- und Editor-Usage-Model geladen werden.
+Ein konkretes "Prozesmodell" wird geöffnet, indem das zugehörige Domain- und Editor-Usage-Model geladen werden.
 
-Das Command *LoadUsageModels* ist analog zum Command LoadMetaModels definiert, wie im Abschnitt darüber beschrieben.
+Das Command *LoadUsageModels* ist analog zum Command *LoadMetaModels* definiert, wie im Abschnitt darüber beschrieben.
 
 Es können von der Anwendung zur Laufzeit mehrere Usage-Modelle (zu denselben Metamodellen) geladen werden. 
 In der ModelComponent ist jeweils ein Usage-Model-Paar als "aktiv" gekennzeichnet.
@@ -130,7 +125,7 @@ Für alle Adapter werden :ref:`implicit` angeboten, die die gekapselten Objekte 
 Modell-Entitäten
 ================
 
-Objekte, mit denen verschiedene Teile des Systems interagieren werden in ref:`simulatorx` durch Entities beschrieben. 
+Objekte, mit denen verschiedene Teile des Systems interagieren werden in ref:`simulatorx` durch Entities beschrieben. Diese *ModelEntities*
 
 Es ist daher zweckmäßig, für jedes Modellelement, also für Knoten und Verbindungen sowie für Szenenobjekte eine zugehörige Entity zu erstellen.
 *ModelEntities* werden von der ModelComponent erzeugt, wenn über ein Command die Erstellung von neuen Elementen angefordert wird oder ein Modell geladen wird. 
@@ -145,12 +140,12 @@ Die für ModelEntites genutzten Aspects werden hier aufgeführt.
 Grafik
 ^^^^^^
 
-Die :ref:`Renderkomponente` stellt verschiedene RenderAspects bereit, die der Renderkomponente alle nötigen Informationen mitteilen, um ein Visualisierungsobjekt [#f1]_ zur entsprechenden Entity anzulegen.
+Die :ref:`Renderkomponente` stellt verschiedene RenderAspects bereit, die der Renderkomponente alle nötigen Informationen mitteilen, um ein Visualisierungsobjekt zur entsprechenden Entity anzulegen.
 
 Für Knoten und Kanten wird der *ShapeFromFactory*-Aspect genutzt, der besagt, dass das Objekt nicht von der Renderkomponente, sondern – in diesem Fall – von der ModelComponent erstellt wird. 
 Näheres hierzu wird weiter unten im Abschnitt :ref:`lebenszyklus` dargestellt.
 
-Szenenobjekte, für die es bisher nur die Möglichkeit gibt, diese aus COLLADA-Modelldateien zu laden werden von der Renderkomponente erzeugt. 
+Szenenobjekte, für die es bisher nur die Möglichkeit gibt, diese aus COLLADA-Modelldateien zu laden werden von der Renderkomponente selbst erzeugt. 
 In der Entity-Beschreibung wird dafür der *ShapeFromFile*-Aspect angegeben.
 
 Physik
@@ -195,12 +190,12 @@ SVars
 Die von einer ModelEntity angebotenen SVars lassen sich in drei Gruppen einteilen. 
 SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen abbilden oder statisch von der ModelComponent definiert sein.
 
-#. *Domain-Model-SVars* 
+#. **Domain-Model-SVars** 
    Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im Usage-Model Werte zugewiesen werden können [#f3]_\ . 
    Sie stellen somit die Schnittstelle dar, über die Modellattribute wie die Funktion eines Prozesses oder der Name eines Konnektors verändert werden können.
    Unterstützt werden alle literalen Datentypen; den SVars werden die passenden Scala-Datentypen zugewiesen.
 
-#. *Editor-Model-SVars* 
+#. **Editor-Model-SVars**
    Diese SVars werden nach Bedarf aus den Attributen des Editor-Metamodells erstellt. 
    Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird.\ [#f4]_
    Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Diese werden für die meisten hier genannten SVars benötigt.
@@ -209,14 +204,14 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
    
    Das sind im Einzelnen:
 
-    * Hintergrundfarbe *backgroundColor*
-    * Schrift *font*
-    * Schriftfarbe *fontColor*
-    * Texturpfad *texture*
-    * Liniendicke *thickness*
-    * Spekulare Farbe *specularColor*
+    * Hintergrundfarbe (*backgroundColor*)
+    * Schrift (*font*)
+    * Schriftfarbe (*fontColor*)
+    * Texturpfad (*texture*)
+    * Liniendicke (*thickness*)
+    * Spekulare Farbe (*specularColor*)
 
-#. *Editor-SVars*
+#. **Editor-SVars**
    Dies sind SVars, die keine direkte Entsprechung im Modell haben und deren Werte daher auch nicht persistiert werden. 
    Sie sind automatisch für alle Modellelemente definiert oder werden durch Modellattribute "aktiviert". 
    Dabei handelt es sich um:
