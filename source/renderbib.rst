@@ -194,14 +194,15 @@ Die so erzeugte Scala-Quelldatei enthält ein trait, das *Mesh* (siehe :ref:`dra
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
-Im Anwendungsbeispiel am Ende des Kapitels wird ein Beispiel für die Nutzung gegeben.
+Im nächsten Abschnitt wird ein Beispiel für die Nutzung gegeben.
 
-.. _darstellung-text:
+.. _beispiel-neue-modellfigur:
 
 Anwendungsbeispiel: Erstellen von neuen Modell-Figuren
 ======================================================
 
 Hier soll gezeigt werden, wie sich ein neues Grafikobjekt erstellen lässt, das für die Visualisierung eines Knotens eingesetzt werden soll.
+Dies ist die Fortsetzung des Anwendungsbeispiels für das Hinzufügen eines neuen Modellelements zum Metamodell :ref:`beispiel-neues-element`.
 
 Die Geometrie des Objekts kann zum Einen manuell erstellt werden, indem das trait Mesh implementiert wird. 
 Als Vorlage kann eine der mitgelieferten Meshes, wie *mmpe.renderer.mesh.UnitCube* genutzt werden.
@@ -217,17 +218,17 @@ Damit wird aus einer COLLADA-Datei pyramid.dae eine pyramid.jar erstellt, die im
 
 Im nächsten Schritt wird die neue Figur zum object *mmpe.model.BaseDrawables* hinzugefügt.
 
-Es soll eine Pyramide erstellt werden, auf deren Seiten eine Grafik angezeigt werden kann.
-Dafür kann beispielsweise die TextureBox (im object ) als Vorlage genommen und wie folgt abgeändert werden:
+Es soll eine Pyramide erstellt werden, auf deren Seiten Text angezeigt werden kann.
+Dafür kann beispielsweise die *TextBox* als Vorlage genommen und wie folgt abgeändert werden:
 
 .. code-block:: scala
     
-  class TexturePyramid extends EmptyDrawable("texturePyramid")
+  class TextPyramid extends EmptyDrawable("textPyramid")
     with Pyramid
     with SIRISTransformation
-    with SelectableAndTextureEffect
+    with SelectableAndTextEffect
     with SelectionHighlightSVarSupport
-    with TextureDisplaySVarSupport
+    with TextDisplaySVarSupport
     with BackgroundSVarSupport
 
 Geändert wurde nur das Mesh-trait in der 2. Zeile sowie der Name des Objekts in der 1.Zeile.
@@ -237,12 +238,12 @@ Abschließend wird in *mmpe.model.ModelDrawableFactory* zur Fallunterscheidung i
 
 .. code-block:: scala
 
-      case "test.Pyramid" =>
-        val drawable = new TexturePyramid
+      case "test.TextPyramid" =>
+        val drawable = new TextPyramid
         Seq(drawable)
 
-Nun kann die texturierte Pyramide im Editor-Metamodell genutzt werden, wie in :ref:`beispiel-emm` an einem Beispiel gezeigt wurde.
-Das hier angegebene "test.pyramid" entspricht dem *scalaType*, wie er im Metamodell angegeben muss um diese Figur zu referenzieren.
+Nun kann die texturierte Pyramide im Editor-Metamodell genutzt werden.
+Das hier angegebene "test.TextPyramid" entspricht dem *scalaType*, wie er im Metamodell angegeben muss um diese Figur zu referenzieren.
 
 
 Anmerkungen
@@ -268,7 +269,7 @@ Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
 ----------------------------------------------------------------------
 
 Für die :ref:`visualisierungsvarianten` wurde eine (Fragment-)Shader-Funktion erstellt, die die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändert.\ [#f1]_
-Ein Shader, der diese Funktion nutzt definiert Uniforms, über die die Varianten ausgewählt werden können.
+Ein Shader, der diese Funktion nutzt, definiert Uniforms, über die die Varianten ausgewählt werden können.
 
 Auf Scala-Seite werden diese Uniforms vom *SelectionHighlightAddon* verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
 
@@ -306,7 +307,7 @@ Hierfür wurde die 2D-API (java.awt) der Java-Klassenbibliothek zur Hilfe genomm
 Zur Verwendung mit OpenGL wird die Schrift in eine Textur geschrieben, die dann auf die Objekte aufgebracht werden kann.
 Um die Darstellungsqualität zu erhöhen wird die Antialiasing-Funktion von Graphics2D genutzt. 
 
-Um Text darstellen zu können müssen Drawables den Trait *TextDisplayAddon* einmischen und die genutzte RenderStage muss das Plugin *TextDisplayRenderStagePlugin* sowie *TextureRenderStagePlugin* einbinden.
+Um Text darstellen zu können müssen Drawables den Trait *TextDisplayAddon* einmischen und die genutzte RenderStage muss die Plugins *TextDisplayRenderStagePlugin* sowie *TextureRenderStagePlugin* einbinden.
 
 Der angezeigte Text kann im Drawable mit 
 
@@ -319,14 +320,6 @@ verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, 
 Der Text wird zentriert angezeigt und wird am Wortende umgebrochen, falls der horizontale Platz nicht ausreicht. 
 Die "Schriftgröße" wird als Mindestgröße interpretiert; falls ein Objekt eine Skalierung von > 1 aufweist wird die Größe der Schrift proportional mitskaliert. 
 Bei einer Skalierung kleiner 1 wird der für die Schrift zur Verfügung stehende Platz verkleinert. 
-
-Für alle Seiten des Objekts wird dieselbe Schrifttextur genutzt. 
-Dies funktioniert problemlos, wenn ein Objekt gleichmäßig in alle 3 Richtungen skaliert wird. 
-
-.. TODO testen
-
-Bei ungleichmäßigen Skalierungen
-
 
 Um auch bei größeren Entferungen von der Kamera und kleiner Schrift noch eine angemessene Lesbarkeit zu erreichen kann Mipmapping genutzt werden, das auch von der Render-Bibliothek unterstützt wird. 
 Aufgrund von Problemen mit verschiedenen Grafikkarten, die für das Projekts getestet wurden, ist dies standardmäßig jedoch nicht aktiviert.

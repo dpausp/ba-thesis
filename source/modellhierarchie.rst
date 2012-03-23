@@ -12,20 +12,22 @@ Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualis
 mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen. 
 
 Die hier vorgestellte Modellhierarchie ist prinzipiell ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
-Auf wichtige Unterschiede wird im Folgenden explizit hingewiesen.
+Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
 
-Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier die Modellierung von Prozessen nach den Vorgaben der perspektivenorientierte Prozessmodellierung und kein generisches Framework realisiert werden sollte. Dennoch ist es möglich, in einem gewissen Rahmen Modifikationen an den verwendeten Prozessmodellelementen vorzunehmen und deren Visualisierung anzupassen. 
+Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier die Modellierung von Prozessen nach den Vorgaben der perspektivenorientierte Prozessmodellierung und kein generisches Framework realisiert werden sollte. 
+Dennoch ist es möglich, in einem gewissen Rahmen Modifikationen an den verwendeten Prozessmodellelementen vorzunehmen und deren Visualisierung anzupassen. 
 
 Dies hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
 
 Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene Prozess-Metamodell genutzt wird. 
 
-Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im vorliegenden und nächsten Kapitel :ref:`metamodelle` näher erläutert
+Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im vorliegenden und nächsten Kapitel :ref:`metamodelle` näher erläutert.
+Am Ende des nächsten Kapitels ist ein Anwendungsbeispiel zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
 
 :num:`Abbildung #modellhierarchie` zeigt wie sich die für I>PM3D genutzte Hierarchie der Modelle darstellt, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
 Nach einer kurzen Vorstellung der Modellierungssprache wird im Rest dieses Kapitels wird eine Übersicht über die beiden abgegrenzten *Model-Stacks* gegeben.
 
-Die detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel vorgestellt. 
+Eine detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel gegeben. 
 
 LMMLight
 ========
@@ -147,7 +149,8 @@ So wird im Knotentyp jeweils ein Attribut für eingehende und ausgehende Kanten 
 
 Die Existenz von zugehörigen Attributen legt damit fest, in welcher Weise Kanten mit Knoten assoziiert werden können.
 
-Die Namen dieser Attribute können frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, die Attributnamen für eingehende Kanten mit dem Präfix "inbound" und die ausgehenden mit "outbound" zu beginnen und den Typ der Kante anzuhängen.
+Es wird vorgesetzt, dass die Attributnamen für eingehende Kanten mit dem Präfix "inbound" und die ausgehenden mit "outbound" beginnen.
+Der Rest des Attributnamens kann im Prinzip frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, den Typnamen der Kante oder eine leicht verkürzte Variante davon anzuhängen.
 
 Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein "outbound"-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes "inbound"-Attribut besitzt.\ [#f2]_
 
@@ -171,7 +174,7 @@ Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsat
 
 .. [#f1] Klarer Fall von Copy-And-Paste-"Wiederverwendung".
 
-.. [#f2] Technisch gesehen sind Kanten also immer "gerichtet"; jedoch können auch "ungerichtete" Kantentypen erstellt werden, indem in allen beteiligten Knotentypen beide Attribute definiert werden und die Unterschiedung zwischen Kanten, die dem "outbound" oder "inbound"-Attribut zugewiesen werden einfach ignoriert wird. Die Visualisierung der Kanten sollte dann allerdings auch unabhängig von der Richtung sein.
+.. [#f2] Im Domänenmodell sind Kanten also immer "gerichtet"; jedoch können für den Editor auch "ungerichtete" Kantentypen erstellt werden, indem in allen beteiligten Knotentypen beide Attribute definiert werden und die Unterschiedung zwischen Kanten, die dem "outbound" oder "inbound"-Attribut zugewiesen werden einfach ignoriert wird. Die Visualisierung der Kanten sollte dann allerdings auch unabhängig von der Richtung sein.
 
 .. [#f3] kann und sollte man das "Metatyp" nennen?
 

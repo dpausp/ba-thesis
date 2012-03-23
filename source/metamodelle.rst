@@ -93,7 +93,7 @@ Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll 
 Das von *ScalaMapping* definierte Attribut *scalaType* legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
 Es ist zu beachten, dass die Interpretation von *scalaType* hier nicht den :ref:`scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
 
-Wie die Werte interpretiert werden wird später in :ref:`implementierung-vis` beschrieben.
+Wie die Werte interpretiert werden wird später in :ref:`beispiel-` beschrieben.
     
 Knoten
 ^^^^^^
@@ -208,33 +208,118 @@ Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an eine
 
 Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
-Beispiel
-========
 
-Zur Verdeutlichung des bisher gesagten soll das Concept *DataItem* dienen:
+.. _beispiel-neues-element:
+
+Anwendungsbeispiel: Hinzufügen eines neuen Modellelements
+=========================================================
+
+Zur Verdeutlichung des bisher Gesagten soll hier gezeigt werden, wie ein neues Sprachelement zum Prozess-Meta-Modell hinzugefügt werden kann. 
+Anschließend wird die dazugehörige Repräsentation im Editor-Meta-Modell ergänzt.
+
+Änderungen am Prozess-Metamodell
+--------------------------------
+
+Im Prozess-Metamodell fehlt bisher die Möglichkeit, die operationsbezogene Perspektive (:ref:`popm`) abzubilden. 
+Ein Operations-Element soll durch einen Knoten dargestellt werden, der sich einem Prozess zuordnen lässt.
+
+
+Die folgenden Änderungen erfolgen im Package PM.M2.processLanguage.
+
+Zuerst wird die Verbindung zwischen Prozessknoten und dem neuen Operationsknoten hinzugefügt:
 
 .. code-block:: java
 
-    concept DataItem extends DataPerspective {
-        1..1 string name;
-        0..* concept DataFlow inboundDataFlows;
-        0..* concept DataFlow outboundDataFlows;
-        0..* concept NodeDataItemConnection inboundNodeDataItemConnection;
+    concept ProcessOrgConnection extends Connection {  }
+
+Anschließend wird der Knoten definiert:
+
+.. code-block:: java
+
+    concept OrganizationalPerspective extends Perspective {
+        string name;
+        0..* concept ProcessOrgConnection inboundProcessOrgConnection;
     }
 
-Die Attribute *inboundDataFlows* und *outboundDataFlows* legen fest, dass DataItems untereinander verbunden werden können. 
+Das Attribut *name* kann später vom Modellierungswerkzeug ausgelesen und verändert werden.
+*InboundProcessOrgConnection* drückt aus, dass dieser Knoten Endpunkt einer *ProcessOrgConnection* sein kann. 
 
-Durch *inboundNodeDataItemConnection* wird ausgedrückt, dass ein DataItem Endpunkt einer NodeDataConnection sein kann. Der Startpunkt ist entsprechend in *Node* definiert.
-
-
-Wie unter :ref:`ebl-figures-kanten` erwähnt müssen in einem zu einer Kante gehörenden Editor-Concept die Attribute des Knoten-Concepts aus dem Domänenmodell angegeben werden, denen Kanten zugewiesen werden.
-
-Damit müssen beispielsweise im DataFlowConnection-Concept im Editor-Definition-Model die Attribute *inboundAttrib*  und *outboundAttrib* auf "inboundDataFlows" beziehungsweise "outboundDataFlows" gesetzt werden.
+Abschließend muss die Verbindung noch im Prozessknoten bekannt gemacht werden:
 
 
+.. code-block:: java
+
+    concept Process extends Node {
+        0..* concept ProcessOrgConnection outboundProcessOrgConnection;
+        // weitere Attribute ...
+    }
+
+Ein *Process* kann somit der Startpunkt einer solchen Verbindung sein.
+
+
+Änderungen am Editor-Metamodell
+-------------------------------
+
+Der soeben definierte Organisationsknoten soll durch eine Pyramide dargestellt werden, auf deren Seiten der Wert des Attributs *name* zu lesen ist.
+Bisher gibt es noch kein Basis-Concept für eine beschriftete Pyramide, also wird diese zum package *figures* im *Editor-Base-Level* (fqn EMM.M2.figures) hinzugefügt:
+
+.. code-block:: java
+
+    concept TextPyramid extends TextLabelNode {
+        scalaType = "test.TextPyramid";
+    }
+
+TextLabelNode stellt schon alle für einen Text-Knoten benötigten Attribute bereit; daher muss in diesem Concept nur noch der Typ des Grafikobjektes angegeben werden.
+Wie ein passendes Grafikobjekt erstellt werden kann wird in einer Fortsetzung dieses Beispiels unter :ref:`beispiel-neue-modellfigur` gezeigt nachdem die Grundlagen dafür erläutert worden sind.
+
+Auf dem Editor-Definition-Level (EMM.M2) kann nun die Repräsentation für den Organisationsknoten-Typen als Instanz der TextPyramid im package *nodeFigures* definiert werden. 
+
+Als Vorlage wird das vorhandene Concept *Process* genutzt. 
+In folgendem Code werden nur notwendige Änderungen gezeigt; die restlichen Zuweisungen können belassen oder nach eigenem "Geschmack" gesetzt werden.
+
+.. code-block:: java
+
+    TextPyramid OrganizationalNode {
+        modelElementFQN = pointer PM.M2.processLanguage.OrganizationalPerspective;
+        displayAttrib = "name";
+        toolingAttrib = "name";
+        toolingTitle = "Organizational Unit";
+        // weitere Attribute ...
+    }
+
+Die unter :ref:`ebl-figures` erläuterten Attribute werden hier noch einmal am konkreten Beispiel gezeigt:
+
+    * *modelElementFQN* gibt das zugehörige Concept aus dem Prozess-Metamodell an, das weiter oben definiert wurde.
+    * *displayAttrib* legt fest, dass das Attribut "name" jenes Concepts als Text angezeigt werden soll.
+
+Knoten werden wie gesagt nach dem Typ-Verwendungs-Konzept erstellt. *OrganizationalPerspective* ist also ein "Metatyp", von dem im Modellierungswerkzeug erst konkrete Typen erstellt werden müssen.
+Die Bezeichnung des Metatyps im Modellierungswerkzeug wird von der Zuweisung *toolingTitle* auf "Organizational Unit" festgelegt. 
+Dagegen gibt *toolingAttrib* an, dass ein erzeugter Typ mit dem Wert seines "name"-Attributs benannt wird. 
+
+
+Im nächsten Schritt wird eine Repräsentation für oben definierte Verbindung zwischen Prozess und Organisationsknoten im package *connectionFigures* definiert.
+Als Vorlage dient das *nodeDataEdge*-Concept.
+
+.. code-block:: java
+
+    ColoredLine ProcessOrgEdge {
+        modelElementFQN = pointer PM.M2.processLanguage.ProcessOrgConnection;
+        toolingName = "Process-Organizational Assoc";
+        outboundAttrib = "outboundProcessOrgConnection";
+        inboundAttrib = "inboundProcessOrgConnection";
+        // weitere Attribute ...
+    }
+
+Der Wert von *inboundAttrib* entspricht dem Namen des Attributs im weiter oben definierten *OrganizationalPerspective*-Concepts.
+So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmodell dem Attribut "inboundProcessOrgConnection" zugewiesen werden sollen.
+
+Änderungen am Editor-Metamodell
+-------------------------------
 
 .. [#f1] Die Implementierung stellt momentan TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
 
 .. [#f2] Eine andere Möglichkeit wäre es, die Rotation mit den Komponenten einer Rotationsmatrix darzustellen. Dafür sind aber 9 Werte nötig, was die Modelle unnötig überfrachtet, da für jeden Wert ein eigenes Attribut definiert werden muss. 
 
 .. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
+
+.. [#f4] TODO Verweis auf Screenshot oder Ulis Arbeit?!
