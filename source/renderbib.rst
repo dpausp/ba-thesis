@@ -58,10 +58,7 @@ Solche Abstraktionen werden – wenn sie allgemein verwendbar sind – direkt vo
 Durch das Prinzip soll der Programmierer von oft wiederkehrenden Aufgaben entlastet werden, aber trotzdem die vollen Möglichkeiten von OpenGL nutzen können, wenn nötig.
 
 Höhere Abstraktionen sollen auch von Programmieren ohne tiefgreifende Computergrafik- und OpenGL-Kenntnisse genutzt werden können.
-Ein Beispiel dafür ist die weiter unten im Kapitel gezeigte Möglichkeit, auf einfachem Wege ein neues Grafikobjekt für die Modellierung auf Basis der schon vorhandenen Figuren zu erstellen.
-
-
-.. TODO ref?
+Ein Beispiel dafür ist die weiter unten im Kapitel gezeigte :ref:`Möglichkeit <beispiel-neue-modellfigur>`, auf einfachem Wege ein neues Grafikobjekt für die Modellierung auf Basis der schon vorhandenen Figuren zu erstellen.
 
 
 Die Library lässt sich grob in zwei Schichten, eine **Low-Level-API** und einer **Higher-Level-API** aufteilen, die im Folgenden vorgestellt werden.
@@ -109,16 +106,16 @@ Higher-Level-API
 Diese Schicht stellt im Wesentlichen Schnittstellen und häufig benötigte Implementierungen für die Aufgabe bereit, die grafischen Objekte und den eigentlichen Rendervorgang zu beschreiben, der jene Objekte schließlich "auf den Bildschirm bringt". 
 Zur Implementierung werden die von der Low-Level-API bereitgestellten OpenGL-Abstraktionen genutzt.
 
-In dieser Bibliothek wird ein solcher Rendervorgang durch sogenannte *RenderStages* beschrieben.
-Objekte, die von solchen RenderStages angezeigt werden können werden als *Drawable* bezeichnet. 
+In dieser Bibliothek wird ein solcher Rendervorgang durch sogenannte ``RenderStages`` beschrieben.
+Objekte, die von solchen RenderStages angezeigt werden können werden als ``Drawable`` bezeichnet. 
 
 .. _drawable:
 
 Drawable
 ---------
 
-Zu zeichnende Objekte werden durch eine Klasse beschrieben, welche von der Basisklasse *Drawable* abgeleitet ist.
-Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (Trait *Mesh*), der Position und Größe (Trait *Transformation*) und der Darstellungsweise (Trait *Effect*) enthalten.
+Zu zeichnende Objekte werden durch eine Klasse beschrieben, welche von der Basisklasse ``Drawable`` abgeleitet ist.
+Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (Trait ``Mesh``), der Position und Größe (Trait ``Transformation``) und der Darstellungsweise (Trait ``Effect``) enthalten.
 Die Implementierung ist dabei sehr flexibel möglich und kann an die Anforderungen des konkret dargestellten Objekts und der Anwendung angepasst werden. 
 
 In den Traits sind nur Methoden vorgegeben, die die von einem "Renderer" benötigten Daten liefern müssen:
@@ -127,7 +124,7 @@ In den Traits sind nur Methoden vorgegeben, die die von einem "Renderer" benöti
 * Transformation liefert die Transformationsmatrix des Grafikobjekts.
 * Ein Effect ist für die Bereitstellung von Shader-Beschreibungen und zugehörigen Uniforms zuständig.
 
-Ein Renderer kann selbst implementiert werden oder es kann eine *RenderStage* (nächster Abschnitt) dafür konfiguriert und genutzt werden.
+Ein Renderer kann selbst implementiert werden oder es kann eine ``RenderStage`` (nächster Abschnitt) dafür konfiguriert und genutzt werden.
 
 Drawables stellen im Normalfall eine Schnittstelle für die Anwendung bereit, über die sich Attribute des Grafik-Objektes auslesen und setzen lassen.
 So könnte eine Transformation, die für ein bewegliches Objekt eingesetzt wird, einen Setter bereitstellen, der das Verändern der aktuellen Position erlaubt.
@@ -165,7 +162,7 @@ Mittels der Methoden diffuse und specular kann die Anwendung die Reflexionseigen
     Zusammengesetzter PhongMaterialEffect
 
 Ressourcen, die potenziell von vielen verschiedenen Drawables geteilt werden können werden im Drawable nur durch eine abstrakte Beschreibung dargestellt. 
-Texturen werden so über eine *TextureDefinition* beschrieben, Shaderquelldateien über eine *ShaderDefinition*. 
+Texturen werden so über eine ``TextureDefinition`` beschrieben, Shaderquelldateien über eine ``ShaderDefinition``. 
 
 .. _renderstage:
 
@@ -177,7 +174,7 @@ Diese werden in der bereitgestellten Implementierung der RenderStage zuerst sort
 Eine Sortierung wird durchgeführt, um transluzente Objekte (Anforderung 7) in der richtigen Reihenfolge zu zeichnen sowie um unnötige Zeichenoperationen und OpenGL-Zustandswechsel zu vermeiden.
 Durch Angabe einer Render-Priorität in den Drawables kann manuell eine bestimmte Reihenfolge erzwungen werden, wenn dies für spezielle Zeichenaufgaben nötig ist.
 
-Von der *RenderStage* werden zu den von Drawables definierten Texture- und ShaderDefinitions Objekte der Low-Level-API nach Bedarf erzeugt.
+Von der ``RenderStage`` werden zu den von Drawables definierten Texture- und ShaderDefinitions Objekte der Low-Level-API nach Bedarf erzeugt.
 Diese werden für das Zeichnen von mehreren Drawables wiederverwendet, um Grafikspeicher und Zeit zu sparen.
 
 Abgegrenzte Funktionalitäten können in **RenderStagePlugins** ausgelagert werden. 
@@ -201,15 +198,15 @@ Licht
 
 Die Renderbibliothek unterstützt das Phong-Beleuchtungsmodell, wobei dieses pixelgenau ausgewertet wird. 
 Für die Anwendung werden Klassen bereitgestellt, die die von "altem" OpenGL bekannten "Lichtquellen" bereitstellen und sich an deren Schnittstelle orientieren. 
-Lichtquellen können entweder entfernungsabhängig (*PositionalLight*) oder -unabhängig sein (*DirectionalLight*).
+Lichtquellen können entweder entfernungsabhängig (``PositionalLight``) oder -unabhängig sein (``DirectionalLight``).
 
-Implementiert wird die Beleuchtung auf Scala-Seite durch das Zusammenspiel des *PhongLightingRenderStagePlugins* mit dem Effect-Addon *PhongLightingAddon*. 
+Implementiert wird die Beleuchtung auf Scala-Seite durch das Zusammenspiel des ``PhongLightingRenderStagePlugins`` mit dem Effect-Addon ``PhongLightingAddon``. 
 Die eigentlichen Lichtberechnungen wurden in GLSL-Shaderfunktionen implementiert, die von verschiedenen Fragment-Shadern genutzt werden.
 
 Kamera
 ^^^^^^
 
-Die Klasse *Camera* repräsentiert eine bewegliche und rotierbare Kamera, die einer RenderStage zugewiesen kann und damit die Perspektive des Betrachters festlegt.
+Die Klasse ``Camera`` repräsentiert eine bewegliche und rotierbare Kamera, die einer RenderStage zugewiesen kann und damit die Perspektive des Betrachters festlegt.
 Es werden die von OpenGL bekannten Funktionen (hier als Methoden des Kamera) angeboten, die eine perspektivische (glFrustum, gluPerspective, gluLookAt) oder orthogonale Projektion (glOrtho) konfigurieren.
 Außerdem stellt die Klasse verschiedene Methoden bereit, die für Umrechnungen von Bildschirm- in 3D-Raumkoordinaten und umgekehrt genutzt werden können (analog zu den OpenGL-Funktionen glProject und gluUnProject).
 
@@ -226,7 +223,7 @@ So wird für jede Instanz eines COLLADA-Modellobjekts zusätzlicher Grafikspeich
 Ein weiteres Problem ist, dass der Loader "fertige" Drawables liefert, die nicht für die Darstellung von Modellelementen (Knoten und Kanten) genutzt werden können. 
 
 Aufgrund dessen wurde ein "Compiler" entwickelt, der mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation der in dem Modell definierten Geometrie in Scala-Code erstellt. 
-Die so erzeugte Scala-Quelldatei enthält ein Trait, das *Mesh* (siehe :ref:`drawable`) implementiert. 
+Die so erzeugte Scala-Quelldatei enthält ein Trait, das ``Mesh`` (siehe :ref:`drawable`) implementiert. 
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
@@ -248,7 +245,7 @@ Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
 Für die :ref:`visualisierungsvarianten` wurde eine (Fragment-)Shader-Funktion erstellt, die die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändert.\ [#f1]_
 Ein Shader, der diese Funktion nutzt, definiert Uniforms, über die die Varianten ausgewählt werden können.
 
-Auf Scala-Seite werden diese Uniforms vom *SelectionHighlightAddon* verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
+Auf Scala-Seite werden diese Uniforms vom ``SelectionHighlightAddon`` verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
 
 Die Varianten lassen sich über im Addon definierte Setter aktivieren:
 
@@ -286,7 +283,7 @@ Hierfür wurde die 2D-API (java.awt) der Java-Klassenbibliothek zur Hilfe genomm
 Zur Verwendung mit OpenGL wird die Schrift in eine Textur geschrieben, die dann auf die Objekte aufgebracht werden kann.
 Um die Darstellungsqualität zu erhöhen wird die Antialiasing-Funktion von Graphics2D genutzt. 
 
-Um Text darstellen zu können müssen Drawables den Trait *TextDisplayAddon* einmischen und die genutzte RenderStage muss die Plugins *TextDisplayRenderStagePlugin* sowie *TextureRenderStagePlugin* einbinden.
+Um Text darstellen zu können müssen Drawables den Trait ``TextDisplayAddon`` einmischen und die genutzte RenderStage muss die Plugins ``TextDisplayRenderStagePlugin`` sowie ``TextureRenderStagePlugin`` einbinden.
 Im RenderStagePlugin wird bei jeder Änderung des Textes oder Schrifteinstellungen die Schrift-Textur neu erstellt, so dass im nächsten Frame der neue Text angezeigt wird.
 
 Der Text kann im Drawable mit 
@@ -295,7 +292,7 @@ Der Text kann im Drawable mit
 
     drawable.text = "irgendein Text" 
 
-verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, -größe und -stil (*java.awt.Font*) und die Schriftfarbe (*java.awt.Color*) angeboten.
+verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, -größe und -stil (``java.awt.Font``) und die Schriftfarbe (``java.awt.Color``) angeboten.
 
 Der Text wird zentriert angezeigt und wird am Wortende umgebrochen, falls der horizontale Platz nicht ausreicht. 
 Die "Schriftgröße" wird als Mindestgröße interpretiert; falls ein Objekt eine Skalierung größer 1 aufweist wird die Größe der Schrift proportional mitskaliert. 
@@ -312,10 +309,10 @@ SVarSupport - Einbindung der Modell-Drawables in I>PM3D
 Wie unter :ref:`modellanbindung-svars` gezeigt, werden die Visualisierungsparameter der Modellelementen über SVars gesetzt. 
 Den SVar-Wert zu verändern hat alleine noch keinen Effekt; die Wertänderungen müssen an die Drawables weitergeleitet werden, welche die Anbindung an die Grafikschnittstelle realisieren.
 
-Die Verbindung der SVars mit den Attributen der Drawables erfolgt über Traits, die das Trait *SVarSupport* implementieren. 
-Solche *SVarSupports* werden in Modell-Drawables eingemischt, wie im Anwendungsbeispiel im folgenden Abschnitt gezeigt wird.
+Die Verbindung der SVars mit den Attributen der Drawables erfolgt über Traits, die das Trait ``SVarSupport`` implementieren. 
+Solche ``SVarSupports`` werden in Modell-Drawables eingemischt, wie im Anwendungsbeispiel im folgenden Abschnitt gezeigt wird.
 
-Diese Traits stellen eine Methode, *connectSVars* bereit, die von der Renderkomponente aufgerufen wird nachdem diese ein Drawable erzeugt hat.
+Diese Traits stellen eine Methode, ``connectSVars`` bereit, die von der Renderkomponente aufgerufen wird nachdem diese ein Drawable erzeugt hat.
 So werden in dieser Methode für alle vom Trait unterstützten SVars Observe-Funktionen registriert, die für jede Änderung des SVar-Wertes aufgerufen werden.
 Üblicherweise leiten diese Funktionen die neuen Werte nur an einen Setter des Drawables weiter, wie sie in den vorherigen Abschnitten gezeigt wurden.
 
@@ -323,16 +320,16 @@ Für SVars, deren Typ erst zur Laufzeit bekannt wird kann der Methode eine "Erse
 Eine solche Ersetzung ist beispielsweise für die Darstellung von Text auf Modellknoten nötig. 
 
 Im :ref:`Editor-Metamodell <ebl-figures>` wird festgelegt, welches Attribut als Text dargestellt werden soll.
-Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der *Text*-SVar durch die entsprechend benannte Editor-Model-SVar :ref:`<modellanbindungs-svars>`.
-Beispielsweise wird so für einen Prozessknoten die *model.function*-SVar mit dem Setter für den aktuellen Text verbunden.
-Aufgrund dessen wird bei jeder Änderung am *function*-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
+Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der ``Text``-SVar durch die entsprechend benannte Editor-Model-SVar :ref:`<modellanbindungs-svars>`.
+Beispielsweise wird so für einen Prozessknoten die ``model.function``-SVar mit dem Setter für den aktuellen Text verbunden.
+Aufgrund dessen wird bei jeder Änderung am ``function``-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
 
 Das gleiche Prinzip wird für Visualisierungsparameter (Farben, Schrift) aus dem Editor-Modell angewendet.
 
 
-Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait *TextDisplaySVarSupport* angeboten.
-Im Normalfall wird dieses zusammen mit dem *BackgroundSVarSupport* genutzt, welches das Setzen der Hintergrundfarbe übernimmt. 
-Das Trait *SelectionHighlightSVarSupport* stellt die Anbindung der Visualisierungsvarianten :ref:`erweiterung-interaction` bereit.
+Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait ``TextDisplaySVarSupport`` angeboten.
+Im Normalfall wird dieses zusammen mit dem ``BackgroundSVarSupport`` genutzt, welches das Setzen der Hintergrundfarbe übernimmt. 
+Das Trait ``SelectionHighlightSVarSupport`` stellt die Anbindung der Visualisierungsvarianten :ref:`erweiterung-interaction` bereit.
 
 
 .. _beispiel-neue-modellfigur:
@@ -344,7 +341,7 @@ Hier soll gezeigt werden, wie sich ein neues Grafikobjekt erstellen lässt, das 
 Dies ist die Fortsetzung des Anwendungsbeispiels für das Hinzufügen eines neuen Modellelements zum Metamodell :ref:`beispiel-neues-element`.
 
 Die Geometrie des Objekts kann zum Einen manuell erstellt werden, indem das Trait Mesh implementiert wird. 
-Als Vorlage kann eine der mitgelieferten Meshes, wie *mmpe.renderer.mesh.UnitCube* genutzt werden.
+Als Vorlage kann eine der mitgelieferten Meshes, wie ``mmpe.renderer.mesh.UnitCube`` genutzt werden.
 
 Einfacher ist die Nutzung des COLLADA2Scala-Compiler, der wie folgt aufgerufen werden kann (Linux):
 
@@ -352,13 +349,13 @@ Einfacher ist die Nutzung des COLLADA2Scala-Compiler, der wie folgt aufgerufen w
     
    $ collada2scala pyramid.dae test.Pyramid pyramid.jar
 
-Damit wird aus einer COLLADA-Datei pyramid.dae eine pyramid.jar erstellt, die im Package test einen Mesh *Pyramid* enthält.
+Damit wird aus einer COLLADA-Datei pyramid.dae eine pyramid.jar erstellt, die im Package test einen Mesh ``Pyramid`` enthält.
 
 
-Im nächsten Schritt wird die neue Figur zum object *mmpe.model.BaseDrawables* hinzugefügt.
+Im nächsten Schritt wird die neue Figur zum object ``mmpe.model.BaseDrawables`` hinzugefügt.
 
 Es soll eine Pyramide erstellt werden, auf deren Seiten Text angezeigt werden kann.
-Dafür kann beispielsweise die *TextBox* als Vorlage genommen und wie folgt abgeändert werden:
+Dafür kann beispielsweise die ``TextBox`` als Vorlage genommen und wie folgt abgeändert werden:
 
 .. code-block:: scala
     
@@ -373,7 +370,7 @@ Dafür kann beispielsweise die *TextBox* als Vorlage genommen und wie folgt abge
 Geändert wurde nur das Mesh-Trait in der 2. Zeile sowie der Name des Objekts in der 1.Zeile.
 
 
-Abschließend wird in *mmpe.model.ModelDrawableFactory* zur Fallunterscheidung in der Methode createDrawables ("figureFqn match ...") ein weiterer Fall hinzugefügt:
+Abschließend wird in ``mmpe.model.ModelDrawableFactory`` zur Fallunterscheidung in der Methode createDrawables ("figureFqn match ...") ein weiterer Fall hinzugefügt:
 
 .. code-block:: scala
 
@@ -382,7 +379,7 @@ Abschließend wird in *mmpe.model.ModelDrawableFactory* zur Fallunterscheidung i
         Seq(drawable)
 
 Nun kann die texturierte Pyramide im Editor-Metamodell genutzt werden.
-Das hier angegebene "test.TextPyramid" entspricht dem *scalaType*, wie er im Metamodell angegeben muss um diese Figur zu referenzieren.
+Das hier angegebene "test.TextPyramid" entspricht dem ``scalaType``, wie er im Metamodell angegeben muss um diese Figur zu referenzieren.
 
 
 Anmerkungen
@@ -390,9 +387,9 @@ Anmerkungen
 
 Am ersten Code-Beispiel ist zu sehen, wie ein Drawable für ein Modellelement prinzipiell definiert wird. 
 Die Zeilen 2 bis 4 geben die von :ref:`drawable` geforderte Implementierung an.
-Es wird von der Renderkomponente vorausgesetzt, dass *SIRISTransformation* für alle Drawables genutzt wird.
-*SelectableAndTextureEffect* wird für alle texturierten Figuren genutzt, die die :ref:`visualisierungsvarianten-impl` unterstützen.
-Analog dazu ist *SelectableAndTextEffect* für die Textdarstellung definiert, welcher das im nächsten Abschnitt beschriebene *TextDisplayAddon* nutzt.
+Es wird von der Renderkomponente vorausgesetzt, dass ``SiXTransformation`` für alle Drawables genutzt wird.
+``SelectableAndTextureEffect`` wird für alle texturierten Figuren genutzt, die die :ref:`visualisierungsvarianten-impl` unterstützen.
+Analog dazu ist ``SelectableAndTextEffect`` für die Textdarstellung definiert, welcher das im nächsten Abschnitt beschriebene ``TextDisplayAddon`` nutzt.
 
 In den letzten drei Zeilen werden die im vorherigen Abschnitt vorgestellten SVarSupports eingemischt.
 

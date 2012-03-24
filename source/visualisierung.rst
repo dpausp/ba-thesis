@@ -25,7 +25,7 @@ Wie nun die Modellelemente – also Knoten und Kanten – und Szenenobjekte prin
 Knoten
 ------
 
-Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren *TextLabelNode* und *TexturedNode* grundsätzlich zwei Möglichkeiten.
+Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren ``TextLabelNode`` und ``TexturedNode`` grundsätzlich zwei Möglichkeiten.
 
 Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus dem Prozessmodell direkt anzuzeigen.
 :num:`prozessknoten` zeigt zwei Prozesse, auf denen deren Funktion als Text angezeigt wird. 
@@ -93,7 +93,7 @@ In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader
 Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. 
 Dies wird von der von :cite:`uli` beschriebenen Editor-Komponente durchgeführt.
 
-Die durch das Concept *TexturedConnection*  (:ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
+Die durch das Concept ``TexturedConnection``  (:ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 
 Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert sind, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
 
@@ -110,7 +110,7 @@ Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen D
 Szenenobjekte
 -------------
 
-Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als *SceneryObject* bezeichnet werden. 
+Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als ``SceneryObject`` bezeichnet werden. 
 
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
 Diese können zur Illustration von Prozessschritten dienen, wie unter :ref:`ross-brown` erwähnt wurde.
