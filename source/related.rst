@@ -1,9 +1,11 @@
-************
-Related Work
-************
+**********************************
+Related Work zur 3D-Visualisierung
+**********************************
 
-Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche Arbeiten vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten beschäftigen und für die Realisierung der Aufgabenstellung oder für zukünftige Arbeiten in dieser Richtung hilfreich sein könnten. 
-Dies umfasst unter Anderem die Visualisierung von Graphen in 3D, 3D-Softwarevisualisierung oder Frameworks für die Erstellung von 3D-Editoren wie GEF3D.
+Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten wie der Softwaremodellierung beschäftigen. 
+
+Die hier gezeigten Arbeiten sollen als Anregung oder Motivation für die in dieser Arbeit dargestellte 3D-Visualisierung von Prozessen dienen.
+Außerdem sollen Ideen für zukünftige Erweiterungen des vorliegenden Projekts gesammelt und prinzipielle Vor- und Nachteile von 3D-Visualisierungen beleuchtet werden.
 
 3D-Softwarevisualisierung
 =========================
@@ -19,6 +21,8 @@ Die UML lässt prinzipiell aber auch 3D-Repräsentationen zu :cite:`Booch:1999:U
 Es lässt sich eine Reihe von Arbeiten finden, die sich mit 3D-Visualisierungstechniken beschäftigen und deren Vorteile gegenüber 2D-Techniken sowie Probleme bei der Realisierung betrachten.
 
 Einen umfassenden Überblick über derartige Arbeiten gibt :cite:`teyseyre_overview_2009`. 
+
+.. _dywer:
 
 Three dimensional UML using force directed layout
 -------------------------------------------------
@@ -53,6 +57,8 @@ Es wird ein Benutzer zitiert, der die Möglichkeit, das Diagramm aus verschieden
 Auch seien Benutzer gebeten worden, selbst ein 3D-Diagramm nach einer textuellen Vorlage zu modellieren. Dabei sei aufgefallen, dass die meisten Benutzer wenig Probleme mit der Aufgabe hatten. Es wird jedoch vermutet, dass die 3D-Darstellung bei einigen Benutzern eine gewisse Eingewöhnungszeit voraussetzen könnte.
 Probanden mit vorheriger Erfahrung aus 3D-Computerspielen hätten im Versuch die wenigsten Schwierigkeiten mit der Navigation im 3D-Raum gehabt. 
 
+.. _mcintosh:
+
 X3D-UML: 3D UML State Machine Diagrams
 --------------------------------------
 
@@ -75,6 +81,7 @@ Solche Diagramme seien Benutzern mit Erfahrung in Rational Rose vorgelegt worden
 .. figure:: _static/ext_pics/mcintosh_sm.png
 
     Hierarchisch aufgebautes 3D-UML-Zustandsdiagramm aus :cite:`mcintosh_x3d-uml:_2008`
+
 
 .. _krolovitsch:
 
@@ -118,6 +125,9 @@ So sei es möglich, in 3D-Sequenzdiagrammen die Zustände des Systems zu bestimm
     :height: 8cm
 
     3D-UML-Sequenzdiagramm; Ausschnitt aus :cite:`gil_three_1998`
+
+
+.. _gogolla:
 
 Towards Three-dimensional Representation and Animation of UML Diagrams
 ----------------------------------------------------------------------
@@ -345,30 +355,65 @@ Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die V
 Darstellung von Verbindungen
 -----------------------------
 
-Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Verbindungen als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. 
+Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Kanten als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. 
 
-Andere Möglichkeiten werden von :cite:``
+Kanten, die als "gebogene Röhren" dargestellt werden zeigen :cite:`spratt_using_1994` oder :cite:`balzer_hierarchy_2004`.
 
-Andere Varianten, um Kanten darzustellen: "Bezier-Röhren" :cite:`spratt_using_1994`
+Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
 
-Benutzerstudie zur Darstellung von Verbindungen: :cite:`holten_user_2009`
 
 .. _dynamische-Transparenz:
 
 Dynamische Transparenz
 ----------------------
 
-Das ebenfalls für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
+Das auch für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
 
-Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. Unwichtige, die Ansicht störende Objekte werden als "distractors", informationstragende Elemente als "targets" bezeichnet. 
+Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. 
+Unwichtige, die Ansicht störende Objekte würden als "distractors", informationstragende Elemente als "targets" bezeichnet. 
 Das Ziel sei nun, sicherzustellen, dass "targets" nie von "distractors" verdeckt werden können. 
-Letztere würden, sobald sie wichtige Objekte verdecken transparent dargestellt, damit das relevante Element jederzeit erkannt werden kann. 
-Es wird ein Algorithmus angegeben, der diesen Effekt in Echtzeit auf Sub-Objekt-Ebene berechnen kann.
+Letztere würden, sobald sie wichtige Objekte verdecken transluzent dargestellt, damit das relevante Element jederzeit erkannt werden könne. 
 
-Zusammenfassung
-===============
+Zusammenfassung und Bewertung
+=============================
 
-bla
+Es wurden verschiedene Ansätze gezeigt, zu einer 3D-Visualisierung von Informationen zu gelangen und deren Vorteile zu nutzen. 
+So lässt sich häufig der Ansatz beobachten, von einer bekannten 2D-Visualisierung auszugehen und diese in den 3D-Raum zu übertragen. 
+Das war besonders bei den verschiedenen Arbeiten zu sehen, die sich mit 3D-UML beschäftigen.
+
+Eine recht naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren.
+Dies wurde von :ref:`McIntosh <mcintosh>` für UML-Zustandsdiagramme oder allgemein von :ref:`GEF3D <gef3d>` (dort als 2.5D-Darstellung bezeichnet) gezeigt.
+Für die Implementierung bedeutet das, dass sich möglicherweise schon vorhandenene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe einfach auf die Flächen gezeichnet wird.
+Für den Benutzer hat die Darstellung den Vorteil, dass sich die Darstellung der Modellelemente selbst nicht ändert und sich mehrere Modelle gleichzeitig darstellen lassen, indem die Ebenen zueinander versetzt werden. 
+Modellhierarchien und Beziehungen zwischen verschiedenen Modellen lassen sich gut darstellen, indem beispielsweise Linien zwischen assoziierten Elementen oder zu Unterdiagrammen gezeichnet werden.
+
+Problematisch ist sicher, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schrift bemerkbar machen wird.
+Außerdem wird die natürliche Wahrnehmung des Menschen, die stark auf die Erkennung von 3D-Strukturen ausgelegt ist (ref?) kaum genutzt.
+
+Als Weiterentwicklung lässt sich die von :ref:`Krolovitsch und Nilsson <krolovitsch>` vorgestellte Visualisierung von Zustandsdiagrammen ansehen, die ebenfalls 2D-Flächen nutzt, jedoch die Elemente aus der Ebene herausragen lässt.
+So wirkt die Darstellung etwas "plastischer" und Strukturen lassen sich besser erkennen. 
+
+Interessant ist die dort gezeigte Möglichkeit, Subdiagramme temporär auszublenden und durch ein einzelnes Symbol zu ersetzen.
+Dies wäre auch in der Prozessmodellierung hilfreich für die Darstellung von kompositen (komplexen) Prozessen. 
+So könnte beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weiteres Modell in der 3D-Szene angezeigt werden ohne ein neues Fenster zu öffnen, wie es in 2D-Werkzeugen praktiziert wird.
+
+Die zusätzliche Dimension dafür zu nutzen, mehrere Diagramme auf einmal darzustellen lässt sich als möglicher Vorteil von 3D-Visualisierungen festhalten.
+
+Von :ref:`Dywer <dywer>` und :ref:`Gogolla <gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren und drehbaren 3D-Objekten gezeigt. 
+3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
+Wie von Dywer gezeigt ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
+
+Gogolla zeigte außerdem die Möglichkeit, bei 3D-Graphen wie dem gezeigten Klassendiagramm Knoten in den Hintergrund zu schieben um so anzudeuten, dass diese weniger "wichtig" sind.
+
+Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen große Vorteile gegenüber ähnlichen 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
+Es wurden immerhin einige Hinweise zur Effektivität gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen andeuten, jedoch auch Probleme aufzeigen.
+
+* Navigation
+* Erfahrenheit der Benutzer
+* Akzeptanz? Spielzeug?! :cite:`schonhage_3d_2000`
+
+Implementierungen, mit denen es möglich wäre, flexibel 3D-Prozessmodelle zu erstellen und zu betrachten ließen sich nicht finden.
+
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" können unter http://wilma.sourceforge.net/ heruntergeladen werden.
 

@@ -3,10 +3,9 @@ Render-Komponente
 *****************
 
 In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für I>PM3D bereitstellt.
-Anhang A beschreibt die :ref:`render-bibliothek`, die von dieser Komponente für die Grafikausgabe genutzt wird.
-Die 
+Von dieser Komponente wird die im Rahmen dieser Arbeit entstandene :ref:`render-bibliothek` an Simulator X angebunden.
 
-Dadurch wird die die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
+Damit wird die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
 
 Die eigentlichen Render-Aufgaben werden an einen Actor (*MMPERenderActor*) delegiert, der von der Renderkomponente (Klasse *MMPERConnector*) gestartet wird.\ [#f1]_
 Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an die Renderkomponente geschickt und an den RenderActor weitergeleitet. 
@@ -36,19 +35,21 @@ Von der Render-Bibliothek werden nur Funktionen genutzt, die in OpenGL 3.3 verf�
 Wegen Nifty-GUI muss der RenderActor OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated" Funktionen unterstützt. 
 Es ist daher möglich, dass dies auf manchen Hardwareplattformen zu Geschwindigkeits- oder Darstellungsproblemen führt.
 
-Für eine zukünftige Weiterentwicklung des Projekts wäre es daher wohl angebracht, eine eigene Menüimplementierung auf Basis der Renderbibliothek zu erstellen.
-
 Projektspezifische Erweiterungen
 --------------------------------
 
 Die Renderkomponente unterstützt die von Simulator X bereitgestellten RenderAspects für die Definition von Lichtquellen-Entities (*PointLight*) sowie den Aspekt *ShapeFromFile*, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
 
+Im Folgenden werden die zusätzlichen Fähigkeiten vorgestellt, welche von der Orignal-Renderkomponente nicht unterstützt werden.
+
 ShapeFromFactory
 ^^^^^^^^^^^^^^^^
 
-Zusätzlich wurde es ermöglicht, die grafische Repräsentation von einer Factory-Klasse oder -Actor erzeugen zu lassen.
-Dafür ist der RenderAspect *ShapeFromFactory* definiert.
-Dies wird im Projekt für die Erstellung der grafischen Repräsentationen der Modellelemente – also der Knoten und Kanten des Prozessmodells – genutzt.
+Mir der hier entwickelten Renderkomponente ist es möglich, die grafische Repräsentation einer Entity von einer Factory-Klasse oder -Actor erzeugen zu lassen. 
+Damit lassen sich in der Anwendung beliebige Grafikobjekte nutzen, die mit Hilfe der ref:`render-bibliothek`: erstellt wurden.
+
+Hierfür ist der RenderAspect *ShapeFromFactory* definiert.
+Dies wird im Projekt für die Erstellung der Grafikobjekte für Modellelemente – also der Knoten und Kanten des Prozessmodells – genutzt.
 
 Modellierungsflächen
 ^^^^^^^^^^^^^^^^^^^^

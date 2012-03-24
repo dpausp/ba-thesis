@@ -345,8 +345,7 @@ Eine solche Darstellung liegt aber näher an den bekannten Visualisierungssprach
 Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
 Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
-Andere Darstellungsformen wurden unter :ref:`related-verbindungen` genannt.
-
 So könnten Verbindungen auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden um die Überdeckung von Knoten oder das Schneiden von anderen Verbindungen zu vermeiden. 
+Arbeiten zu alternativen Darstellungsformen wurden unter :ref:`related-verbindungen` genannt.
 
 .. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 

@@ -2,3 +2,5 @@ build
 *.swp
 komplett.rdf
 komplett.bib
+*.eps
+*.dia~

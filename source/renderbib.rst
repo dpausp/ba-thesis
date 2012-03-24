@@ -98,7 +98,10 @@ Shader- und ShaderProgram-Klasse
 Abstraktionen für das Offscreen-Rendering 
     Renderbuffer und Framebuffer-Klassen (FBO)
 
-Sonstige Abstraktionen: Zeichenbefehle (DrawArrays und DrawElements), Textur- und Textursampler-Klassen, Viewport und Hintergrundfarbe (glClearColor), OpenGL-Einstellungen (wie glEnable oder glDepthFunc)
+Zeichenbefehle
+    Kapseln die Zeichenfunktionen, welche OpenGL anweisen ein Objekt zu zeichnen. Es werden die Funktionen DrawArrays und DrawElements unterstützt.
+
+Sonstige Abstraktionen: Textur- und Textursampler-Klassen, Viewport und Hintergrundfarbe (glClearColor), OpenGL-Einstellungen (wie glEnable oder glDepthFunc), VertexArrayObjects
 
 Higher-Level-API
 ================
@@ -118,10 +121,13 @@ Zu zeichnende Objekte werden durch eine Klasse beschrieben, welche von der Basis
 Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (trait *Mesh*), der Position und Größe (trait *Transformation*) und der Darstellungsweise (trait *Effect*) enthalten.
 Die Implementierung ist dabei sehr flexibel möglich und kann an die Anforderungen des konkret dargestellten Objekts und der Anwendung angepasst werden. 
 
-In den traits sind nur Methoden vorgegeben, die die vom "Renderer" benötigten Daten liefern müssen.
-Dieser Renderer kann im Prinzip selbst implementiert werden oder es kann eine *RenderStage* dafür konfiguriert und genutzt werden.
+In den Traits sind nur Methoden vorgegeben, die die vom "Renderer" benötigten Daten liefern müssen:
 
-.. TODO Klassendiagramm?
+* Ein Mesh stellt dem Renderer die Zeichenbefehle sowie Vertex-Attribute bereit, üblicherweise sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
+* Transformation liefert die Transformationsmatrix des Grafikobjekts.
+* Ein Effect ist für die Bereitstellung von Shader-Beschreibungen und zugehörigen Uniforms zuständig.
+
+Ein Renderer kann selbst implementiert werden oder es kann eine *RenderStage* (nächster Abschnitt) dafür konfiguriert und genutzt werden.
 
 Drawables stellen im Normalfall eine Schnittstelle für die Anwendung bereit, über die sich Attribute des Grafik-Objektes auslesen und setzen lassen.
 So könnte eine Transformation, die für ein bewegliches Objekt eingesetzt wird, einen Setter bereitstellen, der das Verändern der aktuellen Position erlaubt.
@@ -130,13 +136,33 @@ Die Render-Bibliothek stellt eine Reihe von Implementierungen dieser Traits zur 
 Diese sind zwar auf die Bedürfnisse des I>PM3D-Projekts abgestimmt, aber möglichst allgemein gehalten und damit wiederverwendbar.
 
 Sinnvollerweise werden Drawables erstellt, indem traits zusammengemischt werden, die die genannten Basis-Traits Mesh, Transformation und Effect implementieren.
-So kann mit diesem Konzept beispielsweise leicht ein Würfel definiert werden, indem eine entsprechende Mesh-Implementierung erstellt wird, die die Vertexkoordinaten und weitere Informationen wie Normalen und Texturkoordinaten liefert. 
+So kann mit diesem Konzept beispielsweise ein Würfel definiert werden, indem eine entsprechende Mesh-Implementierung erstellt wird.
 Durch die Verwendung von unterschiedlichen Effect-Traits können auf einfachem Wege verschieden dargestellte Varianten eines Objekts erstellt werden.
 
-Effects selbst können relativ kompliziert aufgebaut sein. Es ist sinnvoll, diese wieder aus verschiedenen traits zusammenzusetzen, die Teilfunktionalitäten implementieren.
-Solche Traits werden in der Renderbibliothek mit der Endung -Addon benannt; beispielsweise existiert ein PhongLightingAddon für die Bereitstellung von Lichtparametern und ein TextDisplayAddon, das die Anzeige von Schrift auf den Objekten implementiert.
+:num:`Abbbildung #drawable-classdiag` zeigt dieses Drawable-Konzept. Es wird nur eine Auswahl der Methoden dargestellt.
 
-.. TODO am besten durch ein Klassendiagramm ergänzen / ersetzen
+
+.. _drawable-classdiag:
+
+.. figure:: _static/diags/drawable-classdiag.eps
+    :width: 14cm
+
+    Zusammensetzung eines farbigen Würfels aus den Basis-Traits
+
+Effects selbst können relativ kompliziert aufgebaut sein. Es ist sinnvoll, diese wieder aus verschiedenen Traits zusammenzusetzen, die Teilfunktionalitäten implementieren.
+Solche Traits werden in der Renderbibliothek mit der Endung -Addon benannt. 
+Beispielsweise existiert ein PhongLightingAddon für die Bereitstellung von Lichtparametern und ein TextDisplayAddon, das die Anzeige von Schrift auf den Objekten implementiert.
+
+:num:`Abbbildung #effect-classdiag` zeigt ein Beispiel für einen Effect, der aus zwei Addons zusammengesetzt wird. 
+Addons stellen oft Uniforms (material- und lightUniforms im Beispiel) zur Verfügung, die im Effect kombiniert und von der uniforms()-Methode zurückgegeben werden.
+Mittels der Methoden diffuse und specular kann die Anwendung die Reflexionseigenschaften eines Objekts verändern.
+
+.. _effect-classdiag:
+
+.. figure:: _static/diags/effect-classdiag.eps
+    :width: 16cm
+
+    Zusammengesetzter PhongMaterialEffect
 
 Ressourcen, die potenziell von vielen verschiedenen Drawables geteilt werden können werden im Drawable nur durch eine abstrakte Beschreibung dargestellt. 
 Texturen werden so über eine *TextureDefinition* beschrieben, Shaderquelldateien über eine *ShaderDefinition*. 
@@ -156,6 +182,16 @@ Diese werden für das Zeichnen von mehreren Drawables wiederverwendet, um Grafik
 
 Abgegrenzte Funktionalitäten können in **RenderStagePlugins** ausgelagert werden. 
 So stellt die Renderbibliothek unter Anderem Plugins für die Verwaltung von Texturen und die Umsetzung von Lichtquellen bereit.
+
+:num:`Abbbildung #renderstage-classdiag` zeigt eine zusammengesetzte RenderStage.
+
+.. _renderstage-classdiag:
+
+.. figure:: _static/diags/renderstage-classdiag.eps
+    :width: 16cm
+
+    RenderStage mit eingemischten Plugin-Traits
+
 
 Weitere Abstraktionen
 ---------------------
@@ -179,7 +215,7 @@ Außerdem stellt die Klasse verschiedene Methoden bereit, die für Umrechnungen 
 
 Dies werden im Projekt von Eingabegeräten genutzt, die mit 2D-Daten arbeiten und diese beispielsweise für die Auswahl von 3D-Objekten entsprechend umrechnen müssen.
 Aufgrund der von Simulator X geforderten Komponentenaufteilung werden die Methoden von den Nutzern jedoch nicht direkt aufgerufen, sondern von der :ref:`renderkomponente` gekapselt. 
-Nutzer müssen entsprechend definierte Nachrichten nutzen, die über das Kommunikationssystem von Simulator X verschickt werden.
+Nutzer müssen analog zu den Methoden definierte Nachrichten nutzen, die über das Kommunikationssystem von Simulator X verschickt werden.
 
 COLLADA2Scala-Compiler
 ======================
@@ -194,7 +230,110 @@ Die so erzeugte Scala-Quelldatei enthält ein trait, das *Mesh* (siehe :ref:`dra
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
-Im nächsten Abschnitt wird ein Beispiel für die Nutzung gegeben.
+Im Ende des Kapitels wird im Anwendungsbeispiel die Nutzung des "Compilers" demonstriert.
+
+
+Spezielle Erweiterungen für I>PM3D
+==================================
+
+In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden.
+Hier wird auch gezeigt, wie die oben beschriebenen Ebenen der Render-Bibliothek und die GLSL-Shader zusammenwirken.
+Außerdem soll auch verdeutlicht werden, wie die weiter oben beschriebenen Drawables als Schnittstelle zwischen grafischer Darstellung und Anwendung dienen.
+
+.. _erweiterung-interaction:
+
+Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
+----------------------------------------------------------------------
+
+Für die :ref:`visualisierungsvarianten` wurde eine (Fragment-)Shader-Funktion erstellt, die die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändert.\ [#f1]_
+Ein Shader, der diese Funktion nutzt, definiert Uniforms, über die die Varianten ausgewählt werden können.
+
+Auf Scala-Seite werden diese Uniforms vom *SelectionHighlightAddon* verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
+
+Die Varianten lassen sich über im Addon definierte Setter aktivieren:
+
+.. code-block:: scala
+
+    drawable.disabled = false
+    drawable.highlighted = false
+    drawable.selectionState = DrawableSelectionState.Selected
+
+Durch den Aufruf eines solchen Setters wird die zugehörige Uniform geändert und die Änderung somit zum Shaderprogramm weitergegeben, nachdem etwaige Konvertierungen durchgeführt wurden.
+
+Zusätzlich können noch folgende Parameter gesetzt werden:
+
+* borderWidth: Breite des Selektionsrahmens.
+* highlightFactor: Wert, mit dem die berechnete Farbe multipliziert wird um Hervorhebung darzustellen. Bei dunklen Grundfarben wird stattdessen mit 1 / highlightFactor multipliziert.
+
+"Deaktiviert" wird durch einen Grauton dargestellt, der wie folgt aus den Komponenten der Grundfarbe berechnet wird: grauwert = (rot + blau + grün) * 0.2. 
+Außerdem wird das Objekt transluzent gezeichnet.
+Der Selektionsrahmen wird im deaktivierten Zustand abhängig von der resultierenden Helligkeit von "grauwert" entweder hellgrau oder dunkelgrau dargestellt.
+
+Die Shaderfunktion zeichnet den "Selektionsrahmen" abhängig von den (2D)-Texturkoordinaten, die üblicherweise von 0 bis 1 reichen. 
+Auf jeder Seite wird ein Bereich mit der Breite "borderWidth" als Rahmen in der Komplementärfarbe zum Hintergrund gezeichnet.
+
+So wird durch die Texturkoordinaten die Form des Rahmens definiert; für die in der Arbeit verwendeten Objekte war dies ausreichend. 
+Jedoch könnten sich bei anderen Figuren Probleme ergeben, da die Texturkoordinaten auch für die Ausrichtung der Textur oder der Schrift genutzt werden.
+Für solche Objekte könnte allerdings leicht ein zusätzliches Vertex-Attribut definiert werden, dass die Koordinaten für die Positionierung des Rahmens liefert.\ [#f5]_
+
+.. _schrift-rendering:
+
+Darstellung von Text
+--------------------
+
+Unter Anderem für die Beschriftung von Modellknoten wurde eine gut lesbare und trotzdem einfach umsetzbare Technik für das Rendering von Schrift benötigt.
+Hierfür wurde die 2D-API (java.awt) der Java-Klassenbibliothek zur Hilfe genommen. 
+Zur Verwendung mit OpenGL wird die Schrift in eine Textur geschrieben, die dann auf die Objekte aufgebracht werden kann.
+Um die Darstellungsqualität zu erhöhen wird die Antialiasing-Funktion von Graphics2D genutzt. 
+
+Um Text darstellen zu können müssen Drawables den Trait *TextDisplayAddon* einmischen und die genutzte RenderStage muss die Plugins *TextDisplayRenderStagePlugin* sowie *TextureRenderStagePlugin* einbinden.
+Im RenderStagePlugin wird bei jeder Änderung des Textes oder Schrifteinstellungen die Schrift-Textur neu erstellt, so dass im nächsten Frame der neue Text angezeigt wird.
+
+Der Text kann im Drawable mit 
+
+.. code-block:: scala
+
+    drawable.text = "irgendein Text" 
+
+verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, -größe und -stil (*java.awt.Font*) und die Schriftfarbe (*java.awt.Color*) angeboten.
+
+Der Text wird zentriert angezeigt und wird am Wortende umgebrochen, falls der horizontale Platz nicht ausreicht. 
+Die "Schriftgröße" wird als Mindestgröße interpretiert; falls ein Objekt eine Skalierung größer 1 aufweist wird die Größe der Schrift proportional mitskaliert. 
+Bei einer Skalierung kleiner 1 wird der für die Schrift zur Verfügung stehende Platz verkleinert. 
+
+Die Skalieroperationen werden von einer Shaderfunktion realisiert.
+
+Um auch bei größeren Entferungen von der Kamera und kleiner Schrift noch eine angemessene Lesbarkeit zu erreichen kann Mipmapping genutzt werden, das auch von der Render-Bibliothek unterstützt wird. 
+Aufgrund von Problemen mit verschiedenen Grafikkarten, die für das Projekts getestet wurden, ist dies standardmäßig jedoch nicht aktiviert.
+
+SVarSupport - Einbindung der Modell-Drawables in I>PM3D
+-------------------------------------------------------
+
+Wie unter :ref:`modellanbindung-svars` gezeigt, werden die Visualisierungsparameter der Modellelementen über SVars gesetzt. 
+Den SVar-Wert zu verändern hat alleine noch keinen Effekt; die Wertänderungen müssen an die Drawables weitergeleitet werden, welche die Anbindung an die Grafikschnittstelle realisieren.
+
+Die Verbindung der SVars mit den Attributen der Drawables erfolgt über Traits, die das Trait *SVarSupport* implementieren. 
+Solche *SVarSupports* werden in Modell-Drawables eingemischt, wie im Anwendungsbeispiel im folgenden Abschnitt gezeigt wird.
+
+Diese Traits stellen eine Methode, *connectSVars* bereit, die von der Renderkomponente aufgerufen wird nachdem diese ein Drawable erzeugt hat.
+So werden in dieser Methode für alle vom Trait unterstützten SVars Observe-Funktionen registriert, die für jede Änderung des SVar-Wertes aufgerufen werden.
+Üblicherweise leiten diese Funktionen die neuen Werte nur an einen Setter des Drawables weiter, wie sie in den vorherigen Abschnitten gezeigt wurden.
+
+Für SVars, deren Typ erst zur Laufzeit bekannt wird kann der Methode eine "Ersetzungsliste" übergeben werden. Erstellt wird diese 
+Eine solche Ersetzung ist beispielsweise für die Darstellung von Text auf Modellknoten nötig. 
+
+Im :ref:`Editor-Metamodell <ebl-figures>` wird festgelegt, welches Attribut als Text dargestellt werden soll.
+Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der *Text*-SVar durch die entsprechend benannte Editor-Model-SVar :ref:`<modellanbindungs-svars>`.
+Beispielsweise wird so für einen Prozessknoten die *model.function*-SVar mit dem Setter für den aktuellen Text verbunden.
+Aufgrunddessen wird bei jeder Änderung am *function*-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
+
+Das gleiche Prinzip wird für Visualisierungsparameter (Farben, Schrift) aus dem Editor-Modell angewendet.
+
+
+Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait *TextDisplaySVarSupport* angeboten.
+Im Normalfall wird dieses zusammen mit dem *BackgroundSVarSupport* genutzt, welches das Setzen der Hintergrundfarbe übernimmt. 
+Das Trait *SelectionHighlightSVarSupport* stellt die Anbindung der Visualisierungsvarianten :ref:`erweiterung-interaction` bereit.
+
 
 .. _beispiel-neue-modellfigur:
 
@@ -247,83 +386,15 @@ Das hier angegebene "test.TextPyramid" entspricht dem *scalaType*, wie er im Met
 
 
 Anmerkungen
-^^^^^^^^^^^
+-----------
 
 Am ersten Code-Beispiel ist zu sehen, wie ein Drawable für ein Modellelement prinzipiell definiert wird. 
-Die Zeilen 2 bis 4 geben die von *Drawable* geforderte Implementierung an, wie im Abschnitt :ref:`drawable` beschrieben wurde.
+Die Zeilen 2 bis 4 geben die von :ref:`drawable` geforderte Implementierung an.
 Es wird von der Renderkomponente vorausgesetzt, dass *SIRISTransformation* für alle Drawables genutzt wird.
 *SelectableAndTextureEffect* wird für alle texturierten Figuren genutzt, die die :ref:`visualisierungsvarianten-impl` unterstützen.
 Analog dazu ist *SelectableAndTextEffect* für die Textdarstellung definiert, welcher das im nächsten Abschnitt beschriebene *TextDisplayAddon* nutzt.
 
-Die Bedeutung der SVarSupports Trait in den letzten drei Zeilen
-
-
-Spezielle Erweiterungen für I>PM3D
-==================================
-
-In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden.
-Hier wird auch gezeigt, wie die oben beschriebenen Ebenen der Render-Bibliothek und die GLSL-Shader zusammenwirken.
-Außerdem soll auch verdeutlicht werden, wie die weiter oben beschriebenen Drawables als Schnittstelle zwischen grafischer Darstellung und Anwendung dienen.
-
-Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
-----------------------------------------------------------------------
-
-Für die :ref:`visualisierungsvarianten` wurde eine (Fragment-)Shader-Funktion erstellt, die die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändert.\ [#f1]_
-Ein Shader, der diese Funktion nutzt, definiert Uniforms, über die die Varianten ausgewählt werden können.
-
-Auf Scala-Seite werden diese Uniforms vom *SelectionHighlightAddon* verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
-
-Die Varianten lassen sich über im Addon definierte Setter aktivieren:
-
-.. code-block:: scala
-
-    drawable.disabled = false
-    drawable.highlighted = false
-    drawable.selectionState = DrawableSelectionState.Selected
-
-Zusätzlich können noch folgende Parameter gesetzt werden:
-
-* borderWidth: Breite des Selektionsrahmens.
-* highlightFactor: Wert, mit dem die berechnete Farbe multipliziert wird um Hervorhebung darzustellen. Bei dunklen Grundfarben wird stattdessen mit 1 / highlightFactor multipliziert.
-
-"Deaktiviert" wird durch einen Grauton dargestellt, der wie folgt aus den Komponenten der Grundfarbe berechnet wird: grauwert = (rot + blau + grün) * 0.2. 
-Außerdem wird das Objekt transluzent gezeichnet.
-Der Selektionsrahmen wird im deaktivierten Zustand abhängig von der resultierenden Helligkeit von "grauwert" entweder hellgrau oder dunkelgrau dargestellt.
-
-Die Shaderfunktion zeichnet den "Selektionsrahmen" abhängig von den (2D)-Texturkoordinaten, die üblicherweise von 0 bis 1 reichen. 
-Auf jeder Seite wird ein Bereich mit der Breite "borderWidth" als Rahmen in der Komplementärfarbe zum Hintergrund gezeichnet.
-
-So wird durch die Texturkoordinaten die Form des Rahmens definiert; für die in der Arbeit verwendeten Objekte war dies ausreichend. 
-Jedoch könnten sich bei anderen Figuren Probleme ergeben, da die Texturkoordinaten auch für die Ausrichtung der Textur oder der Schrift genutzt werden.
-Für solche Objekte könnte allerdings leicht ein zusätzliches Vertex-Attribut definiert werden, dass die Koordinaten für die Positionierung des Rahmens liefert.\ [#f5]_
-
-.. _schrift-rendering:
-
-Darstellung von Text
---------------------
-
-Unter Anderem für die Beschriftung von Modellknoten wurde eine gut lesbare und trotzdem einfach umsetzbare Technik für das Rendering von Schrift benötigt.
-Hierfür wurde die 2D-API (java.awt) der Java-Klassenbibliothek zur Hilfe genommen. 
-Zur Verwendung mit OpenGL wird die Schrift in eine Textur geschrieben, die dann auf die Objekte aufgebracht werden kann.
-Um die Darstellungsqualität zu erhöhen wird die Antialiasing-Funktion von Graphics2D genutzt. 
-
-Um Text darstellen zu können müssen Drawables den Trait *TextDisplayAddon* einmischen und die genutzte RenderStage muss die Plugins *TextDisplayRenderStagePlugin* sowie *TextureRenderStagePlugin* einbinden.
-
-Der angezeigte Text kann im Drawable mit 
-
-.. code-block:: scala
-
-    drawable.text = "irgendein Text" 
-
-verändert werden. Außerdem werden Einstellmöglichkeiten für die Schriftart, -größe und -stil (*java.awt.Font*) und die Schriftfarbe (*java.awt.Color*) angeboten.
-
-Der Text wird zentriert angezeigt und wird am Wortende umgebrochen, falls der horizontale Platz nicht ausreicht. 
-Die "Schriftgröße" wird als Mindestgröße interpretiert; falls ein Objekt eine Skalierung von > 1 aufweist wird die Größe der Schrift proportional mitskaliert. 
-Bei einer Skalierung kleiner 1 wird der für die Schrift zur Verfügung stehende Platz verkleinert. 
-
-Um auch bei größeren Entferungen von der Kamera und kleiner Schrift noch eine angemessene Lesbarkeit zu erreichen kann Mipmapping genutzt werden, das auch von der Render-Bibliothek unterstützt wird. 
-Aufgrund von Problemen mit verschiedenen Grafikkarten, die für das Projekts getestet wurden, ist dies standardmäßig jedoch nicht aktiviert.
-
+In den letzten drei Zeilen werden die im vorherigen Abschnitt vorgestellten SVarSupports eingemischt.
 
 .. [#f6] Zu finden im Package mmpe.renderer.gl
 

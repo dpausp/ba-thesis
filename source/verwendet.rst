@@ -67,8 +67,8 @@ Implizite Funktionen
 Es ist möglich, sogenannte "implizite Funktionen zu definieren, indem ein "implicit" vorangestellt wird. 
 Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden. Dazu müssen die Funktion im der scala-Quelldatei direkt importiert worden.
 
-
-Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden.
+Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden. 
+Diese werden auch "implizite Wrapper" genannt.
 
 .. code-block:: scala
 
@@ -190,6 +190,8 @@ Vertex-Attribute werden vom Shader aus Puffern im Grafikspeicher ausgelesen, wel
 
 Sonstiges
 *********
+
+.. _stringtemplate:
 
 StringTemplate
 --------------
