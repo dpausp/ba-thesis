@@ -1,6 +1,6 @@
-**********************************
-Related Work zur 3D-Visualisierung
-**********************************
+****************************************
+Verwandte Arbeiten zur 3D-Visualisierung
+****************************************
 
 Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten wie der Softwaremodellierung beschäftigen. 
 
@@ -110,7 +110,7 @@ In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagram
 Three Dimensional Software Modelling
 ------------------------------------
 
-:cite:`gil_three_1998` merkt an, dass durch 3D-Visualisierungen die Ausdruckstärke von (graphbasierten) grafischen Notationen deutlich erhöht werden könne. Besonders vorteilhaft seien 3D-Visualisierungen von Graphen, wenn es darum ginge, eine Vielzahl von unterschiedlichen Beziehungs- bzw. Verbindungstypen darzustellen. 
+:cite:`gil_three_1998` merkt an, dass durch 3D-Visualisierungen die Ausdrucksstärke von (graphbasierten) grafischen Notationen deutlich erhöht werden könne. Besonders vorteilhaft seien 3D-Visualisierungen von Graphen, wenn es darum ginge, eine Vielzahl von unterschiedlichen Beziehungs- bzw. Verbindungstypen darzustellen. 
 Im 2D-Bereich habe man nur relativ eingeschränkte Möglichkeiten, unterschiedliche Verbindungstypen durch Farbe, unterschiedliche Linentypen oder durch Konnektoren, also Symbole an den Enden der Linien, voneinander abzugrenzen. Um diese Probleme im 2D-Raum zu umgehen würden oft unterschiedliche Graphen bzw. Diagrammtypen genutzt. Dabei besitzen Knoten in unterschiedlichen Diagrammtypen oft die gleiche Bedeutung während Verbindungen eine komplett andere Semantik besäßen. 
 Problematisch sei die Repräsentation von Zusammenhängen zwischen unterschiedlichen Diagrammtypen, was allgemein einen großen Schwachpunkt von Modellierungssprachen darstelle.
 
@@ -183,7 +183,7 @@ In :num:`Abbildung #gef3d-ecore` ist ein mit GEF3D implementierter Ecore-Editor 
 
     3D-Ecore-Editor von :cite:`www:gef3ddevblog`
 
-Die graphische Ausgabe von GEF3D baue direkt auf OpenGL auf\ [#f4]_; um 2D-Grafiken und Text zu zeichnen werde Vektorgrafik genutzt, was zu einer besseren Darstellungsqualität im Vergleich zu texturbasiertem 2D-Rendering führe\ [#f5]_\ .
+Die graphische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und Text zu zeichnen werde Vektorgrafik genutzt, was zu einer besseren Darstellungsqualität im Vergleich zu texturbasiertem 2D-Rendering führe\ [#f5]_\ .
 
 3D-Prozessvisualisierung
 ========================
@@ -263,14 +263,14 @@ Conceptual Modelling in 3D Virtual Worlds for Process Communication
 In :cite:`brown_conceptual_2010` wird ein Prototyp eines BPMN-Editors vorgestellt, der Prozesse innerhalb eine virtuellen 3D-Umgebung darstellt
 
 Besonderer Wert sei auf die Zusammenarbeit zwischen mehreren Modellierern und die Prozesskommunikation, auch unter Beteiligung von Personen, die keine Modellierungsexperten sind, gelegt worden. 
-"Naive stakeholders" hätten oft Probleme, die abstrakte Welt der konzeptuellen Modellierung zu verstehen, weil der Bezug zu realen Gegenständen fehle. Durch Zuhilfennahme einer virtuellen Welt, in der abstrakte Prozessmodelle eingebettet sind solle dies abgemildert werden. 
+"Naive stakeholders" hätten oft Probleme, die abstrakte Welt der konzeptuellen Modellierung zu verstehen, weil der Bezug zu realen Gegenständen fehle. Unter Zuhilfennahme einer virtuellen Welt, in der abstrakte Prozessmodelle eingebettet sind solle dies abgemildert werden. 
 
 In dieser Umgebung können Abbilder von realen Entitäten, die mit dem Prozess in Beziehung stehen oder mit diesem interagieren – beispielsweise verwendete Betriebsmittel oder ausführende Personen – dargestellt werden. Dies könne auch dazu dienen, den Ort und die räumliche Anordnung von Prozessschritten, beispielsweise durch die Einbettung in ein virtuelles Gebäude, zu visualisieren. 
 Möglich sei auch eine Simulation der Prozessausführung in der virtuellen Welt.
 
 Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das Modell die Realität richtig abbildet und ob eventuell Probleme bei der Umsetzung des Prozesses in der Realität auftreten könnten.
 
-Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolge mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befänden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
+Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolgt mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befinden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
 
 :num:`Abbildung #brown-process` zeigt ein Beispiel für einen Prozessgraphen. 
 
@@ -284,8 +284,6 @@ Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in de
 Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
 Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 
-Auf den Objekten sind rote Kugeln als Anker für Verbindungen zu anderen Modellobjekten angeordnet.
-
 Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen soll.
 
 .. _brown-nodes:
@@ -295,7 +293,7 @@ Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, a
 
     Benutzer-Avatar vor 3D-BPMN-Elementen aus :cite:`brown_conceptual_2010` 
 
-Es gebe die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige Texte zur Kommunikation zwischen den Beteiligten dargestellt werden können. Daneben könnten auch andere Multimediainhalte wie Videos, Tonaufnahmen oder Statistiken zur Prozessausführung (über Web-Services) eingebettet werden.
+Es gebe die Möglichkeit, "Kommentarwände" einzurichten, auf denen beliebige Texte zur Kommunikation zwischen den Beteiligten dargestellt werden können. Daneben könnten auch andere Multimedia-Inhalte wie Videos, Tonaufnahmen oder Statistiken zur Prozessausführung (über Web-Services) eingebettet werden.
 Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
 
 .. _brown-datadisplay:
@@ -377,13 +375,16 @@ Letztere würden, sobald sie wichtige Objekte verdecken transluzent dargestellt,
 Zusammenfassung und Bewertung
 =============================
 
+Verschiedene 3D-Visualisierungsansätze
+--------------------------------------
+
 Es wurden verschiedene Ansätze gezeigt, zu einer 3D-Visualisierung von Informationen zu gelangen und deren Vorteile zu nutzen. 
 So lässt sich häufig der Ansatz beobachten, von einer bekannten 2D-Visualisierung auszugehen und diese in den 3D-Raum zu übertragen. 
 Das war besonders bei den verschiedenen Arbeiten zu sehen, die sich mit 3D-UML beschäftigen.
 
 Eine recht naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren.
 Dies wurde von :ref:`McIntosh <mcintosh>` für UML-Zustandsdiagramme oder allgemein von :ref:`GEF3D <gef3d>` (dort als 2.5D-Darstellung bezeichnet) gezeigt.
-Für die Implementierung bedeutet das, dass sich möglicherweise schon vorhandenene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe einfach auf die Flächen gezeichnet wird.
+Für die Implementierung bedeutet das, dass sich möglicherweise schon vorhandene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe einfach auf die Flächen gezeichnet wird.
 Für den Benutzer hat die Darstellung den Vorteil, dass sich die Darstellung der Modellelemente selbst nicht ändert und sich mehrere Modelle gleichzeitig darstellen lassen, indem die Ebenen zueinander versetzt werden. 
 Modellhierarchien und Beziehungen zwischen verschiedenen Modellen lassen sich gut darstellen, indem beispielsweise Linien zwischen assoziierten Elementen oder zu Unterdiagrammen gezeichnet werden.
 
@@ -397,22 +398,41 @@ Interessant ist die dort gezeigte Möglichkeit, Subdiagramme temporär auszublen
 Dies wäre auch in der Prozessmodellierung hilfreich für die Darstellung von kompositen (komplexen) Prozessen. 
 So könnte beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weiteres Modell in der 3D-Szene angezeigt werden ohne ein neues Fenster zu öffnen, wie es in 2D-Werkzeugen praktiziert wird.
 
-Die zusätzliche Dimension dafür zu nutzen, mehrere Diagramme auf einmal darzustellen lässt sich als möglicher Vorteil von 3D-Visualisierungen festhalten.
+:ref:`Betz et al. <betz>` zeigten für den Bereich der Prozessmodellierung die schon genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
 
-Von :ref:`Dywer <dywer>` und :ref:`Gogolla <gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren und drehbaren 3D-Objekten gezeigt. 
+Von :ref:`Dywer <dywer>` und :ref:`Gogolla <gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
 Wie von Dywer gezeigt ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
 
-Gogolla zeigte außerdem die Möglichkeit, bei 3D-Graphen wie dem gezeigten Klassendiagramm Knoten in den Hintergrund zu schieben um so anzudeuten, dass diese weniger "wichtig" sind.
+Vorteile von 3D-Darstellungen?
+------------------------------
 
 Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen große Vorteile gegenüber ähnlichen 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
-Es wurden immerhin einige Hinweise zur Effektivität gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen andeuten, jedoch auch Probleme aufzeigen.
+Es wurden immerhin einige Hinweise zur Effektivität gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen in der Softwaremodellierung andeuten, jedoch auch Probleme aufzeigen :cite:`dwyer_three_2001` :cite:`mcintosh_x3d-uml:_2008` :cite:`halpin_exploring_2008`.
+Untersuchungen zur Effektivität, die sich speziell auf die Prozessmodellierung beziehen ließen sich nicht finden.
 
-* Navigation
-* Erfahrenheit der Benutzer
-* Akzeptanz? Spielzeug?! :cite:`schonhage_3d_2000`
+Bei der Betrachtung der Effektivität muss sicher auch berücksichtigt werden, dass die Erfahrung der Benutzer mit 3D-Darstellungen, beispielsweise aus Computerspielen oder 3D-CAD-Werkzeugen eine Rolle spielt
+:cite:`dwyer_three_2001` :cite:`ware_visualizing_2008` :cite:`schonhage_3d_2000`. Wie unerfahrene Benutzer an 3D-Werkzeuge für die Prozessmodellierung herangeführt werden könnten, wäre wohl eine interessante Frage. 
 
-Implementierungen, mit denen es möglich wäre, flexibel 3D-Prozessmodelle zu erstellen und zu betrachten ließen sich nicht finden.
+In eine ähnliche Richtung geht die Frage, inwieweit 3D-Werkzeuge überhaupt von Benutzern akzeptiert werden. 
+:cite:`schonhage_3d_2000` bemerkte, dass 3D-Visualisierungen oft als reines "Spielzeug" angesehen würden, die keinen wirklichen Nutzen bringen würden. 
+Um eine höhere Akzeptanz zu erreichen müssten auch technische Probleme wie zu langsame Hardware und schlechte Eingabegeräte gelöst werden. 
+
+Verwendbare Vorarbeiten?
+-----------------------
+
+In den vorgestellten Arbeiten wurden einige Prototypen für 3D-Modellierungswerkzeuge entwickelt. 
+Allerdings war nur von :cite:`dwyer_three_2001` eine freie Version im Internet auffindbar\ [#f1]_. 
+Diese ist allerdings technisch auf einem ziemlich alten Stand und lässt in Sachen Bedienung eher zu wünschen übrig.
+
+Frei verfügbare Softwareprojekte, die schon ein flexibles 3D-Prozessmodellierungswerkzeug realisieren ließen sich nicht finden. 
+Als Grundlage für ein solches Werkzeug könnte möglicherweise GEF3D dienen, was jedoch nicht weiter verfolgt wurde. 
+Negativ könnte bei GEF3D gesehen werden, dass in letzter Zeit relativ wenige Änderungen an der Codebasis erfolgten und insgesamt eher wenig Aktivität festzustellen ist.
+
+Ein Blick in den Quellcode zeigte, dass das Projekt noch auf "alter" OpenGL-Funktionalität aufbaut und damit die Möglichkeiten moderne Grafikhardware nicht nutzt.
+Bei der vorliegenden Arbeit stand es aber im Vordergrund, eine möglichst flexible und "zukunftsorientierte" Grundlage für ein (anpassbares) Prozessmodellierungswerkzeug zu legen, wozu auch eine Grafikausgabe auf dem aktuellen Stand der Technik gehört.
+
+Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die für das Visualisierungskonzept in der vorliegenden Arbeit genutzt wurden. 
 
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" können unter http://wilma.sourceforge.net/ heruntergeladen werden.
@@ -420,7 +440,5 @@ Implementierungen, mit denen es möglich wäre, flexibel 3D-Prozessmodelle zu er
 .. [#f2] Näheres zu Wahrnehmung von Tiefe siehe :cite:`wickens_three_1989`, :cite:`wp:bewegungsparallaxe` oder :cite:`wp:stereoskopie`.
 
 .. [#f3] Näheres zu CAVE-Systemen siehe :cite:`wpe:cave` oder :cite:`wpe:cave`.
-
-.. [#f4] GEF3D baut allerdings noch auf "alter" OpenGL-Funktionalität auf und es werden die Möglichkeiten "moderner" OpenGL-Programmierung (siehe :ref:`opengl`\ ) nicht genutzt.
 
 .. [#f5] Ein verbreiteter Ansatz, um 2D-Grafiken und Text in OpenGL darzustellen ist es, diese erst in eine Textur zu zeichnen und diese auf 3D-Objekte aufzubringen. Dies wird auch in dieser Arbeit verwendet.
