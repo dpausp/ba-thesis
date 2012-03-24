@@ -64,7 +64,7 @@ Die Menüs werden in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle
 Eingabeaufbereitung und Editor
 ------------------------------
 
-Eine wichtige Anforderung an den Protoypen ist, dass verschiedene Arten von Eingabegeräten unterstützt, neue Geräte einfach angebunden und – soweit sinnvoll – nebeneinander benutzt werden können. 
+Eine wichtige Anforderung an den Prototypen ist, dass verschiedene Arten von Eingabegeräten unterstützt, neue Geräte einfach angebunden und – soweit sinnvoll – nebeneinander benutzt werden können. 
 Die von den Eingabegeräten gelieferten Daten unterscheiden sich je nach Art des Geräts und der verwendeten Schnittstelle deutlich voneinander.
 
 Daher ist es sinnvoll, von den Eingabegeräten und deren Schnittstellen zu abstrahieren. Dies wird erreicht, indem die Eingabedaten aller Geräte von einer Eingabeschicht aufbereitet und an eine vereinheitlichte Schnittstelle zur Bedienung der Anwendung weitergeleitet werden. Diese Schnittstelle zur Eingabeverarbeitung wird, zusammen mit dem GUI, in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` als *Editor* bezeichnet.
@@ -106,7 +106,7 @@ Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf
 Modell-Komponente und Modell-Entities
 -------------------------------------
 
-Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten werden im Simulator X - Kontext durch die *Modellkomponente* realisiert, die dem Editor eine Schnittstelle zur Verfügung stellt über welche die genanntenAktionen ausgelöst werden können.
+Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten werden im Simulator X - Kontext durch die *Modellkomponente* realisiert, die dem Editor eine Schnittstelle zur Verfügung stellt über welche die genannten Aktionen ausgelöst werden können.
 Die Modellelemente selbst zu bearbeiten, also deren Visualisierungs und Prozessmodellattribute sowie die Position, Größe und Orientierung im Raum zu ändern wird durch die von der Modell-Komponente bereitgestellten *Modell-Entitäten* ermöglicht. Die ist ausschließlich dem Editor vorbehalten.
 Dem Simulator X - Konzept folgend beschreiben diese Entities außerdem, wie die dazugehörigen Objekte von der Physikkomponente behandelt und wie sie von der Renderkomponente angezeigt werden.
 

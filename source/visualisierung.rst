@@ -57,7 +57,7 @@ Daher ist es sinnvoll, möglichst große Schriften zu verwenden und für einen g
 
 Trotz der freien Drehbarkeit soll sichergestellt werden, dass Texte oder Symbole auf den Objekten jederzeit lesbar sind. Daher werden diese auf allen Seiten dargestellt. 
 
-Jedoch führt dies bei bestimmten Drehpositionen zu recht unschönen Darstellungen, wenn beispielesweise bei einem Würfel zwei oder sogar drei Seiten zu sehen sind, die dasselbe anzeigen.
+Jedoch führt dies bei bestimmten Drehpositionen zu recht unschönen Darstellungen, wenn beispielsweise bei einem Würfel zwei oder sogar drei Seiten zu sehen sind, die dasselbe anzeigen.
 
 Um dies etwas zu verbessern werden die Seiten abhängig von Betrachtungswinkel dargestellt. Wird eine Seite vom Benutzer weggedreht, wird die Schrift oder Textur nach und nach ausgeblendet.
 Ab einer gewissen Abweichung wird nur noch die Hintergrundfarbe angezeigt.
@@ -181,7 +181,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 
     Deaktivierter Prozessknoten (vorne) und aktivierter Prozess (hinten) (Screenshot aus I>PM3D)
 
-Die drei vorgestellen Visualisierungsvarianten können frei kombiniert werden. 
+Die drei vorgestellten Visualisierungsvarianten können frei kombiniert werden. 
 Damit ist es zum Beispiel auch möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
 
 .. _modellierungsflaechen:
@@ -193,7 +193,7 @@ Für eine übersichtliche Darstellung des Prozessmodells ist es häufig erwünsc
 
 Durch die freie Positionier- und Drehbarkeit kann zwar prinzipiell jede beliebige geometrische Anordnung erreicht werden, doch ist dies mit einem relativ hohen Aufwand bei der Platzierung durch den Benutzer verbunden. 
 
-Um das Platzieren zu vereinfachen werden in 2D-Modellierwerkzeugen oft im Hintergrund dargestellte Gitter genutzt, die eine optische Hilfe darstellen. 
+Um das Platzieren zu vereinfachen werden in 2D-Modellierungswerkzeugen oft im Hintergrund dargestellte Gitter genutzt, die eine optische Hilfe darstellen. 
 Noch hilfreicher können "magnetische" Gitter sein, die grob in der Nähe platzierte Objekte automatisch auf feste, regelmäßige Positionen verschieben.
 
 Eine ähnliche Technik war auch für den I>PM3D-Prototypen erwünscht. 
@@ -228,7 +228,7 @@ Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive, 
 Dadurch wird also eine "Standard-Ansicht" auf die Szene definiert. 
 So soll es für den Benutzer leichter zu erkennen sein, welche Seite der Objekte nach unten, links beziehungsweise nach rechts zeigt. 
 
-Die von der Renderbibliothek bereitgestellten Lichtquellen nach dem Phong-Lichtmodell sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
+Die von der :ref:`render-bibliothek` bereitgestellten Lichtquellen nach dem Phong-Lichtmodell sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
 
 Für die Visualisierung von 3D-Graphmodellen stellt sich die Frage, wie die Lichtparameter am besten gewählt werden sollten um eine möglichst hohe Lesbarkeit und eine gute Orientierung im Raum zu ermöglichen.
 

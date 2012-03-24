@@ -28,7 +28,7 @@ Ohne TypeConverter-Angabe wird *scalaType* direkt als voll qualifizierter Klasse
 Von dieser so angegebenen Klasse wird ein Objekt erstellt, welches das entsprechende Concept in der Anwendung vertritt.
 
 Wird ein TypeConverter genutzt, muss der *scalaType* nicht zwingend ein Klassenname sein. 
-Wie das Attribut interpretiert wird hängt vom TypeConverter ab. 
+Wie das Attribut interpretiert wird hängt vom jeweiligen TypeConverter ab. 
 
 .. _ebl:
 
@@ -48,7 +48,7 @@ Paket "types"
 
 Das *types*-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
 
-Dazu werden folgeden Typen angeboten:
+Dazu werden folgenden Typen angeboten:
 
   * Dimension, Position: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
     Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp *Vec3* von :ref:`Simplex3D` angeboten.
@@ -58,7 +58,7 @@ Dazu werden folgeden Typen angeboten:
 
   * Color: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzfaktor) angegeben werden.
     Zu beachten ist hier, dass die Farben als Gleitkommazahl angegeben werden und einen Wertebereich von 0-1 abdecken.
-    Dieser Typ wird auf die java.awt.Color-Klasse gemappt.
+    Dieser Typ wird auf die java.awt.Color-Klasse abgebildet.
 
   * Font: Definiert Parameter für die Schriftdarstellung. Die Attribute und deren erlaubte Werte orientieren sich hierbei an der java.awt.Font-Klasse, auf die dieses Konzept auch abgebildet wird.
     Die Schriftfarbe muss separat mittels des Color-Typs angegeben werden.
@@ -68,7 +68,7 @@ Dazu werden folgeden Typen angeboten:
         * style: Name des Schriftstils. Erlaubt sind hier "normal", "bold" und "italic", die den Werten der Enumeration FontStyle von java.awt entsprechen.
 
 
-  * PhysicsSettings: Unterkonzepte dieses abstrakten Konzept werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
+  * PhysicsSettings: Sub-Concepts dieses abstrakten Konzept werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
 .
     Es werden kugel- (*PhysSphere*) und quaderförmige (*PhysBox*) Geometrien angeboten, wie sie von der von :ref:`simulatorx` bereitgestellten Physikkomponente unterstützt werden.
     Für eine *PhysSphere* muss der Radius angegeben werden; eine *PhysBox* wird analog über die halben Seitenlängen (Attribut *halfExtends*, Typ *Dimension*) festgelegt.
@@ -83,11 +83,12 @@ Im *figures*-Package werden die grundlegenden Figuren definiert, die zur Visuali
 
 Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Konzepte bereitgestellt werden. 
 
-Das Package wird durch 2 abstrakte Basistypen, EditorElement und SceneryObject strukturiert. 
+Das Package wird durch 2 abstrakte Basistypen, *EditorElement* und *SceneryObject* strukturiert. 
 
 *EditorElement* ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (*Edge*) und Knoten (*Node*) aufteilen.
 
-Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. Dadurch wäre es prinzipell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Konzepten besteht.
+Jedes *EditorElement* muss das Attribut *modelElementFQN* setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. 
+Dadurch wäre es prinzipiell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Konzepten besteht.
 Über das Attribut *interactionAllowed* lässt sich festlegen, ob eine Interaktion mit dem Modellelement durch den Benutzer erlaubt ist. Dies ist standardmäßig für alle Element auf "true" gesetzt.
 
 Das von *ScalaMapping* definierte Attribut *scalaType* legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
@@ -117,10 +118,10 @@ Für die Visualisierung von **Knoten** sind ein texturierter (TexturedNode) und 
       * backgroundColor: Hintergrundfarbe, die an nicht von der Schrift abgedeckten Stellen angezeigt wird oder bei Transluzenz-Effekten mit der Schriftfarbe gemischt wird.
       * font: Schriftart, als Font-Instanz
 
-Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungskonzept genutzt wird. Siehe :ref:`pmm`.
+Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungs-Konzept genutzt wird. Siehe :ref:`pmm`.
 Wie in :ref:`ipm3d-gui` erwähnt sollen verfügbare Knotentypen in einem Menü angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
 
-Im Kontext des Typ-Verwendungskonzepts werden Knotentypen ebenfalls "Typ" genannt, die konkreten Modellelemente, die in einem Modell genutzt werden, stellen "Verwendungen" der vorher definierten Typen dar.
+Im Kontext des Typ-Verwendungs-Konzepts werden Knotentypen ebenfalls "Typ" genannt, die konkreten Modellelemente, die in einem Modell genutzt werden, stellen "Verwendungen" der vorher definierten Typen dar.
 
 Daher müssen alle Nodes folgende Attribute setzen:
 
@@ -158,7 +159,7 @@ Für Szenenobjekte kann eine Physikrepräsentation (Typ *PhysicsSettings*) defin
 Es gibt momentan nur eine Art von Szenenobjekten, das *ColladaSceneryObject*. Über das Attribut *modelPath* kann ein Pfad zu einer COLLADA-Datei angegeben werden.
 Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt. 
 
-Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden und Selektion durch den Benutzer möglich sein soll.
+Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
 
 Näheres zur COLLADA-Unterstützung von I>PM3D findet sich bei :cite:`uli` im Kapitel ???.
 
@@ -176,13 +177,15 @@ Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Nähere
 Prozess-Meta-Modell
 ===================
 
+..TODO sehr hässlich!
+
 Von diesem Modell wird die eigentliche Prozessmodellierungssprache definiert.
 
 In dieser Arbeit wird dafür ein Metamodell verwendet, das sich an den Metamodellen für die perspektivenorientierten Prozessmodellierung orientiert, wie sie in :cite:`volz_werkzeugunterstuetzung_2011` definiert worden sind.
 
 Wie erwähnt werden von I>PM3D nur Modelle unterstützt, die sich sinnvoll auf eine Graphdarstellung abbilden lassen. 
 
-Am einfachsten lässt sich das realisieren, wenn die hier spezifizierten Sprachelemente selbst Knoten und Kanten dargestellen und Knoten ausschließlich über Kanten miteinander verbunden werden.
+Am einfachsten lässt sich das realisieren, wenn die hier spezifizierten Sprachelemente selbst Knoten und Kanten darstellen und Knoten ausschließlich über Kanten miteinander verbunden werden.
 
 Das Prozess-Metamodel definiert nur ein Paket, *processLanguage*. 
 Hier findet sich die Idee der perspektivenorientierten Prozessmodellierung wieder, Prozessmodelle in verschiedene Perspektiven einzuteilen :cite:`jablonski`\ .
@@ -206,7 +209,7 @@ Im Unterschied zu den Metamodellen von POPM werden Beziehungen zwischen Knoten i
 
 Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an einen Node, also Prozess- oder Entscheidungsknoten angebunden werden.
 
-Das vollständige Prozess-Meta-Modell, wie es im Protoypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
+Das vollständige Prozess-Meta-Modell, wie es im Prototypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
 
 .. _beispiel-neues-element:

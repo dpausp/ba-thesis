@@ -31,7 +31,7 @@ Commands
 Die Funktionen werden zum Teil als "Commands" bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ModelComponent geschickt werden.
 In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
-Es existieren Commands für die folgenden Funktionen\ [#II]_\ :
+Es existieren Commands für die folgenden Funktionen:
 
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von Usage-Modellen
@@ -64,12 +64,12 @@ Die Verwaltung der geladenen Modelle wird durch das Object **ModelContext** für
 Modell-Persistenz
 =================
 
-Eine Anforderung an den Protoypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. 
+Eine Anforderung an den Prototypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. 
 Wie in :ref:`modellhierarchie` angesprochen werden in I>PM3D Modelle eingesetzt, die in der Sprache LMMLight verfasst werden.
 
 Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
 
-Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser\ [#I]_ genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser genutzt, der mit Hilfe der vorher vorgestellten :ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
 
 Speicherrepräsentation eines LMMLight-Modells
@@ -82,7 +82,7 @@ Vom Graphen wird der hierarchische Aufbau von LMM, wie in :ref:`lmm` gezeigt abg
 Die Elemente von LMM werden durch analog benannte Klassen repräsentiert, die mit dem Buchstaben "M" beginnen.
 
 So wird die "Wurzel" von einer MModel-Instanz gebildet, der sich MLevels unterordnen, die wiederum MPackages mit MConcepts sowie weiteren MPackages enthalten.
-Weiterhin kann ein MConcept andere MConcepts referenzieren. So ergibt sich ein azylischer, gerichteter Graph.
+Weiterhin kann ein MConcept andere MConcepts referenzieren. So ergibt sich ein azyklischer, gerichteter Graph.
 
 Der Vorteil zur Nutzung von XText ist, dass es sich hier Objekte, die die Vorteile von Scala nutzen und daher in einer Scala-Umgebung bequem genutzt werden können. 
 Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr Funktionalität bieten als die von Java oder EMF bereitgestellten.
@@ -93,7 +93,7 @@ Ausgehend von einem *MModel*-Objekt kann die ModelComponent in einem Modell navi
 Vereinfachung des Umgangs mit Modellen
 --------------------------------------
 
-Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern wurde eine Reihe von Adaptern\ [#III]_ für die in der Speicherrepräsentation der Modelle genutzten Klassen implementiert.
+Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern wurde eine Reihe von Adaptern für die in der Speicherrepräsentation der Modelle genutzten Klassen implementiert.
 Beispielsweise gibt es einen MConceptAdapter, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (*assignableAttributes*), das Setzen von Werten (*setValue*) oder die Abfrage von Concept-Relationen (*instanceOf*) erlauben.
 
 [#f6]_
@@ -162,7 +162,7 @@ Speichern von Usage-Modellen
 Analog zum Lade-Command *LoadUsageModels* werden bei *SaveUsageModels* zwei Dateinamen für Domänen- und Editormodell angegeben. Java-Resource-Pfade sind hier nicht erlaubt.
 
 Um die Speicherrepräsentation des Modells wieder in eine textuelle Darstellung zu überführen wird der in :ref:`stringtemplate` gezeigte Wrapper für die StringTemplate-Bibliothek genutzt.
-Für die Sprache LMMLight wurde eine Reihe von Templates definiert, die nach dem Setzen der Template-Attribute eine textuelle Darstellung erzeugen, die durch den LMMLightParser wieder eingelesen werden kann.\ [#f5]_
+Für die Sprache LMMLight wurde eine Reihe von Templates definiert, die nach dem Setzen der Template-Attribute eine textuelle Darstellung erzeugen, die durch den LMMLight-Parser wieder eingelesen werden kann.\ [#f5]_
 
 .. _model-entities:
 
@@ -374,9 +374,3 @@ Beim Löschen spielt sich Folgendes ab:
 .. [#f10] Die Darstellung ist aber auch durchaus "menschenlesbar" und wird ähnlich formatiert wie im Metamodell-Editor von OMME.
 
 .. [#f11] Bei den Editor-Model-SVars wird ein anderer Ansatz genutzt, da diese teilweise häufig geändert werden (vor allem die Position). Diese SVars werden erst beim Speichern des Modells ausgelesen und zurückgeschrieben um Probleme mit der Ausführungsgeschwindigkeit zu vermeiden.
-
-.. [#I] Zu finden im Scala-Package mmpe.lmmlight.parser
-
-.. [#II] Alle Commands sind in Scala-Package mmpe.model.commands definiert.
-
-.. [#III] Die Adapter sind im Package mmpe.lmmlight zu finden.

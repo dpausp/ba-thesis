@@ -58,7 +58,7 @@ Anpassbarkeit
 
 Durch Anpassungen im Editor-Model-Stack können für ein Domänenmodell im Prinzip auch mehrere verschiedene Repräsentationen erstellt werden. 
 
-Im Vergleich zu der Modellhierarchie von MDF ist zu sehen, dass das im *Designer-Model-Stack* von MDF definierte *Graphical-Meta-Model*, das die Visualisierung an sich festlegt und das *Editor-Meta-Model*, das die Verknüfung zwischen Domänenmetamodell und Graphical-Meta-Model herstellt zusammengelegt worden sind. 
+Im Vergleich zu der Modellhierarchie von MDF ist zu sehen, dass das im *Designer-Model-Stack* von MDF definierte *Graphical-Meta-Model*, das die Visualisierung an sich festlegt und das *Editor-Meta-Model*, das die Verknüpfung zwischen Domänen-Metamodell und Graphical-Meta-Model herstellt zusammengelegt worden sind. 
 
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
@@ -105,7 +105,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein:
 
     * package "nodeFigures" definiert Concepts, die die Repräsentation von Knoten aus dem Domänenmodell beschreiben.
     * package "connectionFigures" definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
-    * Das package "sceneryObjects" enthält die verwendbaren Szenenobjekte. Szenenobjekte haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
+    * Das package "sceneryObjects" enthält die verwendbaren Szenenobjekte. Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
 Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte **Editor-Definition-Level**. 
 

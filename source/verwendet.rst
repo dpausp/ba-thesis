@@ -9,7 +9,7 @@ Die Implementierung der Konzepte dieser Arbeit erfolgte nahezu vollständig in d
 
 Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulatorx` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
-Scala wird als objektfunktionale Programmiersprache charakterisiert. "Objektfunktional" soll die Bestrebungen ausdrücken, Aspekte aus funktionalen und objektorientierten Programmiersprachen zu einer effektiven Programmiersprache zu kombinieren.
+Scala wird als "objektfunktionale" Programmiersprache charakterisiert. "Objektfunktional" soll die Bestrebungen ausdrücken, Aspekte aus funktionalen und objektorientierten Programmiersprachen zu einer effektiven Programmiersprache zu kombinieren.
 
 Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. 
 I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
@@ -29,7 +29,7 @@ Zur Vereinfachung dürfen Traits keinen Konstruktor definieren.
 
 Neben der Verwendung als "Interface" wie in Java werden diese oft genutzt um wiederverwendbare Code-Einheiten zu realisieren, die sich in verschiedenen Klassen verwenden lassen. 
 Traits werden daher oft als "Mixin" bezeichnet.
-Der "Vorgang", einen trait zu einer Klasse hinzuzufügen – wie im folgenden Code gezeigt wird – wird in dieser Arbeit "einmischen" genannt.
+Der "Vorgang", einen Trait zu einer Klasse hinzuzufügen – wie im folgenden Code gezeigt wird – wird in dieser Arbeit "einmischen" genannt.
 .. code-block:: scala
 
     class Example extends BaseClass with MixinTrait
@@ -45,7 +45,7 @@ Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorhe
 Grundlage für das Actor-Patterns ist das *message passing*. 
 Dies bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen.
 Umgekehrt bedeutet das, dass nicht auf gemeinsame, veränderliche Datenstrukturen zugegriffen wird ("shared nothing"). 
-Die Kommunikation der Actors erfolgt überlicherweise asynchron.
+Die Kommunikation der Actors erfolgt asynchron.
 
 In Scala wird eine Nachricht oft durch ein Objekt einer *case class* dargestellt.
 
@@ -65,7 +65,7 @@ Implizite Funktionen
 --------------------
 
 Es ist möglich, sogenannte "implizite Funktionen zu definieren, indem ein "implicit" vorangestellt wird. 
-Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden. Dazu müssen die Funktion im der scala-Quelldatei direkt importiert worden.
+Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden. Dazu müssen die Funktion im der Scala-Quelldatei direkt importiert worden.
 
 Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden. 
 Diese werden auch "implizite Wrapper" genannt.
@@ -128,7 +128,7 @@ Außerdem sorgt dies auch dafür, dass auch aktuelle Rechnersysteme mit mehreren
 
 Aufbauend auf dem Actor-Modell stellt *Simulator X* ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
 
-Globale Zustandsvariablen, SVars genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit bem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
+Globale Zustandsvariablen, SVars genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
 Eine zugeordnete SVarDescription\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
 
 Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine Entity beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
@@ -174,13 +174,13 @@ Vertex-Shader
     arbeiten auf einzelnen Modell-Vertices und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
 
 Geometry-Shader
-    könnnen aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
+    können aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
 
 Fragment-Shader 
-    werden einmal pro Fragment aufgerufen [#f3]_ und implementieren bespielsweise Texturierung und Beleuchtung.
+    werden einmal pro Fragment aufgerufen [#f3]_ und implementieren beispielsweise Texturierung und Beleuchtung.
 
 Tesselation-Shader (ab OpenGL 4)
-    können komplett neue Geometrien erzeugen.
+    können komplett neue Geometrien erzeugen
 
 Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex, an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
 Vertex-Attribute werden vom Shader aus Puffern im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.

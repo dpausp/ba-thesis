@@ -16,7 +16,7 @@ RenderActor
 Für den RenderActor musste ein eigenen Scheduler für Scala-Actors erstellt werden, da der Standard-Scheduler die Actor-Arbeitspakete in beliebig wechselnden Threads ausführen kann. 
 Dies ist für die Ausführung von OpenGL-Funktionen problematisch. Deswegen wird die Ausführung der Render-Aufgaben auf einen Thread beschränkt. 
 
-Der RenderActor definiert zwei Render-Ebenen. Die zuerst gerenderte Ebene umfasst alle 3D-Objekte wie den Prozessgraphen und Szenenobjekte. 
+Der RenderActor definiert zwei Render-Ebenen. Die zuerst gezeichnete Ebene umfasst alle 3D-Objekte wie den Prozessgraphen und Szenenobjekte. 
 Darüber wird eine Ebene gezeichnet, die 2D-Elemente wie Cursor der Eingabegeräte oder das Eightpen-Menü :cite:`buchi` enthält.
 
 Beide Ebenen werden durch jeweils eine separate :ref:`render-stage` gezeichnet.
@@ -40,7 +40,7 @@ Projektspezifische Erweiterungen
 
 Die Renderkomponente unterstützt die von Simulator X bereitgestellten RenderAspects für die Definition von Lichtquellen-Entities (*PointLight*) sowie den Aspekt *ShapeFromFile*, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
 
-Im Folgenden werden die zusätzlichen Fähigkeiten vorgestellt, welche von der Orignal-Renderkomponente nicht unterstützt werden.
+Im Folgenden werden die zusätzlichen Fähigkeiten vorgestellt, welche von der ursprünglichen Renderkomponente nicht unterstützt werden.
 
 ShapeFromFactory
 ^^^^^^^^^^^^^^^^

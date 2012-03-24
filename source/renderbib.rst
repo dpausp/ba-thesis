@@ -47,9 +47,9 @@ Andere Anwendungen könnten ebenfalls auf Simulator X mit der vorgestellten Rend
 Als Grafikschnittstelle wird die für die Java Virtual Machine verfügbare OpenGL-Anbindung LWJGL (Lightweight Java Gaming Library) in der Version 2.8.x (siehe :ref:`opengl`) genutzt. 
 Es werden nur OpenGL-Funktionen genutzt, die in der Version 3.3 standardmäßig verfügbar sind. 
 Das heißt, dass auf im OpenGL-Standard "deprecated" markierte Funktionalität vollständig verzichtet wurde, welche in Zukunft komplett entfernt werden oder zu Geschwindigkeitsproblemen führen könnte. 
-Damit ist zu erwarten, dass die Render-Bibliothek auch mit den aktuellesten und zukünftigen OpenGL-Versionen und neuer Grafikhardware – zumindest in den nächsten Jahren – kompatibel sein wird.
+Damit ist zu erwarten, dass die Render-Bibliothek auch mit den aktuellsten und zukünftigen OpenGL-Versionen und neuer Grafikhardware – zumindest in den nächsten Jahren – kompatibel sein wird.
 
-Die Render-Bibliothek orientiert sich in den Grundkonzepten an der in C++ verfügbaren "Visualization Library" :cite:`www:vislib`.
+Die Render-Bibliothek orientiert sich in den Grundkonzepten an der für C++ verfügbaren "Visualization Library" :cite:`www:vislib`.
 
 Im Gegensatz zu vielen, umfassenden 3D-Engines sollten dem Benutzer der Bibliothek möglichst wenig Einschränkungen bei der Gestaltung seines Programms auferlegt werden.
 Bei der Konzeption der Render-Bibliothek stand die Wiederverwendbarkeit von einzelnen Bestandteilen im Vordergrund, die sich wieder zu höheren Abstraktionen zusammensetzen lassen.
@@ -118,10 +118,10 @@ Drawable
 ---------
 
 Zu zeichnende Objekte werden durch eine Klasse beschrieben, welche von der Basisklasse *Drawable* abgeleitet ist.
-Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (trait *Mesh*), der Position und Größe (trait *Transformation*) und der Darstellungsweise (trait *Effect*) enthalten.
+Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (Trait *Mesh*), der Position und Größe (Trait *Transformation*) und der Darstellungsweise (Trait *Effect*) enthalten.
 Die Implementierung ist dabei sehr flexibel möglich und kann an die Anforderungen des konkret dargestellten Objekts und der Anwendung angepasst werden. 
 
-In den Traits sind nur Methoden vorgegeben, die die vom "Renderer" benötigten Daten liefern müssen:
+In den Traits sind nur Methoden vorgegeben, die die von einem "Renderer" benötigten Daten liefern müssen:
 
 * Ein Mesh stellt dem Renderer die Zeichenbefehle sowie Vertex-Attribute bereit, üblicherweise sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
 * Transformation liefert die Transformationsmatrix des Grafikobjekts.
@@ -135,7 +135,7 @@ So könnte eine Transformation, die für ein bewegliches Objekt eingesetzt wird,
 Die Render-Bibliothek stellt eine Reihe von Implementierungen dieser Traits zur Verfügung. 
 Diese sind zwar auf die Bedürfnisse des I>PM3D-Projekts abgestimmt, aber möglichst allgemein gehalten und damit wiederverwendbar.
 
-Sinnvollerweise werden Drawables erstellt, indem traits zusammengemischt werden, die die genannten Basis-Traits Mesh, Transformation und Effect implementieren.
+Sinnvollerweise werden Drawables erstellt, indem Traits zusammengemischt werden, die die genannten Basis-Traits Mesh, Transformation und Effect implementieren.
 So kann mit diesem Konzept beispielsweise ein Würfel definiert werden, indem eine entsprechende Mesh-Implementierung erstellt wird.
 Durch die Verwendung von unterschiedlichen Effect-Traits können auf einfachem Wege verschieden dargestellte Varianten eines Objekts erstellt werden.
 
@@ -150,7 +150,7 @@ Durch die Verwendung von unterschiedlichen Effect-Traits können auf einfachem W
     Zusammensetzung eines farbigen Würfels aus den Basis-Traits
 
 Effects selbst können relativ kompliziert aufgebaut sein. Es ist sinnvoll, diese wieder aus verschiedenen Traits zusammenzusetzen, die Teilfunktionalitäten implementieren.
-Solche Traits werden in der Renderbibliothek mit der Endung -Addon benannt. 
+Solche Traits sind in der Renderbibliothek mit der Endung -Addon versehen. 
 Beispielsweise existiert ein PhongLightingAddon für die Bereitstellung von Lichtparametern und ein TextDisplayAddon, das die Anzeige von Schrift auf den Objekten implementiert.
 
 :num:`Abbbildung #effect-classdiag` zeigt ein Beispiel für einen Effect, der aus zwei Addons zusammengesetzt wird. 
@@ -177,7 +177,7 @@ Diese werden in der bereitgestellten Implementierung der RenderStage zuerst sort
 Eine Sortierung wird durchgeführt, um transluzente Objekte (Anforderung 7) in der richtigen Reihenfolge zu zeichnen sowie um unnötige Zeichenoperationen und OpenGL-Zustandswechsel zu vermeiden.
 Durch Angabe einer Render-Priorität in den Drawables kann manuell eine bestimmte Reihenfolge erzwungen werden, wenn dies für spezielle Zeichenaufgaben nötig ist.
 
-Von der Renderstage werden zu den von Drawables definierten Texture- und ShaderDefinitions Objekte der Low-Level-API nach Bedarf erzeugt.
+Von der *RenderStage* werden zu den von Drawables definierten Texture- und ShaderDefinitions Objekte der Low-Level-API nach Bedarf erzeugt.
 Diese werden für das Zeichnen von mehreren Drawables wiederverwendet, um Grafikspeicher und Zeit zu sparen.
 
 Abgegrenzte Funktionalitäten können in **RenderStagePlugins** ausgelagert werden. 
@@ -211,7 +211,7 @@ Kamera
 
 Die Klasse *Camera* repräsentiert eine bewegliche und rotierbare Kamera, die einer RenderStage zugewiesen kann und damit die Perspektive des Betrachters festlegt.
 Es werden die von OpenGL bekannten Funktionen (hier als Methoden des Kamera) angeboten, die eine perspektivische (glFrustum, gluPerspective, gluLookAt) oder orthogonale Projektion (glOrtho) konfigurieren.
-Außerdem stellt die Klasse verschiedene Methoden bereit, die für Umrechnungen von Bildschirm- in 3D-Raumkoordinaten und umgekehrt genutzt werden können (analog zu den OpenGL-Funktionen glProject und gluUnproject).
+Außerdem stellt die Klasse verschiedene Methoden bereit, die für Umrechnungen von Bildschirm- in 3D-Raumkoordinaten und umgekehrt genutzt werden können (analog zu den OpenGL-Funktionen glProject und gluUnProject).
 
 Dies werden im Projekt von Eingabegeräten genutzt, die mit 2D-Daten arbeiten und diese beispielsweise für die Auswahl von 3D-Objekten entsprechend umrechnen müssen.
 Aufgrund der von Simulator X geforderten Komponentenaufteilung werden die Methoden von den Nutzern jedoch nicht direkt aufgerufen, sondern von der :ref:`renderkomponente` gekapselt. 
@@ -226,7 +226,7 @@ So wird für jede Instanz eines COLLADA-Modellobjekts zusätzlicher Grafikspeich
 Ein weiteres Problem ist, dass der Loader "fertige" Drawables liefert, die nicht für die Darstellung von Modellelementen (Knoten und Kanten) genutzt werden können. 
 
 Aufgrund dessen wurde ein "Compiler" entwickelt, der mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation der in dem Modell definierten Geometrie in Scala-Code erstellt. 
-Die so erzeugte Scala-Quelldatei enthält ein trait, das *Mesh* (siehe :ref:`drawable`) implementiert. 
+Die so erzeugte Scala-Quelldatei enthält ein Trait, das *Mesh* (siehe :ref:`drawable`) implementiert. 
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
@@ -325,7 +325,7 @@ Eine solche Ersetzung ist beispielsweise für die Darstellung von Text auf Model
 Im :ref:`Editor-Metamodell <ebl-figures>` wird festgelegt, welches Attribut als Text dargestellt werden soll.
 Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der *Text*-SVar durch die entsprechend benannte Editor-Model-SVar :ref:`<modellanbindungs-svars>`.
 Beispielsweise wird so für einen Prozessknoten die *model.function*-SVar mit dem Setter für den aktuellen Text verbunden.
-Aufgrunddessen wird bei jeder Änderung am *function*-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
+Aufgrund dessen wird bei jeder Änderung am *function*-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
 
 Das gleiche Prinzip wird für Visualisierungsparameter (Farben, Schrift) aus dem Editor-Modell angewendet.
 
@@ -343,7 +343,7 @@ Anwendungsbeispiel: Erstellen von neuen Modell-Figuren
 Hier soll gezeigt werden, wie sich ein neues Grafikobjekt erstellen lässt, das für die Visualisierung eines Knotens eingesetzt werden soll.
 Dies ist die Fortsetzung des Anwendungsbeispiels für das Hinzufügen eines neuen Modellelements zum Metamodell :ref:`beispiel-neues-element`.
 
-Die Geometrie des Objekts kann zum Einen manuell erstellt werden, indem das trait Mesh implementiert wird. 
+Die Geometrie des Objekts kann zum Einen manuell erstellt werden, indem das Trait Mesh implementiert wird. 
 Als Vorlage kann eine der mitgelieferten Meshes, wie *mmpe.renderer.mesh.UnitCube* genutzt werden.
 
 Einfacher ist die Nutzung des COLLADA2Scala-Compiler, der wie folgt aufgerufen werden kann (Linux):
@@ -370,7 +370,7 @@ Dafür kann beispielsweise die *TextBox* als Vorlage genommen und wie folgt abge
     with TextDisplaySVarSupport
     with BackgroundSVarSupport
 
-Geändert wurde nur das Mesh-trait in der 2. Zeile sowie der Name des Objekts in der 1.Zeile.
+Geändert wurde nur das Mesh-Trait in der 2. Zeile sowie der Name des Objekts in der 1.Zeile.
 
 
 Abschließend wird in *mmpe.model.ModelDrawableFactory* zur Fallunterscheidung in der Methode createDrawables ("figureFqn match ...") ein weiterer Fall hinzugefügt:
