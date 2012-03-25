@@ -8,8 +8,8 @@ Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen sel
 
 Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstutzung_2011` beschrieben wird. 
 
-Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. Diesem Konzept folgt das in :ref:`metamodellierung` vorgestellte *Model Designer Framework* (MDF) :cite:`roth_konzeption_2011`
-mit dessen Hilfe sich grafische Editoren für beliebige domänenspezifische Modellierungssprachen erstellen lassen. 
+Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. 
+Diesem Konzept folgt das bereits vorgestellte *Model Designer Framework* :ref:`mdf` :cite:`roth_konzeption_2011`.
 
 Die hier vorgestellte Modellhierarchie ist prinzipiell ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
 Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
@@ -73,11 +73,11 @@ Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungsel
 Um die Implementierung zu vereinfachen wurde jedoch darauf verzichtet. 
 Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente (auch "Figuren" genannt) für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
 
-Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der Modell-Komponente nur ein feste Auswahl an Visualisierungsparametern angeboten wird. 
-Welche dies sind kann im späteren Kapitel zur Modellanbindung unter :ref:`modellanbindung-svars` nachgelesen werden.
+Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der "Modellkomponente" nur ein feste Auswahl an Visualisierungsparametern angeboten wird. 
+Dies kann im späteren Kapitel zur Modellanbindung unter :ref:`modellanbindung-svars` nachgelesen werden.
 
 Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden; 
-jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell definiert werden, welches hier als das *Editor-Metamodell* bezeichnet wird. 
+jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell (im Sinne von LMM) definiert werden, welches hier als das *Editor-Metamodell* bezeichnet wird. 
 
 Um eine andere Visualisierung festzulegen müsste das komplette Editor-Metamodell neu definiert werden, sinnvollerweise auf Basis des bestehenden Metamodells\ [#f1]_.
 

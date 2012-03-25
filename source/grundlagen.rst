@@ -3,9 +3,9 @@ Grundlagen
 **********
 
 Diese Kapitel beschäftigt sich mit Grundlagen, die für das Verständnis der Modellierungsaspekte dieser Arbeit nötig sind. 
-Zuerst wird eine kurze Einführung in die Beschreibung von Prozessmodellen durch Sprachen gegeben. 
+Zuerst wird eine Einführung in die Beschreibung von Prozessmodellen durch Sprachen gegeben. 
 Darauf aufbauend wird das in dieser Arbeit verwendete Konzept der perspektivenorientierten Prozessmodellierung und das Typ-Verwendungs-Konzept gezeigt.
-Schließlich wird kurz die Metamodellierung, insbesondere das Linguistic Meta Model vorgestellt, welches die Basis für die Anpassbarkeit des hier entwickelten Modellierungswerkzeugs darstellt.
+Schließlich wird die Metamodellierung, insbesondere das Linguistic Meta Model vorgestellt, welches die Basis für die Anpassbarkeit des hier entwickelten Modellierungswerkzeugs darstellt.
 
 Prozessmodellierungssprachen
 ============================
@@ -229,18 +229,48 @@ Hier ist ein Beispiel für ein einfaches Modell in textueller Form zu sehen:
 MDF
 ---
 
-Ebenfalls als Teil der Metamodellierungsumgebung OMME ist das Model Designer Framework (MDF) :cite:`roth` entstanden.
+Ebenfalls als Teil der Metamodellierungsumgebung OMME ist das Model Designer Framework (MDF) :cite:`roth` entstanden. Dieses erlaubt es, Modell-Editoren mit Hilfe von Metamodellen zu spezifizieren.
+So lassen sich grafische Modellierungswerkzeuge auf Basis von MDF für beliebige (domänenspezifische) Modellierungssprachen erstellen.
+
+:num:`Abbildung #mdf-hierarchie` zeigt die in MDF verwendeten Modelle. Hier sollen nur kurz die für die vorliegende Arbeit wichtigsten Aspekte verdeutlicht werden.
+Details können bei :cite:`roth` im Kapitel 5, Modellhierarchie nachgelesen werden.
+
+Der *Domain-Model-Stack* (links) enthält alle Modelle, die für die Domäne relevant sind. 
+Das *Domain-Metamodel* legt die Elemente der domänenspezifische Sprache fest, welche im *Domain-Model* genutzt werden um ein Modell zu beschreiben.
+
+Rechts wird der *Designer-Model-Stack* gezeigt, der den Editor für die Dömane spezifiziert. 
+Das *Graphical-Definition-Model* beschreibt Figuren, die sich für die Visualisierung der Domäne einsetzen lassen. 
+Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelementen verbunden. So wird die grafische Repräsentation der Modellelemente im Editor festgelegt.
 
 :num:`Abbildung #ipm-typ-verwendung-1` und :num:`Abbildung #ipm-typ-verwendung-2` zeigen Prozesse, die in einem mit MDF definierten Editor ("i>PM2") für die :ref:`POPM <popm>` erstellt wurden. 
 Die Visualisierung ist ähnlich zu dem vorher vorgestellten i>PM, jedoch werden hier operationale und organisationale Perspektive durch geometrisches "Enthaltensein" im Prozess dargestellt.
 
-An den Abbildungen lässt sich ein weiteres wichtiges Konzept – das "Typ-Verwendungs-Konzept" – welches von diesem Werkzeug umgesetzt wird zeigen. 
-Dieses Konzept wird auch in der vorliegenden Arbeit für die Modellierung von Prozessen genutzt.
+Typ-Verwendungskonzept
+^^^^^^^^^^^^^^^^^^^^^^
 
+An den Abbildungen lässt sich ein weiteres wichtiges Konzept – das "Typ-Verwendungs-Konzept" – welches von diesem Werkzeug umgesetzt wird zeigen. 
+
+Das Grundprinzip des Typ-Verwendungs-Konzeptes ist es, einmal erstellte Objekte in unterschiedlichen Kontexten zu verwenden. 
+
+:num:`Abbildung #ipm-typ-verwendung-1` zeigt den Prozess "Notiz aufnehmen" (*A*). 
+Nun wird eine sehr ähnliche Funktionalität für einen anderen Prozess benötigt, der in :num:`Abbildung #ipm-typ-verwendung-2` gezeigt ist. 
+Hier ist der Prozess "Notiz erstellten / ergänzen" (*B*) zu sehen. 
+Um diesen Prozess zu definieren könnte nun ein komplett neues "Objekt" erstellt werden.
+Es ist allerdings schon ein "Objekt" mit nahezu gleichen Eigenschaften vorhanden, nämlich der vorher genannte Prozess *A*. 
+Wie in der Informatik üblich wäre es wünschenwert, solche Redundanzen zu vermeiden und die "Wiederverwendbarkeit" zu erhöhen.
+
+Dazu kann ein "Typ" definiert werden, vom dem mehrere "Verwendungen" erstellt werden, die dann in mehreren Kontexten eingesetzt werden können.
+Hier könnte beispielsweise der Typ T angelegt werden. T ist eine "Instanz" eines Prozesses.
+T legt fest, dass die Funktion des Prozesses "Notiz aufnehmen" (also der auf der Figur angezeigte Text) sein soll und "OneNote" und "Agent" mit ihm assoziiert sind.
+*A* kann nun direkt als Verwendung von T gesehen werden. *A* übernimmt alle Eigenschaften von T.
+
+Um den Prozess *B* darzustellen müssen jedoch zwei Änderungen vorgenommen werden. 
+Das ist möglich, da eine Verwendung Werte des Typs überschreiben kann. 
+So wird also in der Verwendung für *B* einfach die vordefinierte Funktion durch "Notiz erstellen / ergänzen" ersetzt und "Outlook" zu den operationalen Einheiten hinzugefügt.
 
 .. _ipm-typ-verwendung-1:
 
-.. figure:: _static/ext_pics/ipm2-process-verwendung_1.png
+.. figure:: _static/ext_pics/ipm2-process-verwendung_2.png
     :height: 10cm
 
     Prozess in i>PM2 aus :cite:`volz_werkzeugunterstutzung_2011`
@@ -248,13 +278,14 @@ Dieses Konzept wird auch in der vorliegenden Arbeit für die Modellierung von Pr
 
 .. _ipm-typ-verwendung-2:
 
-.. figure:: _static/ext_pics/ipm2-typ-verwendung_2.png
+.. figure:: _static/ext_pics/ipm2-typ-verwendung_1.png
     :height: 10cm
 
-    Prozess mit angepasster Verwendung aus :cite:`volz_werkzeugunterstutzung_2011`
+    Prozess mit angepasster Verwendung  aus :cite:`volz_werkzeugunterstutzung_2011`
 
-Durch das mit :ref:`LMM <lmm>` eingeführte Modellierungsmuster der **Instanz-Spezialisierung** lässt sich das Typ-Verwendungs-Konzept leicht realisieren.
+Offensichtlich lässt sich dieses Konzept mit dem in :ref:`LMM <lmm>` eingeführten Modellierungsmuster der **Instanz-Spezialisierung** leicht realisieren.
+Dieses Konzept wird auch in der vorliegenden Arbeit für die Modellierung von Prozessen genutzt.
 
-Nach der Terminilogie des Typ-Verwendungs-Konzepts ist in :num:`Abbildung #concreteuseof` ``ConceptD`` ein "Typ", ``UseA`` und ``UseB`` sind "Verwendungen" davon.
+Nach der Terminilogie des Typ-Verwendungs-Konzepts ist in der früher gezeigten :num:`Abbildung #concreteuseof` ``ConceptD`` ein "Typ", ``UseA`` und ``UseB`` sind "Verwendungen" davon.
 
 
