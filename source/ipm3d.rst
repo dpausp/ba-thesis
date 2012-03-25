@@ -36,14 +36,14 @@ Durch Verschieben und Rotieren der Kamera kann sich der Benutzer in der virtuell
 
 Knoten und Szenenobjekte sind frei drehbar um alle drei Achsen, unter Beibehaltung der Seitenverhältnisse skalierbar und können prinzipiell frei in der 3D-Szene platziert werden.
 
-Das Konzept zur Visualisierung der Prozessdiagramme wird in Kapitel :ref:`konzept-visualisierung` näher vorgestellt.
+Wie Prozessdiagramme in I>PM3D visualisiert werden wird in Kapitel :ref:`visualisierung` näher vorgestellt.
 
 Modellanbindung
 ---------------
 
 Ein Modellierungswerkzeug muss die Möglichkeit haben, bestehende Modelle in einer physischen Repräsentation zu laden, das Modell beziehungsweise dessen Elemente zu bearbeiten und wieder zu speichern. Außerdem sollen neue Modelle erstellt werden können. 
 
-Das Konzept für die Einbindung dieser Modell-Funktionen in den Prototypen und die Implementierung zu erstellen ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`modellanbindung` beziehungsweise :ref:`implementierung-vis` behandelt. 
+Das Konzept für die Einbindung dieser Modell-Funktionen in den Prototypen und die Implementierung zu erstellen ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`modellanbindung` behandelt. 
 In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Abschnitt als "Modellanbindung" bezeichnet.
 
 .. _ipm3d-gui:

@@ -8,7 +8,7 @@ Nachdem im vorherigen Kapitel der Aufbau der Modellschichten sowie grundsätzlic
 
 Anschließend wird das verwendete Prozess-Metamodell näher vorgestellt.
 
-Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`konzept-visualisierung` dargestellt.
+Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`visualisierung` dargestellt.
 
 
 .. _scalamapping:
@@ -93,7 +93,7 @@ Dadurch wäre es prinzipiell möglich, einem Domänenkonzept mehrere Repräsenta
 Das von ``ScalaMapping`` definierte Attribut ``scalaType`` legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
 Es ist zu beachten, dass die Interpretation von ``scalaType`` hier nicht den :ref:`scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
 
-Wie die Werte interpretiert werden ist später unter :ref:`beispiel-neues-modellelement` zu sehen.
+Wie die Werte interpretiert werden ist später unter :ref:`beispiel-neue-modellfigur` zu sehen.
     
 Knoten
 ^^^^^^
@@ -103,19 +103,19 @@ Das abstrakte Basis-Konzept aller Knoten, ``Node`` definiert die Attribute ``dim
 In der Implementierung wird sichergestellt, dass Visualisierung und physikalische Repräsentation immer zueinander passen. 
 Das bedeutet beispielsweise, dass die für den Benutzer sichtbare Ausdehnung genau die ist, die auch für die Erkennung von Kollisionen oder bei der Auswahl von Elementen durch ein Eingabegerät genutzt wird.
 
-Für die Visualisierung von Knoten sind ein texturierter (TexturedNode) und ein beschrifteter (TextLabelNode) Basistyp vorgesehen, die folgende Attribute definieren:
+Für die Visualisierung von Knoten sind ein texturierter (``TexturedNode``) und ein beschrifteter (``TextLabelNode``) Basistyp vorgesehen, die folgende Attribute definieren:
 
     * TexturedNode: 
 
-      * texture: Pfad zu einer Bilddatei, die auf dem Knoten angezeigt wird. Näheres zu unterstützten Formaten lässt sich in :ref:`implementierung-vis` nachlesen.
-      * backgroundColor: Hintergrundfarbe des Knoten. Die Interpretation ist von der Implementierung der Visualisierung des Knotens abhängig.
+      * ``texture``: Pfad zu einer Bilddatei, die auf dem Knoten angezeigt wird.\ [#f5]_
+      * ``backgroundColor``: Hintergrundfarbe des Knoten. 
 
     * TextLabelNode:
 
-      * displayAttrib: Gibt den Namen eines Attributs aus dem zugeordneten Domänenkonzepts an, dessen textuelle Darstellung als Schrift auf dem Knoten angezeigt wird.
-      * fontColor: Schriftfarbe, als Color-Instanz spezifiziert. 
-      * backgroundColor: Hintergrundfarbe, die an nicht von der Schrift abgedeckten Stellen angezeigt wird oder bei Transluzenz-Effekten mit der Schriftfarbe gemischt wird.
-      * font: Schriftart, als Font-Instanz
+      * ``displayAttrib``: Gibt den Namen eines Attributs aus dem zugeordneten Domänenkonzepts an, dessen textuelle Darstellung als Schrift auf dem Knoten angezeigt wird.
+      * ``fontColor``: Schriftfarbe, als Color-Instanz spezifiziert. 
+      * ``backgroundColor``: Hintergrundfarbe, die an nicht von der Schrift abgedeckten Stellen angezeigt wird.
+      * ``font``: Schriftart, angegeben als ``Font``-Instanz
 
 Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungs-Konzept genutzt wird. Siehe :ref:`pmm`.
 Wie in :ref:`ipm3d-gui` erwähnt sollen verfügbare Knotentypen in einem Menü angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
@@ -124,8 +124,8 @@ Im Kontext des Typ-Verwendungs-Konzepts werden Knotentypen ebenfalls "Typ" genan
 
 Daher müssen alle Nodes folgende Attribute setzen:
 
-  * toolingAttrib: Legt fest, welches (String)-Attribut aus dem Domänenkonzept zur Identifikation des Node-Typs in einer Palette angezeigt werden soll.
-  * toolingTitle: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
+  * ``toolingAttrib``: Legt fest, welches (String)-Attribut aus dem Domänenkonzept zur Identifikation des Node-Typs in einer Palette angezeigt werden soll.
+  * ``toolingTitle``: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im Domain-Meta-Model definiert werden.
 
 .. _ebl-figures-kanten:
@@ -160,7 +160,7 @@ Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt.
 
 Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
 
-Näheres zur COLLADA-Unterstützung von I>PM3D findet sich bei :cite:`uli` im Kapitel ???.
+Näheres zur COLLADA-Unterstützung von I>PM3D lässt sich bei :cite:`uli` nachlesen.
 
 .. _edl:
 
@@ -168,7 +168,7 @@ Editor-Definition-Level
 =======================
 
 Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine gesonderte Beschreibung verzichtet.
-Die zugehörigen Concepts können in :ref:`anhang-a` nachgelesen werden. Näheres zu den hier spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`konzept-visualisierung`.
+Die zugehörigen Concepts können in :ref:`anhang-b` nachgelesen werden. Näheres zu den hier spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`visualisierung`.
 
 
 .. _pmm:
@@ -325,3 +325,5 @@ So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmod
 .. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
 
 .. [#f4] TODO Verweis auf Screenshot oder Ulis Arbeit?!
+
+.. [#f5] Unterstützt werden PNG, JPEG, BMP und TGA

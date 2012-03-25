@@ -1,3 +1,5 @@
+.. _renderkomponente:
+
 *****************
 Render-Komponente
 *****************
@@ -19,7 +21,7 @@ Dies ist für die Ausführung von OpenGL-Funktionen problematisch. Deswegen wird
 Der RenderActor definiert zwei Render-Ebenen. Die zuerst gezeichnete Ebene umfasst alle 3D-Objekte wie den Prozessgraphen und Szenenobjekte. 
 Darüber wird eine Ebene gezeichnet, die 2D-Elemente wie Cursor der Eingabegeräte oder das Eightpen-Menü :cite:`buchi` enthält.
 
-Beide Ebenen werden durch jeweils eine separate :ref:`render-stage` gezeichnet.
+Beide Ebenen werden durch jeweils eine :ref:`renderstage` gezeichnet.
 
 Es gibt die Möglichkeit, den RenderActor durch Plugins zu erweitern, die an verschiedenen vordefinierten Erweiterungspunkten im Render-Prozess eingreifen können. 
 Plugins können neue Grafikobjekte erzeugen und zu einer der beiden RenderStage hinzufügen oder selbst OpenGL-Funktionen ausführen.

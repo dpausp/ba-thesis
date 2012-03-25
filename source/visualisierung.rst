@@ -1,4 +1,4 @@
-.. _konzept-visualisierung:
+.. _visualisierung:
 
 *******************************
 3D-Visualisierung von Prozessen
@@ -31,7 +31,7 @@ Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus de
 :num:`prozessknoten` zeigt zwei Prozesse, auf denen deren Funktion als Text angezeigt wird. 
 Texte werden nach Bedarf an Wortgrenzen auf mehrere Zeilen verteilt und zentriert angezeigt. 
 
-Weitere Informationen hierzu können unter :ref:`darstellung-von-schriften` nachgelesen werden.
+Weitere Informationen zur Schriftdarstellung können unter :ref:`schrift-rendering` nachgelesen werden.
 
 .. _prozessknoten:
 
@@ -61,9 +61,6 @@ Jedoch führt dies bei bestimmten Drehpositionen zu recht unschönen Darstellung
 
 Um dies etwas zu verbessern werden die Seiten abhängig von Betrachtungswinkel dargestellt. Wird eine Seite vom Benutzer weggedreht, wird die Schrift oder Textur nach und nach ausgeblendet.
 Ab einer gewissen Abweichung wird nur noch die Hintergrundfarbe angezeigt.
-
-Näheres dazu siehe :ref:`implementierung-vis`.
-
 
 An die für Knoten verwendbaren geometrischen Objekte gibt es einige Anforderungen, die davon bestimmt sind, dass die Lesbarkeit und die Verständlichkeit des Prozessmodells möglichst hoch sein soll.
 
@@ -290,7 +287,7 @@ Sehr sinnvoll wäre es, die :ref:`beleuchtung` konfigurieren zu können.
 Wie in jenem Abschnitt gesagt ist es schwierig, Einstellungen zu finden, die für alle Situationen gut geeignet sind.
 Diese hängen auch von der verwendeten Anzeige und von Einflüssen wie Umgebungslicht oder der persönlichen Wahrnehmung des Benutzers ab.
 In der grafischen Oberfläche sollte es hierzu eine Möglichkeit geben, Lichtquellen zu setzen und deren Parameter zu verändern, aber auch sinnvolle Standardeinstellungen oder auswählbare Profile anbieten. 
-Lichtquellen sind in Simulator X über zugehörige Licht-Entities erstell- und konfigurierbar, wie es auch von der :ref:`renderkomponte` unterstützt wird.
+Lichtquellen sind in Simulator X über zugehörige Licht-Entities erstell- und konfigurierbar, wie es auch von der :ref:`renderkomponente` unterstützt wird.
 
 Ähnliches gilt für :ref:`modellierungsflaechen`. Sie sind momentan in der Implementierung fest vorgegeben, da es in der GUI noch keine Konfigurationsmöglichkeit gibt.
 Die Flächen können aber ebenfalls nach Bedarf erstellt und über zugehörige Entities konfiguriert werden.

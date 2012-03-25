@@ -38,7 +38,7 @@ Es existieren Commands für die folgenden Funktionen:
 * Erstellen und Löschen von Knoten und Szenenobjekten
 * Erstellen einer Kante zwischen zwei Knoten
 
-Alle anderen Manipulationsmöglichkeiten, das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen, werden über "ModelEntities" bereitgestellt, welche weiter unten in diesem Kapitel :ref:`modell-entities` erläutert werden.
+Alle anderen Manipulationsmöglichkeiten, das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen, werden über "ModelEntities" bereitgestellt, welche weiter unten in diesem Kapitel :ref:`model-entities` erläutert werden.
 
 Übersicht 
 ---------

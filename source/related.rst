@@ -16,7 +16,7 @@ Die Softwarevisualisierung steht vor der Aufgabe, komplexe und abstrakte Systeme
 Nicht selten sind Softwaresysteme überaus umfangreich und es muss daher nach Möglichkeiten gesucht werden, eine Vielzahl von Informationen übersichtlich und klar zu visualisieren ohne den Betrachter zu überfordern. 
 
 Bisher nutzen verbreitete Werkzeuge zur Softwaremodellierung, die häufig auf der Unified Modeling Language (UML) aufsetzen nahezu ausschließlich 2D-Visualisierungen. 
-Die UML lässt prinzipiell aber auch 3D-Repräsentationen zu :cite:`Booch:1999:UML:291167`
+Die UML lässt prinzipiell aber auch 3D-Repräsentationen zu :cite:`booch_unified_1999`
 
 Es lässt sich eine Reihe von Arbeiten finden, die sich mit 3D-Visualisierungstechniken beschäftigen und deren Vorteile gegenüber 2D-Techniken sowie Probleme bei der Realisierung betrachten.
 
@@ -188,6 +188,9 @@ Die graphische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und 
 3D-Prozessvisualisierung
 ========================
 
+
+.. _betz:
+
 3D Representation of Business Process Models
 --------------------------------------------
 
@@ -307,7 +310,7 @@ Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
 Visualisierung von Graphen in 3D
 ================================
 
-.. _ware-graph:
+.. _ware-graphs:
 
 Visualizing Graphs in Three Dimensions
 --------------------------------------

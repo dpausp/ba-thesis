@@ -115,14 +115,14 @@ Drawable
 ---------
 
 Zu zeichnende Objekte werden durch eine Klasse beschrieben, welche von der Basisklasse ``Drawable`` abgeleitet ist.
-Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (Trait ``Mesh``), der Position und Größe (Trait ``Transformation``) und der Darstellungsweise (Trait ``Effect``) enthalten.
+Solche Drawable-Klassen müssen eine Beschreibung der Geometrie (Trait ``Mesh``), der Position und Größe (``Transformation``) und der Darstellungsweise (``Effect``) enthalten.
 Die Implementierung ist dabei sehr flexibel möglich und kann an die Anforderungen des konkret dargestellten Objekts und der Anwendung angepasst werden. 
 
 In den Traits sind nur Methoden vorgegeben, die die von einem "Renderer" benötigten Daten liefern müssen:
 
-* Ein Mesh stellt dem Renderer die Zeichenbefehle sowie Vertex-Attribute bereit, üblicherweise sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
-* Transformation liefert die Transformationsmatrix des Grafikobjekts.
-* Ein Effect ist für die Bereitstellung von Shader-Beschreibungen und zugehörigen Uniforms zuständig.
+* ``Mesh`` stellt dem Renderer die Zeichenbefehle sowie Vertex-Attribute bereit, üblicherweise sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
+* ``Transformation`` liefert die Transformationsmatrix des Grafikobjekts.
+* ``Effect`` ist für die Bereitstellung von Shader-Beschreibungen und zugehörigen Uniforms zuständig.
 
 Ein Renderer kann selbst implementiert werden oder es kann eine ``RenderStage`` (nächster Abschnitt) dafür konfiguriert und genutzt werden.
 
@@ -177,10 +177,10 @@ Durch Angabe einer Render-Priorität in den Drawables kann manuell eine bestimmt
 Von der ``RenderStage`` werden zu den von Drawables definierten Texture- und ShaderDefinitions Objekte der Low-Level-API nach Bedarf erzeugt.
 Diese werden für das Zeichnen von mehreren Drawables wiederverwendet, um Grafikspeicher und Zeit zu sparen.
 
-Abgegrenzte Funktionalitäten können in **RenderStagePlugins** ausgelagert werden. 
+Abgegrenzte Funktionalitäten können in ein ``RenderStagePlugin`` ausgelagert werden. 
 So stellt die Renderbibliothek unter Anderem Plugins für die Verwaltung von Texturen und die Umsetzung von Lichtquellen bereit.
 
-:num:`Abbbildung #renderstage-classdiag` zeigt eine zusammengesetzte RenderStage.
+:num:`Abbbildung #renderstage-classdiag` zeigt eine zusammengesetzte ``RenderStage``.
 
 .. _renderstage-classdiag:
 
@@ -196,7 +196,7 @@ Weitere Abstraktionen
 Licht 
 ^^^^^^
 
-Die Renderbibliothek unterstützt das Phong-Beleuchtungsmodell, wobei dieses pixelgenau ausgewertet wird. 
+Die Renderbibliothek unterstützt das Phong-Beleuchtungsmodell, welches pixelgenau ausgewertet wird. 
 Für die Anwendung werden Klassen bereitgestellt, die die von "altem" OpenGL bekannten "Lichtquellen" bereitstellen und sich an deren Schnittstelle orientieren. 
 Lichtquellen können entweder entfernungsabhängig (``PositionalLight``) oder -unabhängig sein (``DirectionalLight``).
 
@@ -320,7 +320,7 @@ Für SVars, deren Typ erst zur Laufzeit bekannt wird kann der Methode eine "Erse
 Eine solche Ersetzung ist beispielsweise für die Darstellung von Text auf Modellknoten nötig. 
 
 Im :ref:`Editor-Metamodell <ebl-figures>` wird festgelegt, welches Attribut als Text dargestellt werden soll.
-Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der ``Text``-SVar durch die entsprechend benannte Editor-Model-SVar :ref:`<modellanbindungs-svars>`.
+Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der ``Text``-SVar durch die entsprechend benannte :ref:`Editor-Model-SVar <modellanbindung-svars>`.
 Beispielsweise wird so für einen Prozessknoten die ``model.function``-SVar mit dem Setter für den aktuellen Text verbunden.
 Aufgrund dessen wird bei jeder Änderung am ``function``-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
 
@@ -388,7 +388,7 @@ Anmerkungen
 Am ersten Code-Beispiel ist zu sehen, wie ein Drawable für ein Modellelement prinzipiell definiert wird. 
 Die Zeilen 2 bis 4 geben die von :ref:`drawable` geforderte Implementierung an.
 Es wird von der Renderkomponente vorausgesetzt, dass ``SiXTransformation`` für alle Drawables genutzt wird.
-``SelectableAndTextureEffect`` wird für alle texturierten Figuren genutzt, die die :ref:`visualisierungsvarianten-impl` unterstützen.
+``SelectableAndTextureEffect`` wird für alle texturierten Figuren genutzt, die die :ref:`erweiterung-interaction` unterstützen.
 Analog dazu ist ``SelectableAndTextEffect`` für die Textdarstellung definiert, welcher das im nächsten Abschnitt beschriebene ``TextDisplayAddon`` nutzt.
 
 In den letzten drei Zeilen werden die im vorherigen Abschnitt vorgestellten SVarSupports eingemischt.

@@ -62,7 +62,12 @@ Die schon erwähnte, nötige Flexibilität von Prozessmodellen (eigentlich Model
 Dies wird allgemein mit dem Begriff Metamodellierung bezeichnet. Das Metamodell stellt wiederum ein Modell für Modelle dar, die oft als Instanzen des Metamodells bezeichnet werden.
 
 
-Ein Beispiel für eine Metamodellierungsumgebung ist das OMME, Open Meta Modelling Environment, das an demselben Lehrstuhl wie diese Arbeit entstanden ist in :cite:`volz_werkzeugunterstuetzung_2011` beschrieben wurde. 
+Ein Beispiel für eine Metamodellierungsumgebung ist das OMME, Open Meta Modelling Environment, das an demselben Lehrstuhl wie diese Arbeit entstanden ist in :cite:`volz_werkzeugunterstutzung_2011` beschrieben wurde. 
+
+.. _lmm:
+
+LMM
+---
 
 Ein Hauptbeitrag dieser Arbeit ist das Linguistic Meta Model (LMM), dass der Idee der orthogonale Klassifikation folgt. 
 

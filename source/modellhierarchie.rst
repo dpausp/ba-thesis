@@ -24,11 +24,11 @@ Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett aus
 Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im vorliegenden und nächsten Kapitel :ref:`metamodelle` näher erläutert.
 Am Ende des nächsten Kapitels ist ein Anwendungsbeispiel zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
 
-:num:`Abbildung #modellhierarchie` zeigt wie sich die für I>PM3D genutzte Hierarchie der Modelle darstellt, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
+:num:`Abbildung #modellhierarchie-diagram` zeigt wie sich die für I>PM3D genutzte Hierarchie der Modelle darstellt, die sich in einen *Editor-Model-Stack* und einen *Domain-Model-Stack* aufteilt.
 Nach einer kurzen Vorstellung der Modellierungssprache wird im Rest dieses Kapitels wird eine Übersicht über die beiden abgegrenzten Model-Stacks gegeben.
 
 
-.. _modellhierarchie:
+.. _modellhierarchie-diagram:
 
 .. figure:: _static/diags/modellhierarchie.eps
     :width: 16cm
