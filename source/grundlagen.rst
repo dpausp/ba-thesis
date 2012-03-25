@@ -65,15 +65,9 @@ Operationale Perspektive
 
 Dies soll explizit keine vollständige Aufzählung, sondern nur eine Zusammenfassung sehr häufig vorkommender relevanter Aspekte sein. 
 Das bedingt eine flexible Modellierungssprache. So können nach Bedarf weitere Perspektiven hinzugefügt werden.
-In diesem Zusammenhang soll auch erwähnt werden, dass es oft notwendig ist, die Granularität von Prozessen dynamisch zu verändern, je nachdem, welche Informationen im konkreten Fall gefragt sind. 
 
-Prozesse können daher komposit (oder auch komplex genannt) sein und weitere, Subprozesse enthalten, die in einem grobgranularen Diagramm nicht darstellt werden. B
+:num:`Abbildung #ipm-typ-verwendung-1` zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
 
-ei Bedarf können diese Unterprozesse separat in einem Diagramm betrachten werden.
-
-Die POPM wird vom Modellierungswerkzeug i>ProcessManager (kurz: i>PM) implementiert. 
-
-:num:`Abbildung #ipm-typ-verwendung-1` zeigt einen Prozess in i>PM. 
 Die funktionale Perspektive wird hier durch drei Prozesse sowie einen Entscheidungsknoten vertreten. 
 Kontrollflüsse, die mit grauen Pfeilen visualisiert werden bilden die verhaltensorientierte Perspektive.
 Am Entscheidungsknoten kann sich der Kontrollfluss je nach Ausgang des Kriteriums (Einschreiben / Paket?) verzweigen.
@@ -85,9 +79,15 @@ Im Gegensatz dazu werden durch an die Prozesse "angeklebte" Zeichenketten die or
 .. _ipm-process:
 
 .. figure:: _static/ext_pics/ipm-process.png
-    :height: 8cm
+    :width: 16cm
 
-    Prozess in i>PM aus :cite:`roth`
+    Perspektivenorientierte Prozessmodellierung aus :cite:`roth`
+
+In diesem Zusammenhang soll auch erwähnt werden, dass es oft notwendig ist, die Granularität von Prozessen dynamisch zu verändern, je nachdem, welche Informationen im konkreten Fall gefragt sind. 
+
+Prozesse können daher komposit (oder auch komplex genannt) sein und weitere, Subprozesse enthalten, die in einem grobgranularen Diagramm nicht darstellt werden. B
+
+ei Bedarf können diese Unterprozesse separat in einem Diagramm betrachten werden.
 
 BPMN
 ----
@@ -125,12 +125,22 @@ Ein solches Werkzeug bietet die Möglichkeit, Modelle zu erstellen, diese in sin
 Dem Benutzer wird überlicherweise eine Palette an Modellelementen angeboten, die in einem konkreten Prozessmodell eingesetzt werden können. 
 Ein Anwender "baut" ein Modell, indem er grafische Objekte miteinander auf einer "Zeichenfläche" kombiniert.
 
-Solche Werkzeuge gibt es für Sprachen wie BPMN, wie beispielsweise ARIS oder ?.
+Für BPMN gibt es verschiedene solcher Werkzeuge, wie beispielsweise ARIS oder ?.
+
+Ein Modellierungswerkzeug für die perspektivenorientierten Prozessmodellierung wird in :num:`Abbildung #ipm2` gezeigt. 
+Auf der linken Seite lässt sich die Palette mit den Modellelementen erkennen, die in verschiedene "Gruppen" eingeteilt sind.
+
+.. _ipm2:
+
+.. figure:: _static/ext_pics/ipm2d-editor.png
+    :width: 16cm
+
+    Prozessmodellierungswerkzeug i>PM2 aus :cite:`roth`
+
 Als physische Repräsentation von Modellen ist es besonders praktisch, wenn diese in einem nicht-proprietärem Format verfügbar ist. 
 Damit ist es möglich, solche Modelle mit verschiedenen Werkzeugen zu nutzen. 
 Für BPMN ist beispielsweise XPDF als (XML-)Austauschformat verbreitet. Ein solches Format lässt sich auch als textuelle Darstellung eines (Prozess-)Modells bezeichnen.
 Textuelle Darstellungen sind für die automatische Verarbeitung gut geeignet, können aber durchaus auch von Menschen gelesen und – mit Einschränkungen – bearbeitet werden.
-Dies wird im nächsten Abschnitt noch deutlicher.
 
 .. _metamodellierung:
 
@@ -155,7 +165,7 @@ Durch die Anpassung eines Metamodells lässt sich die abstrakte und konkrete Syn
 So können neue Modellelemente hinzugefügt und bestehende angepasst oder entfernt werden. 
 Im Falle einer visuellen Sprache lässt sich die konkrete Repräsentation von Modellelementen, also deren Aussehen und Form ändern.
 
-Um Metamodelle zu "erstellen" ist es notwendig, diese auf eine bestimmte Weise beschreiben zu können. 
+Um Metamodelle zu "erstellen" ist es notwendig, diese auf eine wohldefinierte Weise beschreiben zu können. 
 Dies leistet das im Folgenden vorgestellte Linguistic Meta Model (LMM), welches im Rahmen der Open Meta Modelling Environment (OMME), einer Metamodellierungsumgebung, entstanden ist. :cite:`volz_werkzeugunterstutzung_2011`
 
 .. _lmm:
@@ -168,8 +178,8 @@ LMM stellt eine Sprache bereit, welche zur Definition von Metamodellen dient.
 
 .. _lmm-model:
 
-.. figure:: _static/ext_pics/bernhard-lmmmodel.eps
-    :height: 6cm
+.. figure:: _static/ext_pics/bernhard-lmmmodel.png
+    :width: 16cm
 
     Hierarchie der LMM-Elemente aus :cite:`volz_werkzeugunterstutzung_2011`
 
@@ -183,8 +193,8 @@ Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen
 
 .. _lmm-model:
 
-.. figure:: _static/ext_pics/vergleich_lmm.eps
-    :height: 8cm
+.. figure:: _static/diags/vergleich_lmm.eps
+    :width: 16cm
 
     Vergleich von objektorientierter Modellierung (links) und Metamodellierung mit Clabjects
 
@@ -211,8 +221,8 @@ Dieses Muster wird in :num:`Abbildung #concreteuseof` veranschaulicht.
 
 .. _concreteuseof:
 
-.. figure:: _static/ext_pics/concreteuseof.eps
-    :height: 8cm
+.. figure:: _static/diags/concreteuseof.eps
+    :width: 16cm
 
     Instanz-Spezialisierung ausgehend von ConceptD
 
@@ -232,8 +242,15 @@ MDF
 Ebenfalls als Teil der Metamodellierungsumgebung OMME ist das Model Designer Framework (MDF) :cite:`roth` entstanden. Dieses erlaubt es, Modell-Editoren mit Hilfe von Metamodellen zu spezifizieren.
 So lassen sich grafische Modellierungswerkzeuge auf Basis von MDF für beliebige (domänenspezifische) Modellierungssprachen erstellen.
 
-:num:`Abbildung #mdf-hierarchie` zeigt die in MDF verwendeten Modelle. Hier sollen nur kurz die für die vorliegende Arbeit wichtigsten Aspekte verdeutlicht werden.
+:num:`Abbildung #mdf-modellhierarchie` zeigt die in MDF verwendeten Modelle. Hier sollen nur kurz die für die vorliegende Arbeit wichtigsten Aspekte verdeutlicht werden.
 Details können bei :cite:`roth` im Kapitel 5, Modellhierarchie nachgelesen werden.
+
+.. _mdf-modellhierarchie:
+
+.. figure:: _static/ext_pics/mdf-modellhierarchie.png
+    :width: 16cm
+
+    Modellhierarchie von MDF mit Domain-Model- und Designer-Stack aus :cite:`roth`
 
 Der *Domain-Model-Stack* (links) enthält alle Modelle, die für die Domäne relevant sind. 
 Das *Domain-Metamodel* legt die Elemente der domänenspezifische Sprache fest, welche im *Domain-Model* genutzt werden um ein Modell zu beschreiben.
@@ -243,6 +260,7 @@ Das *Graphical-Definition-Model* beschreibt Figuren, die sich für die Visualisi
 Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelementen verbunden. So wird die grafische Repräsentation der Modellelemente im Editor festgelegt.
 
 :num:`Abbildung #ipm-typ-verwendung-1` und :num:`Abbildung #ipm-typ-verwendung-2` zeigen Prozesse, die in einem mit MDF definierten Editor ("i>PM2") für die :ref:`POPM <popm>` erstellt wurden. 
+i>PM2 folgt den Prinzipien von i>PM, dem i>ProcessModeler auf (ref:), 
 Die Visualisierung ist ähnlich zu dem vorher vorgestellten i>PM, jedoch werden hier operationale und organisationale Perspektive durch geometrisches "Enthaltensein" im Prozess dargestellt.
 
 Typ-Verwendungskonzept
@@ -250,7 +268,7 @@ Typ-Verwendungskonzept
 
 An den Abbildungen lässt sich ein weiteres wichtiges Konzept – das "Typ-Verwendungs-Konzept" – welches von diesem Werkzeug umgesetzt wird zeigen. 
 
-Das Grundprinzip des Typ-Verwendungs-Konzeptes ist es, einmal erstellte Objekte in unterschiedlichen Kontexten zu verwenden. 
+Das Grundprinzip des Typ-Verwendungs-Konzeptes ist es, einmal erstellte Objekte in unterschiedlichen Zusammenhängen zu verwenden. 
 
 :num:`Abbildung #ipm-typ-verwendung-1` zeigt den Prozess "Notiz aufnehmen" (*A*). 
 Nun wird eine sehr ähnliche Funktionalität für einen anderen Prozess benötigt, der in :num:`Abbildung #ipm-typ-verwendung-2` gezeigt ist. 
@@ -270,8 +288,8 @@ So wird also in der Verwendung für *B* einfach die vordefinierte Funktion durch
 
 .. _ipm-typ-verwendung-1:
 
-.. figure:: _static/ext_pics/ipm2-process-verwendung_2.png
-    :height: 10cm
+.. figure:: _static/ext_pics/ipm2-typ-verwendung_2.png
+    :width: 16cm
 
     Prozess in i>PM2 aus :cite:`volz_werkzeugunterstutzung_2011`
 
@@ -279,9 +297,9 @@ So wird also in der Verwendung für *B* einfach die vordefinierte Funktion durch
 .. _ipm-typ-verwendung-2:
 
 .. figure:: _static/ext_pics/ipm2-typ-verwendung_1.png
-    :height: 10cm
+    :width: 16cm
 
-    Prozess mit angepasster Verwendung  aus :cite:`volz_werkzeugunterstutzung_2011`
+    Prozess mit angepasster Verwendung aus :cite:`volz_werkzeugunterstutzung_2011`
 
 Offensichtlich lässt sich dieses Konzept mit dem in :ref:`LMM <lmm>` eingeführten Modellierungsmuster der **Instanz-Spezialisierung** leicht realisieren.
 Dieses Konzept wird auch in der vorliegenden Arbeit für die Modellierung von Prozessen genutzt.
