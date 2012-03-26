@@ -2,36 +2,36 @@
 Grundlagen
 **********
 
-Diese Kapitel beschäftigt sich mit Grundlagen, die für das Verständnis der Modellierungsaspekte dieser Arbeit nötig sind. 
-Zuerst wird eine Einführung in die Beschreibung von Prozessmodellen durch Sprachen gegeben. 
-Darauf aufbauend wird das in dieser Arbeit verwendete Konzept der perspektivenorientierten Prozessmodellierung und das Typ-Verwendungs-Konzept gezeigt.
-Schließlich wird die Metamodellierung, insbesondere das Linguistic Meta Model vorgestellt, welches die Basis für die Anpassbarkeit des hier entwickelten Modellierungswerkzeugs darstellt.
+Diese Kapitel beschäftigt sich mit Grundlagen, die für das Verständnis der Modellierungsaspekte dieser Arbeit wichtig sind. 
+Zuerst wird eine Einführung in die Beschreibung von (Prozess-)modellen durch Sprachen gegeben und das Konzept der perspektivenorientierten Prozessmodellierung :cite:`jabl` gezeigt. 
+Schließlich wird die Metamodellierung, insbesondere das Linguistic Meta Model :cite:`volz_werkzeugunterstutzung_2011` vorgestellt, welches die Basis für die Anpassbarkeit des hier entwickelten Modellierungswerkzeugs darstellt.
 
 Prozessmodellierungssprachen
 ============================
 
-Prozessmodellierung hat die Aufgabe, komplexe Abläufe in einer abstrahierten, das heißt vereinfachten, aber dennoch korrekten Form darzustellen.
-Oft werden solche Modelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten aufzuzeigen.
-Andererseits können abstrakt modellierte Prozesse auch von einem Softwaresystem automatisch ausgeführt beziehungsweise simuliert werden.
+Modellierung hat im Rahmen des Prozessmanagements die Aufgabe, komplexe Abläufe aus der Realität in einer abstrahierten, das heißt vereinfachten, aber dennoch korrekten Form darzustellen. :cite:`?`
+Oft werden solche Modelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
+Andererseits können abstrakt modellierte Prozesse von einem Softwaresystem automatisch ausgeführt beziehungsweise simuliert werden. :cite:`survey`
 
 Um Modelle formulieren zu können bedarf es einer passenden Modellierungssprache. 
 
-Zu einer Sprache gehört eine abstrakte Syntax, die allgemein Elemente einer Sprache und deren Beziehungen beschreibt.
-Erst die konkrete Syntax legt sozusagen das "Aussehen" der Sprache fest. 
-Prinzipiell lassen sich textuelle und grafische Notationen unterscheiden. 
+Zu einer Sprache gehört eine *abstrakte Syntax*, die allgemein Elemente einer Sprache und deren Beziehungen beschreibt.
+Erst eine *konkrete Syntax* legt sozusagen das "Aussehen" der Sprache fest. :cite:`Applied metamodelling`
+Grunsätzlich lassen sich textuelle und grafische Notationen für Sprachen unterscheiden. 
 
 Visuelle Sprachen und deren Klassifikation
 ------------------------------------------
 
-Wohl die leistungsfähigste "Schnittstelle" des Menschen ist das visuelle System (ref), welches auf die Erkennung von Mustern und Strukturen ausgelegt ist.
-So eignen sich besonders grafische Darstellungen dafür, einen Überblick über komplexe Modelle zu geben und Zusammenhänge zwischen einzelnen Modellelementen aufzuzeigen.
+Wohl die leistungsfähigste "Schnittstelle" des Menschen it das visuelle System :cite:`ware-per`, welches auf die Erkennung von Mustern und Strukturen ausgelegt ist.
+Daher eignen sich besonders grafische Darstellungen dafür, einen Überblick über komplexe Modelle zu geben und Zusammenhänge zwischen einzelnen Modellelementen aufzuzeigen.
+So spielen visuelle Sprachen auch eine große Rolle in der Prozessmodellierung. :cite:`survey` :cite:`jabl-vis`
 
 Die konkrete Syntax einer grafischen (oder "visuelle") Sprache umfasst eine Ansammlung von grafischen Objekten (auch "Formen" oder "Figuren" genannt), die Sprachelemente repräsentieren.
 Elemente können auf verschiedene Arten miteinander in Beziehung gesetzt werden. 
-Grafische Sprachen lassen sich nach diesem Kriterium in zwei gegensätzliche Klassen und eine Mischform einteilen (ref).
+Grafische Sprachen lassen sich nach diesem Kriterium in zwei gegensätzliche Klassen und eine Mischform einteilen :cite:`costa`.
 
 So können visuelle Sprachen einem graphbasierten Ansatz folgen.
-Wie aus der Graphentheorie bekannt, bestehen Graphen aus Knoten und Kanten. Kanten drücken dabei eine Relation zwischen bestimmten Knoten aus, mit denen sie "verbunden" sind.
+Graphen bestehen aus Knoten und Kanten. Kanten drücken dabei eine Relation zwischen bestimmten Knoten aus, mit denen sie "verbunden" sind.
 Dieses Prinzip lässt sich grafisch einfach darstellen, wie in :num:`Abbildung #ipm3d` an einem Beispiel aus dem im Rahmen dieser Arbeit entwickelten Modellierungswerkzeugs gezeigt wird.
 Für die Bedeutung ist das "Verbundensein" über die Kante und nicht die Positionierung im Raum entscheidend.
 
@@ -39,14 +39,16 @@ Im Gegensatz dazu steht eine geometriebasierte Darstellung, welche die relative 
 So kann, wie in :num:`Abbildung #ipml` ein Objekt an einem anderen anhaften, oder in diesem enthalten sein.
 
 Aus den beiden Ansätzen können Mischformen ("Hybride") gebildet werden, die so eine größere Auswahl an Möglichkeiten zur Visualisierung von Beziehungen bieten können.
-In der Praxis sind daher solche Ansätze in der UML zu sehen und auch in der Prozessmodellierung zu finden, wie an den Beispielen in den folgenden Abschnitten zu sehen ist.
+In der Praxis sind daher solche Ansätze in der UML :cite:`booch` zu sehen und auch in der Prozessmodellierung zu finden, wie an den Beispielen in den folgenden Abschnitten zu sehen ist.
 
 .. _popm:
 
 Perspektivenorientierte Prozessmodellierung
 -------------------------------------------
 
-Die verschiedenen "Bestandteile" eines Prozessmodells werden von (ref) in "Perspektiven" (oder auch Aspekte genannt) eingeteilt. Identifiziert wurden folgende fünf Perspektiven:
+In einem Prozessmodell muss üblicherweise eine große Menge an Informationen dargestellt werden, die sich auf eine bestimmte Weise gruppieren lässt.
+Nach dem Konzept der perspektivenorientierten Prozessmodellierung (kurz POPM) werden die "Informationsbestandteile" eines Prozesses in sog. "Perspektiven" (oder auch Aspekte genannt) eingeteilt. :cite:`jabl` 
+Es wurden folgende fünf wichtigen Perspektiven identifiziert, die auch in :cite:`volz_werkzeugunterstutzung_2011` (S.251f) beschrieben werden:
 
 Funktionale Perspektive 
     Diese umfasst die funktionalen Einheiten, allgemein "Prozess" genannt. Weiterhin sind hier auch Entscheidungsknoten, Konnektoren eingeschlossen.
@@ -63,8 +65,9 @@ Datenbezogene Perspektive
 Operationale Perspektive 
     Zur Ausführung von Prozessen sind verschiedene Betriebsmittel wie Maschinen, Werkzeuge oder Rechnerressourcen erforderlich, welche in dieser Perspektive abgebildet werden.
 
-Dies soll explizit keine vollständige Aufzählung, sondern nur eine Zusammenfassung sehr häufig vorkommender relevanter Aspekte sein. 
-Das bedingt eine flexible Modellierungssprache. So können nach Bedarf weitere Perspektiven hinzugefügt werden.
+Dies ist keine vollständige Aufzählung, sondern nur eine Zusammenfassung sehr häufig vorkommender Bestandteile. 
+So kann es nötig sein, für einen Anwendungsfall weitere Perspektiven hinzuzufügen oder Perspektiven um neue Elemente zu erweitern.
+Daraus ergibt sich, dass (grafische) Modellierungssprachen, die POPM unterstützen möglichst erweiterbar sein sollten. 
 
 :num:`Abbildung #ipm-typ-verwendung-1` zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
 
@@ -83,43 +86,23 @@ Im Gegensatz dazu werden durch an die Prozesse "angeklebte" Zeichenketten die or
 
     Perspektivenorientierte Prozessmodellierung aus :cite:`roth`
 
-In diesem Zusammenhang soll auch erwähnt werden, dass es oft notwendig ist, die Granularität von Prozessen dynamisch zu verändern, je nachdem, welche Informationen im konkreten Fall gefragt sind. 
 
-Prozesse können daher komposit (oder auch komplex genannt) sein und weitere, Subprozesse enthalten, die in einem grobgranularen Diagramm nicht darstellt werden. B
+Grafische Modellierungswerkzeuge
+--------------------------------
 
-ei Bedarf können diese Unterprozesse separat in einem Diagramm betrachten werden.
+Für die Erstellung von grafischen Prozessmodellen am Rechner wird eine Unterstützung durch Softwarewerkzeuge benötigt.
+Prinzipiell können "Modelle" einfach mit Hilfe von 2D-Zeichenwerkzeugen wie beispielsweise Dia oder MS Visio erstellt werden.
+Solche Programme bieten oft schon passende Formen und Verbindungen, beispielsweise für BPMN [#f1]_ an. 
 
-BPMN
-----
+Ein Benutzer macht die Bedeutung eines solchen Diagrammes an den erkennbaren grafischen Formen und deren Aussehen fest; insofern wäre dies für Menschen durchaus ausreichend.
 
-Für die Modellierung von Prozessen wird häufig BPMN, eine standardisierte, visuelle Sprache genutzt. 
-:num:`Abbildung #bpmn-process` zeigt einen in BPMN modellierten Prozess.
-An diesem Beispiel lassen sich grundlegende Elemente von Prozessmodellen erkennen.
-
-So besteht ein Modell aus Aktitvitäten (auch "Prozess" genannt), welche über Kanten verbunden sind, die einen Kontrollfluss, also eine Abhängigkeit darstellen.
-Wie zu sehen ist, handelt es sich dabei um einen graphbasierten Ansatz.
-
-BPMN definiert allerdings auch geometriebasierte Beziehungen. Als Beispiel ist in :num:`Abbildung #bpmn-swimlane` eine "Swimlane" gezeigt.
-So werden zusammengehörige Prozessschritte, die von einer bestimmten Entität ausgeführt werden in einer solchen Lane gruppiert.
-
-BPMN ist im Standard als eine Ansammlung von zweidimensionalen Formen definiert. Später wird eine dreidimensionale Adaption gezeigt.
-
-
-Modellierungswerkzeuge
-----------------------
-
-Wie gesagt, eignen sich grafische Darstellung besonders für die Interpretation durch Menschen. 
-Prinzipiell lassen sich solche Modelle einfach mit Hilfe von 2D-Zeichenwerkzeugen wie beispielsweise Dia oder MS Visio erstellen.
-Solche Programme können schon passende Formen und Verbindungen, beispielsweise nach dem BPMN-Standard anbieten. 
-
-Ein Benutzer macht die Bedeutung eines solchen Diagrammes an den erkennbaren grafischen Formen fest.
-
-Durch ein Zeichenprogramm wird das Diagramm intern nur als eine "Ansammlung" von Bildpunkten oder geometrischen Primitiven dargestellt und auch entsprechend persistiert ("gespeichert").
+Durch ein Zeichenprogramm wird das Diagramm intern nur als eine "Ansammlung" von Bildpunkten oder geometrischen Primitiven dargestellt und auch entsprechend gespeichert ("persistiert").
 Für ein solches Programm hat die Semantik des Modells keinerlei Bedeutung. 
-Dies ist ein Problem, wenn der modellierte Prozess automatisch ausgeführt oder verändert werden soll.
+So ergibt sich ein Problem, wenn der modellierte Prozess automatisch ausgeführt oder verändert werden soll. 
+Wie soll den grafischen Elementen eine Bedeutung zugeordnet werden?
 
-Daher wären eher Werkzeuge sinnvoll, die auch intern eine "Vorstellung" von Modellierungskonzepten haben. 
-Solche Werkzeuge werden oft – auch in dieser Arbeit – Modellierungswerkzeuge genannt.
+Daher sind eher Werkzeuge gefragt, die auch intern eine "Vorstellung" von Modellierungskonzepten haben. :cite:`volz_werkzeugunterstutzung_2011`
+Solche Werkzeuge werden oft – auch in dieser Arbeit – "Modellierungswerkzeuge" genannt.
 
 Ein solches Werkzeug bietet die Möglichkeit, Modelle zu erstellen, diese in sinnvoller Form zu persistieren und wieder aus einer physikalischen Repräsentation zu laden. 
 Dem Benutzer wird überlicherweise eine Palette an Modellelementen angeboten, die in einem konkreten Prozessmodell eingesetzt werden können. 
@@ -153,6 +136,8 @@ So lassen sich sogenannte domänenspezifische Sprachen (DSL) erstellen, die gege
 
 Standardisierte Sprachen, wie BPMN definieren zahlreiche Elemente. Die Auswahl an Elementen ist dabei abgeschlossen, es können nicht einfach weitere Typen hinzugefügt werden.
 Andererseits kann es auch sinnvoll sein, die verfügbaren Elemente für einen Anwendungsfall zu reduzieren.
+
+Außerdem biete es sich an, die konkrete Darstellung von Modellelementen flexibel zu gestalten, um sie an spezielle Anforderungen anpassen zu können, wie es in :cite:`jabl-vis` vorgeschlagen wird.
 
 Wie schon tt angedeutet wurde sind für Prozessmodelle eine Vielzahl von verschiedenen Entitäten und Beziehungstypen nötig.
 
@@ -233,13 +218,15 @@ Für ``ConceptD`` ändert sich dabei nichts; die Überschreibung wirkt sich nur 
 In LMM lässt sich für Attribute festlegen, inwieweit das Überschreiben von Werten zulässig ist und welche Bedeutung dies hat. 
 Für die vorliegende Arbeit wird aber immer angenommen, dass Werte überschrieben werden dürfen.
 
-Die textuelle Darstellung von LMM-Modellen erfolgt mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011`, deren Syntax an bekannte Programmiersprachen wie C++ oder C# angelehnt ist.
-Hier ist ein Beispiel für ein einfaches Modell in textueller Form zu sehen:
+LMM-(Meta-)Modelle lassen sich mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011` in einer textuellen Form beschreiben
+Die Syntax ist an bekannte Programmiersprachen wie C++ oder C# angelehnt und kann daher als "menschenlesbar" angesehen werden. 
+Gleichzeitig ist es damit möglich, LMM automatisch zu verarbeiten oder es sogar für die Beschreibung von Software zu nutzen, wie im Folgenden am Beispiel MDF deutlich wird.
 
-MDF
----
+Model Designer Framework
+------------------------
 
-Ebenfalls als Teil der Metamodellierungsumgebung OMME ist das Model Designer Framework (MDF) :cite:`roth` entstanden. Dieses erlaubt es, Modell-Editoren mit Hilfe von Metamodellen zu spezifizieren.
+Ebenfalls als Teil der Metamodellierungsumgebung OMME ist das Model Designer Framework (MDF) :cite:`roth` entstanden. 
+Dieses erlaubt es, Modell-Editoren mit Hilfe von LMM-Metamodellen zu spezifizieren.
 So lassen sich grafische Modellierungswerkzeuge auf Basis von MDF für beliebige (domänenspezifische) Modellierungssprachen erstellen.
 
 :num:`Abbildung #mdf-modellhierarchie` zeigt die in MDF verwendeten Modelle. Hier sollen nur kurz die für die vorliegende Arbeit wichtigsten Aspekte verdeutlicht werden.
@@ -259,14 +246,17 @@ Rechts wird der *Designer-Model-Stack* gezeigt, der den Editor für die Dömane 
 Das *Graphical-Definition-Model* beschreibt Figuren, die sich für die Visualisierung der Domäne einsetzen lassen. 
 Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelementen verbunden. So wird die grafische Repräsentation der Modellelemente im Editor festgelegt.
 
-:num:`Abbildung #ipm-typ-verwendung-1` und :num:`Abbildung #ipm-typ-verwendung-2` zeigen Prozesse, die in einem mit MDF definierten Editor ("i>PM2") für die :ref:`POPM <popm>` erstellt wurden. 
-i>PM2 folgt den Prinzipien von i>PM, dem i>ProcessModeler auf (ref:), 
-Die Visualisierung ist ähnlich zu dem vorher vorgestellten i>PM, jedoch werden hier operationale und organisationale Perspektive durch geometrisches "Enthaltensein" im Prozess dargestellt.
+Bemerkenswert ist, dass auf allen Ebenen LMM – textuell dargetellt durch LML – verwendet wird. 
+Damit wird LMM sowohl für die Beschreibung der Modellierungswerkzeugs als auch für die persistente Speicherung und interne Darstellung der mit dem Werkzeug erstellten Modelle genutzt.
+
+:num:`Abbildung #ipm-typ-verwendung-1` zeigt einen Prozess, die in einem mit MDF definierten Editor ("i>PM2") für die :ref:`POPM <popm>` erstellt wurde. 
+i>PM2 folgt den Prinzipien von i>PM, dem "intelligent ProcessModeler" (ref:), 
+Im Gegensatz zu :num:`ipm-process`, welche einen sehr ähnlichen Prozess in i>PM zeigte, werden hier operationale und organisationale Perspektive durch geometrisches "Enthaltensein" im Prozess dargestellt.
 
 Typ-Verwendungskonzept
-^^^^^^^^^^^^^^^^^^^^^^
+======================
 
-An den Abbildungen lässt sich ein weiteres wichtiges Konzept – das "Typ-Verwendungs-Konzept" – welches von diesem Werkzeug umgesetzt wird zeigen. 
+An :num:`Abbildung #ipm-typ-verwendung-1` und :num:`Abbildung #ipm-typ-verwendung-2` lässt sich ein Konzept – das "Typ-Verwendungs-Konzept" – welches von i>PM(2) umgesetzt wird zeigen. 
 
 Das Grundprinzip des Typ-Verwendungs-Konzeptes ist es, einmal erstellte Objekte in unterschiedlichen Zusammenhängen zu verwenden. 
 
@@ -302,8 +292,8 @@ So wird also in der Verwendung für *B* einfach die vordefinierte Funktion durch
     Prozess mit angepasster Verwendung aus :cite:`volz_werkzeugunterstutzung_2011`
 
 Offensichtlich lässt sich dieses Konzept mit dem in :ref:`LMM <lmm>` eingeführten Modellierungsmuster der **Instanz-Spezialisierung** leicht realisieren.
-Dieses Konzept wird auch in der vorliegenden Arbeit für die Modellierung von Prozessen genutzt.
-
 Nach der Terminilogie des Typ-Verwendungs-Konzepts ist in der früher gezeigten :num:`Abbildung #concreteuseof` ``ConceptD`` ein "Typ", ``UseA`` und ``UseB`` sind "Verwendungen" davon.
 
+Das Typ-Verwendungs-Konzept sowie die Realisierung mittels der Instanz-Spezialisierung wird auch in der vorliegenden Arbeit genutzt.
 
+.. [#f1] Business Modeling and Notation, vereinfacht gesagt eine standardisierte und verbreitete grafische Prozessmodellierungssprache. Siehe 

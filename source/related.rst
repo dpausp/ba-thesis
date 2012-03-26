@@ -271,11 +271,12 @@ Besonderer Wert sei auf die Zusammenarbeit zwischen mehreren Modellierern und di
 In dieser Umgebung können Abbilder von realen Entitäten, die mit dem Prozess in Beziehung stehen oder mit diesem interagieren – beispielsweise verwendete Betriebsmittel oder ausführende Personen – dargestellt werden. Dies könne auch dazu dienen, den Ort und die räumliche Anordnung von Prozessschritten, beispielsweise durch die Einbettung in ein virtuelles Gebäude, zu visualisieren. 
 Möglich sei auch eine Simulation der Prozessausführung in der virtuellen Welt.
 
-Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das Modell die Realität richtig abbildet und ob eventuell Probleme bei der Umsetzung des Prozesses in der Realität auftreten könnten.
+Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das Modell die Realität richtig abbilde und ob eventuell Probleme bei der Umsetzung des Prozesses in der Realität auftreten könnten.
 
-Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolgt mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befinden. Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
+Wie in :num:`Abbildung #brown-process` zu sehen ist, werden Prozesse als 3D-Graph dargestellt. 
+Als Knoten werden in den 3D-Raum übertragene BPMN-Modellelemente genutzt; die Darstellung von Kanten erfolgt mittels einfacher Linien, wobei sich bei gerichteten Kanten Pfeilspitzen auf der Zielseite befinden. 
+Auf den Knoten können – wie in der BPMN üblich – Informationen durch Texte oder statische Grafiken vermittelt werden. 
 
-:num:`Abbildung #brown-process` zeigt ein Beispiel für einen Prozessgraphen. 
 
 .. _brown-process:
 
@@ -284,8 +285,9 @@ Prozesse werden mit Hilfe eines 3D-Graphen dargestellt. Als Knoten würden in de
 
     BPMN-Prozessgraph in virtueller Welt aus :cite:`brown_conceptual_2010` 
 
-Die Objekte selbst sind 3D-Objekte, jedoch scheinen die Informationen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
+Informationen auf den Objekten scheinen nur auf einer Seite dargestellt zu sein. Damit ergeben sich Probleme wenn Modellelemente werden und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
 Je nach Perspektive ist es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
+:num:`Abbildung #brown-process` zeigt auch, dass die gegenseitige Verdeckung von Modellelementen ebenfalls zu Schwierigkeiten bei der Lesbarkeit der Informationen führt.
 
 Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen soll.
 
@@ -368,7 +370,8 @@ Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unte
 Dynamische Transparenz
 ----------------------
 
-Das auch für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der Verdeckung in der 3D-Visualisierung.
+Das auch für die Prozessmodellierung interessante Konzept der dynamischen Transparenz von Modellobjekten, abhängig von deren Relevanz, wird von :cite:`elmqvist_dynamic_2009` vorgestellt. 
+Es handelt sich hierbei um einen Lösungsansatz für das typische Problem der gegenseitigen Verdeckung von grafischen Objekten in der 3D-Visualisierung.
 
 Die Grundidee ist hier, Objekte nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation einzuteilen. 
 Unwichtige, die Ansicht störende Objekte würden als "distractors", informationstragende Elemente als "targets" bezeichnet. 
@@ -407,10 +410,10 @@ Von :ref:`Dywer <dywer>` und :ref:`Gogolla <gogolla>` wurden UML-Diagramme mit "
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
 Wie von Dywer gezeigt ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
 
-Vorteile von 3D-Darstellungen?
-------------------------------
+Effektivität von 3D-Darstellungen?
+----------------------------------
 
-Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen große Vorteile gegenüber ähnlichen 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
+Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen Vorteile gegenüber ähnlichen 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
 Es wurden immerhin einige Hinweise zur Effektivität gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen in der Softwaremodellierung andeuten, jedoch auch Probleme aufzeigen :cite:`dwyer_three_2001` :cite:`mcintosh_x3d-uml:_2008` :cite:`halpin_exploring_2008`.
 Untersuchungen zur Effektivität, die sich speziell auf die Prozessmodellierung beziehen ließen sich nicht finden.
 
