@@ -193,6 +193,8 @@ preamble_normal =  r"""
 
 \usepackage{xunicode}
 
+\usepackage{csquotes}
+
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{links.bib}
 \addbibresource{ai4.bib}

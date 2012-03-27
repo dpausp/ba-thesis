@@ -231,30 +231,30 @@ Für die Visualisierung von 3D-Graphmodellen stellt sich die Frage, wie die Lich
 
 Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beiträge unterschieden. 
 
-Der "ambient"-Anteil (Umgebungslicht) ist unabhängig von der Ausrichtung des Objekts relativ zur Lichtquelle.
+Der Hauptanteil des reflektierten Lichts wird im Normalfall vom "diffuse"-Anteil (diffuses Licht) beigesteuert, welcher abhängig vom Winkel zur Lichtquelle ist.
+Von der Lichtquelle eher abgewandte Seiten erscheinen daher dunkel, was sich ungünstig auf die Erkennbarkeit von Informationen auswirken kann.
 
-Üblicherweise wird der Hauptanteil des reflektierten Lichts vom "diffuse"-Anteil (diffuses Licht) beigesteuert. 
-Dieser Beitrag ist abhängig vom Winkel zur Lichtquelle und ist für den räumlichen Eindruck wichtig.
+Um dies auszugleichen, kann der "ambient"-Anteil (Umgebungslicht) erhöht werden, der vom Winkel unabhängig ist. 
+Wird dieser zu hoch gesetzt leidet allerdings der räumliche Eindruck.
 
 Der "specular-Anteil" erzeugt spiegelnde Reflexionen auf Objekten, die auch von der Betrachterposition relativ zum Objekt abhängen. 
-Dieser Anteil kann deshalb die räumliche Orientierung unterstützen, was auch für die Darstellung der Prozessdiagramme hilfreich ist. 
-Allerdings führt die starke Aufhellung an bestimmten Stellen dazu, dass sich vor allem Text dort schlecht ablesen lässt.
+Dieser Anteil kann folglich die räumliche Orientierung unterstützen.
+Allerdings führt die starke Aufhellung an bestimmten Stellen dazu, dass sich Text dort schlecht ablesen lässt.
 
-Außerdem kann bei Lichtquellen noch angegeben werden, wie stark die Helligkeit mit steigender Entfernung von der Lichtquelle abfällt. 
-Hierdurch kann ebenfalls den Tiefeneindruck und die räumliche Darstellung verbessert werden. 
+Außerdem kann bei (OpenGL)-Lichtquellen noch angegeben werden, wie stark die Helligkeit mit steigender Entfernung von der Lichtquelle abfällt. 
+Hierdurch kann der Tiefeneindruck verbessert werden.
 
-Ein starker Abfall der Beleuchtung führt aber beispielsweise zu Problemen, wenn gleichzeitig Objekte mit Text in der Nähe der Lichtquelle und weit entfernt in lesbarer Form dargestellt werden sollen.
+Ein starker Abfall der Beleuchtung führt aber zu Problemen, wenn gleichzeitig Objekte mit Text in der Nähe der Lichtquelle und weit entfernt in lesbarer Form dargestellt werden sollen.
 Objekte in der Nähe werden zu hell dargestellt, während weit entfernte Objekte zu dunkel sind.
-Genauso ergibt sich bei gerichteten Verbindungen, die sich weit im Hintergrund befinden das Problem, dass die darauf abgebildeten Richtungsmarkierungen schlecht zu erkennen sind.
+Genauso ergibt sich bei gerichteten Verbindungen, die sich weit im Hintergrund befinden, das Problem, dass die darauf abgebildeten Richtungsmarkierungen schlecht zu erkennen sind.
 
 Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparameter so zu setzen, dass eine in allen Situationen nahezu optimale Beleuchtung entsteht.
 
 Zusätzliche Aspekte und Erweiterungsmöglichkeiten
 =================================================
 
-Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
-Allerdings kann das bisherige Konzept und die Implementierung nur der Anfang sein. 
-Es zeigten sich einige Probleme, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
+Die momentan umgesetzte Visualisierung von Prozessen zeigt nach Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
+Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
 
 Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
 Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden könnten.
@@ -286,7 +286,9 @@ Abgesehen von den im Metamodell konfigurierbaren Visualisierungsparametern fehlt
 Sehr sinnvoll wäre es, die :ref:`beleuchtung` konfigurieren zu können. 
 Wie in jenem Abschnitt gesagt ist es schwierig, Einstellungen zu finden, die für alle Situationen gut geeignet sind.
 Diese hängen auch von der verwendeten Anzeige und von Einflüssen wie Umgebungslicht oder der persönlichen Wahrnehmung des Benutzers ab.
-In der grafischen Oberfläche sollte es hierzu eine Möglichkeit geben, Lichtquellen zu setzen und deren Parameter zu verändern, aber auch sinnvolle Standardeinstellungen oder auswählbare Profile anbieten. 
+
+In der grafischen Oberfläche sollte es hierzu eine Möglichkeit geben, Lichtquellen zu setzen und deren Parameter zu verändern. 
+Es sollten auch sinnvolle Standardeinstellungen bzw. auswählbare Profile angeboten werden, um den Benutzer nicht mit zu vielen Aufgaben zu überfordern. 
 Lichtquellen sind in Simulator X über zugehörige Licht-Entities erstell- und konfigurierbar, wie es auch von der :ref:`renderkomponente` unterstützt wird.
 
 Ähnliches gilt für :ref:`modellierungsflaechen`. Sie sind momentan in der Implementierung fest vorgegeben, da es in der GUI noch keine Konfigurationsmöglichkeit gibt.
@@ -302,7 +304,7 @@ Räumliche Darstellung
 Die räumliche Darstellung, vor allem der Tiefeneindruck ist für das Verständnis von 3D-Visualisierungen wichtig. 
 Der Vorteil der zusätzlichen Dimension ist es eben, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
 
-Modellierungsflächen und eine passende Beleuchtung können schon hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern.
+Modellierungsflächen und eine passende Beleuchtung können schon hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern, wie es der Prototyp zeigt.
 
 Jedoch ist die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion, bei der ein realistischer Tiefeneindruck fehlt.
 Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachter liegen und welche sich im Hintergrund befinden. 
@@ -330,7 +332,8 @@ Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in
 Darstellung von Kanten
 ----------------------
 
-Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen.
+Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen. 
+Dies zeigte sich auch bei den Versuchen mit i>PM3D.
 Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
 
 Wie unter :ref:`kanten` gezeigt werden gerichtete Kanten durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt. 
@@ -338,11 +341,14 @@ Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung z
 
 Der Ansatz, die Richtung durch eine dreidimensionalen Pfeilspitze darzustellen leidet beispielsweise unter dem Problem der Verdeckung. 
 Eine solche Darstellung liegt aber näher an den bekannten Visualisierungssprachen und sollte wohl noch unterstützt werden.
-
 Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
 Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
-So könnten Verbindungen auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden um die Überdeckung von Knoten oder das Schneiden von anderen Verbindungen zu vermeiden. 
-Arbeiten zu alternativen Darstellungsformen wurden unter :ref:`related-verbindungen` genannt.
+Gerade Linien, wie sie momentan verwendet werden können störend sein wenn sie Knoten verdecken oder andere Elemente schneiden. 
+Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-Bereich, da man die zusätzliche Dimension zur Vermeidung nutzen kann.
+
+Verbindungen könnten alternativ auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden um solche Probleme weiter einzudämmen, wie es auch in 2D-Werkzeugen häufig zu sehen ist.
+Kanten, die als "gebogene 3D-Röhren" dargestellt werden zeigen :cite:`spratt_using_1994` und :cite:`balzer_hierarchy_2004`.
+Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
 
 .. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 

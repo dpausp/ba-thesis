@@ -353,18 +353,6 @@ Wie in :num:`Abbildung #halpin-extrude` rechts zu sehen ist werden dadurch die V
     Visualisierung von semantischen Netzwerken aus :cite:`halpin_exploring_2008`
 
 
-.. _related-verbindungen:
-
-Darstellung von Verbindungen
------------------------------
-
-Die bisher betrachteten Arbeiten, in denen 3D-Graphdarstellungen gezeigt werden, stellen Kanten als einfache Linien oder gestreckte, einfarbige 3D-Zylinder dar. 
-
-Kanten, die als "gebogene Röhren" dargestellt werden zeigen :cite:`spratt_using_1994` oder :cite:`balzer_hierarchy_2004`.
-
-Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
-
-
 .. _dynamische-Transparenz:
 
 Dynamische Transparenz
