@@ -185,8 +185,8 @@ preamble_normal =  r"""
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{fontspec}
-\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.9]{FreeSerif}
-\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.9]{FreeSans}
+\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSerif}
+\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSans}
 
 \usepackage{setspace}
 \setstretch{1.2}

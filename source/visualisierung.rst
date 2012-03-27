@@ -145,6 +145,8 @@ Um die Selektion von der Hervorhebung unterscheidbar zu machen wird für die Sel
 
 In :num:`Abbildung #selektion` wird links ein Prozess und rechts ein AND-Connector im selektierten Zustand gezeigt.
 
+.. _deaktivierung:
+
 Deaktivierung
 -------------
 
@@ -253,7 +255,7 @@ Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparame
 Zusätzliche Aspekte und Erweiterungsmöglichkeiten
 =================================================
 
-Die momentan umgesetzte Visualisierung von Prozessen zeigt nach Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
+Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer [#f3]_Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
 Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
 
 Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
@@ -265,7 +267,7 @@ Darstellung von Text
 Von der :ref:`render-bibliothek` wird für das Projekt das Rendern von Schrift auf 3D-Objekten zur Verfügung gestellt. 
 Text wird in ein 2D-Bild geschrieben und dieses als Textur auf dem zu beschriftenden Objekt angezeigt. (siehe :ref:`schrift-rendering`).
 
-Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beispielsweise von :ref:`gef3d` genutzt oder von :cite:`font` vorgestellt werden, wurden ebenfalls in Betracht gezogen. 
+Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beispielsweise von :ref:`gef3d` genutzt oder von :cite:`ray_vector_2005` vorgestellt werden, wurden ebenfalls in Betracht gezogen. 
 Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit per Tesselation-Shader zu erzeugen, könnten für die Implementierung von gut lesbaren und dennoch performanten Darstellungstechniken interessant sein.
 
 Jedoch war die Schriftqualität des verwendeten texturbasierten Ansatzes ausreichend für den hier entwickelten Prototypen und lies sich einfach implementieren. 
@@ -304,7 +306,7 @@ Räumliche Darstellung
 Die räumliche Darstellung, vor allem der Tiefeneindruck ist für das Verständnis von 3D-Visualisierungen wichtig. 
 Der Vorteil der zusätzlichen Dimension ist es eben, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
 
-Modellierungsflächen und eine passende Beleuchtung können schon hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern, wie es der Prototyp zeigt.
+Modellierungsflächen und eine passende Beleuchtung können hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern, wie es der Prototyp zeigt.
 
 Jedoch ist die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion, bei der ein realistischer Tiefeneindruck fehlt.
 Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachter liegen und welche sich im Hintergrund befinden. 
@@ -318,22 +320,43 @@ Die Nutzung von stereoskopischer Darstellung und Bewegungsparallaxe für die Dar
 
 Der Bewegungsparallaxen-Effekt lässt sich durch die Bewegung des Benutzers in der Szene erzeugen und gibt einen Eindruck davon, wie weit Objekte von ihm entfernt sind.
 
+Schatten
+^^^^^^^^
+
 Ein Schattenwurf der Objekte könnte zum Beispiel verdeutlichen, wie weit Objekte von einer Fläche entfernt sind und wie der Betrachter zur Lichtquelle orientiert ist.
 Jedoch müsste getestet werden, inwieweit dies hilfreich ist und ob Schatten nicht zu häufig dazu führen, dass sich Informationen im Modell schlecht erkennen lassen. 
 Eine Konfigurationsmöglichkeit oder eine "intelligente" Schattenberechnung, die weniger auf realistische Effekte setzt aber dafür Lesbarkeitsaspekte berücksichtigt könnte hier interessant sein.
 
+Voll immersive virtuelle Welten
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Eine weitere Entwicklungsmöglichkeit wäre es, voll immersive virtuelle Welten zu nutzen wie es im Abschnitt :ref:`halpin-social-net` gezeigt wurde. 
 Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt werden soll.
 
-Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und vor allem eine Lösung für die "breite Masse" bereitzustellen.
+Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und ein System für die "breite Masse" bereitzustellen.
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
 
+Verdeckung
+^^^^^^^^^^
+
+Problematisch ist die in 3D-Visualisierungen auftretende Verdeckung von Informationen durch andere Modellelemente, wie auch schon unter :ref:`ross-brown` zu sehen war.
+Ist ein Element verdeckt kann im Prototypen einfach die Betrachterposition verändert werden. 
+Durch die freie Beweglichkeit könnte man sich das Modell auch von der Seite oder von oben ansehen.
+Allgemein sollten Modelle aber so erstellt werden, dass aus "üblichen" Betrachtungsrichtungen möglichst wenig Verdeckung auftritt, um sich nicht ständig hin- und herbewegen zu müssen.
+
+Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen, wie es im Prototypen durch das Deaktivieren von Elementen möglich ist. 
+
+Interessant wäre es auch, die Durchsichtigkeit von verdeckenden Elementen automatisch zu beeinflussen wie es unter dem Stichwort "dynamic transparency" von :cite:`elmqvist_dynamic_2009` vorgestellt wird.
+Objekte würden nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation eingeteilt. 
+Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent [#2]_ dargestellt falls sie wichtige ("targets") Objekte verdecken.
+
+So könnte durch den Benutzer beispielsweise festgelegt werden, dass aktuell "Datenknoten" besonders wichtig sind und nicht verdeckt werden dürfen.
 
 Darstellung von Kanten
 ----------------------
 
 Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen. 
-Dies zeigte sich auch bei den Versuchen mit i>PM3D.
+Dies zeigte sich auch bei den Versuchen mit den Prototypen.
 Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
 
 Wie unter :ref:`kanten` gezeigt werden gerichtete Kanten durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt. 
@@ -352,3 +375,7 @@ Kanten, die als "gebogene 3D-Röhren" dargestellt werden zeigen :cite:`spratt_us
 Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
 
 .. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 
+
+.. [#f2] Es muss nicht das komplette Objekt durchsichtig sein; es reicht aus, wenn Teile eines Objekts transluzent sind, die auch wirklich für eine Verdeckung sorgen.
+
+.. [#f3] Damit sind der Autor dieser Arbeit und :cite:`uli` sowie :cite:`buchi` gemeint.

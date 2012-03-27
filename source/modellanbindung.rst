@@ -123,7 +123,7 @@ Die ModelComponent lässt prinzipiell das Laden von mehreren Metamodell-Paaren z
 Nachdem Metamodelle geladen worden sind, werden von der ModelComponent Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
 
 Zum Einen ist dies eine Auflistung der verfügbaren Kanten- und Szenenobjekttypen, die vom Benutzer erzeugt werden können und die der Editor zu diesem Zweck in seiner Palette anzeigt.
-Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungskonzept zur Laufzeit Typen vom Benutzer angelegt werden können.
+Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungs-Konzept zur Laufzeit Typen vom Benutzer angelegt werden können.
 
 Die Kommunikation zwischen Editor- und Modellkomponente wird in :num:`Abbildung #loadMetamodels-sequencediag` am Laden von Metamodellen beispielhaft gezeigt.
 

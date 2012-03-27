@@ -138,7 +138,7 @@ Für Kanten stehen ein einfarbiger (``ColoredLine``) und ein texturierter Basist
 ``TexturedLine`` bietet die gleichen Attribute wie ``TexturedNode`` an; bei ``ColoredLine`` muss die Grundfarbe gesetzt werden (``color``)
 Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f3]_, ``specularColor`` angegeben werden.
 
-Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungskonzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
+Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
 
 Wie Kantentypen innerhalb der grafischen Benutzeroberfläche bezeichnet werden sollen wird durch das Attribute ``toolingName`` festgelegt.
 
