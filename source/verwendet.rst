@@ -5,7 +5,7 @@ Verwendete Techniken und Software
 Scala
 *****
 
-Die Implementierung der Konzepte dieser Arbeit erfolgte nahezu vollständig in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala` 
+Die Implementierung der Konzepte dieser Arbeit erfolgte zum größten Teil in der Programmiersprache Scala :cite:`odersky_programming_2011` :cite:`www:scala`.
 
 Die Verwendung von Scala ergab sich aus der Entscheidung, die in Scala implementierte Simulations-Middleware :ref:`simulatorx` als Basis für den I>PM3D-Prototypen zu verwenden. 
 
@@ -22,7 +22,7 @@ Hier werden nur Features kurz vorgestellt, die für die Implementierung besonder
 Traits
 ------
 
-Gegenüber Java unterstützt Scala eine (eingeschränkte) Mehrfachvererbung von Implementierungscode über sogenannte **traits**. 
+Als Erweiterung im Vergleich zu Java unterstützt Scala eine (eingeschränkte) Mehrfachvererbung von Implementierungscode über sogenannte **traits**. 
 Traits kann man sich auch als ein Java-Interface vorstellen, in dem Methoden schon vorimplementiert sein können.
 
 Zur Vereinfachung dürfen Traits keinen Konstruktor definieren.
@@ -30,11 +30,31 @@ Zur Vereinfachung dürfen Traits keinen Konstruktor definieren.
 Neben der Verwendung als "Interface" wie in Java werden diese oft genutzt um wiederverwendbare Code-Einheiten zu realisieren, die sich in verschiedenen Klassen verwenden lassen. 
 Traits werden daher oft als "Mixin" bezeichnet.
 Der "Vorgang", einen Trait zu einer Klasse hinzuzufügen – wie im folgenden Code gezeigt wird – wird in dieser Arbeit "einmischen" genannt.
+
 .. code-block:: scala
 
     class Example extends BaseClass with MixinTrait
 
 Example wird also von BaseClass abgeleitet und MixinTrait eingemischt.
+
+In dieser Arbeit werden Traits in UML-Diagrammen als Klasse mit dem Stereotyp ``<<trait>>`` und Assoziationen zu "einmischenden" Klassen mit ``<<mixin>>`` versehen.
+
+Objects
+-------
+
+Anstelle der aus Java bekannten statischen Klassenmethoden oder Singleton-Klassen wird in Scala das *object*-Konstrukt genutzt. 
+*Objects* können Klassen "erweitern", das bedeutet, dass das Object als Instanz der Klasse betrachtet werden kann. 
+
+Als Beispiel sei hier ein ausführbares Scala-Programm gezeigt, welches eine (im Sinne von Java statische) Methode definiert und aufruft:
+
+.. code-block:: scala
+
+    object Main extends App {
+        def hello() {
+            println("Hello World")
+        }
+        hello()
+    }
 
 Actors
 ------
@@ -119,7 +139,7 @@ erkennen und in ein Scala-Objekt des Typs *LiteralTypeAssignment* übersetzen. D
 Simulator X
 ***********
 
-*Simulator X* bezeichnet es sich um ein neuartige Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll. 
+*Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` bezeichnet eine neuartige Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
 Der Fokus liegt hierbei auch auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung. Dies macht Simulator X zu einer gut geeigneten Plattform für den I>PM3D-Prototypen.
 
 *Simulator X* setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
@@ -136,7 +156,7 @@ Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handha
 Simulator-X-Anwendungen sind aus Komponenten aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
 Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
 
-Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann.
+Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.
 
 Aspects beschreiben sozusagen eine Facette der Entity und sind einer bestimmten Komponente zugeordnet. So gibt es beispielsweise Grafik- oder Physik-Aspects.
 Über die Aspekt-Definition können Werte durch den Benutzer vorgegeben werden, die einer Komponente weitere Informationen geben, wie die komponenten-internen Entity-Repräsentation erstellt werden soll.
@@ -152,9 +172,9 @@ Andere Komponenten können sich allerdings beim *WorldInterface* registrieren um
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe des I>PM3D-Projektes zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
+Um die Grafikausgabe von I>PM3D zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
-Als Anbindung an OpenGL wird die Java-Spielebibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
+Als Anbindung an OpenGL wird die Java-Bibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
 
 Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
@@ -167,11 +187,12 @@ Mit Version 3.0 wurden viele dieser Funktionen aus dem Kern von OpenGL entfernt.
 Das neue Konzept gibt jedoch dem Programmierer die Freiheit, auch völlig neue Grafikeffekte zu implementieren, die mit der alten Pipeline nicht oder nur schwer umsetzbar gewesen wären. 
 Diese Möglichkeit wurde in dieser Arbeit auch für einige "Spezialeffekte" genutzt, wie in :ref:`render-bibliothek` beschrieben wird.
 
-Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sogenannten *Shader-Einheiten* ausgeführt werden.
+Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sogenannten "Shader-Einheiten" ausgeführt werden.
+Code kann in GLSL in Funktionen ausgelagert und so in mehreren Shadern genutzt werden.
 Diese Programme erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. In OpenGL 4 werden folgende Typen unterstützt:
 
 Vertex-Shader  
-    arbeiten auf einzelnen Modell-Vertices und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
+    arbeiten auf einzelnen Modell-Vertices\ [#f4]_ und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
 
 Geometry-Shader
     können aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
@@ -182,10 +203,10 @@ Fragment-Shader
 Tesselation-Shader (ab OpenGL 4)
     können komplett neue Geometrien erzeugen
 
-Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex, an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten, Normalen und Texturkoordinaten.
+Mit *Vertex-Attributen* lassen sich beliebige Daten pro Vertex an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten\ [#f4]_, Normalen\ [#f5]_ und Texturkoordinaten\ [#f6]_.
 Vertex-Attribute werden vom Shader aus Puffern im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.
 
-*Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein komplettes Grafikobjekt konstant bleiben. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
+*Uniforms* übermitteln Werte an Shaderprogramme, die üblicherweise über ein ganzes Grafikobjekt konstant bleiben. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
 
 
 Sonstiges
@@ -237,4 +258,6 @@ Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht einem Pixel auf dem Bildschirm, wenn man Antialiasing vernachlässigt
-.. [#f4] Dies wird (auch von offizieller Seite) als "Pimp my Library" bezeichnet. Näheres zu impliziten Funktionen: :cite:`odersky_programming_2011`
+.. [#f4] Ein Vertex ist ein "Eckpunkt" eines 3D-Modells. Vertexkoordinaten sind die Koordinaten des Punkts im 3D-Raum. OpenGL zeichnet ein 3D-Objekt, indem eine Liste von Vertices der Reihe nach gezeichnet wird.
+.. [#f5] Normalen werden vor allem für die Berechnung der Beleuchtung benötigt.
+.. [#f6] Texturkoordinaten sind häufig zweidimensional und werden vor allem dazu genutzt, 2D-Grafiken auf 3D-Objekten zu positionieren.

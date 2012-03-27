@@ -358,16 +358,18 @@ Es soll eine Pyramide erstellt werden, auf deren Seiten Text angezeigt werden ka
 Dafür kann beispielsweise die ``TextBox`` als Vorlage genommen und wie folgt abgeändert werden:
 
 .. code-block:: scala
+    :linenos:
+    :emphasize-lines: 1,2
     
-  class TextPyramid extends EmptyDrawable("textPyramid")
-    with Pyramid
-    with SIRISTransformation
-    with SelectableAndTextEffect
-    with SelectionHighlightSVarSupport
-    with TextDisplaySVarSupport
-    with BackgroundSVarSupport
+    class TextPyramid extends EmptyDrawable("textPyramid")
+      with Pyramid
+      with SIRISTransformation
+      with SelectableAndTextEffect
+      with SelectionHighlightSVarSupport
+      with TextDisplaySVarSupport
+      with BackgroundSVarSupport
 
-Geändert wurde nur das Mesh-Trait in der 2. Zeile sowie der Name des Objekts in der 1.Zeile.
+Geändert wurde nur das Mesh-Trait in der 2. Zeile sowie der Name des Objekts in der 1. Zeile.
 
 
 Abschließend wird in ``mmpe.model.ModelDrawableFactory`` zur Fallunterscheidung in der Methode createDrawables ("figureFqn match ...") ein weiterer Fall hinzugefügt:

@@ -126,7 +126,7 @@ Auf der linken Seite lässt sich die Palette mit den Modellelementen erkennen, d
 .. figure:: _static/ext_pics/ipm2d-editor.png
     :width: 16cm
 
-    Prozessmodellierungswerkzeug i>PM2 aus :cite:`roth`
+    Prozessmodellierungswerkzeug i>PM2 aus :cite:`roth_konzeption_2011`
 
 
 .. _metamodellierung:

@@ -6,7 +6,7 @@
 
 Nachdem die allgemeinen und prinzipiell von der Prozessmodellierung unabhängigen Teile des Editor-Meta-Models in den beiden vorherigen Kapiteln besprochen wurden, wird hier nun die Visualisierung von Prozessen im I>PM3D-Prototypen vorgestellt. 
 
-Anschließend werden darauf aufbauend bisher nicht umgesetzte Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sorgen könnten.
+Anschließend werden bisher nicht umgesetzte Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sorgen könnten.
 
 Anwender, die bereits Erfahrung mit verbreiteten grafischen 2D-Prozessmodellierungssprachen haben sollten durch das Aussehen der Modellelemente möglichst intuitiv verstehen können, welche Konzepte aus der Prozessmodellierung dadurch dargestellt werden. 
 
@@ -255,7 +255,7 @@ Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparame
 Zusätzliche Aspekte und Erweiterungsmöglichkeiten
 =================================================
 
-Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer [#f3]_Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
+Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer\ [#f3]_ Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
 Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
 
 Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
@@ -348,7 +348,7 @@ Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen
 
 Interessant wäre es auch, die Durchsichtigkeit von verdeckenden Elementen automatisch zu beeinflussen wie es unter dem Stichwort "dynamic transparency" von :cite:`elmqvist_dynamic_2009` vorgestellt wird.
 Objekte würden nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation eingeteilt. 
-Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent [#2]_ dargestellt falls sie wichtige ("targets") Objekte verdecken.
+Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent\ [#f2]_ dargestellt falls sie wichtige ("targets") Objekte verdecken.
 
 So könnte durch den Benutzer beispielsweise festgelegt werden, dass aktuell "Datenknoten" besonders wichtig sind und nicht verdeckt werden dürfen.
 

@@ -4,12 +4,12 @@
 Modelle in I>PM3D
 *****************
 
-Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :cite:`jablonski` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :ref:`<metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
 Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstutzung_2011` beschrieben wird. 
 
 Ein wichtiger Punkt ist, dass sich Domänenmodellierungssprache und die Visualisierung getrennt beschreiben lassen. 
-Diesem Konzept folgt das bereits vorgestellte *Model Designer Framework* :ref:`mdf` :cite:`roth_konzeption_2011`.
+Diesem Konzept folgt das bereits vorgestellte :ref:`Model Designer Framework<mdf>`.
 
 Die hier vorgestellte Modellhierarchie ist prinzipiell ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
 Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
