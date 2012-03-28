@@ -108,7 +108,7 @@ In den beiden folgenden Abschnitten wird zusammengefasst, welche Änderungen am 
 Modifikationen an Simulator X
 -----------------------------
 
-Für I>PM3D wurde die von :ref:`Simulator X` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
+Für I>PM3D wurde die von :ref:`simulatorx` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
 
 Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine im Rahmen dieser Arbeit entwickelte, flexible :ref:`render-bibliothek` ersetzt. 
 Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. Die Anbindung wird unter :ref:`renderkomponente` beschrieben.

@@ -1,10 +1,10 @@
 .. _modellhierarchie:
 
-*****************
-Modelle in I>PM3D
-*****************
+****************
+Modellhierarchie
+****************
 
-Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :ref:`<metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es in der Prozessmodellierung oft sinnvoll ist, neben den Prozessmodellen selbst auch die zugrundeliegende Modellierungssprache und die Visualisierung derselbigen an spezielle Anforderungen anpassen zu können :ref:`\ <metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
 Daher wurde der Ansatz verfolgt, die Visualisierung und die in einem Modell nutzbaren Modellelemente über austauschbare Metamodelle zu definieren, wie auch in :cite:`volz_werkzeugunterstutzung_2011` beschrieben wird. 
 
@@ -33,7 +33,7 @@ Nach einer kurzen Vorstellung der Modellierungssprache wird im Rest dieses Kapit
 .. figure:: _static/diags/modellhierarchie.eps
     :width: 16cm
 
-    Modellhierarchie von I>PM3D, angelehnt an MDF :cite:`roth_konzeption_2011`
+    Modellhierarchie in I>PM3D, angelehnt an MDF :cite:`roth_konzeption_2011`
 
 Eine detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel gegeben. 
 
@@ -73,7 +73,7 @@ Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungsel
 Um die Implementierung zu vereinfachen wurde jedoch darauf verzichtet. 
 Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente (auch "Figuren" genannt) für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
 
-Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der "Modellkomponente" nur ein feste Auswahl an Visualisierungsparametern angeboten wird. 
+Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der "Modellkomponente" eine feste Auswahl an Visualisierungsparametern definiert ist. 
 Dies kann im späteren Kapitel zur Modellanbindung unter :ref:`modellanbindung-svars` nachgelesen werden.
 
 Editor-Definition- und Editor-Meta-Modelle können zwar konzeptionell – wie im MDF – unterschieden werden; 
@@ -84,14 +84,14 @@ Um eine andere Visualisierung festzulegen müsste das komplette Editor-Metamodel
 Übersicht über die Editor-Model-Ebenen
 --------------------------------------
 
-In :num:`Abbildung #modellhierarchie` wird dargestellt, wie die Editor-Model-Ebenen, die im Folgenden vorgestellt werden von "oben nach unten" definiert sind. 
+In :num:`Abbildung #modellhierarchie-diagram` wird dargestellt, wie die Editor-Model-Ebenen, die im Folgenden vorgestellt werden von "oben nach unten" definiert sind. 
 *Editor-Base-Level* und *Editor-Definition-Level* ergeben zusammen das *Editor-Metamodell*.
 
 Programming-Language-Mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auf der obersten Ebene des Stacks, die im Modell als Level D3 zu finden ist, wird die Abbildung auf eine Programmiersprache – in Rahmen dieser Arbeit also auf Scala – definiert, welche in :ref:`scalamapping` beschrieben wird.
-In der :num:`Abbildung #modellhierarchie` wird diese Ebene als *Programming-Language-Mapping* bezeichnet.
+In der :num:`Abbildung #modellhierarchie-diagram` wird diese Ebene als *Programming-Language-Mapping* bezeichnet.
 
 Editor-Base-Level
 ^^^^^^^^^^^^^^^^^
@@ -99,10 +99,10 @@ Editor-Base-Level
 Darunter befindet sich auf Level D2 der prinzipiell von der Modellierungsdomäne unabhängige Teil der Editor-Spezifikation 
 Hier werden Concepts bereitgestellt, die die Grundlage der Repräsentation für Typen aus dem Domänenmodell darstellen.
 
-In der :num:`Abbildung #modellhierarchie` ist diese Ebene als *Editor-Base-Level* zu finden.
+In der :num:`Abbildung #modellhierarchie-diagram` ist diese Ebene als *Editor-Base-Level* zu finden.
 Welche Konzepte im verwendeten Metamodell auf dieser Ebene definiert werden, wird in :ref:`ebl` näher beschrieben.
 
-Die beiden Ebenen D3 und D2, die bisher beschrieben worden sind können prinzipiell beliebig definiert werden, soweit dies von LMMLight unterstützt wird. 
+Die beiden bisher beschriebenen Ebenen D3 und D2 können prinzipiell beliebig definiert werden, soweit dies von LMMLight unterstützt wird. 
 
 Editor-Definition-Level
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,7 +115,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein:
     * package ``connectionFigures`` definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
     * Das package ``sceneryObjects`` enthält die verwendbaren Szenenobjekte. Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
-Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie` gezeigte *Editor-Definition-Level*. 
+Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie-diagram` gezeigte *Editor-Definition-Level*. 
 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, die von Concepts aus den obigen Packages referenziert werden. 
 Dies können beispielsweise Concepts für die Definition von Farben oder der Größe eines Objekts sein.

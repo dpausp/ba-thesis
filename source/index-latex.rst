@@ -6,7 +6,6 @@ Bla
     :maxdepth: 3
 
     abbildungsverzeichnis
-    zusammenfassung-latex
     einleitung
     grundlagen
     related

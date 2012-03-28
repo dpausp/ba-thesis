@@ -59,7 +59,7 @@ Als Beispiel sei hier ein ausführbares Scala-Programm gezeigt, welches eine (im
 Actors
 ------
 
-Ein sinnvoller Einsatzbereich von Scala ist unter Anderem die Erstellung von parallelen und verteilten Anwendungen.
+Ein sinnvoller Einsatzbereich von Scala ist unter anderem die Erstellung von parallelen und verteilten Anwendungen.
 Dazu kommt oft das Actor-Modell :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
 Grundlage für das Actor-Patterns ist das *message passing*. 
@@ -103,12 +103,10 @@ Parser-Kombinatoren
 -------------------
 
 Die Scala-Standardbibliothek bietet eine einfache Möglichkeit, Parser mit Hilfe von Parser-Kombinatoren :cite:`odersky_programming_2011` zu erstellen. 
-Dies wurde in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation verwendet. 
+Dies wird in dieser Arbeit für die Laden von Modellen in einer textuellen Repräsentation eingesetzt. 
 
 Einfache Parser werden von Parser-Kombinatoren zu komplexeren Parsing-Ausdrücken zusammengesetzt. Parser sind als Funktionen definiert, die einen String auf eine beliebige Ausgabe abbilden. 
 Parser-Kombinatoren sind Funktionen höherer Ordnung, die Parser als Eingabe erwarten und als Ausgabe wiederum eine Parser-Funktion liefern.
-
-Anders ausgedrückt stellen Parserkombinator-Ausdrücke direkt die Grammatik der Sprache dar.
 
 In Scala werden die Bestandteile der textuellen Eingabe oft in Objekte von *case classes* übersetzt, die zusammen einen Syntaxbaum der Eingabe ergeben.
 
@@ -174,10 +172,10 @@ OpenGL / LWJGL
 
 Um die Grafikausgabe von I>PM3D zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
-Als Anbindung an OpenGL wird die Java-Bibliothek LWJGL :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
+Als Anbindung an OpenGL wird die Java-Bibliothek LWJGL (Lightweight Java Gaming Library) :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
 
-Hier soll nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
+Hier sollen nur einige wenige Hinweise zu "modernem" OpenGL und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
 
 In älteren OpenGL-Versionen (1.x) wurden von OpenGL viele, fest eingebaute Funktionen wie die Berechnung der Beleuchtung und Texturierung bereitgestellt, die vom Programmierer einfach nur aktiviert und konfiguriert werden mussten. 
 Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* in Verbindung gebracht.
@@ -189,7 +187,8 @@ Diese Möglichkeit wurde in dieser Arbeit auch für einige "Spezialeffekte" genu
 
 Bei *Shadern* handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sogenannten "Shader-Einheiten" ausgeführt werden.
 Code kann in GLSL in Funktionen ausgelagert und so in mehreren Shadern genutzt werden.
-Diese Programme erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Rendering-Pipeline. In OpenGL 4 werden folgende Typen unterstützt:
+Diese Programme erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Render-Pipeline :cite:`www:glpipe`.
+In OpenGL 4 werden folgende Typen unterstützt:
 
 Vertex-Shader  
     arbeiten auf einzelnen Modell-Vertices\ [#f4]_ und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
@@ -222,11 +221,11 @@ Um Prozessmodelle in einer textuellen Form speichern zu können wird die Templat
 ST folgt dem Prinzip, Templates als Text mit Platzhaltern zu definieren. Die Platzhalter werden durch das Setzen von Attributen aus dem Anwendungsprogramm heraus mit Inhalt gefüllt.
 
 Um die Nutzung von *StringTemplate* in Scala zu vereinfachen wurde eine dünne Abstraktionsschicht in Scala implementiert. 
-Diese Schicht sorgt unter Anderem dafür, dass beliebige Scala-Objekte als Java-Bean an *StringTemplate* weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
+Diese Schicht sorgt unter anderem dafür, dass beliebige Scala-Objekte als Java-Bean an *StringTemplate* weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
 
 Für Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www:clapper` genutzt.
 
-Beispiel für ein Template, dass eine String-Zuweisung in LMM produziert:
+Beispiel für ein Template, welches eine String-Zuweisung in LMM produziert:
 
 
 .. code-block:: scala
@@ -252,12 +251,13 @@ SLF4J / Logback
 ---------------
 
 Für die Aufzeichnung von Logging-Informationen wird die Java-Logging-API *SLF4J* :cite:`www:slf4j` in der Version 1.6.4 mit Logback (1.0.0) als Implementierung eingesetzt. 
-Um die Einbindung in Scala zu verbessern wurde ein eigener Wrapper für die SLF4J-API entwickelt.
+Um die Einbindung in Scala zu verbessern, wurde ein eigener Wrapper für die SLF4J-API entwickelt.
 
 
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht einem Pixel auf dem Bildschirm, wenn man Antialiasing vernachlässigt
-.. [#f4] Ein Vertex ist ein "Eckpunkt" eines 3D-Modells. Vertexkoordinaten sind die Koordinaten des Punkts im 3D-Raum. OpenGL zeichnet ein 3D-Objekt, indem eine Liste von Vertices der Reihe nach gezeichnet wird.
+.. [#f4] Ein Vertex ist ein "Eckpunkt" eines 3D-Modells. Vertexkoordinaten sind die Koordinaten des Punkts im 3D-Raum. OpenGL "rendert" ein 3D-Objekt, indem eine Liste von Vertices der Reihe nach gezeichnet wird.
 .. [#f5] Normalen werden vor allem für die Berechnung der Beleuchtung benötigt.
 .. [#f6] Texturkoordinaten sind häufig zweidimensional und werden vor allem dazu genutzt, 2D-Grafiken auf 3D-Objekten zu positionieren.
+.. [#f7] Siehe http://www.opengl.org/wiki/Rendering_Pipeline_Overview

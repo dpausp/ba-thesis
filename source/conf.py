@@ -185,11 +185,11 @@ preamble_normal =  r"""
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{fontspec}
-\setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSerif}
-\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSans}
+\setmainfont[Mapping = tex-text, FakeStretch = 1.03, WordSpace = 1.6]{FreeSerif}
+\setsansfont[Mapping = tex-text, FakeStretch = 1.03, WordSpace = 1.6]{FreeSans}
 
 \usepackage{setspace}
-\setstretch{1.2}
+\setstretch{1.1}
 
 \usepackage{xunicode}
 
@@ -203,14 +203,14 @@ preamble_normal =  r"""
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 
 
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 """
 
 preamble_simple = ""
 
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-'papersize': 'a4',
+'papersize': 'a4paper',
 
 # The font size ('10pt', '11pt' or '12pt').
 'pointsize': '10pt',

@@ -15,7 +15,7 @@ Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an di
 RenderActor
 -----------
 
-Für den RenderActor musste ein eigenen Scheduler für Scala-Actors erstellt werden, da der Standard-Scheduler die Actor-Arbeitspakete in beliebig wechselnden Threads ausführen kann. 
+Für den RenderActor musste ein eigener Scheduler für Scala-Actors erstellt werden, da der Standard-Scheduler die Actor-Arbeitspakete in beliebig wechselnden Threads ausführen kann. 
 Dies ist für die Ausführung von OpenGL-Funktionen problematisch. Deswegen wird die Ausführung der Render-Aufgaben auf einen Thread beschränkt. 
 
 Der RenderActor definiert zwei Render-Ebenen. Die zuerst gezeichnete Ebene umfasst alle 3D-Objekte wie den Prozessgraphen und Szenenobjekte. 
@@ -24,31 +24,31 @@ Darüber wird eine Ebene gezeichnet, die 2D-Elemente wie Cursor der Eingabegerä
 Beide Ebenen werden durch jeweils eine :ref:`renderstage` gezeichnet.
 
 Es gibt die Möglichkeit, den RenderActor durch Plugins zu erweitern, die an verschiedenen vordefinierten Erweiterungspunkten im Render-Prozess eingreifen können. 
-Plugins können neue Grafikobjekte erzeugen und zu einer der beiden RenderStage hinzufügen oder selbst OpenGL-Funktionen ausführen.
+Plugins können neue Grafikobjekte erzeugen und zu einer der beiden *RenderStages* hinzufügen oder selbst OpenGL-Funktionen ausführen.
 
 Dies wird im Projekt für die Darstellung der Nifty-GUI-Menüs :cite:`uli` und des Eightpen-Menüs :cite:`buchi` genutzt.
 
 OpenGL-Versionsproblematik
 --------------------------
 
-Die Library Nifty-GUI bringt ihre eigene Render-Implementierung auf Basis von OpenGL 1.x mit, die auch Funktionen nutzt, die in OpenGL 3.3 als "veraltet" ("deprecated") eingestuft sind.
-Von der Render-Bibliothek werden nur Funktionen genutzt, die in OpenGL 3.3 verfügbar sind.
+Die Library Nifty-GUI bringt eine eigene Render-Implementierung auf Basis von OpenGL 1.x mit, welche auch Funktionen nutzt, die in OpenGL 3.3 als "veraltet" ("deprecated") eingestuft sind.
+Von der Render-Bibliothek werden dagegen nur Funktionen genutzt, die in OpenGL 3.3 verfügbar sind.
 
-Wegen Nifty-GUI muss der RenderActor OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated" Funktionen unterstützt. 
-Es ist daher möglich, dass dies auf manchen Hardwareplattformen zu Geschwindigkeits- oder Darstellungsproblemen führt.
+Wegen Nifty-GUI muss der RenderActor OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated"-Funktionen unterstützt. 
+Es ist möglich, dass dies auf manchen Hardwareplattformen zu Geschwindigkeits- oder Darstellungsproblemen führt.
 
 Projektspezifische Erweiterungen
 --------------------------------
 
-Die Renderkomponente unterstützt die von Simulator X bereitgestellten RenderAspects für die Definition von Lichtquellen-Entities (``PointLight``) sowie den Aspekt ``ShapeFromFile``, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
+Die Renderkomponente unterstützt die von Simulator X bereitgestellten RenderAspects für die Definition von Lichtquellen-Entities (``PointLight``) sowie den Aspect ``ShapeFromFile``, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
 
-Im Folgenden werden die zusätzlichen Fähigkeiten vorgestellt, welche von der ursprünglichen Renderkomponente nicht unterstützt werden.
+Im Folgenden werden die Funktionalitäten aufgelistet, welche von der ursprünglichen Renderkomponente nicht unterstützt werden.
 
 ShapeFromFactory
 ^^^^^^^^^^^^^^^^
 
 Mir der hier entwickelten Renderkomponente ist es möglich, die grafische Repräsentation einer Entity von einer Factory-Klasse oder -Actor erzeugen zu lassen. 
-Damit lassen sich in der Anwendung beliebige Grafikobjekte nutzen, die mit Hilfe der ref:`render-bibliothek`: erstellt wurden.
+Damit lassen sich in der Anwendung beliebige Grafikobjekte nutzen, die mit Hilfe der :ref:`render-bibliothek`: erstellt wurden.
 
 Hierfür ist der RenderAspect ``ShapeFromFactory`` definiert.
 Dies wird im Projekt für die Erstellung der Grafikobjekte für Modellelemente – also der Knoten und Kanten des Prozessmodells – genutzt.
@@ -64,17 +64,21 @@ Für die Darstellung von :ref:`modellierungsflaechen` wurde ein ``PlaneAspect`` 
 Der Aspect ``Image2D`` wird dafür genutzt, bewegliche und skalierbare 2D-Grafikobjekte darzustellen. 
 Bei der Erstellung muss ein Pfad zu einer Bilddatei angegeben werden. Position und Größe sind über SVars modifizierbar. 
 Diese Werte können entweder über die Bildschirm-Pixelkoordinaten oder über normalisierte Koordinaten (von -1 bis +1 in x und y-Richtung) angegeben werden. 
-Welches System genutzt wird, wird über den Konstruktor mit ``coordsAreNormalized`` angegeben.
+Welches Koordinatensystem genutzt wird, wird über den Konstruktor in ``coordsAreNormalized`` angegeben.
 
 User-Entity
 ^^^^^^^^^^^
 
-Simulator X stellt eine User-Entity bereit, über deren SVars ``HeadTransform`` und ``ViewPlatform`` die Position des Benutzers in der 3D-Szene bestimmt wird.
-Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport- (``ViewportSettings``) und Render-Frustum-Einstellungen (``FrustumSettings``) abgefragt werden können.\ [#f3]_
+Simulator X stellt eine ``User``-Entity bereit, über deren SVars ``HeadTransform`` und ``ViewPlatform`` die Position des Benutzers in der 3D-Szene bestimmt wird.
+Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport\ [#f5]_ - (Aspect ``ViewportSettings``) und Render-Frustum-Einstellungen \ [#f6]_ (Aspect ``FrustumSettings``) abgefragt werden können\ [#f3]_.
 
 
 .. [#f1] Dieser Aufbau ergibt sich aus der Idee, für die Darstellung der Szene mehrere Bildschirme nutzen zu können, wie es unter Anderem für ein CAVE-System nötig wäre. Dazu könnten der Renderkomponente mehrere RenderActors zugeordnet werden. Dies war vorgesehen, wird jedoch nicht überall in der Implementierung umgesetzt und daher nicht unterstützt.
 
-.. [#f3] Die Werte lassen im Prinzip sich auch verändern, nur wird dies von der Implementierung noch nicht vollständig unterstützt.
+.. [#f3] Die Werte lassen im Prinzip sich auch verändern, nur wird dies von der Implementierung noch nicht vollständig unterstützt. 
 
 .. [#f4] Die Implementierung umfasst auch die Übersetzung von Tastatur- und Mausdaten, die von LWJGL geliefert werden, in Simulator X - Events. Für diese Arbeit sind aber nur die Grafikfunktionen relevant.
+
+.. [#f5] Größe und Nullpunkt der Zeichenfläche für OpenGL, angegeben in Pixel.
+
+.. [#f6] Diese Einstellungen legen die perspektivische Projektion fest. :cite:`www:frustum`
