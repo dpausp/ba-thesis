@@ -37,6 +37,8 @@ Nach einer kurzen Vorstellung der Modellierungssprache wird im Rest dieses Kapit
 
 Eine detaillierte Spezifikation der für diese Arbeit verwendeten Metamodelle wird im nächsten Kapitel gegeben. 
 
+.. _lmmlight:
+
 LMMLight
 ========
 
@@ -45,9 +47,10 @@ Die Modelle werden mit Hilfe einer textuellen Modellierungssprache spezifiziert,
 Die hier verwendete Sprache, im Folgenden "LMMLight" genannt, folgt in vielen Aspekten LMM, ohne jedoch alle weiterführenden Modellierungsmuster wie Powertypes, Materialization und Deep Instantiation zu unterstützen. 
 Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die Erstellung von LMMLight-Modellen sinnvoll genutzt werden kann, solange auf die nicht unterstützten Modellierungsmuster verzichtet wird.
 
-LMMLight unterstützt allerdings das Muster der Instanz-Spezialisierung ("concreteUseOf"), da dies unter Anderem für die Realisierung des genutzten Typ-Verwendungs-Konzepts hilfreich ist.
+Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von :ref:`lmm` zu kennen.
 
-Zum weiteren Verständnis ist es ausreichend, die Grundelemente und -prinzipien von LMM zu kennen, wie sie von :cite:`volz_werkzeugunterstutzung_2011` detailliert beschrieben werden.
+LMMLight unterstützt das Muster der Spezialisierung von Instanzen ("concreteUseOf"), da dies unter anderem für die Realisierung des :ref:`Typ-Verwendungs-Konzepts<tvm>` hilfreich ist.
+
 
 .. _editor-model-stack:
 

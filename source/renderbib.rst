@@ -14,7 +14,7 @@ Für die im vorherigen Kapitel beschriebene Renderkomponente wurde eine Anbindun
     #. Darstellung von Schrift und Texturen auf 3D-Objekten, möglichst skalierbar
     #. "Bild-in-Bild"-Techniken ("off-screen rendering"), also das Zeichnen von 3D-Teil-Szenen in 2D-Bilder, die im Grafikspeicher abgelegt sind und so in eine größere 3D-Szene eingebettet werden können.
 
-Anforderung (5) wird im Projekt für die Darstellung von :ref:`deaktivierten Modellelementen<deaktivierung>` sowie :ref:`Modellierungsflächen<modellierungsflaechen>` gebraucht.
+Anforderung (5) wird im Projekt für die Darstellung von :ref:`deaktivierten Modellelementen <deaktivierung>` sowie :ref:`Modellierungsflächen<modellierungsflaechen>` gebraucht.
 
 Anforderung (7) ist auf den Wunsch zurückzuführen, komplexe Menüs wie das Eightpen-Menü :cite:`buchi` erstellen zu können, die selbst wieder 3D-Objekte enthalten. 
 
@@ -23,7 +23,7 @@ Da "modernes" :ref:`OpenGL <opengl>` im Prinzip nur eine direkte Schnittstelle z
 
 Im Gegensatz dazu stehen zahlreiche Frameworks, die verschiedene Aufgabengebiete und Abstraktionsebenen abdecken und auf Low-Level-Schnittstellen wie OpenGL aufsetzen.
 Diese könnten die Anforderungen (4–7) selbst abdecken oder zumindest dafür benutzt werden, diese zu implementieren.
-Solche Systeme werden oft als "Game-Engines" bezeichnet, die in erster Linie für die Erstellung von 3D-Computerspielen gedacht sind, sich aber auch durchaus für andere Visualisierungsaufgaben einsetzen lassen. [#f3]_
+Solche Systeme werden oft als "Game-Engines" bezeichnet, die in erster Linie für die Erstellung von 3D-Computerspielen gedacht sind, sich aber auch durchaus für andere Visualisierungsaufgaben einsetzen lassen\ [#f3]_.
 
 Für die Java-Plattform sind mit JME3 und Ardor3D zwei relativ aktuelle, in Java implementierte 3D-Frameworks verfügbar. 
 JME3 lag zu Beginn der vorliegenden Projektes nur in einer Alpha-Version vor und schied deshalb für diese Arbeit aus.
@@ -148,7 +148,7 @@ Solche Traits sind in der Renderbibliothek mit der Endung ``-Addon`` versehen.
 Beispielsweise existiert ein ``PhongLightingAddon`` für die Bereitstellung von Lichtparametern und ein ``TextDisplayAddon``, welches die Anzeige von Schrift auf den Objekten implementiert.
 
 :num:`Abbildung #effect-classdiag` zeigt ein Beispiel für einen ``Effect``, der aus zwei ``Addons`` zusammengesetzt wird. 
-Addons stellen oft Uniforms (material- und lightUniforms im Beispiel) zur Verfügung, die im Effect kombiniert und von der uniforms()-Methode zurückgegeben werden.
+Addons stellen oft Uniforms (``material-`` und ``lightUniforms`` im Beispiel) zur Verfügung, die im Effect kombiniert und von der ``uniforms``-Methode zurückgegeben werden.
 Mittels der Methoden diffuse und specular kann die Anwendung die Reflexionseigenschaften eines Objekts verändern.
 
 .. _effect-classdiag:
@@ -166,7 +166,7 @@ Texturen werden über eine ``TextureDefinition`` beschrieben; Shaderquelldateien
 RenderStage
 -----------
 
-``RenderStages`` sind für das Zeichnen der grafischen Objekte zuständig. Die Anwendung übergibt einer ``RenderStage`` einmal pro Frame [#f1]_ alle zu zeichnenden ``Drawables``. 
+``RenderStages`` sind für das Zeichnen der grafischen Objekte zuständig. Die Anwendung übergibt einer ``RenderStage`` einmal pro Frame\ [#f1]_ alle zu zeichnenden ``Drawables``. 
 Diese werden in der bereitgestellten Implementierung der RenderStage zuerst sortiert und anschließend gezeichnet. 
 Eine Sortierung wird durchgeführt, um transluzente Objekte (Anforderung 7) in der richtigen Reihenfolge zu zeichnen sowie um unnötige Zeichenoperationen und OpenGL-Zustandswechsel zu vermeiden.
 Durch Angabe einer Render-Priorität in den Drawables kann manuell eine bestimmte Reihenfolge erzwungen werden, wenn dies für spezielle Zeichenaufgaben nötig ist.
@@ -208,8 +208,8 @@ Es werden die von OpenGL bekannten Funktionen (als Methoden von ``Camera``) ange
 Außerdem stellt die Klasse verschiedene Methoden bereit, die für Umrechnungen von Bildschirm- in 3D-Raumkoordinaten und umgekehrt genutzt werden können (analog zu den OpenGL-Funktionen ``glProject`` und ``gluUnProject``).
 
 Diese werden im Projekt von Eingabegeräten genutzt, die mit 2D-Daten arbeiten und diese beispielsweise für die Auswahl von 3D-Objekten entsprechend umrechnen müssen.
-Aufgrund der von Simulator X geforderten Komponentenaufteilung werden die Methoden von den Nutzern jedoch nicht direkt aufgerufen, sondern von der :ref:`renderkomponente` gekapselt. 
-Nutzer müssen analog zu den Methoden definierte Nachrichten nutzen, die über das Kommunikationssystem von Simulator X verschickt werden.
+Aufgrund der von Simulator X geforderten Komponentenaufteilung werden die Methoden von den Nutzern nicht direkt aufgerufen, sondern von der :ref:`renderkomponente` gekapselt. 
+Nutzer müssen analog zu den Methoden definierte Nachrichten verwenden, die über das Kommunikationssystem von Simulator X verschickt werden.
 
 COLLADA2Scala-Compiler
 ======================
@@ -220,7 +220,7 @@ So wird für jede Instanz eines solchen 3D-Modells zusätzlicher Grafikspeicher 
 Ein weiteres Problem ist, dass der Loader "fertige" ``Drawables`` liefert, die nicht für die Darstellung von Modellelementen (Knoten und Kanten) genutzt werden können. 
 
 Aufgrund dessen wurde ein "Compiler" entwickelt, der mit Hilfe des COLLADA-Loaders ein Modell lädt und daraus eine Repräsentation der in dem Modell definierten Geometrie in Scala-Code erzeugt. 
-Die so erzeugte Scala-Quelldatei enthält ein Trait, das ``Mesh`` :ref:`\ <drawable>`) implementiert. 
+Die so erzeugte Scala-Quelldatei enthält ein Trait, das :ref:`Mesh<drawable>`) implementiert. 
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
@@ -234,12 +234,13 @@ In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die spez
 Hier wird auch gezeigt, wie die oben beschriebenen Ebenen der Render-Bibliothek und die GLSL-Shader zusammenwirken.
 Außerdem soll verdeutlicht werden, wie :ref:`Drawables <drawable>` als Schnittstelle zwischen grafischer Darstellung und Anwendung dienen.
 
+
 .. _erweiterung-interaction:
 
 Unterstützung für deaktivierte, hevorgehobene und selektierte Elemente
 ----------------------------------------------------------------------
 
-Für die :ref:`visualisierungsvarianten` wurde eine (Fragment-)Shaderfunktion erstellt, welche die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändern kann.
+Für die :ref:`visualisierungsvarianten` wurde eine Fragment-Shaderfunktion erstellt, welche die Farbe eines Objektes abhängig von den aktivierten Visualisierungsvarianten verändern kann.
 Ein Shader, der diese Funktion nutzt, definiert Uniforms, mit welchen die Varianten ausgewählt werden können.
 
 Auf Scala-Seite werden diese Uniforms vom ``SelectionHighlightAddon`` verwaltet, welches auch eine Schnittstelle für die Anwendung bereitstellt. 
@@ -257,9 +258,10 @@ Durch den Aufruf eines solchen Setters wird die zugehörige Uniform geändert un
 Zusätzlich können noch folgende Parameter gesetzt werden:
 
 * ``borderWidth``: Breite des Selektionsrahmens.
-* ``highlightFactor``: Wert, mit dem die berechnete Farbe multipliziert wird um Hervorhebung darzustellen. Bei dunklen Grundfarben wird stattdessen mit 1 / highlightFactor multipliziert.
+* ``highlightFactor``: Wert, mit dem die berechnete Farbe multipliziert wird um Hervorhebung darzustellen. Bei dunklen Grundfarben wird stattdessen mit 1 / ``highlightFactor`` multipliziert.
 
-"Deaktiviert" wird durch einen Grauton dargestellt, der wie folgt aus den Komponenten der Grundfarbe berechnet wird: grauwert = (rot + blau + grün) * 0.2. 
+"Deaktiviert" wird durch einen Grauton dargestellt, der wie folgt aus den Komponenten der Grundfarbe berechnet wird: ``grauwert = (rot + blau + grün) * 0.2``. 
+
 Außerdem wird das Objekt transluzent gezeichnet.
 Der Selektionsrahmen wird im deaktivierten Zustand abhängig von der resultierenden Helligkeit von "grauwert" entweder hellgrau oder dunkelgrau dargestellt.
 
@@ -387,7 +389,7 @@ Am ersten Code-Beispiel ist zu sehen, wie ein Drawable für ein Modellelement pr
 Die Zeilen 2 bis 4 geben die von :ref:`Drawable<drawable>` geforderte Implementierung an.
 Es wird von der Renderkomponente vorausgesetzt, dass ``SiXTransformation`` für alle 3D-Drawables genutzt wird.
 ``SelectableAndTextureEffect`` wird für alle texturierten Figuren genutzt, die die :ref:`Visualisierungsvarianten<erweiterung-interaction>` unterstützen.
-Analog dazu ist ``SelectableAndTextEffect`` für die Textdarstellung definiert, welcher das in :ref:`\ <schrift-rendering>` beschriebene ``TextDisplayAddon`` nutzt.
+Analog dazu ist ``SelectableAndTextEffect`` für die Textdarstellung definiert, welcher das :ref:`TextDisplayAddon<schrift-rendering>` nutzt.
 
 In den letzten drei Zeilen werden die ``SVarSupports`` eingemischt, welche die Verbindung zur Anwendung herstellen.
 
@@ -399,6 +401,6 @@ In den letzten drei Zeilen werden die ``SVarSupports`` eingemischt, welche die V
 
 .. [#f2] Der "Flaschenhals" der Anwendung ist eher die Physikkomponente. Die Ursachen wurden nicht näher untersucht, da immerhin mehrere hundert Modellelemente auf aktuellen Systemen noch relativ schnell dargestellt werden können.
 
-.. [#f3] Gezeigt wird dies von :cite:`alvergren_3d_2009` (:ref:`krolovitsch`). Dort sei die C++-Game-Engine Panda3D (über eine Python-Anbindung) genutzt worden, um schnell einen Prototypen für einen 3D-Zustandsdiagramm-Editor zu erstellen.
+.. [#f3] Gezeigt wird dies von :cite:`alvergren_3d_2009`; :ref:`siehe <krolovitsch>`. Dort sei die C++-Game-Engine Panda3D (über eine Python-Anbindung) genutzt worden, um schnell einen Prototypen für einen 3D-Zustandsdiagramm-Editor zu erstellen.
 
 .. [#f5] Dies ist auch ein Beispiel, dass die Flexibilität von modernem OpenGL (und der Render-Bibliothek) zeigt, die im Gegensatz zu alten OpenGL-Versionen beliebige Vertex-Attribute unterstützen.

@@ -9,7 +9,7 @@ Von dieser Komponente wird die im Rahmen dieser Arbeit entstandene :ref:`render-
 
 Damit wird die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
 
-Die eigentlichen Render-Aufgaben werden an einen Actor (``MMPERenderActor``) delegiert, der von der Renderkomponente (Klasse ``MMPERConnector``) gestartet wird.\ [#f1]_
+Die eigentlichen Render-Aufgaben werden an einen Actor (Klasse ``MMPERenderActor``) delegiert, der von der Renderkomponente (``MMPERConnector``) gestartet wird\ [#f1]_.
 Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an die Renderkomponente geschickt und an den RenderActor weitergeleitet. 
 
 RenderActor

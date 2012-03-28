@@ -94,7 +94,7 @@ Diese werden auch "implizite Wrapper" genannt.
 
     implicit def conceptToAdapter(m: MConcept) = new MConceptAdapter(m)
 
-Mit dieser Definition lassen sich nun Methoden, die für MConceptAdapter definiert sind auch auf Objekten des Typs MConcept aufrufen als wären sie Teil von MConcept. [#f4]_
+Mit dieser Definition lassen sich nun Methoden, die für MConceptAdapter definiert sind auch auf Objekten des Typs MConcept aufrufen als wären sie Teil von MConcept.
 
 
 .. _parser-kombinatoren:
@@ -170,7 +170,7 @@ Andere Komponenten können sich allerdings beim *WorldInterface* registrieren um
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe von I>PM3D zu realisieren wurde die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
+Um die Grafikausgabe von I>PM3D zu realisieren wird die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
 Als Anbindung an OpenGL wird die Java-Bibliothek LWJGL (Lightweight Java Gaming Library) :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
@@ -197,7 +197,7 @@ Geometry-Shader
     können aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
 
 Fragment-Shader 
-    werden einmal pro Fragment aufgerufen [#f3]_ und implementieren beispielsweise Texturierung und Beleuchtung.
+    werden einmal pro Fragment aufgerufen\ [#f3]_ und implementieren beispielsweise Texturierung und Beleuchtung.
 
 Tesselation-Shader (ab OpenGL 4)
     können komplett neue Geometrien erzeugen

@@ -66,8 +66,7 @@ Modell-Persistenz
 =================
 
 Eine Anforderung an den Prototypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. 
-Wie in :ref:`modellhierarchie` angesprochen werden in I>PM3D Modelle eingesetzt, die in der Sprache LMMLight verfasst werden.
-
+Es werden Modelle eingesetzt, die in der Sprache :ref:`lmmlight` verfasst werden.
 Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
 
 Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
@@ -127,7 +126,7 @@ Zum Einen ist dies eine Auflistung der verfügbaren Kanten- und Szenenobjekttype
 Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungs-Konzept zur Laufzeit Typen vom Benutzer angelegt werden können.
 
 Die Kommunikation zwischen Editor- und Modellkomponente wird in :num:`Abbildung #load-metamodels-sequencediag` am Laden von Metamodellen beispielhaft gezeigt.
-
+Nachrichten, die mit Großbuchstaben beginnen stellen Commands beziehungsweise Replies dar; Nachrichten mit Kleinbuchstaben sind gewöhnliche Methodenaufrufe und -rückgabewerte.
 
 .. _load-metamodels-sequencediag:
 
@@ -135,7 +134,6 @@ Die Kommunikation zwischen Editor- und Modellkomponente wird in :num:`Abbildung 
     :width: 16cm
 
     Sequenzdiagramm LoadMetaModels (vereinfacht).
-    Nachrichten, die mit Großbuchstaben beginnen stellen Commands beziehungsweise Replies dar; Nachrichten mit Kleinbuchstaben sind gewöhnliche Methodenaufrufe und -rückgabewerte.
 
 
 Laden und Schließen von Usage-Modellen und Umgang mit mehreren Modellen
@@ -144,7 +142,7 @@ Laden und Schließen von Usage-Modellen und Umgang mit mehreren Modellen
 Usage-Modelle umfassen den aktuellen Zustand eines Prozessmodells und dessen Repräsentation im Editor. 
 Ein konkretes "Prozesmodell" wird geöffnet, indem das zugehörige Domain- und Editor-Usage-Model geladen werden.
 
-Das Command ``LoadUsageModels`` ist analog zum Command ``LoadMetaModels`` definiert, wie im Abschnitt darüber beschrieben.
+Das Command ``LoadUsageModels`` ist analog zum Command ``LoadMetaModels`` definiert, wie im vorherigen Unterabschnitt beschrieben.
 
 Es können von der Anwendung zur Laufzeit mehrere Usage-Modelle (zu denselben Metamodellen) geladen werden. 
 In der ModelComponent ist jeweils ein Usage-Model-Paar als "aktiv" gekennzeichnet.
@@ -165,6 +163,7 @@ Analog zum Lade-Command ``LoadUsageModels`` werden bei ``SaveUsageModels`` zwei 
 Um die Speicherrepräsentation des Modells wieder in eine durch den LMMLight-Parser lesbare\ [#f5]_
 , textuelle Darstellung zu überführen, wird der in :ref:`stringtemplate` gezeigte Wrapper für die StringTemplate-Bibliothek genutzt.
 
+
 .. _model-entities:
 
 Modell-Entitäten
@@ -174,6 +173,7 @@ Objekte, mit denen verschiedene Teile des Systems interagieren, werden in ref:`s
 Es ist daher zweckmäßig, für jedes Modellelement sowie für Szenenobjekte eine zugehörige Entity zu erstellen.
 ``ModelEntities`` werden von der ModelComponent erzeugt, wenn über ein Command die Erstellung von neuen Elementen angefordert oder ein Modell geladen wird. 
 Der Prozess zur Erstellung von ModelEntities zum Ablauf wird im Abschnitt :ref:`lebenszyklus` dargelegt.
+
 
 .. _modelentities-aspects:
 
@@ -280,10 +280,8 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
    Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird.\ [#f4]_
    Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Diese werden für die meisten hier genannten SVars benötigt.
 
-   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt.\ [#f5]_ 
+   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt; dies sind:\ [#f5]_ 
    
-    Im Einzelnen:
-
     * Hintergrundfarbe (``backgroundColor``)
     * Schrift (``font``)
     * Schriftfarbe (``fontColor``)
@@ -293,8 +291,7 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
 
 #. **Editor-SVars**:
    Dies sind SVars, die keine direkte Entsprechung im Modell haben und deren Werte daher auch nicht persistiert werden. 
-   Sie sind automatisch für alle Modellelemente definiert oder werden durch Modellattribute "aktiviert". 
-   Dabei handelt es sich um:
+   Sie sind automatisch für alle Modellelemente definiert oder werden durch Modellattribute "aktiviert".
 
    * SVars für die Auswahl von :ref:`Visualisierungsvarianten <visualisierungsvarianten>`: 
 
@@ -318,14 +315,14 @@ Daran wird der Attributname aus dem Modell oder im Falle der Editor-SVars einer 
 Anwendungsbeispiel 
 ^^^^^^^^^^^^^^^^^^
 
-Die Nutzung erfolgt analog zu statisch definierten SVars, wie den in :ref:`model-svars-transformation` genannten.
-
+Die Nutzung erfolgt analog zu statisch definierten :ref:`SVars<model-svars-transformation>`, wozu ebenfalls ein impliziter Wrapper definiert ist.
 Im folgenden Beispiel wird die Funktion eines Prozessknotens und die Schriftfarbe über die zugehörige Entity verändert:
 
 .. code-block:: scala
     
     processEntity.svarSet("model.function")("Ausarbeitung schreiben")
     processEntity.svarSet("editor.fontColor")(Color.BLACK)
+
 
 .. _lebenszyklus:
 
@@ -334,11 +331,11 @@ Im folgenden Beispiel wird die Funktion eines Prozessknotens und die Schriftfarb
 
 Dieser Abschnitt zeigt kurz, welche wichtigen Schritte im "Lebenszyklus" einer ModelEntity durchlaufen werden.
 
-Komponenten in Simulator X - Framework definieren eine Reihe von Methoden, die vom Framework beim Erstellen oder Löschen einer Entity aufgerufen werden.
+Komponenten in :ref:`simulatorx` definieren eine Reihe von Methoden, die vom Framework beim Erstellen oder Löschen einer Entity aufgerufen werden.
 
 Die Erstellung einer ModelEntity folgt dem folgenden Schema:
 
-  #. Der Vorgang wird beispielsweise durch ein CreateNode-Command vom Editor angestoßen. Die ModelComponent erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`modelentities-aspects` und übergibt diese an das Framework (Methode EntityDescription.realize()), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
+  #. Der Vorgang wird beispielsweise durch ein CreateNode-Command vom Editor angestoßen. Die ModelComponent erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`Aspekten<modelentities-aspects>` und übergibt diese an das Framework (Methode ``EntityDescription.realize``), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
 
   #. Die Methode ``getAdditionalProvidings`` gibt eine Sequenz von ``SVarDescriptions`` zurück, die zu der Entity hinzugefügt werden sollen. Im Falle der ModelComponent sind dies ``SVarDescriptions`` zu den im vorherigen Abschnitt beschriebenen SVars.
 
@@ -350,7 +347,8 @@ Der genannte Prozesse läuft auch parallel für die anderen Komponenten ab, für
 
 Beim Löschen spielt sich Folgendes ab:
 
-  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die ModelComponent den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode remove() aufgerufen wird.
+  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. 
+       Daraufhin startet die ModelComponent den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
 
   #. Simulator X entfernt nun die Entity aus dem System und ruft dabei in der Komponente die ``removeFromLocalRep``-Methode auf. In dieser Methode sollen interne Verweise und zugehörige Daten in den Komponenten entfernt werden.
 

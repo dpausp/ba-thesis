@@ -61,19 +61,19 @@ Nach dem Konzept der perspektivenorientierten Prozessmodellierung (POPM) werden 
 
 Es wurden folgende fünf wichtigen Perspektiven identifiziert, die auch in :cite:`volz_werkzeugunterstutzung_2011` (S.251f) beschrieben werden:
 
-Funktionale Perspektive: 
+Funktionale Perspektive 
     Dies umfasst alle funktionalen Einheiten eines Prozesses. Hier sind Ablaufschritte, Entscheidungen oder Konnektoren (AND, OR) eingeschlossen. Ablaufschritte werden wieder als "Prozess" bezeichnet. Dies drückt aus, dass ein Prozessschritt selbst aus mehreren Schritten bestehen kann. Ein solcher Prozess(schritt) wird als "komposit" bezeichnet. So ergibt sich eine Hierarchie von Prozessverfeinerungen.
 
-Verhaltensorientierte Perspektive: 
+Verhaltensorientierte Perspektive 
     Dies wird auch als "Kontrollfluss" bezeichnet und gibt die zeitlichen bzw. logischen Abhängigkeiten zwischen Elementen der funktionalen Perspektive an. Durch diese Perspektive wird also die Ausführungsreihenfolge festgelegt. 
 
-Organisationale Perspektive: 
+Organisationale Perspektive 
     Einem Prozess lässt sich eine ausführende Entität, beispielsweise eine abstrakte Rolle oder eine konkrete Person zuordnen, die für die Ausführung verantwortlich ist.
 
-Datenbezogene Perspektive: 
+Datenbezogene Perspektive 
     Prozesse sind ohne Daten, die im Ablauf erstellt, modifiziert und ausgetauscht werden quasi undenkbar. Datenflüsse legen oft auch die Abhängigkeiten zwischen Prozessschritten fest.
 
-Operationale Perspektive: 
+Operationale Perspektive 
     Zur Ausführung von Prozessen sind verschiedene Betriebsmittel wie Maschinen, Werkzeuge oder Rechnerressourcen erforderlich, welche in dieser Perspektive abgebildet werden.
 
 Dies soll explizit keine vollständige Aufzählung sein, sondern nur eine Zusammenfassung sehr häufig vorkommender Bestandteile. 
