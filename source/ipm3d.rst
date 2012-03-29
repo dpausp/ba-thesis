@@ -7,9 +7,10 @@ Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Pro
 Die Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` zeigt den grundsätzlichen Aufbau des Projektes. Die Bestandteile, mit denen sich die vorliegende Arbeit befasst sind darin rot hervorgehoben.
 Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchholz :cite:`buchi` und Uli Holtmann :cite:`uli` entstanden, die die übrigen Bestandteile von I>PM3D beschreiben. 
 
+
 .. _ipm3d-konzeptionelle-uebersicht:
 
-.. figure:: _static/diags/ipm3d-simulatorx.png
+.. figure:: _static/diags/ipm3d-uebersicht.png
 
    Übersicht über die Bestandteile von I>PM3D
 

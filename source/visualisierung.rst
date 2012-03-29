@@ -41,8 +41,8 @@ Weitere Details zur Schriftdarstellung können im Kapitel zur :ref:`Render-Bibli
 
 .. _prozessknoten:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 8cm
+.. figure:: _static/screenshots/prozessknoten.png
+    :height: 7cm
 
     Zwei Prozessknoten; links im Ursprungszustand, rechts als angepasste Verwendung (Screenshot aus I>PM3D)
 
@@ -52,8 +52,8 @@ So steht ein Pluszeichen für einen AND-Connector, wie in :num:`Abbildung #and-c
 
 .. _and-connector:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 8cm
+.. figure:: _static/screenshots/and_connector.png
+    :height: 7cm
 
     AND-Connector (Screenshot aus I>PM3D)
 
@@ -106,8 +106,8 @@ Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen D
 
 .. _gerichtete-verbindung:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 8cm
+.. figure:: _static/screenshots/control_flow.png
+    :scale: 100%
 
     Gerichtete Kontrollflusskante (Screenshot aus I>PM3D)
 
@@ -168,26 +168,26 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 
 .. _hervorhebung-sc:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 5cm
+.. figure:: _static/screenshots/dataitems_hervorhebung.png
+    :scale: 100%
 
-    Hevorgehobener und AND-Konnektor im Normalzustand (rechts) (Screenshot aus I>PM3D)
+    Datenknoten, normal (links) und hervorgehoben (Screenshot aus I>PM3D)
 
 
 .. _selektion-sc:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 5cm
+.. figure:: _static/screenshots/selektierte_knoten.png
+    :scale: 100%
 
-    Prozess und AND-Connector im selektierten Zustand (Screenshot aus I>PM3D)
+    Prozess und Entscheidungsknoten im selektierten Zustand (Screenshot aus I>PM3D)
 
 
 .. _deaktivierung-sc:
 
-.. figure:: _static/screenshots/dummy.png
-    :height: 5cm
+.. figure:: _static/screenshots/prozesse_deaktiviert.png
+    :scale: 100%
 
-    Deaktivierter Prozessknoten (vorne) und aktivierter Prozess (hinten) (Screenshot aus I>PM3D)
+    Deaktivierter (vorne, durchsichtig) und aktivierter Prozess (Screenshot aus I>PM3D)
 
 Die drei vorgestellten Visualisierungsvarianten können frei kombiniert werden. 
 Damit ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
@@ -218,7 +218,7 @@ Diese Linien haben allerdings keine physikalische Bedeutung, sondern dienen nur 
 .. _modellierungsflaeche:
 
 .. figure:: _static/screenshots/dummy.png
-    :height: 5cm
+    :scale: 100%
 
     Modellierungsfläche, grün (Screenshot aus I>PM3D)
 

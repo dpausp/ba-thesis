@@ -37,7 +37,7 @@ Der "Vorgang", einen Trait zu einer Klasse hinzuzufügen – wie im folgenden Co
 
 Example wird also von BaseClass abgeleitet und MixinTrait eingemischt.
 
-In dieser Arbeit werden Traits in UML-Diagrammen als Klasse mit dem Stereotyp ``<<trait>>`` und Assoziationen zu "einmischenden" Klassen mit ``<<mixin>>`` versehen.
+In dieser Arbeit werden Traits in UML-Diagrammen als Klasse mit dem Stereotyp ``<<trait>>`` dargestellt und Assoziationen zu "einmischenden" Klassen mit ``<<mixin>>`` versehen.
 
 Objects
 -------
@@ -85,7 +85,7 @@ Implizite Funktionen
 --------------------
 
 Es ist möglich, sogenannte "implizite Funktionen zu definieren, indem ein "implicit" vorangestellt wird. 
-Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden. Dazu müssen die Funktion im der Scala-Quelldatei direkt importiert worden.
+Diese Funktionen werden vom Compiler automatisch eingesetzt, wenn diese benötigt werden [#f8]_.
 
 Besonders praktisch sind diese Funktionen für die Realisierung von "transparenten" Adaptern, wie sie im vorliegenden Projekt genutzt werden. 
 Diese werden auch "implizite Wrapper" genannt.
@@ -261,3 +261,4 @@ Um die Einbindung in Scala zu verbessern, wurde ein eigener Wrapper für die SLF
 .. [#f5] Normalen werden vor allem für die Berechnung der Beleuchtung benötigt.
 .. [#f6] Texturkoordinaten sind häufig zweidimensional und werden vor allem dazu genutzt, 2D-Grafiken auf 3D-Objekten zu positionieren.
 .. [#f7] Siehe http://www.opengl.org/wiki/Rendering_Pipeline_Overview
+.. [#f8] Welche Bedingungen dafür erfüllt sein müssen, kann bspw. in :cite:`odersky_programming_2011` nachgelesen werden.

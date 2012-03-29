@@ -4,7 +4,7 @@
 Modellanbindung
 ***************
 
-In diesem Kapitel werden die Anforderungen an die "Modellanbindung" und deren Realisierung besprochen. 
+In diesem Kapitel wird die in :num:`Abbildung ipm3d-konzeptionelle-uebersicht` gezeigte "Modellanbindung" besprochen. 
 Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar.
 
 Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen:
@@ -13,32 +13,34 @@ Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen
 #. Bewegen, Rotieren und Skalieren von Modellelementen
 #. Verändern von Prozessmodellattributen
 #. Modifizieren der Visualisierungsparameter von Modellelementen; beispielsweise Farbe oder Schriftart
-#. Laden und Speichern von Prozessmodellen und deren visueller Repräsentation
+#. Erstellen, Laden und Speichern von Prozessmodellen und deren visueller Repräsentation
+
+.. _modellkomponente:
 
 Modellkomponente
 ================
 
-Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die jeweils ein begrenztes Aufgabengebiet abdecken.
+Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten (Actors), die jeweils ein begrenztes Aufgabengebiet abdecken.
 
-Die ModelComponent stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
+Die ``ModelComponent`` stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
 
-So wird der Zugriff auf die Modelle wird vollständig von der ModelComponent gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
+So wird der Zugriff auf die Modelle vollständig von der ``ModelComponent`` gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
 Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die actor-basierte und damit parallele Architektur von Simulator X vorgegeben.
 
 Commands
 --------
 
-Die Funktionen werden zum Teil als "Commands" bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ModelComponent geschickt werden.
+Die Funktionen werden zum Teil als ``Commands`` bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ``ModelComponent`` geschickt werden.
 In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
-Es existieren Commands für die folgenden Funktionen:
+Es existieren ``Commands`` für die folgenden Funktionen:
 
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von Usage-Modellen
 * Erstellen und Löschen von Knoten und Szenenobjekten
 * Erstellen einer Kante zwischen zwei Knoten
 
-Alle anderen Manipulationsmöglichkeiten — das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen – werden über "ModelEntities" bereitgestellt, welche weiter unten in diesem Kapitel :ref:`\ <model-entities>` erläutert werden.
+Alle anderen Manipulationsmöglichkeiten — das sind diejenigen, die nur Parameter einzelner Modellelemente betreffen – werden über ``ModelEntities`` bereitgestellt, welche weiter unten in diesem Kapitel :ref:`\ <model-entities>` erläutert werden.
 
 Übersicht 
 ---------
@@ -65,9 +67,8 @@ Die Verwaltung der geladenen Modelle wird durch das Object **ModelContext** für
 Modell-Persistenz
 =================
 
-Eine Anforderung an den Prototypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. 
-Es werden Modelle eingesetzt, die in der Sprache :ref:`lmmlight` verfasst werden.
-Diese Modelle werden in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen.
+Eine Anforderung an den Prototypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. (Anforderung (5))
+Die Modelle werden in der Sprache :ref:`lmmlight` beschrieben, welche in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen werden kann.
 
 Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
@@ -128,6 +129,7 @@ Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen n
 Die Kommunikation zwischen Editor- und Modellkomponente wird in :num:`Abbildung #load-metamodels-sequencediag` am Laden von Metamodellen beispielhaft gezeigt.
 Nachrichten, die mit Großbuchstaben beginnen stellen Commands beziehungsweise Replies dar; Nachrichten mit Kleinbuchstaben sind gewöhnliche Methodenaufrufe und -rückgabewerte.
 
+
 .. _load-metamodels-sequencediag:
 
 .. figure:: _static/diags/loadMetamodels-sequencediag.eps
@@ -172,24 +174,31 @@ Modell-Entitäten
 Objekte, mit denen verschiedene Teile des Systems interagieren, werden in ref:`simulatorx` durch Entities beschrieben. 
 Es ist daher zweckmäßig, für jedes Modellelement sowie für Szenenobjekte eine zugehörige Entity zu erstellen.
 ``ModelEntities`` werden von der ModelComponent erzeugt, wenn über ein Command die Erstellung von neuen Elementen angefordert oder ein Modell geladen wird. 
-Der Prozess zur Erstellung von ModelEntities zum Ablauf wird im Abschnitt :ref:`lebenszyklus` dargelegt.
 
+Wie aus :ref:`simulatorx` bekannt werden Entities mit Hilfe von ``EntityDescriptions`` beschrieben, die aus ``Aspects`` aufgebaut sind.
+In :num:`Abbildung #entity-description` ist ein eine solche Entity-Definition zu sehen.
+Die genutzten ``Aspects`` werden im folgenden Unterabschnitt beschrieben.
+Der Ablauf bei der Erstellung einer ``ModelEntity`` aus einer ``EntityDescription`` wird im Abschnitt :ref:`lebenszyklus` kurz vorgestellt.
+
+.. _entity-description:
+
+.. figure:: _static/diags/entity_description.eps
+    :width: 16cm
+
+    ``EntityDescription`` für einen Knoten (nur ausgewählte und vereinfachte Attribute)
 
 .. _modelentities-aspects:
 
 Aspekte
 -------
 
-Wie aus :ref:`simulatorx` bekannt sind Entity-Definitionen aus Aspekten aufgebaut, die einzelnen Komponenten zugeordnet sind. 
-Die für ModelEntites genutzten Aspects werden hier aufgeführt.
-
 Physik
 ^^^^^^
 
-Knoten und Szenenobjekte sollen in die physikalische Simulation aufgenommen werden, um Kollisionen zu erkennen und eine Auswahl der Elemente zu ermöglichen. :cite:`uli` :cite:`buchi`
+Knoten und Szenenobjekte sollen in die physikalische Simulation aufgenommen werden, um Kollisionen zu erkennen und eine Auswahl der Elemente zu ermöglichen :cite:`uli` :cite:`buchi`.
 
-Hierfür stellt die Physikkomponente verschiedene Aspects bereit, die besagen, dass eine bestimmte physikalische Repräsentation zu einer Entity erzeugt werden soll.
-Da bisher nur annähernd quaderförmige Geometrien für die Visualisierung von Knoten genutzt werden, wird hier für alle Knoten der ``PhysBox``-Aspect verwendet.
+Hierfür stellt die Physikkomponente verschiedene ``Aspects`` bereit, die besagen, dass eine bestimmte physikalische Repräsentation zu einer Entity erzeugt werden soll.
+Da bisher nur annähernd quaderförmige Geometrien für die Visualisierung von Knoten genutzt werden, wird hier für alle Knoten der ``PhysBox``-Aspect (:num:`Abbildung #entity-description`) verwendet.
 
 Kanten definieren keinen Physik-Aspect und besitzen daher keine physikalische Repräsentation\ [#f7]_.
 
@@ -203,29 +212,32 @@ Solche Szenenobjekte sind statisch durch das 3D-Modell definiert.
 Das bedeutet in diesem Zusammenhang, dass ihr Erscheinungsbild zur Laufzeit nicht geändert werden kann (abgesehen von Position, Rotation und Skalierung).
 In der Entity-Beschreibung wird dafür der ``ShapeFromFile``-Aspect angegeben.
 
-Für Knoten und Kanten wird dagegen der ``ShapeFromFactory``-Aspect genutzt, der besagt, dass sich die Renderkomponente das Grafikobjekt von einer externen Factory erzeugen lassen soll.
-Für ModelEntities steht die ``ModelDrawableFactory`` zur Verfügung, welche später in einem :ref:`Anwendungsbeispiel <beispiel-neue-modellfigur>` modifiziert wird, um ein Grafikobjekt für einen neuen Knotentyp hinzuzufügen.
+Für Knoten und Kanten wird dagegen der ``ShapeFromFactory``-Aspect genutzt, der besagt, dass sich die :ref:`renderkomponente` das Grafikobjekt von einer externen Factory erzeugen lassen soll.
+In :num:`Abbildung #entity-description` ist zu sehen, dass im ``Aspect`` die ``ModelDrawableFactory`` angegeben wird, welche alle Grafikobjekte für Knoten und Kanten erzeugt.
+Parameter ``creationData`` gibt den Typ des gewünschten Objekts an, der in den Figuren im :ref:`Editor-Metamodell<ebl-figures>` spezifiziert wurde. 
+Die ``ModellDrawableFactory`` wird später in einem :ref:`Anwendungsbeispiel <beispiel-neue-modellfigur>` modifiziert, um ein Grafikobjekt für einen neuen Knotentyp hinzuzufügen.
 
 Modell
 ^^^^^^
 
-Für die drei Elementtypen Knoten, Kanten und Szenenobjekte gibt es jeweils einen Aspect, der von ``ModelAspect`` abgeleitet ist.
+Für die drei Elementtypen Knoten, Kanten und Szenenobjekte gibt es jeweils einen Aspect, der von ``ModelAspect`` abgeleitet ist, wie beispielsweise den ``NodeAspect``, wie er in :num:`Abbildung #entity-description` zu sehen ist.
 ModelAspects sind der ``ModelComponent`` zugeordnet und enthalten für Nutzer der ModelEntity relevante Informationen. 
 
-Für alle Elemente, die von ModelEntities repräsentiert werden wird ein vollqualifizierter Name (``modelTypes.Fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
+Für alle Elemente, die von ModelEntities repräsentiert werden wird ein vollqualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
 Dieser Name wird in Commands verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
 
 Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem Domänenmodell genutzt. Szenenobjekte werden über die FQN des Editor-Usage-Concepts identifiziert\ [#f2]_.
 
-Außerdem wird ein Identifikationsstring (modelTypes.CreatorId*) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
+Außerdem wird ein Identifikationsstring (``creatorId``) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
 Mit "Ersteller" ist hier der Absender des entsprechenden Commands oder die ModelComponent selbst gemeint. 
 
 Diese ID kann von diesem dafür benutzt werden, neu erstellte Entities in internen Datenstrukturen richtig zuzuordnen.
 
+
 .. _model-svars-transformation:
 
-Setzen von Position, Ausrichtung und Größe eines Objekts
---------------------------------------------------------
+Setzen und Auslesen von Position, Ausrichtung und Größe
+-------------------------------------------------------
 
 (Dieser Unterabschnitt beschreibt von Simulator X vorgegebene Funktionalität. Projektspezifische Anpassungen sind in Fußnoten angegeben.)
 
@@ -250,7 +262,9 @@ Beispielsweise kann so die aktuelle Transformation ausgegeben werden\ [#f9]_:
         value => println("current transformation of processEntity: " + value) 
     }
 
-Dabei ist zu beachten, dass der Aufruf der in geschweiften Klammern angegebenen, anonymen Funktion asynchron erfolgt wie in :ref:`simulatorx` beschrieben wurde.
+Dabei ist zu beachten, dass der Get-Aufruf "nicht-blockierend" erfolgt.
+Wie in :ref:`simulatorx` beschrieben wurde, muss der Wert einer SVar eventuell von einem anderen Actor über das Kommunikationssystem angefragt werden. 
+Die anonyme Funktion (im Code-Beispiel in geschweiften Klammern) wird ausgeführt, sobald die Antwort vorliegt.
 
 Für Objekte ohne Physik-Aspekt (Kanten) werden die genannten SVars durch die Renderkomponente bereitgestellt. 
 Diese leisten dasselbe, dürfen aber auch verändert werden:
@@ -265,10 +279,10 @@ Diese leisten dasselbe, dürfen aber auch verändert werden:
 Modell-SVars
 ------------
 
-Über die Zustandsvariablen (SVars) der Modell-Entitäten ist es für Aktoren im System möglich, die Parameter eines Modellobjekts zu verändern.
+Weitere Parameter der Modellobjekte lassen sich ebenfalls über ``SVars`` auslesen und setzen.
 
-Die von einer ModelEntity angebotenen SVars lassen sich in drei Gruppen einteilen. 
-SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen abbilden oder von der ModelComponent definiert sein.
+Diese ``SVars`` lassen sich in drei Gruppen einteilen. 
+SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen abbilden oder von der ModelComponent definiert sein:
 
 #. **Domain-Model-SVars**: 
    Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im Usage-Model Werte zugewiesen werden können [#f3]_\ . 
@@ -315,7 +329,7 @@ Daran wird der Attributname aus dem Modell oder im Falle der Editor-SVars einer 
 Anwendungsbeispiel 
 ^^^^^^^^^^^^^^^^^^
 
-Die Nutzung erfolgt analog zu statisch definierten :ref:`SVars<model-svars-transformation>`, wozu ebenfalls ein impliziter Wrapper definiert ist.
+Die Nutzung erfolgt analog zu den schon gezeigten :ref:`SVars<model-svars-transformation>`, wozu ebenfalls ein impliziter Wrapper definiert ist.
 Im folgenden Beispiel wird die Funktion eines Prozessknotens und die Schriftfarbe über die zugehörige Entity verändert:
 
 .. code-block:: scala
@@ -347,8 +361,7 @@ Der genannte Prozesse läuft auch parallel für die anderen Komponenten ab, für
 
 Beim Löschen spielt sich Folgendes ab:
 
-  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. 
-       Daraufhin startet die ModelComponent den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
+  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die ModelComponent den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
 
   #. Simulator X entfernt nun die Entity aus dem System und ruft dabei in der Komponente die ``removeFromLocalRep``-Methode auf. In dieser Methode sollen interne Verweise und zugehörige Daten in den Komponenten entfernt werden.
 

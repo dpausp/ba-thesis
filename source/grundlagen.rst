@@ -12,7 +12,7 @@ Prozessmodellierungssprachen
 ============================
 
 Modellierung hat im Rahmen des Prozessmanagements die Aufgabe, komplexe (Geschäfts-)Abläufe aus der Realität in einer abstrahierten, das heißt vereinfachten, aber dennoch korrekten Form darzustellen\ [#f1]_.
-Oft werden Prozessmodelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
+Einerseits werden werden Prozessmodelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
 Andererseits können abstrakt modellierte Prozesse von einem Softwaresystem automatisch ausgeführt bzw. simuliert werden :cite:`ter_hofstede_business_2003`.
 
 Um Modelle formulieren zu können bedarf es einer passenden Modellierungssprache. 
@@ -94,7 +94,7 @@ Dies entspricht dem geometriebasierten Ansatz.
 .. _ipm-process:
 
 .. figure:: _static/ext_pics/ipm-process.png
-    :width: 16cm
+    :width: 15cm
 
     Perspektivenorientierte Prozessmodellierung aus :cite:`roth_konzeption_2011`
 
@@ -126,7 +126,7 @@ Auf der linken Seite lässt sich die Palette mit den Modellelementen erkennen, d
 .. _ipm2:
 
 .. figure:: _static/ext_pics/ipm2d-editor.png
-    :width: 16cm
+    :width: 15cm
 
     Prozessmodellierungswerkzeug i>PM2 aus :cite:`roth_konzeption_2011`
 
@@ -138,10 +138,16 @@ Metamodellierung
 
 In der Prozessmodellierung kann es sinnvoll sein, die Modellierungssprache selbst zu verändern, um diese an spezielle Anforderungen anzupassen.
 So lassen sich Sachverhalte verständlicher und direkter als mit allgemeinen, fest vordefinierten Sprachen darstellen, indem spezialisierte Sprachelemente verwendet werden.
-An ein bestimmtes Einsatzgebiet angepasste Sprachen werden als "domänenspezifische Sprachen" (DSL) bezeichnet :cite:`clark_applied_2008`.
+An ein bestimmtes Einsatzgebiet angepasste Sprachen werden als **domänenspezifische Sprachen** (DSL) bezeichnet :cite:`clark_applied_2008`.
 
-Zur Beschreibung von Modellierungssprachen lässt sich das Konzept der "Metamodellierung" einsetzen :cite:`weisemoller_comparison_2008` :cite:`volz_werkzeugunterstutzung_2011`.
-Ein "Metamodell" lässt sich als ein Modell für eine Klasse von Modellen charakterisieren :cite:`seidewitz_what_2003`.  Durch die Anpassung eines Metamodells, welches die abstrakte Syntax beschreibt, können neue Modellelemente hinzugefügt und bestehende angepasst oder entfernt werden.  Andererseits lässt sich die konkrete Syntax, im Falle einer visuellen Sprache also die grafische Repräsentation der Modellelemente ebenfalls durch ein Metamodell spezifizieren.  So ist es möglich, zu einer abstrakten Syntax mehrere grafische Repräsentationen zu erstellen, die auf spezielle Anforderungen zugeschnitten sein können :cite:`jablonski_perspective_2008`.  Um Metamodelle zu "erstellen" ist es notwendig, diese auf eine wohldefinierte Weise beschreiben zu können. 
+Zur Beschreibung von Modellierungssprachen lässt sich das Konzept der **Metamodellierung** einsetzen :cite:`weisemoller_comparison_2008` :cite:`volz_werkzeugunterstutzung_2011`.
+Ein Metamodell lässt sich als ein Modell für eine Ansammlung ("Klasse") von Modellen charakterisieren :cite:`seidewitz_what_2003`.  
+
+Durch die Anpassung eines Metamodells, welches die abstrakte Syntax beschreibt, können neue Modellelemente hinzugefügt und bestehende angepasst oder entfernt werden.  
+Andererseits lässt sich die konkrete Syntax, im Falle einer visuellen Sprache also die grafische Repräsentation der Modellelemente ebenfalls durch ein Metamodell spezifizieren.  
+So ist es möglich, zu einer abstrakten Syntax mehrere grafische Repräsentationen zu erstellen, die auf spezielle Anforderungen zugeschnitten sein können :cite:`jablonski_perspective_2008`.  
+
+Um Metamodelle zu "erstellen" ist es notwendig, diese auf eine wohldefinierte Weise beschreiben zu können. 
 Dies leistet das im Folgenden vorgestellte Linguistic Meta Model (LMM), welches im Rahmen der Open Meta Modelling Environment (OMME), einer Metamodellierungsumgebung, entstanden ist :cite:`volz_werkzeugunterstutzung_2011`.
 
 .. _lmm:
@@ -155,16 +161,17 @@ LMM stellt eine Sprache bereit, welche zur Definition von Metamodellen dient.
 .. _lmm-model:
 
 .. figure:: _static/ext_pics/bernhard-lmmmodel.png
-    :width: 16cm
+    :width: 14cm
 
     Hierarchie der LMM-Elemente aus :cite:`volz_werkzeugunterstutzung_2011`
 
 
-Das zentrale Element im LMM ist das *Concept*. 
+Das zentrale Element im LMM ist das **Concept**. 
+
 Ein Concept kombiniert Eigenschaften einer Klasse und eines Objekts, wie sie aus objektorientierten Programmiersprachen\ [#f3]_ bekannt sind. 
 So kann ein Concept – wie eine Klasse – Attribute definieren. Gleichzeitig kann ein Concept – wie ein Objekt –  Wertzuweisungen enthalten.
 Anders ausgedrückt können Concepts sowohl eine "Typ-Facette", die Attribute definiert als auch eine "Instanz-Facette", die Zuweisungen vornimmt, beinhalten :cite:`atkinson_meta-level_2000`.
-Dieses Prinzip wird mit dem Begriff "Clabject" (**Cla**\ ss and O\ **bject**\ ) umschrieben.
+Dieses Prinzip wird mit dem Begriff **Clabject** (**Cla**\ ss and O\ **bject**\ ) umschrieben.
 
 Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen  ist in :num:`Abbildung #vergleich-lmm` zu sehen.
 
@@ -185,8 +192,10 @@ Ebenso gibt es die Möglichkeit für Concepts, andere Concepts analog zu Klassen
 In :num:`Abbildung #vergleich-lmm` besitzt ``ConceptC`` eine Instanz-Facette, welche den Attributen aus ``ConceptA`` und ``ConceptB`` Werte zuweist.
 Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``ConceptD`` mit dem Wert 5.5 belegt wird.
 
-Concepts werden, wie in :num:`Abbildung #lmm-model` gezeigt, in "Packages" eingeordnet. Packages bilden zusammen einen Level, welcher eine Ebene in der Metamodellierungshierarchie repräsentiert.
-Levels stellen zusammen das vollständige "Model" dar.
+Concepts werden, wie in :num:`Abbildung #lmm-model` gezeigt, in **Packages** eingeordnet. Packages bilden zusammen einen **Level**, welcher eine Ebene in der Metamodellierungshierarchie repräsentiert.
+Mehrere Levels stellen zusammen das vollständige **Model** dar, wobei auch Modelle mit nur einer Ebene erlaubt sind.
+
+In Concepts können sowohl **literale Attribute** (bspw. string, real, integer) als auch **Concept-Attribute**, welche auf andere Concepts verweisen, angegeben werden.
 
 Levels können ebenfalls zueinander in einer Instanzbeziehung (``instanceOf``) stehen. 
 Ein Level *MA* ist die Instanz eines anderen Levels *MB*, wenn alle in *MA* definierten Concepts Instanzen von Concepts in *MB* sind.
@@ -213,9 +222,11 @@ Für ``ConceptD`` ändert sich dabei nichts; die Überschreibung wirkt sich nur 
 In LMM lässt sich für Attribute festlegen, inwieweit das Setzen von Werten in Spezialisierungen zulässig ist und welche Bedeutung dies hat. 
 Für die vorliegende Arbeit wird aber immer angenommen, dass Werte einfach überschrieben werden dürfen.
 
-LMM-(Meta-)Modelle lassen sich mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011` in einer textuellen Form beschreiben.
+LMM-(Meta-)Modelle lassen sich mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011` (S.159ff) in einer textuellen Form beschreiben.
 Die Syntax ist an bekannte Programmiersprachen wie C++ oder C# angelehnt und kann daher als "menschenlesbar" angesehen werden. 
 Gleichzeitig ist es damit möglich, LMM automatisch zu verarbeiten oder es sogar für die Beschreibung von Software zu nutzen, wie im Folgenden am Beispiel des MDF gezeigt wird.
+
+Zur einfachen Bearbeitung von LMM-Modellen wird von OMME ein textueller Editor auf Basis von Xtext :cite:`www:xtext` bereitgestellt.
 
 .. _mdf:
 
@@ -232,7 +243,7 @@ Details können bei Roth in Kapitel 5, Modellhierarchie nachgelesen werden.
 .. _mdf-modellhierarchie:
 
 .. figure:: _static/ext_pics/mdf-modellhierarchie.png
-    :width: 16cm
+    :width: 15cm
 
     Modellhierarchie von MDF mit Domain-Model- und Designer-Stack aus :cite:`roth_konzeption_2011`
 
@@ -279,14 +290,9 @@ Um den Prozess *B* darzustellen, müssen jedoch zwei Änderungen vorgenommen wer
 Das ist möglich, da eine Verwendung Werte des Typs überschreiben kann. 
 So wird in der Verwendung für *B* die vordefinierte Funktion durch "Notiz erstellen / ergänzen" ersetzt und "Outlook" zu den operationalen Einheiten hinzugefügt.
 
-Das Typ-Verwendungs-Konzept ist auch in i>PM\ :sup:`2` (:num:`Abbildung #ipm2`) zu erkennen. 
-Die Palette (links) zeigt unter "Process" die davon abgeleiteten "Typen", wovon für die Zeichenfläche "Verwendungen" erstellt werden.
-Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen" mit geänderter Grundfarbe zu sehen.
-
 .. _ipm-typ-verwendung-1:
 
 .. figure:: _static/ext_pics/ipm2-typ-verwendung_2.png
-    :width: 16cm
 
     Prozess in i>PM2 aus :cite:`volz_werkzeugunterstutzung_2011` (Bezeichner A hinzugefügt)
 
@@ -294,9 +300,13 @@ Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen
 .. _ipm-typ-verwendung-2:
 
 .. figure:: _static/ext_pics/ipm2-typ-verwendung_1.png
-    :width: 16cm
 
     Prozess mit angepasster Verwendung aus :cite:`volz_werkzeugunterstutzung_2011` (B hinzugefügt)
+
+
+Das Typ-Verwendungs-Konzept ist auch in i>PM\ :sup:`2` (:num:`Abbildung #ipm2`) zu erkennen. 
+Die Palette (links) zeigt unter "Process" die davon abgeleiteten "Typen", wovon für die Zeichenfläche "Verwendungen" erstellt werden.
+Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen" mit geänderter Grundfarbe zu sehen.
 
 
 .. [#f1] Allgemein zum Modellbegriff und den Eigenschaften von Modellen: :cite:`stachowiak_allgemeine_1973`

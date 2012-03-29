@@ -220,7 +220,7 @@ Es werden verschiedene Szenarien gezeigt, in denen 3D-Visualisierungen gewinnbri
 Es wird das Problem angesprochen, dass für die Modellierung von Prozessen oft verschiedene Diagrammtypen nötig seien, zwischen denen in üblichen 2D-Werkzeugen zeitraubend gewechselt werden müsse. 
 Mehrere Diagrammtypen in eine 3D-Ansicht zu integrieren könne hier Abhilfe schaffen. 
 
-Als Beispiel (:num:`Abbildung #betz-org-process`) wird eine Kombination eines Organisationsmodells mit einem Prozessmodell gezeigt. 
+Als Beispiel wird :num:`Abbildung #betz-org-process` eine Kombination eines Organisationsmodells mit einem Prozessmodell gezeigt. 
 Neben den Beziehungen zwischen Aktivitäten im Prozessmodell und den Rollen des Organisationsmodells sei es gleichzeitig möglich, Beziehungen im Organisationsmodell, wie die Generalisierung von Rollen oder die Zuordnung von Aktoren zu Rollen zu visualisieren.
 
 .. _betz-org-process:
@@ -279,7 +279,7 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wiede
 .. figure:: _static/ext_pics/schoenhage_drilldown.png
     :height: 8cm
 
-    Darstellung eines Prozesses mit assoziierten Daten in einem 3D-Histogramm aus :cite:`schonhage_3d_2000`
+    Darstellung eines Prozesses mit assoziierten Daten (3D-Histogramm) aus :cite:`schonhage_3d_2000`
 
 
 .. _ross-brown:
@@ -305,7 +305,6 @@ Auf den Knoten können Informationen durch Texte oder statische Grafiken vermitt
 .. _brown-process:
 
 .. figure:: _static/ext_pics/brown_prozessgraph.png
-    :height: 6cm
 
     BPMN-Prozessgraph in virtueller Welt aus :cite:`brown_conceptual_2010` 
 

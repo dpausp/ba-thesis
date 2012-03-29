@@ -4,23 +4,21 @@
 Spezifikation der Metamodelle
 *****************************
 
-Nachdem im vorherigen Kapitel der Aufbau der Modellschichten sowie grundsätzliche Aspekte zu Metamodellen und den Usage-Modellen besprochen wurden, werden hier die in I>PM3D verwendeten Metamodelle genauer vorgestellt.
-
-Anschließend wird das verwendete Prozess-Metamodell näher vorgestellt.
-
-Die Aspekte, die speziell die Visualisierung von Prozessmodellen betreffen werden im nächsten Kapitel :ref:`visualisierung` dargestellt.
-
+Nachdem im vorherigen Kapitel eine Übersicht über die von i>PM3D unterstützten Metamodelle gegeben wurde, werden hier die im Projekt verwendeten Metamodelle für Editor und Domäne sowie deren Concepts genauer vorgestellt.
+Das verwendete *Editor-Metamodell* wird im Folgenden mit **EMM** bezeichnet, das Domain-Meta-Model mit **PMM**.
+Vollqualifizierte Namen (FQN) von Levels setzen sich aus dem Modellnamen und dem Levelnamen zusammen, getrennt durch einen Punkt. 
+FQNs für Packages und Concepts entstehen, indem deren Namen analog angehängt werden.
 
 .. _scalamapping:
 
 Scala-Mapping
 =============
 
-Die oberste Ebene des Editor-Model-Stacks beinhaltet nur ein Paket ("base") mit einem einzelnen Concept, ScalaMapping. 
+Die oberste Ebene des *Editor-Model-Stacks* beinhaltet nur ein Package ``base`` (FQN ``EMM.D3.base``) mit einem einzelnen Concept, ``ScalaMapping``. 
 
-Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf die verwendete Programmiersprache, hier Scala, abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
+Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf Scala abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
 
-Für jedes Concept, das sich auf den weiter unten liegenden Ebenen befindet muss das Attribut ``scalaType`` definiert werden, das den korrespondierenden Scala-Typ angibt. 
+Für jedes Concept, das sich auf den weiter unten liegenden Ebenen befindet, muss das Attribut ``scalaType`` definiert werden, welches den korrespondierenden Scala-Typ angibt. 
 
 Optional ist das Attribut ``typeConverter``, welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Concept in ein passendes Scala-Objekt umzuwandeln und umgekehrt.\ [#f1]_ 
 
@@ -35,41 +33,40 @@ Wie das Attribut interpretiert wird hängt vom jeweiligen TypeConverter ab.
 Editor-Base-Level
 =================
 
-Die Ebene D2 ist als Instanz der Ebene D3 definiert. Daraus folgt, dass alle hier definierten Concepts Instanzen von ScalaMapping sein müssen.
+Level ``D2`` ist als Instanz von ``D3`` definiert. Daraus folgt, dass alle hier definierten Concepts Instanzen von ScalaMapping sein müssen.
 
 Die auf dieser Ebene definierten Concepts sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
 
-Auf Level D2 werden zwei Packages, ``types`` und ``figures``, definiert.
+Auf ``D2`` werden zwei Packages, ``types`` und ``figures``, definiert.
 
 .. _ebl-types:
 
 Paket "types"
 ------------
 
-Das ``types``-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
+Das ``EMM.D2.types``-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
 
 Dazu werden folgenden Typen angeboten:
 
   * ``Dimension``, ``Position``: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
     Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp ``Vec3`` von :ref:`Simplex3D` angeboten.
 
-  * ``Rotation``: Angabe der Rotation mittels eines Quaternions. Quaternionen erlauben die kompakte Darstellung von Rotationen im 3D-Raum :cite:`www:quat`.
-    Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt ``Quat4``  abgebildet, das ebenfalls von Simplex3D bereitgestellt wird.
+  * ``Rotation``: Angabe der Rotation mittels eines Quaternions. Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt ``Quat4``  abgebildet, das ebenfalls von *Simplex3D* bereitgestellt wird.
 
-  * ``Color``: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzfaktor) angegeben werden.
+  * ``Color``: Hiermit lassen sich Farben, die mittels im RGBA-Farbsystem als rot, grün, blau und alpha (Transluzenzwert) angegeben werden.
     Zu beachten ist hier, dass die Farben als Gleitkommazahl angegeben werden und einen Wertebereich von 0 bis 1 abdecken.
     Dieser Typ wird auf die ``java.awt.Color``-Klasse abgebildet.
 
-  * ``Font``: Definiert Parameter für die Schriftdarstellung. Die Attribute und deren erlaubte Werte orientieren sich hierbei an ``java.awt.Font``, worauf dieses Concept abgebildet wird.
-    Die Schriftfarbe muss separat mittels des Color-Typs angegeben werden.
+  * ``Font``: Definiert Parameter für die Schriftdarstellung. Die Attribute und deren erlaubte Werte orientieren sich an ``java.awt.Font``, worauf dieses Concept abgebildet wird.
+    Die Schriftfarbe muss separat mittels eines ``Color``-Concepts angegeben werden.
 
         * ``face``: Name der Schriftart
         * ``size``: Größe, als Ganzzahl angegeben
         * ``style``: Name des Schriftstils. Erlaubt sind hier "normal", "bold" und "italic", die den Werten der Enumeration FontStyle von java.awt entsprechen.
 
 
-  * PhysicsSettings: Sub-Concepts dieses abstrakten Concepts werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde 
-    Es werden kugel- (``PhysSphere``) und quaderförmige (``PhysBox``) Geometrien angeboten, wie sie von der von :ref:`simulatorx` bereitgestellten Physikkomponente unterstützt werden.
+  * ``PhysicsSettings``: Sub-Concepts dieses abstrakten Concepts werden genutzt, um Objekten eine physikalische Repräsentation zu geben, wenn diese nicht auf anderem Wege definiert wurde.
+    Es werden kugel- (``PhysSphere``) und quaderförmige (``PhysBox``) Geometrien angeboten, wie sie von der durch :ref:`simulatorx` bereitgestellten Physikkomponente unterstützt werden.
     Für eine ``PhysSphere`` muss der Radius angegeben werden; eine ``PhysBox`` wird analog über die halben Seitenlängen (Attribut ``halfExtends``, Typ ``Dimension``) festgelegt.
 
 
@@ -78,11 +75,11 @@ Dazu werden folgenden Typen angeboten:
 Paket "figures"
 --------------
 
-Im ``figures``-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. 
+Im ``EMM.D2.figures``-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. 
 
 Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Concepts bereitgestellt werden. 
 
-Das Package wird durch 2 abstrakte Basistypen, ``EditorElement`` und ``SceneryObject`` strukturiert. 
+Das Package wird durch zwei abstrakte Basistypen, ``EditorElement`` und ``SceneryObject`` strukturiert. 
 
 ``EditorElement`` ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (``Edge``) und Knoten (``Node``) aufteilen.
 
@@ -167,49 +164,54 @@ Näheres zur COLLADA-Unterstützung in I>PM3D lässt sich bei :cite:`uli` nachle
 Editor-Definition-Level
 =======================
 
-Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. Das dies speziell die Visualisierung von Prozessmodellen betrifft wird hier auf eine gesonderte Beschreibung verzichtet.
-Die zugehörigen Concepts können in :ref:`anhang-b` nachgelesen werden. Näheres zu den hier spezifizierten Visualisierungen findet sich im nächsten Kapitel :ref:`visualisierung`.
-
+Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. 
+Da hier nur Werte gesetzt und keine neuen Attribute definiert werden, wird hier auf eine gesonderte Beschreibung verzichtet.
+Eine Auswahl der hier definierten Concepts kann in :ref:`anhang-b` nachgelesen werden. 
+Das Aussehen einiger hier spezifizierter Figuren wird im nächsten Kapitel :ref:`visualisierung` gezeigt.
 
 .. _pmm:
 
 Prozess-Meta-Modell
 ===================
 
-..TODO sehr hässlich!
+Das in dieser Arbeit verwendete Domain-Metamodell (**PMM** genannt) orientiert sich an den Metamodellen für die :ref:`POPM<popm>` , wie sie in :cite:`volz_werkzeugunterstutzung_2011` vorgestellt werden.
 
-Von diesem Modell wird die eigentliche Prozessmodellierungssprache definiert.
+Das Prozess-Metamodel definiert nur ein Paket, ``processLanguage``, welches sich auf Ebene ``M2`` befindet. 
 
-In dieser Arbeit wird dafür ein Metamodell verwendet, das sich an den Metamodellen für die :ref:`POPM<popm>`  orientiert, wie sie in :cite:`volz_werkzeugunterstutzung_2011` definiert worden sind.
+Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die ``Perspective`` erweitern. 
+:num:`Abbildung #pmm-hierarchie` zeigt die Concept-Hierarchie, die sich unterhalb von ``Perspective`` aufspannt.
 
-Wie erwähnt werden von I>PM3D nur Modelle unterstützt, die sich sinnvoll auf eine Graphdarstellung abbilden lassen. 
+.. _pmm-hierarchie:
 
-Am einfachsten lässt sich das realisieren, wenn die hier spezifizierten Sprachelemente selbst Knoten und Kanten darstellen und Knoten ausschließlich über Kanten miteinander verbunden werden.
+.. figure:: _static/diags/pmm-hierarchie.eps
+    :width: 16cm
 
-Das Prozess-Metamodel definiert nur ein Paket, ``processLanguage``. 
-Hier findet sich die Idee der :ref:`POPM<popm>` wieder, Prozessmodelle in verschiedene Perspektiven einzuteilen 
+    Perspektiven-Hierarchie im Prozess-Meta-Modell
 
-Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die ``Perspective`` erweitern.
+``Node`` gehört zur funktionalen Perspektive, davon sind wiederum ``Process`` und ``FlowElement`` abgeleitet.
+``Process`` stellt einen Prozess im Sinne der POPM dar.
+Von ``FlowElement`` sind Kontrollflusselemente wie Konnektoren (``AndConnector``, ``OrConnector``) und Entscheidungsknoten (``Decision``) abgeleitet.
 
-``Node`` ist das einzige Sub-Concept der funktionalen Perspektive, von diesem wiederum ``Process`` und ``FlowElement`` abgeleitet sind.
+Die Datenperspektive teilt sich auf in ``DataItem``, welches einzelne Dateneinheiten repräsentiert, und in ``DataContainer`` , der ``DataItems`` zu einer Gruppe zusammenfasst. 
 
-Ein ``Process`` stellt einen Prozess im Sinne der perspektivenorientierten Prozessmodellierung dar.
-``FlowElement`` ist eine Basisklasse für Kontrollflusselemente wie Konnektoren (``AndConnector``, ``OrConnector``) und Entscheidungsknoten (``Decision``).
+Die bisher genannten Concepts bzw. Perspektiven lassen sich als Knoten des Prozessgraphen interpretieren. 
+Die verhaltensorientierte Perspektive hingegen — vertreten durch ``ControlFlow`` – lässt sich als Kante betrachten, welche ``Nodes`` miteinander verbindet.
 
-Ein ``ControlFlow`` verbindet Nodes miteinander und zeigt die Richtung des Kontrollflusses an. Dies wird wird der Verhaltensperspektive zugeordnet. 
+``DataItems`` können über (gerichtete) Datenflüsse (``DataFlow``) miteinander verbunden werden.
+``DataContainer`` ist gleichzeitig Teil der funktionalen Perspektive und kann daher über Kontrollflüsse mit anderen Nodes verbunden werden.
 
-Die Datenperspektive teilt sich in ``DataItems``, die einzelne Dateneinheiten repräsentieren, die mit einem Prozess assoziiert sind und in ``DataContainer``, die Dateneinheiten zu einer Gruppe zusammenfassen. 
+Im Unterschied zu den von :cite:`volz_werkzeugunterstutzung_2011` definierten Metamodellen werden Beziehungen zwischen Knoten immer mittels expliziter Verbindungs-Concepts spezifiziert, die in der Editor-Repräsentation auf Kanten abgebildet werden.
+Ein ``DataItem`` wird beispielsweise über eine ``NodeDataConnection`` an einen ``Node`` angebunden.
+:num:`Abbildung #pmm-conn` zeigt beispielhaft, auf welche Weise Kanten wie ``NodeDataConnection`` und ``ControlFlow`` mit Knoten assoziiert sind.
 
-DataItems können über (gerichtete) Datenflüsse (``DataFlow``) miteinander verbunden werden.
+.. _pmm-conn:
 
-DataContainer ist gleichzeitig Teil der funktionalen Perspektive und kann daher über Kontrollflüsse mit anderen Nodes verbunden werden.
+.. figure:: _static/diags/pmm-conn.eps
+    :width: 16cm
 
-Im Unterschied zu den Metamodellen von POPM werden Beziehungen zwischen Knoten immer mittels expliziten Verbindungs-Concepts spezifiziert, die auch in der Editor-Repräsentation auf Kanten abgebildet werden.
-
-Ein DataItem muss damit beispielsweise über eine NodeDataItemConnection an einen Node, also Prozess- oder Entscheidungsknoten angebunden werden.
+    Die Kanten ControlFlow, NodeDataConnection und deren Assoziationen
 
 Das vollständige Prozess-Meta-Modell, wie es im Prototypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
-
 
 .. _beispiel-neues-element:
 
@@ -222,11 +224,11 @@ Anschließend wird die dazugehörige Repräsentation im Editor-Meta-Modell ergä
 Änderungen am Prozess-Metamodell
 --------------------------------
 
-Im Prozess-Metamodell fehlt bisher die Möglichkeit, die operationsbezogene Perspektive (:ref:`popm`) abzubilden. 
+Im Prozess-Metamodell fehlt bisher die Möglichkeit, die operationsbezogene Perspektive der :ref:`POPM<popm>` abzubilden. 
 Ein Operations-Element soll durch einen Knoten dargestellt werden, der sich einem Prozess zuordnen lässt.
 
 
-Die folgenden Änderungen erfolgen im Package PM.M2.processLanguage.
+Die folgenden Änderungen erfolgen im Package ``PMM.M2.processLanguage``.
 
 Zuerst wird die Verbindung zwischen Prozessknoten und dem neuen Operationsknoten hinzugefügt:
 
@@ -263,7 +265,7 @@ Ein ``Process`` kann somit der Startpunkt einer solchen Verbindung sein.
 -------------------------------
 
 Der soeben definierte Organisationsknoten soll durch eine Pyramide dargestellt werden, auf deren Seiten der Wert des Attributs ``name`` zu lesen ist.
-Bisher gibt es noch kein Basis-Concept für eine beschriftete Pyramide, also wird diese zum package ``figures`` im *Editor-Base-Level* (fqn EMM.M2.figures) hinzugefügt:
+Bisher gibt es noch kein Basis-Concept für eine beschriftete Pyramide, also wird diese zum package ``figures`` im *Editor-Base-Level* (``EMM.M2.figures``) hinzugefügt:
 
 .. code-block:: java
 
@@ -317,6 +319,8 @@ So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmod
 
 
 .. [#f1] Die Implementierung stellt momentan TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
+
+.. [#f2] Quaternionen erlauben eine kompakte Darstellung von Rotationen im 3D-Raum :cite:`www:quat`.
 
 .. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
 
