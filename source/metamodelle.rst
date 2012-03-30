@@ -7,7 +7,7 @@ Spezifikation der Metamodelle
 Nachdem im vorherigen Kapitel eine Übersicht über die von i>PM3D unterstützten Metamodelle gegeben wurde, werden hier die im Projekt verwendeten Metamodelle für Editor und Domäne sowie deren Concepts genauer vorgestellt.
 Das verwendete *Editor-Metamodell* wird im Folgenden mit **EMM** bezeichnet, das Domain-Meta-Model mit **PMM**.
 Vollqualifizierte Namen (FQN) von Levels setzen sich aus dem Modellnamen und dem Levelnamen zusammen, getrennt durch einen Punkt. 
-FQNs für Packages und Concepts entstehen, indem deren Namen analog angehängt werden.
+FQNs für Packages und Concepts entstehen, indem deren Namen in der gleichen Weise angehängt werden.
 
 .. _scalamapping:
 
@@ -16,7 +16,7 @@ Scala-Mapping
 
 Die oberste Ebene des *Editor-Model-Stacks* beinhaltet nur ein Package ``base`` (FQN ``EMM.D3.base``) mit einem einzelnen Concept, ``ScalaMapping``. 
 
-Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf Scala abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
+Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf Scala-Objekte abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
 
 Für jedes Concept, das sich auf den weiter unten liegenden Ebenen befindet, muss das Attribut ``scalaType`` definiert werden, welches den korrespondierenden Scala-Typ angibt. 
 
@@ -89,8 +89,7 @@ Dadurch wäre es prinzipiell möglich, einem Domänenkonzept mehrere Repräsenta
 
 Das von ``ScalaMapping`` definierte Attribut ``scalaType`` legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
 Es ist zu beachten, dass die Interpretation von ``scalaType`` hier nicht den :ref:`scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
-
-Wie die Werte interpretiert werden ist später unter :ref:`beispiel-neue-modellfigur` zu sehen.
+Wie die Werte interpretiert werden, ist später in einem :ref:`Anwendungsbeispiel <beispiel-neue-modellfigur` zu sehen, nachdem die dafür nötigen Grundlagen erläutert wurden.
     
 Knoten
 ^^^^^^
@@ -110,20 +109,18 @@ Für die Visualisierung von Knoten sind ein texturierter (``TexturedNode``) und 
     * TextLabelNode:
 
       * ``displayAttrib``: Gibt den Namen eines Attributs aus dem zugeordneten Domänenkonzepts an, dessen textuelle Darstellung als Schrift auf dem Knoten angezeigt wird.
-      * ``fontColor``: Schriftfarbe, als Color-Instanz spezifiziert. 
+      * ``fontColor``: Schriftfarbe, als ``Color``-Instanz spezifiziert. 
       * ``backgroundColor``: Hintergrundfarbe, die an nicht von der Schrift abgedeckten Stellen angezeigt wird.
       * ``font``: Schriftart, angegeben als ``Font``-Instanz
 
-Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungs-Konzept genutzt wird. Siehe :ref:`\ <pmm>`.
-Wie in :ref:`ipm3d-gui` erwähnt sollen verfügbare Knotentypen in einem Menü angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
-
-Im Kontext des Typ-Verwendungs-Konzepts werden Knotentypen ebenfalls "Typ" genannt, die konkreten Modellelemente, die in einem Modell genutzt werden, stellen "Verwendungen" der vorher definierten Typen dar.
+Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungs-Konzept genutzt wird.
+Wie in :ref:`ipm3d-gui` erwähnt, sollen verfügbare Knotentypen in einem Menü ("Palette") angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
 
 Daher müssen alle Nodes folgende Attribute setzen:
 
-  * ``toolingAttrib``: Legt fest, welches (String)-Attribut aus dem Domänenkonzept zur Identifikation des Node-Typs in einer Palette angezeigt werden soll.
+  * ``toolingAttrib``: Legt fest, welches (String)-Attribut aus dem *Domain*-Concept zur Identifikation des ``Node``-Typs in einer Palette angezeigt werden soll.
   * ``toolingTitle``: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
-    Diese "Überschriften" korrespondieren mit den Knotentypen, die im Domain-Meta-Model definiert werden.
+    Diese "Überschriften" korrespondieren mit den Knotentypen, die im *Domain-Meta-Model* definiert werden.
 
 .. _ebl-figures-kanten:
 
@@ -132,8 +129,8 @@ Kanten
 
 Für Kanten stehen ein einfarbiger (``ColoredLine``) und ein texturierter Basistyp (``TexturedLine``) zur Verfügung. 
 
-``TexturedLine`` bietet die gleichen Attribute wie ``TexturedNode`` an; bei ``ColoredLine`` muss die Grundfarbe gesetzt werden (``color``)
-Zusätzlich muss bei beiden noch eine spekulare Farbe\ [#f3]_, ``specularColor`` angegeben werden.
+``TexturedLine`` bietet die gleichen Attribute wie ``TexturedNode`` an; bei ``ColoredLine`` muss noch die Grundfarbe gesetzt werden (``color``)
+Zusätzlich wird bei beiden noch eine spekulare Farbe\ [#f3]_, ``specularColor`` angegeben.
 
 Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
 
@@ -142,12 +139,12 @@ Wie Kantentypen innerhalb der grafischen Benutzeroberfläche bezeichnet werden s
 In Concepts, die Kantentypen repräsentieren müssen außerdem die Attribute von Knotentypen aus dem Domänenmodell angegeben werden, denen die Domain-Concepts der zugehörigen Verbindungen zugewiesen werden.
 ``InboundAttrib`` legt den Namens des Attributs fest, dem eingehende Kanten zugewiesen werden; ``outboundAttrib`` ist entsprechend das Attribut für die ausgehenden Kanten.
 
-Außerdem sind für Kanten noch die beiden Attribute ``startNode`` und ``endNode`` definiert, denen im Editor-Usage-Model das Editor-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten darstellt.
+Außerdem sind für Kanten noch die beiden Attribute ``startNode`` und ``endNode`` definiert, denen im *Editor-Usage-Model* das *Editor*-Concept zugewiesen wird, das den Ausgangs- beziehungsweise den Endknoten repräsentiert.
 
 Szenenobjekte
 ^^^^^^^^^^^^^
 
-Typen für Szenenobjekte werden vom Basistyp SceneryObject abgeleitet. Wie für Knoten werden Attribute für die Position, Größe und Rotation definiert.
+Typen für Szenenobjekte werden vom Basistyp ``SceneryObject`` abgeleitet. Wie für Knoten werden Attribute für die Position, Größe und Rotation definiert.
 Wie der Typ innerhalb der grafischen Benutzeroberfläche bezeichnet werden soll wird durch das Attribut ``toolingName`` festgelegt.
 
 Für Szenenobjekte kann eine Physikrepräsentation (Typ ``PhysicsSettings``) definiert werden, falls diese nicht anderweitig festgelegt wird.
@@ -155,7 +152,7 @@ Für Szenenobjekte kann eine Physikrepräsentation (Typ ``PhysicsSettings``) def
 Es gibt momentan nur eine Art von Szenenobjekten, das ``ColladaSceneryObject``. Über das Attribut ``modelPath`` kann ein Pfad zu einer COLLADA-Datei\ [#f7]_ angegeben werden.
 Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt. 
 
-Daher muss für ColladaSceneryObjects im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
+Daher muss für ``ColladaSceneryObjects`` im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
 
 Näheres zur COLLADA-Unterstützung in I>PM3D lässt sich bei :cite:`uli` nachlesen.
 
@@ -174,9 +171,9 @@ Das Aussehen einiger hier spezifizierter Figuren wird im nächsten Kapitel :ref:
 Prozess-Meta-Modell
 ===================
 
-Das in dieser Arbeit verwendete Domain-Metamodell (**PMM** genannt) orientiert sich an den Metamodellen für die :ref:`POPM<popm>` , wie sie in :cite:`volz_werkzeugunterstutzung_2011` vorgestellt werden.
+Das in dieser Arbeit verwendete Domain-Metamodell orientiert sich an den Metamodellen für die :ref:`POPM<popm>`, wie sie in :cite:`volz_werkzeugunterstutzung_2011` vorgestellt werden.
 
-Das Prozess-Metamodel definiert nur ein Paket, ``processLanguage``, welches sich auf Ebene ``M2`` befindet. 
+Das Prozess-Metamodel definiert nur ein Paket, ``PMM.M2.processLanguage``.
 
 Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die ``Perspective`` erweitern. 
 :num:`Abbildung #pmm-hierarchie` zeigt die Concept-Hierarchie, die sich unterhalb von ``Perspective`` aufspannt.
@@ -274,9 +271,9 @@ Bisher gibt es noch kein Basis-Concept für eine beschriftete Pyramide, also wir
     }
 
 TextLabelNode stellt schon alle für einen Text-Knoten benötigten Attribute bereit; daher muss in diesem Concept nur noch der Typ des Grafikobjektes angegeben werden.
-Wie ein passendes Grafikobjekt erstellt werden kann wird in einer Fortsetzung dieses Beispiels unter :ref:`beispiel-neue-modellfigur` gezeigt nachdem die Grundlagen dafür erläutert worden sind.
+Wie ein passendes Grafikobjekt erstellt werden kann, wird in der :ref:`Fortsetzung dieses Beispiels<beispiel-neue-modellfigur>` gezeigt.
 
-Auf dem Editor-Definition-Level (EMM.M2) kann nun die Repräsentation für den Organisationsknoten-Typen als Instanz der TextPyramid im package ``nodeFigures`` definiert werden. 
+Auf dem *Editor-Definition-Level* kann nun die Repräsentation für den Organisationsknoten-Typen im package ``EMM.D1.nodeFigures`` als Instanz der ``TextPyramid``  definiert werden. 
 
 Als Vorlage wird das vorhandene Concept ``Process`` genutzt. 
 In folgendem Code werden nur notwendige Änderungen gezeigt; die restlichen Zuweisungen können belassen oder nach eigenem "Geschmack" gesetzt werden.
@@ -284,41 +281,41 @@ In folgendem Code werden nur notwendige Änderungen gezeigt; die restlichen Zuwe
 .. code-block:: java
 
     TextPyramid OrganizationalNode {
-        modelElementFQN = pointer PM.M2.processLanguage.OrganizationalPerspective;
+        modelElementFQN = pointer PMM.M2.processLanguage.OrganizationalPerspective;
         displayAttrib = "name";
         toolingAttrib = "name";
         toolingTitle = "Organizational Unit";
         // weitere Attribute ...
     }
 
-Die unter :ref:`ebl-figures` erläuterten Attribute werden hier noch einmal am konkreten Beispiel gezeigt:
+Die unter :ref:`ebl-figures` erläuterten Attribute werden hier am Beispiel gezeigt:
 
-    * ``modelElementFQN`` gibt das zugehörige Concept aus dem Prozess-Metamodell an, das weiter oben definiert wurde.
-    * ``displayAttrib`` legt fest, dass das Attribut "name" jenes Concepts als Text angezeigt werden soll.
+    * ``modelElementFQN`` gibt das zugehörige Concept aus dem Prozess-Metamodell an, das neu definiert wurde.
+    * ``displayAttrib`` legt fest, dass das Attribut ``name`` jenes Concepts als Text angezeigt werden soll.
 
-Knoten werden wie gesagt nach dem Typ-Verwendungs-Konzept erstellt. ``OrganizationalPerspective`` ist also ein "Metatyp", von dem im Modellierungswerkzeug erst konkrete Typen erstellt werden müssen.
-Die Bezeichnung des Metatyps im Modellierungswerkzeug wird von der Zuweisung ``toolingTitle`` auf "Organizational Unit" festgelegt. 
-Dagegen gibt ``toolingAttrib`` an, dass ein erzeugter Typ mit dem Wert seines "name"-Attributs benannt wird. 
+Knoten werden nach dem Typ-Verwendungs-Konzept erstellt. ``OrganizationalPerspective`` ist also ein "Metatyp", von dem im Modellierungswerkzeug erst konkrete Typen erstellt werden müssen.
 
+    * ``toolingTitle`` legt die Bezeichnung des Metatyps im Modellierungswerkzeug auf "Organizational Unit" fest.
+    * ``toolingAttrib`` gibt an, dass ein erzeugter Typ mit dem Wert seines ``name``-Attributs benannt wird. 
 
-Im nächsten Schritt wird eine Repräsentation für oben definierte Verbindung zwischen Prozess und Organisationsknoten im package ``connectionFigures`` definiert.
-Als Vorlage dient das ``nodeDataEdge``-Concept.
+Im nächsten Schritt wird eine Repräsentation für die neu definierte Verbindung zwischen Prozess und Organisationsknoten im package ``EMM.D1.connectionFigures`` festgelegt.
+Als Vorlage dient das ``nodeDataEdge``-Concept:
 
 .. code-block:: java
 
     ColoredLine ProcessOrgEdge {
-        modelElementFQN = pointer PM.M2.processLanguage.ProcessOrgConnection;
+        modelElementFQN = pointer PMM.M2.processLanguage.ProcessOrgConnection;
         toolingName = "Process-Organizational Assoc";
         outboundAttrib = "outboundProcessOrgConnection";
         inboundAttrib = "inboundProcessOrgConnection";
         // weitere Attribute ...
     }
 
-Der Wert von ``inboundAttrib`` entspricht dem Namen des Attributs im weiter oben definierten ``OrganizationalPerspective``-Concepts.
-So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmodell dem Attribut "inboundProcessOrgConnection" zugewiesen werden sollen.
+Der Wert von ``inboundAttrib`` entspricht dem Namen des Attributs im ``OrganizationalPerspective``-Concept aus dem Prozess-Metamodell.
+So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmodell dem Attribut ``inboundProcessOrgConnection`` zugewiesen werden sollen.
 
 
-.. [#f1] Die Implementierung stellt momentan TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
+.. [#f1] Die Implementierung stellt TypeConverter für verschiedene Simplex3D-Vektoren und Quaternionen sowie für die Klassen java.awt.Font und .Color zur Verfügung. Weitere TypeConverter können auf Basis des TypeConverter-Traits (Scala-Package mmpe.model.lmm2scala) definiert werden.
 
 .. [#f2] Quaternionen erlauben eine kompakte Darstellung von Rotationen im 3D-Raum :cite:`www:quat`.
 

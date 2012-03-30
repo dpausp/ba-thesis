@@ -4,7 +4,7 @@
 Modellanbindung
 ***************
 
-In diesem Kapitel wird die in :num:`Abbildung ipm3d-konzeptionelle-uebersicht` gezeigte "Modellanbindung" besprochen. 
+In diesem Kapitel wird die in :ref:`Projektübersicht<ipm3d-uebersicht>` angesprochene *Modellanbindung* besprochen. 
 Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar.
 
 Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen:
@@ -20,7 +20,7 @@ Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen
 Modellkomponente
 ================
 
-Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten (Actors), die jeweils ein begrenztes Aufgabengebiet abdecken.
+Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von *Komponenten* (Actors), die jeweils ein begrenztes Aufgabengebiet abdecken.
 
 Die ``ModelComponent`` stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen. 
 
@@ -45,14 +45,14 @@ Alle anderen Manipulationsmöglichkeiten — das sind diejenigen, die nur Parame
 Übersicht 
 ---------
 
-:num:`Abbbildung #modelcomponent-classdiag` zeigt die "Unterkomponenten" und die "Umgebung" der ModelComponent.
+:num:`Abbbildung #modelcomponent-classdiag` zeigt die "Unterkomponenten" und die "Umgebung" der ``ModelComponent``.
 
 .. _modelcomponent-classdiag:
 
 .. figure:: _static/diags/modelcomponent-classdiag.eps
     :width: 16cm
 
-    Unterkomponenten der ModelComponent (links) und Umgebung (vereinfacht)
+    Unterkomponenten der ``ModelComponent`` (links) und Umgebung (vereinfacht)
 
 Trait Component wird von Simulator X bereitgestellt und muss von allen Komponenten implementiert werden. 
 Dessen Methoden beziehen sich überwiegend auf den :ref:`"Lebenszyklus" <lebenszyklus>` von Entities.
@@ -62,7 +62,7 @@ Von Trait ``ModelComponentHandlers`` werden die Funktionen bereitgestellt, die e
 Solche Funktionen werden in Simulator X als "Handler" bezeichnet.
 
 Im folgenden Abschnitt wird die Speicherrepräsentation von Modellen sowie das Laden und Speichern beschrieben.
-Die Verwaltung der geladenen Modelle wird durch das Object **ModelContext** für die ModelComponent bereitgestellt.
+Die Verwaltung der geladenen Modelle wird durch das Object **ModelContext** für die ``ModelComponent`` bereitgestellt.
 
 Modell-Persistenz
 =================
@@ -70,7 +70,7 @@ Modell-Persistenz
 Eine Anforderung an den Prototypen ist es, neue Modelle erstellen, diese abzuspeichern und wieder laden zu können. (Anforderung (5))
 Die Modelle werden in der Sprache :ref:`lmmlight` beschrieben, welche in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen werden kann.
 
-Für das Laden wird der im Rahmen dieser Arbeit entstandene LMMLight-Parser genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene *LMMLight-Parser* genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
 
 Speicherrepräsentation eines LMMLight-Modells
@@ -88,7 +88,7 @@ Weiterhin kann ein MConcept andere MConcepts referenzieren. So ergibt sich ein a
 Der Vorteil zur Nutzung von XText ist, dass es sich hier Objekte, die die Vorteile von Scala nutzen und daher in einer Scala-Umgebung bequem genutzt werden können. 
 Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr Funktionalität bieten als die von Java oder EMF bereitgestellten.
 
-Ausgehend von einem ``MModel``-Objekt kann die ModelComponent in einem Modell navigieren und dieses modifizieren, beispielsweise neue Concepts anlegen oder Attributzuweisungen vornehmen.
+Ausgehend von einem ``MModel``-Objekt kann die ``ModelComponent`` in einem Modell navigieren und dieses modifizieren, beispielsweise neue Concepts anlegen oder Attributzuweisungen vornehmen.
 
 
 Vereinfachung des Umgangs mit Modellen
@@ -105,7 +105,7 @@ Laden von Metamodellen
 ----------------------
 
 Wie in :ref:`modellhierarchie` beschrieben wurde, werden Metamodelle für die Spezifikation der verwendeten Modellierungssprache und deren Repräsentation eingesetzt. 
-Diese sollen prinzipiell austauschbar sein. Dazu wird von der ModelComponent die Funktion bereitgestellt, Metamodelle zur Laufzeit zu laden.
+Diese sollen prinzipiell austauschbar sein. Dazu wird von der ``ModelComponent`` die Funktion bereitgestellt, Metamodelle zur Laufzeit zu laden.
 
 Um das Laden der Modelle anzustoßen, ist folgendes Command definiert:
 
@@ -119,9 +119,9 @@ LoadAsResource gibt an, ob die Pfade als Java-Resource-Path zu einer Metamodell-
 Es wird zur Vereinfachung der Implementierung davon ausgegangen, dass die Metamodelle der Domäne und des Editors immer paarweise geladen werden. 
 Mehrere Repräsentationen zu einer Domäne zu laden ist somit noch nicht möglich.
 
-Die ModelComponent lässt prinzipiell das Laden von mehreren Metamodell-Paaren zu. Jedoch wird dies von der Editorkomponente noch nicht unterstützt.
+Die ``ModelComponent`` lässt prinzipiell das Laden von mehreren Metamodell-Paaren zu. Jedoch wird dies von der Editorkomponente noch nicht unterstützt.
 
-Nachdem Metamodelle geladen worden sind, werden von der ModelComponent Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
+Nachdem Metamodelle geladen worden sind, werden von der ``ModelComponent`` Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
 
 Zum Einen ist dies eine Auflistung der verfügbaren Kanten- und Szenenobjekttypen, die vom Benutzer erzeugt werden können und die der Editor zu diesem Zweck in seiner Palette anzeigt.
 Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungs-Konzept zur Laufzeit Typen vom Benutzer angelegt werden können.
@@ -147,7 +147,7 @@ Ein konkretes "Prozesmodell" wird geöffnet, indem das zugehörige Domain- und E
 Das Command ``LoadUsageModels`` ist analog zum Command ``LoadMetaModels`` definiert, wie im vorherigen Unterabschnitt beschrieben.
 
 Es können von der Anwendung zur Laufzeit mehrere Usage-Modelle (zu denselben Metamodellen) geladen werden. 
-In der ModelComponent ist jeweils ein Usage-Model-Paar als "aktiv" gekennzeichnet.
+In der ``ModelComponent`` ist jeweils ein Usage-Model-Paar als "aktiv" gekennzeichnet.
 Commands wie das Erstellen von Knoten beziehen sich immer auf das aktive Usage-Model. Welches Modell "aktiv" ist kann über das Command ``SetActiveUsageModel`` geändert werden.
 
 Modelle können über ``CloseUsageModel`` wieder geschlossen werden, wobei alle seit dem letzten Speichern erfolgten Änderungen verloren gehen.
@@ -159,7 +159,7 @@ Nachdem ein Usage-Modell geladen wurde, wird der Aufrufer analog zum Laden von M
 Speichern von Usage-Modellen
 ----------------------------
 
-"Speichern" bedeutet hier, dass die Änderungen an Modellelementen in das Usage-Model zurückgeschrieben werden und das Modell anschließend in textueller Form persistiert wird.
+"Speichern" bedeutet hier, dass die Änderungen an Modellelementen in das *Usage-Model* zurückgeschrieben werden und das Modell anschließend in textueller Form persistiert wird.
 Analog zum Lade-Command ``LoadUsageModels`` werden bei ``SaveUsageModels`` zwei Dateinamen für Domänen- und Editormodell angegeben. Java-Resource-Pfade sind hier nicht erlaubt.
 
 Um die Speicherrepräsentation des Modells wieder in eine durch den LMMLight-Parser lesbare\ [#f5]_
@@ -226,7 +226,7 @@ ModelAspects sind der ``ModelComponent`` zugeordnet und enthalten für Nutzer de
 Für alle Elemente, die von ModelEntities repräsentiert werden wird ein vollqualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
 Dieser Name wird in Commands verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
 
-Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem Domänenmodell genutzt. Szenenobjekte werden über die FQN des Editor-Usage-Concepts identifiziert\ [#f2]_.
+Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem Domänenmodell genutzt. Szenenobjekte werden über die FQN des *Editor-Usage*-Concepts identifiziert\ [#f2]_.
 
 Außerdem wird ein Identifikationsstring (``creatorId``) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
 Mit "Ersteller" ist hier der Absender des entsprechenden Commands oder die ModelComponent selbst gemeint. 
@@ -285,16 +285,16 @@ Diese ``SVars`` lassen sich in drei Gruppen einteilen.
 SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen abbilden oder von der ModelComponent definiert sein:
 
 #. **Domain-Model-SVars**: 
-   Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im Usage-Model Werte zugewiesen werden können [#f3]_\ . 
+   Solche SVars werden zu Attributen erzeugt, die im Domänen-Metamodell definiert sind und denen in Concepts im *Domain-Model* Werte zugewiesen werden können [#f3]_\ . 
    Sie stellen somit die Schnittstelle dar, über die Modellattribute wie die Funktion eines Prozesses oder der Name eines Konnektors verändert werden können.
    Unterstützt werden alle literalen Datentypen; den SVars werden die passenden Scala-Datentypen zugewiesen.
 
 #. **Editor-Model-SVars**:
-   Diese SVars werden nach Bedarf aus den Attributen des Editor-Metamodells erstellt. 
-   Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird.\ [#f4]_
+   Diese SVars werden nach Bedarf aus den Attributen des *Editor-Metamodells* erstellt. 
+   Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird\ [#f4]_.
    Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Diese werden für die meisten hier genannten SVars benötigt.
 
-   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt; dies sind:\ [#f5]_ 
+   Welche Editor-Attribute unterstützt werden wird von der ModelComponent festgelegt; dies sind\ [#f5]_:
    
     * Hintergrundfarbe (``backgroundColor``)
     * Schrift (``font``)
@@ -343,13 +343,13 @@ Im folgenden Beispiel wird die Funktion eines Prozessknotens und die Schriftfarb
 Übersicht über den Lebenszyklus von Model-Entitäten
 ===================================================
 
-Dieser Abschnitt zeigt kurz, welche wichtigen Schritte im "Lebenszyklus" einer ModelEntity durchlaufen werden.
+Dieser Abschnitt zeigt kurz, welche wichtigen Schritte im "Lebenszyklus" einer ``ModelEntity`` durchlaufen werden.
 
 Komponenten in :ref:`simulatorx` definieren eine Reihe von Methoden, die vom Framework beim Erstellen oder Löschen einer Entity aufgerufen werden.
 
-Die Erstellung einer ModelEntity folgt dem folgenden Schema:
+Die Erstellung einer ``ModelEntity`` folgt dem folgenden Schema:
 
-  #. Der Vorgang wird beispielsweise durch ein CreateNode-Command vom Editor angestoßen. Die ModelComponent erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`Aspekten<modelentities-aspects>` und übergibt diese an das Framework (Methode ``EntityDescription.realize``), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
+  #. Der Vorgang wird beispielsweise durch ein ``CreateNode``-Command vom Editor angestoßen. Die ModelComponent erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`Aspekten<modelentities-aspects>` und übergibt diese an das Framework (Methode ``EntityDescription.realize``), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
 
   #. Die Methode ``getAdditionalProvidings`` gibt eine Sequenz von ``SVarDescriptions`` zurück, die zu der Entity hinzugefügt werden sollen. Im Falle der ModelComponent sind dies ``SVarDescriptions`` zu den im vorherigen Abschnitt beschriebenen SVars.
 
@@ -361,7 +361,7 @@ Der genannte Prozesse läuft auch parallel für die anderen Komponenten ab, für
 
 Beim Löschen spielt sich Folgendes ab:
 
-  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die ModelComponent den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
+  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die ``ModelComponent`` den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
 
   #. Simulator X entfernt nun die Entity aus dem System und ruft dabei in der Komponente die ``removeFromLocalRep``-Methode auf. In dieser Methode sollen interne Verweise und zugehörige Daten in den Komponenten entfernt werden.
 
@@ -376,7 +376,7 @@ Beim Löschen spielt sich Folgendes ab:
 
 .. [#f6] Gewisse Ähnlichkeiten mit anderen Projekten sind rein zufällig ;-)
 
-.. [#f7] Dies ist nicht nötig, da die Auswahl von Kanten nicht unterstützt werden soll und Kollisionen mit Verbindungen eher als hinderlich gesehen wurde. Außerdem könnte eine große Anzahl von Verbindungen schnell zu Geschwindigkeitsproblemen der Simulation führen.
+.. [#f7] Dies ist nicht nötig, da die Auswahl von Kanten nicht unterstützt werden soll und Kollisionen mit Verbindungen eher als hinderlich gesehen wurden. Außerdem könnte eine große Anzahl von Verbindungen schnell zu Geschwindigkeitsproblemen der Simulation führen.
 
 .. [#f8] Skalierung wurde für das Projekt hinzugefügt. Dazu wurde die Physikkomponente modifiziert und die selbstgeschriebene Renderkomponente entsprechend ausgelegt.
 
@@ -384,4 +384,4 @@ Beim Löschen spielt sich Folgendes ab:
 
 .. [#f10] Die Darstellung ist aber auch durchaus "menschenlesbar" und wird ähnlich formatiert wie im Metamodell-Editor von OMME.
 
-.. [#f11] Bei den Editor-Model-SVars wird ein anderer Ansatz genutzt, da diese teilweise häufig geändert werden (vor allem die Position). Diese SVars werden erst beim Speichern des Modells ausgelesen und zurückgeschrieben um Probleme mit der Ausführungsgeschwindigkeit zu vermeiden.
+.. [#f11] Bei den Editor-Model-SVars wird ein anderer Ansatz genutzt, da diese teilweise häufig geändert werden (vor allem die Position). Diese SVars werden erst beim Speichern des Modells ausgelesen und zurückgeschrieben, um Probleme mit der Ausführungsgeschwindigkeit zu vermeiden.

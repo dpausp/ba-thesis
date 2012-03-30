@@ -80,7 +80,7 @@ Dies soll explizit keine vollständige Aufzählung sein, sondern nur eine Zusamm
 So kann es nötig sein, für einen Anwendungsfall weitere Perspektiven hinzuzufügen oder Perspektiven um neue Elemente zu erweitern.
 Daraus ergibt sich, dass (grafische) Modellierungssprachen, die POPM unterstützen möglichst erweiterbar sein sollten. 
 
-:num:`Abbildung #ipm-process` zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
+:num:`Abbildung #ipm-process`\ [f5]_ zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
 
 Die funktionale Perspektive wird hier durch drei Prozesse sowie einen Entscheidungsknoten vertreten. 
 Kontrollflüsse, die mit grauen Pfeilen visualisiert werden bilden die verhaltensorientierte Perspektive.
@@ -220,11 +220,19 @@ In der Abbildung spezialisiert ``UseA`` ``ConceptD`` (``concreteUseOf``). ``UseA
 Für ``ConceptD`` ändert sich dabei nichts; die Überschreibung wirkt sich nur in ``UseB`` aus.
 
 In LMM lässt sich für Attribute festlegen, inwieweit das Setzen von Werten in Spezialisierungen zulässig ist und welche Bedeutung dies hat. 
-Für die vorliegende Arbeit wird aber immer angenommen, dass Werte einfach überschrieben werden dürfen.
 
 LMM-(Meta-)Modelle lassen sich mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011` (S.159ff) in einer textuellen Form beschreiben.
 Die Syntax ist an bekannte Programmiersprachen wie C++ oder C# angelehnt und kann daher als "menschenlesbar" angesehen werden. 
 Gleichzeitig ist es damit möglich, LMM automatisch zu verarbeiten oder es sogar für die Beschreibung von Software zu nutzen, wie im Folgenden am Beispiel des MDF gezeigt wird.
+
+Beispielsweise sieht ein Concept mit einer Zuweisung und einer Attributdefinition in LML wie folgt aus:
+
+.. code-block:: java
+
+    concept ConceptC instanceOf ConceptB {
+        a = 7;
+        real c;
+    }
 
 Zur einfachen Bearbeitung von LMM-Modellen wird von OMME ein textueller Editor auf Basis von Xtext :cite:`www:xtext` bereitgestellt.
 
@@ -258,9 +266,7 @@ Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelement
 Bemerkenswert ist, dass auf allen Ebenen LMM – textuell dargestellt durch LML – verwendet wird. 
 Damit wird LMM sowohl für die Beschreibung des Modellierungswerkzeugs als auch für die persistente Speicherung und interne Darstellung der mit dem Werkzeug erstellten Modelle genutzt.
 
-:num:`Abbildung #ipm-typ-verwendung-2` zeigt einen Prozess, der in einem mit MDF definierten Editor (i>PM\ :sup:`2`) für die :ref:`POPM <popm>` erstellt wurde. 
-i>PM2 folgt den Prinzipien von i>PM :cite:`ipm`.
-Im Gegensatz zu :num:`Abbildung #ipm-process`, welche einen sehr ähnlichen Prozess in i>PM zeigte, werden hier operationale und organisationale Perspektive durch geometrisches "Enthaltensein" im Prozess dargestellt.
+:num:`Abbildung #ipm-typ-verwendung-2` zeigt einen Prozess, der in einem mit MDF definierten Editor (*i>PM*\ :sup:`2`) für die :ref:`POPM <popm>` erstellt wurde.
 
 .. _tvk:
 
@@ -316,3 +322,5 @@ Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen
 .. [#f3] Dies deckt natürlich nicht alle objektorientierten Programmiersprachen ab. "Objektorientierung" kann durchaus auf anderem Wege umgesetzt werden.
 
 .. [#f4] Nach der Terminologie des Typ-Verwendungs-Konzepts ist in der :num:`Abbildung #concreteuseof` ``ConceptD`` ein "Typ", ``UseA`` und ``UseB`` sind "Verwendungen" davon.
+
+.. [#f5] Das gezeigte Diagramm stammt aus dem Prozessmodellierungswerkzeug i>PM :cite:`ipm`.

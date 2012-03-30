@@ -179,7 +179,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 .. figure:: _static/screenshots/selektierte_knoten.png
     :scale: 100%
 
-    Prozess und Entscheidungsknoten im selektierten Zustand (Screenshot aus I>PM3D)
+    Entscheidungsknoten und Prozess im selektierten Zustand (Screenshot aus I>PM3D)
 
 
 .. _deaktivierung-sc:
@@ -308,7 +308,7 @@ Dafür könnte ein zusätzliches Attribut im Prozessmodell genutzt werden, dass 
 Konfigurierbarkeit
 ------------------
 
-Abgesehen von den im Metamodell konfigurierbaren Visualisierungsparametern fehlt es noch an weiteren Möglichkeiten, die grafische Darstellung zu beeinflussen. 
+Abgesehen von den im :ref:`Metamodell<ebl>` konfigurierbaren Visualisierungsparametern fehlt es noch an weiteren Möglichkeiten, die grafische Darstellung zu beeinflussen. 
 
 Sehr sinnvoll wäre es, die :ref:`beleuchtung` konfigurieren zu können. 
 Wie in jenem Abschnitt gesagt ist es schwierig, Einstellungen zu finden, die für alle Situationen gut geeignet sind.
@@ -353,9 +353,9 @@ Konfigurationsmöglichkeiten oder eine "intelligente" Schattenberechnung, die we
 Voll immersive virtuelle Welten
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Eine weitere Entwicklungsmöglichkeit wäre es, voll immersive virtuelle Welten zu nutzen wie es in :ref:`\ <halpin-social-net>` gezeigt wurde. 
+Eine weitere Entwicklungsmöglichkeit wäre es, voll immersive virtuelle Welten zu nutzen wie es in :ref:`in<halpin-social-net>` gezeigt wurde. 
 Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt werden soll.
-Besonders Anzeigen mit hoher Auflösung könnten Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen, wie in :ref:`\ <ware-graphs>` angemerkt wurde.
+Besonders Anzeigen mit hoher Auflösung könnten Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen, wie :ref:`in<ware-graphs>` angemerkt wurde.
 
 Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und ein System für die "breite Masse" bereitzustellen.
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.

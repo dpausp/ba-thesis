@@ -24,7 +24,7 @@ Darüber wird eine Ebene gezeichnet, die 2D-Elemente wie Cursor der Eingabegerä
 Beide Ebenen werden durch jeweils eine :ref:`renderstage` gezeichnet.
 
 Es gibt die Möglichkeit, den RenderActor durch Plugins zu erweitern, die an verschiedenen vordefinierten Erweiterungspunkten im Render-Prozess eingreifen können. 
-Plugins können neue Grafikobjekte erzeugen und zu einer der beiden *RenderStages* hinzufügen oder selbst OpenGL-Funktionen ausführen.
+Plugins können neue Grafikobjekte erzeugen und zu einer der beiden ``RenderStages`` hinzufügen oder selbst OpenGL-Funktionen ausführen.
 
 Dies wird im Projekt für die Darstellung der Nifty-GUI-Menüs :cite:`uli` und des Eightpen-Menüs :cite:`buchi` genutzt.
 
@@ -34,13 +34,13 @@ OpenGL-Versionsproblematik
 Die Library Nifty-GUI bringt eine eigene Render-Implementierung auf Basis von OpenGL 1.x mit, welche auch Funktionen nutzt, die in OpenGL 3.3 als "veraltet" ("deprecated") eingestuft sind.
 Von der Render-Bibliothek werden dagegen nur Funktionen genutzt, die in OpenGL 3.3 verfügbar sind.
 
-Wegen Nifty-GUI muss der RenderActor OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated"-Funktionen unterstützt. 
+Wegen Nifty-GUI muss die Renderkomponente OpenGL 3.3 im Kompatibilitätsmodus betreiben, der auch die "deprecated"-Funktionen unterstützt. 
 Es ist möglich, dass dies auf manchen Hardwareplattformen zu Geschwindigkeits- oder Darstellungsproblemen führt.
 
 Projektspezifische Erweiterungen
 --------------------------------
 
-Die Renderkomponente unterstützt die von Simulator X bereitgestellten RenderAspects für die Definition von Lichtquellen-Entities (``PointLight``) sowie den Aspect ``ShapeFromFile``, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
+Die Renderkomponente unterstützt die von Simulator X bereitgestellten ``RenderAspects`` für die Definition von Lichtquellen-Entities (``PointLight``) sowie den Aspect ``ShapeFromFile``, der die Renderkomponente anweist, die grafische Repräsentation einer Entity aus einer COLLADA-Modelldatei zu laden.
 
 Im Folgenden werden die Funktionalitäten aufgelistet, welche von der ursprünglichen Renderkomponente nicht unterstützt werden.
 

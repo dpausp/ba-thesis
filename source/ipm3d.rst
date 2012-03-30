@@ -1,8 +1,15 @@
+.. _ipm3d:
+
 **************************************
 Einordnung in das Gesamtprojekt I>PM3D
 **************************************
 
 Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Projekts entstanden. Das Ziel des Projektes ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
+
+.. _ipm3d-uebersicht:
+
+Übersicht über die Projektbestandteile
+======================================
 
 Die Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` zeigt den grundsätzlichen Aufbau des Projektes. Die Bestandteile, mit denen sich die vorliegende Arbeit befasst sind darin rot hervorgehoben.
 Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchholz :cite:`buchi` und Uli Holtmann :cite:`uli` entstanden, die die übrigen Bestandteile von I>PM3D beschreiben. 
@@ -16,8 +23,6 @@ Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchhol
 
 Im Folgenden sollen die einzelnen Projektteile kurz vorgestellt und miteinander in Beziehung gesetzt werden.
 
-Übersicht über die Projektbestandteile
-======================================
 
 .. _ipm3d-visualisierung:
 

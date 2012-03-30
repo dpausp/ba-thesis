@@ -4,7 +4,7 @@
 Modellhierarchie
 ****************
 
-Da es sinnvoll ist, neben den Modellen selbst auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
 Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
@@ -32,7 +32,7 @@ Nach einer kurzen Vorstellung der Modellierungssprache wird eine Übersicht übe
 .. figure:: _static/diags/modellhierarchie.eps
     :width: 16cm
 
-    Modellhierarchie in I>PM3D, angelehnt an MDF :cite:`roth_konzeption_2011`
+    Modellhierarchie in I>PM3D (angelehnt an MDF :cite:`roth_konzeption_2011`)
 
 
 .. _lmmlight:
@@ -47,7 +47,7 @@ Die hier verwendete Sprache, im Folgenden **LMMLight** genannt, folgt in vielen 
 Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die Erstellung von LMMLight-Modellen sinnvoll genutzt werden kann, solange auf die nicht unterstützten Modellierungsmuster verzichtet wird.
 
 LMMLight unterstützt das Muster der **Spezialisierung von Instanzen** (``concreteUseOf``), da dies unter anderem für die Realisierung des :ref:`Typ-Verwendungs-Konzepts<tvk>` hilfreich ist.
-In Spezialisierungen lassen sich alle Attributzuweisungen des spezialisierten Concepts ohne Einschränkung überschreiben.
+Im Gegensatz zu LMM lassen sich in Spezialisierungen alle Attributzuweisungen des spezialisierten Concepts ohne Einschränkung überschreiben.
 
 .. _editor-model-stack:
 
@@ -76,7 +76,7 @@ Anpassbarkeit
 
 Durch Anpassungen im Editor-Model-Stack können für ein Domänen-Metamodell im Prinzip auch mehrere verschiedene Repräsentationen erstellt werden. 
 
-Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist zu sehen, dass das im *Designer-Model-Stack* definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt worden sind. 
+Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist in :num:`Abbildung #modellhierarchie-diagram` zu sehen, dass das im *Designer-Model-Stack* definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt worden sind. 
 
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
@@ -128,7 +128,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein (vorgegeben durch
     * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte". Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
 Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird.
-Zusammen bilden diese Packages das in der :num:`Abbildung #modellhierarchie-diagram` gezeigte *Editor-Definition-Level*. 
+Zusammen bilden diese Packages den in der :num:`Abbildung #modellhierarchie-diagram` gezeigten *Editor-Definition-Level*. 
 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, welche von Concepts aus den obigen Packages referenziert werden. 
 Dies können beispielsweise Concepts für die Definition von Farben oder der Größe eines Objekts sein.
@@ -167,7 +167,7 @@ An die Struktur des Modells, also den Aufbau aus Levels und Packages, werden dur
 Durch den :ref:`edef` wurde bereits vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird.
 Passend dazu werden hier Knoten definiert, die mittels Kanten verbunden sind.
 
-Von der Implementierung wird erwartet, dass Knoten und Kanten über spezielle Attribute der Knoten logisch miteinander verbunden sind. 
+In der Implementierung von I>PM3D wird angenommen, dass Knoten und Kanten über spezielle Attribute der Knoten logisch miteinander verbunden sind. 
 So muss im Concept, das den Knotentyp beschreibt, jeweils ein Attribut für eingehende und ausgehende Kanten eines bestimmten Typs definiert sein. 
 Diesen Attributen werden die ein- bzw. ausgehenden Kanten durch das Modellierungswerkzeug zugewiesen.
 
