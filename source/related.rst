@@ -2,7 +2,7 @@
 Verwandte Arbeiten zur 3D-Visualisierung
 ****************************************
 
-Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen sollen hier auch solche vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten wie der Softwaremodellierung beschäftigen. 
+Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen, sollen hier auch solche vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten wie der Softwaremodellierung beschäftigen. 
 
 Die hier gezeigten Arbeiten sollen als Anregung oder Motivation für die in dieser Arbeit dargestellte 3D-Visualisierung von Prozessen dienen.
 Außerdem sollen Ideen für zukünftige Erweiterungen des vorliegenden Projekts gesammelt und prinzipielle Vor- und Nachteile von 3D-Visualisierungen beleuchtet werden.
@@ -29,8 +29,8 @@ Three dimensional UML using force directed layout
 Die Platzierung von UML-Elementen per Hand sei eine zeitraubende Aufgabe, die besonders im dreidimensionalen Raum wegen der schlechten Verfügbarkeit von 3D-Eingabegeräten zum Problem werde. 
 Daher wird eine Anordnung der Diagrammelemente im 3D-Raum mit Hilfe eines automatischen, kräftebasierten Layout-Algorithmus vorgeschlagen.
 
-Es wurde ein Prototyp\ [#f1]_ realisiert, der Graphdiagramme im dreidimensionalen Raum zeichnen kann und Interaktionsmöglichkeiten wie den Wechsel der Betrachtungsperspektive bietet. 
-Ein 3D-Klassendiagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
+Es wurde ein Prototyp\ [#f1]_ realisiert, der Graphen in einer 3D-Darstellung zeichnen kann und Interaktionsmöglichkeiten mit den Graphelementen bietet.
+Ein damit erstelltes 3D-Klassendiagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
 
 So werden Klassen durch 3D-Quader dargestellt, deren Seiten beschriftet werden können. 
 Um die Lesbarkeit sicherzustellen, wird immer eine Seite des Würfels auf den Betrachter ausgerichtet.
@@ -441,7 +441,7 @@ Bei der vorliegenden Arbeit stand es aber im Vordergrund, eine möglichst flexib
 Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die für das Visualisierungskonzept in der vorliegenden Arbeit genutzt wurden. 
 
 
-.. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" können unter http://wilma.sourceforge.net/ heruntergeladen werden.
+.. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" (auf Basis von Java3D) können unter http://wilma.sourceforge.net/ heruntergeladen werden.
 
 .. [#f2] Näheres zu Wahrnehmung von Tiefe siehe :cite:`wickens_three_1989`, :cite:`wp:bewegungsparallaxe` oder :cite:`wp:stereoskopie`.
 

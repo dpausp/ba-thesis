@@ -17,6 +17,6 @@ Bla
     renderkomponente
     renderbib
     schluss
+    anhang_a
     anhang_b
-    anhang_c
     literaturverzeichnis

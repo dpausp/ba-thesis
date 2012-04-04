@@ -137,31 +137,45 @@ erkennen und in ein Scala-Objekt des Typs ``LiteralTypeAssignment`` übersetzen.
 Simulator X
 ***********
 
-*Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` bezeichnet eine neuartige Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
-Der Fokus liegt hierbei auch auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung. Dies macht Simulator X zu einer gut geeigneten Plattform für den I>PM3D-Prototypen.
+*Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` ist ein Prototyp einer neuartigen Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
+Der Fokus liegt hierbei auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung.
+
+Dies macht Simulator X zu einer gut geeigneten Plattform für den I>PM3D-Prototypen.
 
 *Simulator X* setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
 
-Außerdem sorgt dies auch dafür, dass auch aktuelle Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
+Dies sorgt auch dafür, dass auch aktuelle Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
 
 Aufbauend auf dem Actor-Modell stellt *Simulator X* ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
 
-Globale Zustandsvariablen, SVars genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
-Eine zugeordnete SVarDescription\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
+Globale Zustandsvariablen, **SVars** genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
 
-Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine Entity beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
+:num:`Abbildung #svars` zeigt ein Beispiel, in welchem ``actor#1`` der Besitzer der SVar ist und die beiden anderen Actors nur Referenzen auf diese SVar besitzen.
 
-Simulator-X-Anwendungen sind aus Komponenten aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
+.. _svars:
+
+.. figure:: _static/ext_pics/simxactorvars.png
+    :height: 5cm
+
+    Zustandsvariablen-Konzept aus :cite:`latoschik_simulator_2011`
+
+
+Eine zugeordnete ``SVarDescription``\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
+
+Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine **Entity** beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
+
+
+Simulator-X-Anwendungen sind aus **Komponenten** aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
 Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
 
 Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.
 
-Aspects beschreiben sozusagen eine Facette der Entity und sind einer bestimmten Komponente zugeordnet. So gibt es beispielsweise Grafik- oder Physik-Aspects.
+**Aspects** beschreiben sozusagen eine Facette der Entity und sind einer bestimmten Komponente zugeordnet. 
+So gibt es beispielsweise Grafik- oder Physik-\ *Aspects*.
 Über die Aspekt-Definition können Werte durch den Benutzer vorgegeben werden, die einer Komponente weitere Informationen geben, wie die komponenten-internen Entity-Repräsentation erstellt werden soll.
 Beispiele hierfür sind die Masse des Objekts für eine Physikkomponente oder der Pfad zu einer Modell-Datei für die Grafikkomponente.
 
 Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die zugeordnete Komponente weitergegeben. 
-Andere Komponenten können sich allerdings beim *WorldInterface* registrieren um Informationen über alle Aspects zu bekommen.
 
 *Simulator X* befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
 

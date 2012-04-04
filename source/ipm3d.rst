@@ -32,34 +32,28 @@ Visualisierung
 Eine zentrale Fragestellung bei der Realisierung eines grafischen Prozessmodellierungswerkzeugs ist, auf welche Weise Prozessmodelle visualisiert werden sollen.
 
 Elemente aus dem Prozessmodell sollen in einer für den Benutzer leicht verständlichen Art und Weise angezeigt werden, die die Möglichkeiten des dreidimensionalen Raums nutzt. Die Darstellung soll dabei an die aus 2D-Prozessmodellierungswerkzeugen bekannten grafischen Notationen angelehnt sein. 
-
 Prozessmodelle in I>PM3D werden in einer graphbasierten Form, also durch Knoten und damit verbundenen Kanten dargestellt. Zusätzlich zu den eigentlichen Prozessmodellelementen gibt es die Möglichkeit, beliebige 3D-Objekte anzuzeigen. Dies kann beispielsweise dafür genutzt werden, um abstrakte Konzepte mit Abbildern von realen Objekten zu illustrieren.
-
-Welche Prozessmodellelemente verwendet werden dürfen und wie diese visualisiert werden wird durch 
 
 Wie in der Computergrafik üblich wird das Prinzip einer virtuellen Kamera benutzt, durch die der Benutzer die Szene beobachtet, oft "Egoperspektive" genannt. 
 Durch Verschieben und Rotieren der Kamera kann sich der Benutzer in der virtuellen Umgebung "bewegen" und die dargestellten Prozessdiagramme aus verschiedenen Perspektiven betrachten. 
-
 Knoten und Szenenobjekte sind frei drehbar um alle drei Achsen, unter Beibehaltung der Seitenverhältnisse skalierbar und können prinzipiell frei in der 3D-Szene platziert werden.
 
-Wie Prozessdiagramme in I>PM3D visualisiert werden wird in Kapitel :ref:`visualisierung` näher vorgestellt.
+Die Visualisierung von Modellen in I>PM3D wird in der vorliegenden Arbeit näher :ref:`vorgestellt<visualisierung>`.
 
 Modellanbindung
 ---------------
 
-.. NEU
-
-Ein Modellierungswerkzeug muss die Möglichkeit haben, bestehende Modelle in einer physischen Repräsentation zu laden, das Modell beziehungsweise dessen Elemente zu bearbeiten und wieder zu speichern. 
+Ein Modellierungswerkzeug muss die Fähigkeit haben, bestehende Modelle aus einer physischen Repräsentation zu laden, das Modell beziehungsweise dessen Elemente zu bearbeiten und wieder zu speichern. 
 Außerdem sollen neue Modelle erstellt werden können. 
-Die grafische Modellierungssprache kann ohne Änderungen am Programmcode modifiziert werden, da die Modellelemente und deren (visuelle) Repräsentation durch zur Laufzeit geladene Metamodelle beschrieben wird.
+In i>PM 3D kann die grafische Modellierungssprache (in einem gewissen Rahmen) ohne Änderungen am Programmcode modifiziert werden, da die abstrakten Modellelemente und deren (visuelle) Repräsentation jeweils durch ein zur Laufzeit geladenes Metamodell beschrieben werden. 
+Die in einem Prozessmodell verwendeten abstrakten Modellelemente (bspw. ein "Prozessknoten") sowie deren aktuelle Repräsentation im Modelleditor (bspw. das "Aussehen" und die Position eines Prozessknotens) werden in separaten Modellen abgelegt.
+In der :num:`Abbildund #ipm3d-konzeptionelle-uebersicht` werden diese Modelle als "Prozess-Modell" bzw. als "Editor-Modell" bezeichnet.
 
-Der grundsätzliche Aufbau und die Anpassbarkeit der Modell-Hierarchie wird in :ref:`modellhierarchie` besprochen. 
-:ref:`metamodelle` beschreibt die verwendeten Metamodelle im Detail und zeigt ein Beispiel, wie sich neue Modellelemente ergänzen lassen.
+Der grundsätzliche Aufbau und die Anpassbarkeit der Modell-Hierarchie wird in :ref:`dieser Arbeit<modellhierarchie>` besprochen. 
+Außerdem werden die verwendeten Metamodelle im Detail :ref:`beschrieben<metamodelle>` und ein Beispiel gezeigt, wie sich neue Modellelemente ergänzen lassen.
 
-Die Einbindung der Modell-Funktionen in den Prototypen zu realisieren ist ebenfalls Gegenstand dieser Arbeit und wird in den Kapiteln :ref:`modellanbindung` behandelt. 
-In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Abschnitt als "Modellanbindung" bezeichnet.
-
-.. /NEU
+Es ist ebenfalls Gegenstand dieser Arbeit, die Einbindung der Modell-Funktionen in den Prototypen zu realisieren.
+In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird dieser Teil des Projekts als :ref:`"Modellanbindung"<modellanbindung>` bezeichnet.
 
 .. _ipm3d-gui:
 
@@ -116,16 +110,18 @@ Modifikationen an Simulator X
 
 Für I>PM3D wurde die von :ref:`simulatorx` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
 
-Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar und wurde durch eine Anbindung an eine im Rahmen dieser Arbeit entwickelte, flexible :ref:`render-bibliothek` ersetzt. 
-Dies war durch den modularen Aufbau von *Simulator X* problemlos umsetzbar. Die Anbindung wird unter :ref:`renderkomponente` beschrieben.
+Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar. Daher wurde diese durch eine Anbindung an die im Rahmen dieser Arbeit entwickelte, flexible :ref:`render-bibliothek` ersetzt, welche die einfache Erstellung von neuen Modell-Figuren ermöglicht und die Möglichkeiten moderner OpenGL-Grafikprogrammierung nutzt.  
+Die Anbindung an *Simulator X* wird durch die in :num:`Abbildung #ipm3d-simulatorx` gezeigte :ref:`renderkomponente` geleistet.
 
-Modell-Komponente und Modell-Entities
--------------------------------------
+Modellkomponente und Modell-Entitäten
+--------------------------------------
 
-Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten werden im Simulator X - Kontext durch die *Modellkomponente* realisiert, die dem Editor eine Schnittstelle zur Verfügung stellt über welche die genannten Aktionen ausgelöst werden können.
-Die Modellelemente selbst zu bearbeiten, also deren Visualisierungs und Prozessmodellattribute sowie die Position, Größe und Orientierung im Raum zu ändern wird durch die von der Modell-Komponente bereitgestellten *Modell-Entitäten* ermöglicht. Die ist ausschließlich dem Editor vorbehalten.
-Dem Simulator X - Konzept folgend beschreiben diese Entities außerdem, wie die dazugehörigen Objekte von der Physikkomponente behandelt und wie sie von der Renderkomponente angezeigt werden.
+Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten werden im Simulator X - Kontext durch die **Modellkomponente** realisiert, die dem Editor eine Schnittstelle zur Verfügung stellt über welche die genannten Aktionen ausgelöst werden können.
 
-Näheres zur Modellkomponente und den Modell-Entitäten in :ref:`modellanbindung` dargestellt.
+Die Modellelemente selbst zu bearbeiten, also deren Visualisierungsparameter und Prozessmodellattribute sowie die Position, Größe und Orientierung im Raum zu ändern, wird durch die von der Modellkomponente bereitgestellten **Modell-Entitäten** ermöglicht, welche durch den Editor manipuliert werden.
+
+Dem Simulator X - Konzept folgend, beschreiben diese *Entities* außerdem, wie die dazugehörigen Objekte von der Physikkomponente behandelt und wie sie von der Renderkomponente angezeigt werden.
+
+Näheres zur Modellkomponente und den Modell-Entitäten ist im Kapitel zur :ref:`modellanbindung` zu finden.
 
 .. [#f1] Dies bedeutet in diesem Zusammenhang, dass die Geräte einen Cursor ("Mauszeiger") steuern, der die aktuelle Position in einer zweidimensionalen Ebene anzeigt. Bei einem "Klick" wird eine Aktion auf dem darunter befindlichen Objekt ausgelöst.

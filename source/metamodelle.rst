@@ -15,6 +15,7 @@ Scala-Mapping
 =============
 
 Die oberste Ebene des *Editor-Model-Stacks* beinhaltet nur ein Package ``base`` (FQN ``EMM.D3.base``) mit einem einzelnen Concept, ``ScalaMapping``. 
+In textueller Darstellung ist diese Ebene in :ref:`Anhang A<anhang-scalamapping>` nachzulesen.
 
 Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf Scala-Objekte abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
 
@@ -36,8 +37,9 @@ Editor-Base-Level
 Level ``D2`` ist als Instanz von ``D3`` definiert. Daraus folgt, dass alle hier definierten Concepts Instanzen von ScalaMapping sein müssen.
 
 Die auf dieser Ebene definierten Concepts sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
+In :ref:`Anhang A<anhang-ebl>` ist dieses Modell vollständig abgebildet.
 
-Auf ``D2`` werden zwei Packages, ``types`` und ``figures``, definiert.
+Auf ``D2`` werden zwei Packages, ``types`` und ``figures``, definiert. 
 
 .. _ebl-types:
 
@@ -49,7 +51,7 @@ Das ``EMM.D2.types``-Package definiert grundlegende Typen, die Visualisierungspa
 Dazu werden folgenden Typen angeboten:
 
   * ``Dimension``, ``Position``: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
-    Die drei Attribute x, y, z werden im Editor auf einen Vektor mit 3 Komponenten abgebildet. Hierfür wird der Vektortyp ``Vec3`` von :ref:`Simplex3D` angeboten.
+    Die drei Attribute x, y, z werden im Editor auf einen Vektor mit drei Komponenten abgebildet. Hierfür wird der Vektortyp ``Vec3`` von :ref:`Simplex3D` angeboten.
 
   * ``Rotation``: Angabe der Rotation mittels eines Quaternions. Die vier Attribute x0, x1, x2 und x3 werden auf ein Quaternionen-Objekt ``Quat4``  abgebildet, das ebenfalls von *Simplex3D* bereitgestellt wird.
 
@@ -78,23 +80,34 @@ Paket "figures"
 Im ``EMM.D2.figures``-Package werden die grundlegenden Figuren definiert, die zur Visualisierung von Domänenmodellelementen zur Verfügung stehen. 
 
 Hier wird eine graphbasierte Darstellungsform vorausgesetzt, das heißt, dass hier die speziell dafür benötigten Concepts bereitgestellt werden. 
+:num:`Abbildung #ebl-figures-diag` zeigt die Hierarchie der in diesem Paket definierten Basis-Figuren, die im folgenden näher beschrieben werden.
+Die gezeigten Attribute und Assoziationen werden von der Implementierung vorausgesetzt.
+
+
+.. _ebl-figures-diag:
+
+.. figure:: _static/diags/ebl-figures.eps
+    :width: 16cm
+
+    Hierarchie des ``figures``-Pakets
+
 
 Das Package wird durch zwei abstrakte Basistypen, ``EditorElement`` und ``SceneryObject`` strukturiert. 
 
 ``EditorElement`` ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (``Edge``) und Knoten (``Node``) aufteilen.
 
-Jedes ``EditorElement`` muss das Attribut ``modelElementFQN`` setzen, dass den voll qualifizierten Namen des repräsentierten Domänenkonzeptes angibt. 
-Dadurch wäre es prinzipiell möglich, einem Domänenkonzept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der aktuellen Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Concepts besteht.
+Jedes ``EditorElement`` muss das Attribut ``modelElementFQN`` setzen, dass den voll qualifizierten Namen des repräsentierten *Domain*-Concepts angibt. 
+Dadurch wäre es prinzipiell möglich, einem *Domain*-Concept mehrere Repräsentationen im Editor zuzuweisen, allerdings wird in der Implementierung davon ausgegangen, dass eine 1:1-Beziehung zwischen den Concepts besteht.
 Über das Attribut ``interactionAllowed`` lässt sich festlegen, ob eine Interaktion mit dem Modellelement durch den Benutzer erlaubt ist. Dies ist standardmäßig für alle Element auf "true" gesetzt.
 
 Das von ``ScalaMapping`` definierte Attribut ``scalaType`` legt für Concepts in diesem Package fest, durch welche Objekte diese konkret im Modellierungswerkzeug grafisch dargestellt werden. 
 Es ist zu beachten, dass die Interpretation von ``scalaType`` hier nicht den :ref:`scalamapping` angegebenen Konventionen folgt und der Wert kein Klassenname sein muss, obwohl kein TypeConverter angegeben wird. 
-Wie die Werte interpretiert werden, ist später in einem :ref:`Anwendungsbeispiel <beispiel-neue-modellfigur` zu sehen, nachdem die dafür nötigen Grundlagen erläutert wurden.
+Wie die Werte interpretiert werden, ist später in einem :ref:`Anwendungsbeispiel <beispiel-neue-modellfigur>` zu sehen, nachdem die dafür nötigen Grundlagen erläutert worden sind.
     
 Knoten
 ^^^^^^
 
-Das abstrakte Basis-Concept aller Knoten, ``Node`` definiert die Attribute ``dim`` (Typ ``Dimension``), ``pos`` (``Position``) und ``rotation`` (``Rotation``), die dazu benutzt werden, sowohl das Erscheinungsbild als auch das physikalische Verhalten zu beschreiben.
+Das Basis-Concept aller Knoten, ``Node`` definiert die Attribute ``dim`` (Typ ``Dimension``), ``pos`` (``Position``) und ``rotation`` (``Rotation``), die dazu benutzt werden, sowohl das Erscheinungsbild als auch das physikalische Verhalten zu beschreiben.
 
 In der Implementierung wird sichergestellt, dass Visualisierung und physikalische Repräsentation immer zueinander passen. 
 Das bedeutet beispielsweise, dass die für den Benutzer sichtbare Ausdehnung genau die ist, die auch für die Erkennung von Kollisionen oder bei der Auswahl von Elementen durch ein Eingabegerät genutzt wird.
@@ -116,10 +129,10 @@ Für die Visualisierung von Knoten sind ein texturierter (``TexturedNode``) und 
 Es wird davon ausgegangen, dass für Knoten im Domänenmodell das Typ-Verwendungs-Konzept genutzt wird.
 Wie in :ref:`ipm3d-gui` erwähnt, sollen verfügbare Knotentypen in einem Menü ("Palette") angezeigt werden, dass die Erstellung von neuen Modellelementen erlaubt. 
 
-Daher müssen alle Nodes folgende Attribute setzen:
+Daher müssen alle ``Nodes`` folgende Attribute setzen:
 
   * ``toolingAttrib``: Legt fest, welches (String)-Attribut aus dem *Domain*-Concept zur Identifikation des ``Node``-Typs in einer Palette angezeigt werden soll.
-  * ``toolingTitle``: Hierdurch wird angegeben, unter welcher "Überschrift" ein Node-Typ in einer Palette einsortiert werden soll. 
+  * ``toolingTitle``: Hierdurch wird angegeben, unter welcher "Überschrift" ein ``Node``-Typ in einer Palette einsortiert werden soll. 
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im *Domain-Meta-Model* definiert werden.
 
 .. _ebl-figures-kanten:
@@ -163,17 +176,18 @@ Editor-Definition-Level
 
 Auf dieser Ebene sind die Concepts zu finden, die die Repräsentationen für Knoten und Kanten aus dem Prozessmodell darstellen. 
 Da hier nur Werte gesetzt und keine neuen Attribute definiert werden, wird hier auf eine gesonderte Beschreibung verzichtet.
-Eine Auswahl der hier definierten Concepts kann in :ref:`anhang-b` nachgelesen werden. 
+Eine beispielhafte Auswahl der hier definierten Concepts kann in :ref:`Anhang A<anhang-edl>` nachgelesen werden. 
 Das Aussehen einiger hier spezifizierter Figuren wird im nächsten Kapitel :ref:`visualisierung` gezeigt.
 
 .. _pmm:
 
-Prozess-Meta-Modell
-===================
+Prozess-Metamodell
+==================
 
-Das in dieser Arbeit verwendete Domain-Metamodell orientiert sich an den Metamodellen für die :ref:`POPM<popm>`, wie sie in :cite:`volz_werkzeugunterstutzung_2011` vorgestellt werden.
+Das in dieser Arbeit verwendete *Domain*-Metamodell orientiert sich an den Metamodellen für die :ref:`POPM<popm>`, wie sie in :cite:`volz_werkzeugunterstutzung_2011` vorgestellt werden.
+Das vollständige Metamodell kann in :ref:`anhang_pmm` nachgelesen werden.
 
-Das Prozess-Metamodel definiert nur ein Paket, ``PMM.M2.processLanguage``.
+Das Prozess-Metamodell definiert nur ein Paket, ``PMM.M2.processLanguage``.
 
 Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die ``Perspective`` erweitern. 
 :num:`Abbildung #pmm-hierarchie` zeigt die Concept-Hierarchie, die sich unterhalb von ``Perspective`` aufspannt.
@@ -208,7 +222,6 @@ Ein ``DataItem`` wird beispielsweise über eine ``NodeDataConnection`` an einen 
 
     Die Kanten ControlFlow, NodeDataConnection und deren Assoziationen
 
-Das vollständige Prozess-Meta-Modell, wie es im Prototypen genutzt wird, kann in :ref:`anhang_pmm` nachgelesen werden.
 
 .. _beispiel-neues-element:
 

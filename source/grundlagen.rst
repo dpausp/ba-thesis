@@ -80,7 +80,7 @@ Dies soll explizit keine vollständige Aufzählung sein, sondern nur eine Zusamm
 So kann es nötig sein, für einen Anwendungsfall weitere Perspektiven hinzuzufügen oder Perspektiven um neue Elemente zu erweitern.
 Daraus ergibt sich, dass (grafische) Modellierungssprachen, die POPM unterstützen möglichst erweiterbar sein sollten. 
 
-:num:`Abbildung #ipm-process`\ [f5]_ zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
+:num:`Abbildung #ipm-process`\ [#f5]_ zeigt einen Prozess nach der perspektivenorientierten Prozessmodellierung.
 
 Die funktionale Perspektive wird hier durch drei Prozesse sowie einen Entscheidungsknoten vertreten. 
 Kontrollflüsse, die mit grauen Pfeilen visualisiert werden bilden die verhaltensorientierte Perspektive.

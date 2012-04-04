@@ -2,20 +2,18 @@
 Einleitung
 **********
 
-Prozessmanagement ist heute in vielen Unternehmen und anderen Einrichtungen im Einsatz um Geschäftsprozesse zu planen, zu dokumentieren und Möglichkeiten zu finden, um Abläufe zu optimieren. Visualisierungstechniken spielen hierbei eine große Rolle, da Prozesse nicht nur von Rechnern, sondern auch von Menschen verstanden werden sollen. Prozessmodelle werden zur Kommunikation von Sachverhalten eingesetzt, wobei die Beteiligten oft keine ausgebildeten Experten für Prozessmodellierung oder Programmierer sind. Das macht eine besonders intuitive und verständliche Art der Darstellung nötig. 
-
-Für diesen Einsatzzweck gibt es eine Reihe von Spezifikationen wie beispielsweise BPMN oder EPK, die Prozesse in einer recht abstrakten Form mit Hilfe von einfachen geometrischen Figuren in 2D-Diagrammen darstellen. Für Nicht-Experten kann diese abstrakte, weit von realen Objekten entfernte Darstellung ein Problem sein. Mehr gegenständliche Präsentation könnte hier helfen.
-
-Implementiert werden die genannten Modellierungssprachen durch verschiedene Programme, die den Standards der seit drei bis vier Jahrzehnten üblichen Desktopprogramme folgen und mit Maus und Tastatur bedient und mit üblichen GUI-Elementen dargestellt werden. WIMP stands for "windows, icons, menus, pointer.
-
-Prozessmodelle müssen, wenn sie effektiv sein sollen von Details abstrahieren und sich auf das Wesentliche konzentrieren. Trotzdem enthalten reale Modelle eine recht große Anzahl an Elementen, was schnell den verfügbaren Platz auf dem Bildschirm belegt und beispielsweise Zoom oder seitliches Scrollen notwenig macht. Zweidimensionale Darstellungen sind hier in ihren Möglichkeiten eingeschränkt, vor allem wenn es darum geht, größere Zusammenhänge zu visualisieren und Kontext herzustellen; beispielsweise zwischen verschiedenen Modellen.
-
-Davon getrennt gab es in der Computergrafik in den letzten (beiden) Jahrzehnten eine bemerkenswerte Entwicklung der Möglichkeiten von Hardware und Software in Sachen dreidimensionaler Darstellung. 
+Daneben gab es in der Computergrafik in den letzten (beiden) Jahrzehnten eine bemerkenswerte Entwicklung der Möglichkeiten von Hardware und Software in Sachen dreidimensionaler Darstellung.
 3D-Grafikanwendungen, die früher nur mit sehr großen Aufwand und finanziellem Einsatz realisierbar waren, sind heute selbst in Echtzeit für handelsübliche PCs verfügbar. Auffällig und für jeden sichtbar ist dieser Fortschritt vor allem in der Computerspielebranche. 
 
 Neben den klassischen Desktop-Anwendungen gibt es mittlerweile auch Techniken, um in die virtuelle Welt vollständig einzutauchen und auf natürliche Weise mit nicht-realen Objekten zu interagieren. Diese immersiven 3D-Anwendungen, oft als "CAVE" bezeichnet werden neben Spielanwendungen auch für die gegenständliche Modellierung in der Industrie, zum Beispiel zum virtuellen Konstruieren eingesetzt ("virtuelle Werkstatt").
 
-Wäre so etwas auch für die abstrakte, konzeptuelle Modellierung, zum Beispiel für die Prozessmodellierung sinnvoll?
+Prozessmanagement ist heute in vielen Unternehmen und anderen Einrichtungen im Einsatz um Geschäftsprozesse zu planen, zu dokumentieren und Möglichkeiten zu finden, um Abläufe zu optimieren. Visualisierungstechniken spielen hierbei eine große Rolle, da Prozesse nicht nur von Rechnern, sondern auch von Menschen verstanden werden sollen. Prozessmodelle werden zur Kommunikation von Sachverhalten eingesetzt, wobei die Beteiligten oft keine ausgebildeten Experten für Prozessmodellierung oder Programmierer sind. Das macht eine besonders intuitive und verständliche Art der Darstellung nötig. 
+
+Für diesen Einsatzzweck gibt es beispielsweise die standardisierte, grafische Modellierungssprache BPMN, die Prozesse in einer recht abstrakten Form mit Hilfe von einfachen geometrischen Figuren in 2D-Diagrammen darstellen. 
+
+Implementiert werden die genannten Modellierungssprachen durch verschiedene Programme, die den Standards der seit drei bis vier Jahrzehnten üblichen Desktopprogramme (auch "WIMP" genannt[#f1]_) folgen und mit Maus und Tastatur bedient und mit üblichen GUI-Elementen dargestellt werden.
+
+Prozessmodelle müssen, wenn sie effektiv sein sollen von Details abstrahieren und sich auf das Wesentliche konzentrieren. Trotzdem enthalten reale Modelle eine recht große Anzahl an Elementen, was schnell den verfügbaren Platz auf dem Bildschirm belegt und beispielsweise Zoom oder seitliches Scrollen notwenig macht. Zweidimensionale Darstellungen sind hier in ihren Möglichkeiten eingeschränkt, vor allem wenn es darum geht, hierarchie Modelle oder Beziehungen zwischen verschiedenen Modellen zu visualisieren.
 
 Bisher wurden die Fortschritte in der 3D-Computervisualisierung für die Prozessmodellierung und ähnliche Gebiete noch wenig beachtet. Programme, die alle Möglichkeiten virtueller 3D-Welten für die Prozessmodellierung nutzbar machen fehlen bislang komplett. 
 
@@ -38,8 +36,5 @@ Zu Beginn werdeb die grundlegenden Begriffe aus dem Bereich der Prozessmodellier
 Darauf aufbauend wird ein Konzept zur dreidimensionalen Visualisierung von Prozessmodellen sowie zur Anbindung der Visualisierungskomponente an das Gesamtsystem, das mit Hilfe von Simulator X realisiert wurde entwickelt. Danach werden einige Details aus der Implementierung des Prototypen dargestellt und ein kleines Anwendungsbeispiel gegeben. 
 Die Arbeit schließt mit einem Ausblick auf die zahlreichen Erweiterungsmöglichkeiten und zukünftigen Forschungs- und Entwicklungsthemen, die sich aus diesen Arbeit und dem Projekt ergeben.
 
-Konventionen
-============
 
-
-Details zu Implementierungsfragen und Verweise auf Pakete des Projekts werden in Fußnoten angegeben, die mit römischen Ziffern bezeichnet sind.
+.. [#f1] WIMP steht für "windows, icons, menus, pointer

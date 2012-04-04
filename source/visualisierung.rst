@@ -133,6 +133,8 @@ Da die hier vorgestellte Visualisierung in einem interaktiven Modelleditor einge
 So sollen Interaktionen des Benutzers mit den Modellobjekten sichtbar gemacht werden, indem die Visualisierung der Objekte temporär verändert wird. 
 Diese Modifikationen werden nicht im Editor-Usage-Model persistiert; daher werden alle Objekte im Normalzustand angezeigt nachdem ein Modell neu geladen wurde.
 
+.. _hervorhebung:
+
 Hervorhebung
 ------------
 
@@ -240,13 +242,13 @@ Für die Visualisierung von 3D-Graphmodellen stellt sich die Frage, wie die Lich
 
 Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beiträge unterschieden. 
 
-Der Hauptanteil des reflektierten Lichts wird im Normalfall vom "diffuse"-Anteil (diffuses Licht) beigesteuert, welcher abhängig vom Winkel zur Lichtquelle ist.
+Der Hauptanteil des reflektierten Lichts wird im Normalfall vom *diffuse*-Anteil beigesteuert, welcher abhängig vom Winkel zur Lichtquelle ist.
 Von der Lichtquelle eher abgewandte Seiten erscheinen daher dunkel, was sich ungünstig auf die Erkennbarkeit von Informationen auswirken kann.
 
-Um dies auszugleichen, kann der "ambient"-Anteil (Umgebungslicht) erhöht werden, der vom Winkel unabhängig ist. 
+Um dies auszugleichen, kann der *ambient*-Anteil (Umgebungslicht) erhöht werden, der vom Winkel unabhängig ist. 
 Wird dieser zu hoch gesetzt, leidet allerdings der räumliche Eindruck.
 
-Der "specular-Anteil" erzeugt spiegelnde Reflexionen auf Objekten, die auch von der Betrachterposition relativ zum Objekt abhängen. 
+Der *specular*-Anteil erzeugt spiegelnde Reflexionen auf Objekten, die auch von der Betrachterposition relativ zum Objekt abhängen. 
 Dieser Anteil kann folglich die räumliche Orientierung unterstützen.
 Allerdings führt die starke Aufhellung an bestimmten Stellen dazu, dass sich Text dort schlecht ablesen lässt.
 
@@ -264,18 +266,20 @@ Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparame
 Visualisierung eines Beispielsprozesses
 =======================================
 
-(kommt noch)
+(schöneres Bild kommt noch)
 .. TODO
 
 :num:`Abbildung #beispielprozess-screenshot` zeigt einen in I>PM3D modellierten Prozess.
 
 .. _beispielprozess-screenshot:
 
-.. figure:: _static/screenshots/dummy.png
+.. figure:: _static/screenshots/gesamt.png
     :height: 8cm
 
     Beispiel für einen Prozess in I>PM3D 
 
+
+.. _vis-probleme-erweiterung:
 
 Probleme und Erweiterungsmöglichkeiten
 ======================================
@@ -394,8 +398,16 @@ Gerade Linien, wie sie momentan verwendet werden können störend sein wenn sie 
 Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-Bereich, da man die zusätzliche Dimension zur Vermeidung nutzen kann.
 
 Verbindungen könnten alternativ auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden, um solche Probleme weiter einzudämmen, wie es auch in 2D-Werkzeugen häufig zu sehen ist.
-Kanten, die als "gebogene 3D-Röhren" dargestellt werden zeigen :cite:`spratt_using_1994` und :cite:`balzer_hierarchy_2004`.
+Kanten, die als "gebogene 3D-Röhren" dargestellt werden, zeigen :cite:`spratt_using_1994` und :cite:`balzer_hierarchy_2004` (:num:`Abbildung #balzert-tubes`).
 Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
+
+.. _balzert-tubes:
+
+.. figure:: _static/ext_pics/balzert_tubes.png
+    :scale: 100%
+
+    Visualisierung von Beziehungen mit gekrümmten 3D-Röhren aus :cite:`balzer_hierarchy_2004`
+
 
 .. [#f1] In der Computergrafik wird das Prinzip als "Level Of Detail" bezeichnet. 
 

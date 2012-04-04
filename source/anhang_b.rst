@@ -20,3 +20,8 @@ Software
 * Betriebssystem Windows (getestet unter Windows 7) oder Linux (getestet unter Ubuntu Linux 11.10 und Gentoo Linux)
 * Grafiktreiber mit Unterstützung für OpenGL 3.3
 * Java Virtual Machine in einer Version ab 1.6
+
+DVD
+===
+
+...

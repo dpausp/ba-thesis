@@ -4,7 +4,7 @@
 Modellhierarchie
 ****************
 
-Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>` war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`) war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
 
 Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
