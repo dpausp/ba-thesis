@@ -194,6 +194,7 @@ preamble_normal =  r"""
 \usepackage{xunicode}
 
 \usepackage{csquotes}
+\usepackage{enumerate}
 
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{links.bib}

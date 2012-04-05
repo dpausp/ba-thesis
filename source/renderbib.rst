@@ -14,7 +14,7 @@ Für die im vorherigen Kapitel beschriebene Renderkomponente wurde eine Anbindun
     #. Darstellung von Schrift und Texturen auf 3D-Objekten, möglichst skalierbar
     #. "Bild-in-Bild"-Techniken ("off-screen rendering"), also das Zeichnen von 3D-Teil-Szenen in 2D-Bilder, die im Grafikspeicher abgelegt sind und so in eine größere 3D-Szene eingebettet werden können.
 
-Anforderung (5) wird im Projekt für die Darstellung von :ref:`deaktivierten Modellelementen <deaktivierung>` sowie :ref:`Modellierungsflächen<modellierungsflaechen>` gebraucht.
+Anforderung (5) wird im Projekt für die Darstellung von :ref:`deaktivierten Modellelementen <deaktivierung>` sowie :ref:`Modellierungsflächen<modellierungsflaechen>` gebraucht. 
 
 Anforderung (7) ist auf den Wunsch zurückzuführen, komplexe Menüs wie das Eightpen-Menü :cite:`buchi` erstellen zu können, die selbst wieder 3D-Objekte enthalten. 
 
@@ -52,7 +52,7 @@ Die Render-Bibliothek orientiert sich in den Grundkonzepten an der für C++ verf
 Im Gegensatz zu vielen, umfassenden 3D-Engines sollten dem Benutzer der Bibliothek möglichst wenig Einschränkungen bei der Gestaltung seines Programms auferlegt werden.
 Bei der Konzeption der Render-Bibliothek stand die Wiederverwendbarkeit von einzelnen Bestandteilen im Vordergrund, die sich wieder zu höheren Abstraktionen zusammensetzen lassen.
 
-Solche Abstraktionen werden – wenn sie allgemein verwendbar sind – direkt von der Renderbibliothek angeboten, können aber auch speziell für eine bestimmte Anwendung erstellt werden.
+Solche Abstraktionen werden – wenn sie allgemein verwendbar sind – direkt von der Render-Bibliothek angeboten, können aber auch speziell für eine bestimmte Anwendung erstellt werden.
 Durch das Prinzip soll der Programmierer von oft wiederkehrenden Aufgaben entlastet werden, aber trotzdem die vollen Möglichkeiten von OpenGL nutzen können, wenn nötig.
 
 Höhere Abstraktionen sollen auch von Programmieren ohne tiefgreifende Computergrafik- und OpenGL-Kenntnisse genutzt werden können.
@@ -144,7 +144,7 @@ Durch die Verwendung von unterschiedlichen ``Effect``-Traits können auf einfach
     Zusammensetzung eines farbigen Würfels aus den Basis-Traits
 
 Effects selbst können relativ kompliziert aufgebaut sein. Es ist sinnvoll, diese wieder aus verschiedenen Traits zusammenzusetzen, die Teilfunktionalitäten implementieren.
-Solche Traits sind in der Renderbibliothek mit der Endung ``-Addon`` versehen. 
+Solche Traits sind in der Render-Bibliothek mit der Endung ``-Addon`` versehen. 
 Beispielsweise existiert ein ``PhongLightingAddon`` für die Bereitstellung von Lichtparametern und ein ``TextDisplayAddon``, welches die Anzeige von Schrift auf den Objekten implementiert.
 
 :num:`Abbildung #effect-classdiag` zeigt ein Beispiel für einen ``Effect``, der aus zwei ``Addons`` zusammengesetzt wird. 
@@ -175,7 +175,7 @@ Von der ``RenderStage`` werden zu den von Drawables definierten Texture- und Sha
 Diese werden für das Zeichnen von mehreren Drawables wiederverwendet, um Grafikspeicher und Zeit zu sparen.
 
 Abgegrenzte Funktionalitäten können in ein ``RenderStagePlugin`` ausgelagert werden. 
-So stellt die Renderbibliothek unter anderem Plugins für die Verwaltung von Texturen und die Umsetzung von Lichtquellen bereit.
+So stellt die Render-Bibliothek unter anderem Plugins für die Verwaltung von Texturen und die Umsetzung von Lichtquellen bereit.
 
 :num:`Abbildung #renderstage-classdiag` zeigt eine zusammengesetzte ``RenderStage``.
 
@@ -193,7 +193,7 @@ Weitere Abstraktionen
 Licht 
 ^^^^^^
 
-Die Renderbibliothek unterstützt das Phong-Beleuchtungsmodell, welches pixelgenau ausgewertet wird. 
+Die Render-Bibliothek unterstützt das Phong-Beleuchtungsmodell, welches pixelgenau ausgewertet wird. 
 Für die Anwendung werden Klassen bereitgestellt, die die von "altem" OpenGL bekannten "Lichtquellen" bereitstellen und sich an deren Schnittstelle orientieren. 
 Lichtquellen können entweder entfernungsabhängig (``PositionalLight``) oder -unabhängig sein (``DirectionalLight``).
 
@@ -224,13 +224,13 @@ Die so erzeugte Scala-Quelldatei enthält ein Trait, das :ref:`Mesh<drawable>`) 
 
 Optional kann direkt eine .jar-Datei erstellt werden.
 
-Am Ende des Kapitels wird im Anwendungsbeispiel die Nutzung des "Compilers" demonstriert.
+Am Ende des Kapitels wird im Anwendungsbeispiel die Nutzung des COLLADA2Scala-Compilers demonstriert.
 
 
 Spezielle Erweiterungen für I>PM3D
 ==================================
 
-In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden.
+In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden (:ref:`Anforderung (f) <anforderungen>`).
 Hier wird auch gezeigt, wie die oben beschriebenen Ebenen der Render-Bibliothek und die GLSL-Shader zusammenwirken.
 Außerdem soll verdeutlicht werden, wie :ref:`Drawables <drawable>` als Schnittstelle zwischen grafischer Darstellung und Anwendung dienen.
 
@@ -325,7 +325,7 @@ Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzun
 Beispielsweise wird so für einen Prozessknoten die ``model.function``-SVar mit dem Setter für den aktuellen Text verbunden.
 Aufgrund dessen wird bei jeder Änderung am ``function``-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
 
-Das gleiche Prinzip wird für Visualisierungsparameter (Farben, Schrift) aus dem Editor-Modell angewendet.
+Das gleiche Prinzip wird für Visualisierungsparameter (bspw. Farben oder die Schriftart) aus dem Editor-Modell angewendet.
 
 Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait ``TextDisplaySVarSupport`` angeboten.
 Im Normalfall wird dieses zusammen mit dem ``BackgroundSVarSupport`` genutzt, welches das Setzen der Hintergrundfarbe übernimmt. 

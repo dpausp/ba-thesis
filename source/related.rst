@@ -20,7 +20,7 @@ Einen umfassenden Überblick über Arbeiten, die sich mit 3D-Softwarevisualisier
 
 .. _dywer:
 
-Three dimensional UML using force directed layout
+Wilma: Ein 3D-Modellierungstool für UML-Diagramme
 -------------------------------------------------
 
 :cite:`dwyer_three_2001` weist auf die Probleme von Softwarevisualisierungstechniken hin, große und insbesondere hierarchisch aufgebaute Diagramme darzustellen. 
@@ -29,7 +29,7 @@ Three dimensional UML using force directed layout
 Die Platzierung von UML-Elementen per Hand sei eine zeitraubende Aufgabe, die besonders im dreidimensionalen Raum wegen der schlechten Verfügbarkeit von 3D-Eingabegeräten zum Problem werde. 
 Daher wird eine Anordnung der Diagrammelemente im 3D-Raum mit Hilfe eines automatischen, kräftebasierten Layout-Algorithmus vorgeschlagen.
 
-Es wurde ein Prototyp\ [#f1]_ realisiert, der Graphen in einer 3D-Darstellung zeichnen kann und Interaktionsmöglichkeiten mit den Graphelementen bietet.
+Es wurde ein Prototyp ("Wilma")\ [#f1]_ realisiert, der Graphen in einer 3D-Darstellung zeichnen kann und Interaktionsmöglichkeiten mit den Graphelementen bietet.
 Ein damit erstelltes 3D-Klassendiagramm ist in :num:`Abbildung #dywer-classdiag` zu sehen.
 
 So werden Klassen durch 3D-Quader dargestellt, deren Seiten beschriftet werden können. 
@@ -54,10 +54,10 @@ Probanden mit vorheriger Erfahrung aus 3D-Computerspielen hätten im Versuch die
 
 .. _mcintosh:
 
-X3D-UML: 3D UML State Machine Diagrams
---------------------------------------
+X3D-UML: Hierarchische 3D-UML-Zustandsdiagramme
+-----------------------------------------------
 
-In :cite:`mcintosh_x3d-uml:_2008` werden Zustandsdiagramme (state machine diagrams) der UML in den 3D-Raum übertragen.
+In :cite:`mcintosh_x3d-uml:_2008` werden Zustandsdiagramme ("state diagrams") der UML in den 3D-Raum übertragen.
 
 Zu Beginn seien von vier Unternehmen erhaltene Zustandsdiagramme untersucht worden, die mit dem Modellierungswerkzeug IBM Rational Rose erstellt wurden. 
 Daraus habe sich ergeben, dass die Modelle oft hierarchisch aus Unterzuständen aufgebaut seien. 
@@ -90,8 +90,8 @@ Von den Benutzern seien verschiedene Erweiterungen vorgeschlagen worden; unter a
 
 .. _krolovitsch:
 
-3D Visualization for Model Comprehension
-----------------------------------------
+3D-Visualisierung von großen, hierarchischen UML-Zustandsdiagrammen
+-------------------------------------------------------------------
 
 3D-Visualisierungen von (großen) UML-Zustandsdiagrammen werden auch von :cite:`krolovitsch_3d_2009` und, darauf aufbauend, :cite:`alvergren_3d_2009` untersucht. 
 Zustandsdiagramme werden, wie in :cite:`mcintosh_x3d-uml:_2008` auf Flächen im 3D-Raum gezeichnet, wobei hier die Zustände selbst als 3D-Objekte dargestellt sind, um den visuellen Eindruck zu verbessern, wie in :num:`Abbildung #krolovitsch-sm` zu sehen ist. 
@@ -113,8 +113,8 @@ In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagram
 
     Zustandsdiagramm mit ausgeblendeten Diagrammteilen (dargestellt durch blaue Würfel) aus :cite:`krolovitsch_3d_2009`
 
-Three Dimensional Software Modelling
-------------------------------------
+Dreidimensionale Darstellung zur besseren Visualisierung von Beziehungen
+------------------------------------------------------------------------
 
 :cite:`gil_three_1998` merkt an, dass durch 3D-Visualisierungen die Ausdrucksstärke von (graphbasierten) grafischen Notationen deutlich erhöht werden könne. 
 Besonders vorteilhaft seien 3D-Visualisierungen von Graphen, wenn es darum ginge, eine Vielzahl von unterschiedlichen Beziehungs- bzw. Verbindungstypen darzustellen. 
@@ -139,8 +139,8 @@ So sei es möglich, in 3D-Sequenzdiagrammen die Zustände des Systems zu bestimm
 
 .. _gogolla:
 
-Towards Three-dimensional Representation and Animation of UML Diagrams
-----------------------------------------------------------------------
+Nutzung von Tiefeneindruck und Animation zur Visualisierung von UML-Diagrammen
+------------------------------------------------------------------------------
 
 In :cite:`gogolla_towards_1999` wird ebenfalls die 3D-Darstellung von UML-Diagrammen, speziell Klassen-, Objekt- und Sequenzdiagrammen untersucht. 
 Die dritte Dimension könne beispielsweise dafür genutzt werden, als "uninteressant" eingestufte Elemente in den Hintergrund zu schieben und damit Elemente im Vordergrund besonders hervorzuheben.
@@ -211,8 +211,8 @@ Die grafische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und T
 
 .. _betz:
 
-3D Representation of Business Process Models
---------------------------------------------
+3D-Repräsentation von Prozessmodellen
+-------------------------------------
 
 Von :cite:`betz_3d_2008` wird die Visualisierung von Prozessen mittels dreidimensional dargestellter Petrinetze vorgestellt. 
 Es werden verschiedene Szenarien gezeigt, in denen 3D-Visualisierungen gewinnbringend genutzt werden könnten. 
@@ -255,8 +255,8 @@ Der Benutzer könne mehrere Verfeinerungsstufen des Modells in einer Ansicht seh
 
     Vier Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
 
-3D gadgets for business process visualization — a case study
-------------------------------------------------------------
+3D-Visualisierung für die Prozesssimulation
+------------------------------------------
 
 In :cite:`schonhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vorgestellt, der dafür genutzt werden könne, Simulationen von Prozessen zu kontrollieren und dabei anfallende Daten zu visualisieren.
 
@@ -284,8 +284,8 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wiede
 
 .. _ross-brown:
 
-Conceptual Modelling in 3D Virtual Worlds for Process Communication
--------------------------------------------------------------------
+Modellierung von Prozessen in interaktiven, virtuellen 3D-Umgebungen
+---------------------------------------------------------------------
 
 In :cite:`brown_conceptual_2010` wird ein Prototyp eines BPMN-Editors vorgestellt, der Prozesse innerhalb eine virtuellen 3D-Umgebung darstellt
 
@@ -334,13 +334,13 @@ Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
     Kommentarwände und Multimedia-Inhalte in der virtuellen Welt aus :cite:`brown_conceptual_2010` 
 
 
-Visualisierung von Graphen in 3D
-================================
+Weiterführendes zur Visualisierung von Graphen in 3D
+====================================================
 
 .. _ware-graphs:
 
-Visualizing Graphs in Three Dimensions
---------------------------------------
+Nutzung von 3D-Effekten für einen verbesserten Tiefeneindruck
+-------------------------------------------------------------
 
 In :cite:`ware_visualizing_2008` wird an Probanden untersucht, wie groß die Vorteile einer stereoskopischen 3D-Darstellung von umfangreichen Graphen im Vergleich zu einer 2D-Darstellung sind. 
 Als Maß für die "Lesbarkeit" wird hier das Abschneiden bei der Aufgabe, die Pfadlänge zwischen zwei markierten Knoten zu erkennen genutzt. 
@@ -356,8 +356,8 @@ Dies wird in der späteren Arbeit auf den Umstand zurückgeführt, dass hierbei 
 
 .. _halpin-social-net:
 
-Exploring Semantic Social Networks Using Virtual Reality
---------------------------------------------------------
+3D-Visualisierung von Graphen in voll immersiven virtuellen Umgebungen
+----------------------------------------------------------------------
 
 Neben der Anzeige von 3D-Graphvisualisierungen auf handelsüblichen Arbeitsplatz-Rechnern könnten dafür auch immersive 3D-Umgebungen (fully immersive virtual reality) genutzt werden. 
 
@@ -380,9 +380,6 @@ Wie in :num:`Abbildung #halpin-extrude` (rechts) zu sehen ist werden dadurch die
 
 Zusammenfassung und Bewertung
 =============================
-
-Verschiedene 3D-Visualisierungsansätze 
---------------------------------------
 
 Es wurden verschiedene Ansätze gezeigt, zu einer 3D-Visualisierung von Informationen zu gelangen und deren Vorteile zu nutzen. 
 So lässt sich häufig der Ansatz beobachten, von einer bekannten 2D-Visualisierung auszugehen und diese in den 3D-Raum zu übertragen.

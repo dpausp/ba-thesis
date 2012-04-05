@@ -24,7 +24,7 @@ Knoten
 
 Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren ``TextLabelNode`` und ``TexturedNode`` grundsätzlich zwei Möglichkeiten.
 
-Die Beschriftung von TextLabelNodes kann dazu verwendet werden, Attribute aus dem Prozessmodell direkt anzuzeigen.
+Die Beschriftung von TextLabelNodes kann dazu verwendet werden, textuelle Attribute aus dem Prozessmodell direkt anzuzeigen (:ref:`Anforderung (g) <anforderungen>`).
 
 Es sollten möglichst einfache, dreidimensionale geometrische Körper mit möglichst ebenen Seitenflächen wie Würfel oder Quader gewählt werden. 
 Ebene Flächen eignen sich besonders gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von (längeren) Textdarstellungen. 
@@ -81,7 +81,7 @@ Die im Projekt verwendeten 3D-Eingabegeräte :cite:`buchi` haben nur eine relati
 Vor allem ungeübten Benutzern kann es schwerfallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
 
 Dies ist auch ein Grund, eine Graphdarstellung mit möglichst einfachen Objekten zu verwenden.
-Es wird deswegen auch verzichtet, Elemente nach dem geometrischen Visualisierungsansatz ineinander zu schachteln, wie es in 2D-Werkzeugen wie es bei :ref:`i>PM<mdf>`\ :sup:`2` zu sehen war.
+Es wird deswegen auch verzichtet, Elemente nach dem geometrischen Visualisierungsansatz ineinander zu schachteln, wie es in 2D-Werkzeugen wie es bei :ref:`i>PM2<mdf>` zu sehen war.
 
 Es ist sinnvoll, Quader (oder annähernd quaderförmige Geometrien) einzusetzen, da Knoten in die physikalische Simulation eingebunden sind, welche von den Eingabegeräten für die Selektion von Elementen genutzt wird.
 Quader werden von der verwendeten Physikkomponente direkt unterstützt\ [#f4]_. Bei Verwendung anderer Geometrien zur Visualisierung würde diese nicht mehr mit den physikalischen Ausdehnungen übereinstimmen.
@@ -118,7 +118,7 @@ Szenenobjekte
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als ``SceneryObject`` bezeichnet werden. 
 
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
-Diese können zur Illustration von Prozessschritten dienen, wie es :ref:`in <ross-brown>` gezeigt wurde.
+Diese können zur Illustration von Prozessschritten dienen, wie es von :ref:`Brown <ross-brown>` gezeigt wurde.
 
 Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden, besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
@@ -191,7 +191,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 
     Deaktivierter (vorne, durchsichtig) und aktivierter Prozess (Screenshot aus I>PM3D)
 
-Die drei vorgestellten Visualisierungsvarianten können frei kombiniert werden. 
+Die drei gezeigten Visualisierungsvarianten können frei kombiniert werden. 
 Damit ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
 
 
@@ -207,7 +207,7 @@ Durch die freie Positionier- und Drehbarkeit kann zwar prinzipiell jede beliebig
 Zur Vereinfachung der Platzierung werden in 2D-Modellierungswerkzeugen oft im Hintergrund dargestellte Gitter genutzt, die eine optische Hilfe darstellen. 
 Noch hilfreicher können "magnetische" Gitter sein, die grob in der Nähe platzierte Objekte automatisch auf feste, regelmäßige Positionen verschieben.
 
-Um dies zu erreichen, wird die Physikkomponente genutzt. 
+Um dies zu erreichen, wird die :ref:`Physikkomponente<mod-simx>` genutzt. 
 Sobald sich ein Objekt nahe genug an einer solchen Modellierungsebene befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen, solange bis der Mittelpunkt des Objekts die Fläche erreicht hat, wo es angehalten wird.
 
 Näheres zur Implementierung dieser "Gravitationsflächen" findet sich in :cite:`buchi`.
@@ -236,11 +236,11 @@ Die Lichtfarbe ist weiß, also wird der Farbton der beleuchteten Objekte unverf�
 Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive, farbige Lichtquelle an drei festen Positionen unterhalb (blau), links (grün) und rechts (rot) der Szene, von der Startposition der Kamera aus gesehen. 
 So soll es für den Benutzer leichter zu erkennen sein, welche Seite der Objekte in Bezug auf die Ausgangsposition nach unten, links beziehungsweise nach rechts zeigt. 
 
-Die von der :ref:`render-bibliothek` bereitgestellten Lichtquellen nach dem Phong-Lichtmodell sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
+Die von der :ref:`render-bibliothek` bereitgestellten Lichtquellen nach dem Phong-Lichtmodell :cite:`phong_illumination_1975` sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
 
 Für die Visualisierung von 3D-Graphmodellen stellt sich die Frage, wie die Lichtparameter am besten gewählt werden sollten, um eine möglichst hohe Lesbarkeit und eine gute Orientierung im Raum zu ermöglichen.
 
-Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beiträge unterschieden. 
+Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beiträge unterschieden :cite:`akenine-moller_real-time_2008`.
 
 Der Hauptanteil des reflektierten Lichts wird im Normalfall vom *diffuse*-Anteil beigesteuert, welcher abhängig vom Winkel zur Lichtquelle ist.
 Von der Lichtquelle eher abgewandte Seiten erscheinen daher dunkel, was sich ungünstig auf die Erkennbarkeit von Informationen auswirken kann.
@@ -341,9 +341,7 @@ Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachte
 Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jedoch kann dies auch scheitern, wenn Objekte unterschiedlich groß sein dürfen, wie es momentan der Fall ist. 
 Die Skalierung von Modellelementen allerdings komplett zu verbieten ist wohl auch unpraktikabel.
 
-Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie und Schatten.
-
-Die Nutzung von stereoskopischer Darstellung und Bewegungsparallaxe für die Darstellung von Graphen wurde in :ref:`ware-graphs` vorgestellt.
+Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie (:ref:`siehe <ware-graphs>`) und Schatten.
 
 Der Bewegungsparallaxen-Effekt lässt sich durch seitliche Bewegung des Benutzers in der Szene erzeugen und gibt einen Eindruck davon, wie weit Objekte von diesem entfernt sind.
 
@@ -357,9 +355,9 @@ Konfigurationsmöglichkeiten oder eine "intelligente" Schattenberechnung, die we
 Voll immersive virtuelle Welten
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Eine weitere Entwicklungsmöglichkeit wäre es, voll immersive virtuelle Welten zu nutzen wie es in :ref:`in<halpin-social-net>` gezeigt wurde. 
+Eine weitere Entwicklungsmöglichkeit wäre es, :ref:`voll immersive virtuelle Welten <halpin-social-net>` zu nutzen.
 Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt werden soll.
-Besonders Anzeigen mit hoher Auflösung könnten Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen, wie :ref:`in<ware-graphs>` angemerkt wurde.
+Besonders Anzeigen mit hoher Auflösung könnten Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen (:ref:`siehe <ware-graphs>`).
 
 Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und ein System für die "breite Masse" bereitzustellen.
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
@@ -367,7 +365,7 @@ Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in
 Verdeckung
 ^^^^^^^^^^
 
-Problematisch ist die in 3D-Visualisierungen auftretende Verdeckung von Informationen durch andere Modellelemente, wie schon :ref:`in <ross-brown>` zu sehen war.
+Problematisch ist die in 3D-Visualisierungen auftretende Verdeckung von Informationen durch andere Modellelemente, wie schon bei dem von :ref:`Brown <ross-brown>` vorgestellten 3D-Prozesseditor zu sehen war.
 Ist ein Element verdeckt, kann im Prototypen einfach die Betrachterposition verändert werden. 
 Allgemein sollten Modelle aber so erstellt werden, dass aus "üblichen" Betrachtungsrichtungen möglichst wenig Verdeckung auftritt, um sich nicht ständig hin- und herbewegen zu müssen.
 
@@ -375,7 +373,7 @@ Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen
 
 Interessant wäre es auch, die Durchsichtigkeit von verdeckenden Elementen automatisch zu beeinflussen wie es unter dem Stichwort "dynamic transparency" von :cite:`elmqvist_dynamic_2009` vorgestellt wird.
 Objekte würden nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation eingeteilt. 
-Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent\ [#f2]_ dargestellt falls sie wichtige ("targets") Objekte verdecken.
+Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent\ [#f2]_ dargestellt falls sie wichtige Objekte ("targets") verdecken.
 
 So könnte durch den Benutzer beispielsweise festgelegt werden, dass aktuell "Datenknoten" besonders wichtig sind und nicht verdeckt werden dürfen.
 
@@ -386,7 +384,7 @@ Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen
 Dies zeigte sich auch bei den Versuchen mit den Prototypen.
 Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
 
-Wie unter :ref:`kanten` gezeigt werden gerichtete Kanten durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt. 
+Gerichtete Kanten werden durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt (siehe :ref:`kanten`). 
 Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung zu großen Teilen durch andere Objekte verdeckt wird.   
 
 Der Ansatz, die Richtung durch eine dreidimensionale Pfeilspitze darzustellen, leidet unter dem Problem der Verdeckung. 

@@ -42,41 +42,44 @@ Um die Effektivität von 3D-Visualisierung für die Prozessmodellierung zu beurt
 Zielsetzung und Aufbau dieser Arbeit
 ====================================
 
-Da es kaum Möglichkeiten gibt, die Effektivität von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem *i>PM3D*-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
+Da es kaum Möglichkeiten gibt, die Effektivität von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem i>PM3D-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
 Das Projekt basiert auf :ref:`simulatorx`, einer Plattform für eine modulare, komponentenbasierte Realisierung von Anwendungen aus dem Bereich der 3D-Computergrafik.
 
 Ein detaillierter Überblick über das Gesamtprojekt wird später in :ref:`dieser Arbeit<ipm3d>` gegeben.
 
-Die vorliegende Arbeit beschäftigt sich im Rahmen des Projekts mit der Konzeption und Realisierung der "Repräsentation" der Prozessmodelle im Modellierungswerkzeug.
+Die vorliegende Arbeit beschäftigt sich im Rahmen des Projekts mit der Konzeption und Realisierung der **Repräsentation** der Prozessmodelle im Modellierungswerkzeug.
 Repräsentation bezieht sich hier sowohl auf die Visualisierung der Prozessmodelle als auch auf die interne Darstellung der Modelle und deren physische Speicherung (auf Datenträgern). 
 
-Um das Experimentieren mit der Visualisierung einfach zu machen und die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen, werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten Metamodellen beschrieben, wie es schon durch das in :cite:`roth_konzeption_2011` entwickelte (MDF) :ref:`Model Designer Framework<mdf>` für 2D-Modelleditoren umgesetzt wird. 
+Um das Experimentieren mit der Visualisierung einfach zu machen und die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen, werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten **Metamodellen** beschrieben, wie es schon durch das in :cite:`roth_konzeption_2011` entwickelte (MDF) :ref:`Model Designer Framework<mdf>` für 2D-Modelleditoren umgesetzt wird. 
 So lassen sich auch gänzlich neue Elemente und dazugehörige grafische Objekte hinzufügen.
-Die Modell-Hierarchie von *i>PM3D* wird in :ref:`dieser Arbeit<modellhierarchie>` vorgestellt.
+Die Modell-Hierarchie von i>PM3D wird in :ref:`dieser Arbeit<modellhierarchie>` vorgestellt.
 
-Prinzipiell lässt sich *i>PM3D* durch diese Anpassbarkeit nicht nur für die Modellierung von Prozessen sondern auch für ähnliche Anwendungsdomänen einsetzen. 
+Prinzipiell lässt sich i>PM3D durch diese Anpassbarkeit nicht nur für die Modellierung von Prozessen sondern auch für ähnliche Anwendungsdomänen einsetzen. 
 Der Fokus liegt hier allerdings speziell auf der Modellierung nach dem Prinzip der :ref:`perspektivenorientierten Prozessmodellierung<popm>` und dem damit assoziierten :ref:`tvk`.
 So wird ein Metamodell für diese Domäne und deren Visualisierung nach einem graphbasierten Ansatz :ref:`bereitgestellt<metamodelle>`. 
-Zusammen beschreiben diese Metamodelle einen *Prozessmodell-Editor*, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt (siehe :ref:`visualisierung`).
+Zusammen beschreiben diese Metamodelle einen **Prozessmodell-Editor**, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt (siehe :ref:`visualisierung`).
 
 Für den Zugriff auf die interne Repräsentation der Modelle muss eine Schnittstelle bereitgestellt werden, über die andere Komponenten der Anwendung Parameter zur Laufzeit verändern können, welche die grafische Repräsentation oder das Prozessmodellelement selbst (bspw. die Funktion eines Prozessknotens) betreffen.
 Ebenfalls werden für ein Modellierungswerkzeug übliche Funktionen wie das Neuerstellen, Laden und Speichern von Modellen (aus einer textuellen Repräsentation) angeboten.
-Diese sog. :ref:`Modellanbindung` nutzt hierbei die von *Simulator X* bereitgestellten Möglichkeiten zur Kommunikation zwischen den Komponenten der Anwendung.
+Diese sog. :ref:`Modellanbindung` nutzt hierbei die von Simulator X bereitgestellten Möglichkeiten zur Kommunikation zwischen den Komponenten der Anwendung.
 
-Für die Realisierung der 3D-Visualisierung, insbesondere für das leichte Hinzufügen von neuen grafischen Modellobjekten und die Realisierung von speziell für einen Modelleditor benötigten :ref:`grafischen Effekte<visualisierung>` stand keine geeignete Plattform zur Verfügung. 
-Daher wurde auf Basis von OpenGL eine :ref:`render-bibliothek` und eine darauf aufbauende :ref:`renderkomponente` für *Simulator X* erstellt, die auf die Anforderungen der Arbeit zugeschnitten, aber möglichst allgemein gehalten und erweiterbar sind.
+Für die Implementierung der 3D-Visualisierung, insbesondere für das leichte Hinzufügen von neuen grafischen Modellobjekten und die Realisierung von speziell für einen Modelleditor benötigten :ref:`grafischen Effekte<visualisierung>` stand keine geeignete Plattform zur Verfügung. 
+Daher wurde auf Basis von OpenGL eine :ref:`render-bibliothek` und eine darauf aufbauende :ref:`renderkomponente` für Simulator X erstellt, die auf die Anforderungen der Arbeit zugeschnitten, aber möglichst allgemein gehalten und erweiterbar sind.
+
+.. _anforderungen:
 
 Funktionale Anforderungen
 =========================
 
-Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den *i>PM3D*-Prototypen realisiert:
+Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den i>PM3DPrototypen realisiert:
 
     (a) Beschreibung der verwendeten Modellierungssprache durch Metamodelle
     (b) Modellierung von Prozessen mit einer grafischen Modellierungssprache nach einem graphbasierten Ansatz
     (c) Möglichkeit, bestehende Modellkonstrukte und deren Visualisierung zu verändern sowie neue Modellelemente hinzuzufügen
-    (d) Anbindung der Modelle an die *Simulator X*-Anwendung und Bereitstellung von Manipulationsmöglichkeiten an Modellelementen und deren Visualisierung
+    (d) Anbindung der Modelle an die Simulator X-Anwendung und Bereitstellung von Manipulationsmöglichkeiten an Modellelementen und deren Visualisierung
     (e) Erstellen, Laden und Speichern von Modellen in textueller Form
     (f) Bereitstellung von Grafikeffekten für einen Modelleditor: Darstellung von Text und 2D-Grafiken auf Modellfiguren; Visualisierung von selektierten, hervorgehobenen und deaktivierten Modellelementen
+    (g) Anzeige von textuellen Attributen aus dem Prozessmodell auf den Modellfiguren
 
 
 .. [#f1] WIMP steht für "Windows, Icons, Menus, Pointer. Grafische Benutzeroberflächen, die auf die Nutzung mit anderen Eingabegeräte als Tastatur und Maus ausgelegt sind, werden auch als "Post-WIMP-Interfaces" bezeichnet. :cite:`van_dam_post-wimp_1997`

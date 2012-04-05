@@ -5,6 +5,7 @@ Bla
 .. toctree::
     :maxdepth: 3
 
+    zusammenfassung-latex
     abbildungsverzeichnis
     einleitung
     grundlagen

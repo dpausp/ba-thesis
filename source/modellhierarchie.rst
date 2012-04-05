@@ -4,7 +4,7 @@
 Modellhierarchie
 ****************
 
-Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`) war diese Flexibilität auch für das vorliegende Arbeit erwünscht. 
+Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`) war diese Flexibilität auch für das vorliegende Arbeit erwünscht (:ref:`Anforderung (a,c) <anforderungen>`). 
 
 Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
@@ -127,7 +127,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein (vorgegeben durch
     * package ``connectionFigures`` definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
     * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte". Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
 
-Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird.
+Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird (:ref:`Anforderung (b) <anforderungen>`).
 Zusammen bilden diese Packages den in der :num:`Abbildung #modellhierarchie-diagram` gezeigten *Editor-Definition-Level*. 
 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, welche von Concepts aus den obigen Packages referenziert werden. 

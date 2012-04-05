@@ -4,7 +4,7 @@
 Einordnung in das Gesamtprojekt I>PM3D
 **************************************
 
-Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Projekts entstanden. Das Ziel des Projektes ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
+Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Projekts entstanden. Das Ziel des Projekts ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
 
 .. _ipm3d-uebersicht:
 
@@ -63,9 +63,7 @@ GUI
 Dem Benutzer wird das 3D-Prozessdiagramm in einer interaktiven Umgebung präsentiert, die das Erstellen, Bearbeiten und Löschen von Elementen erlaubt.
 
 Die verschiedenen Funktionen des Prozessmodellierungswerkzeugs wie das Erstellen von Modellelementen und das Laden von Modellen lassen sich durch grafische Menüs aktivieren, die über der 3D-Szene gezeichnet werden und die an das Bedienkonzept verbreiteter 2D-Anwendungen mit grafischer Oberfläche angelehnt sind. 
-
 Für das Erstellen von neuen Knoten und Szenenobjekten wird ein Menü, im Folgenden auch als "Palette" bezeichnet, bereitgestellt, über welches die zur Verfügung stehenden Objekte durch einen Klick auf eine Schaltfläche erzeugt werden können.
-
 Attribute der Modellelemente, die entweder die Visualisierung selbst oder das damit verbundene Element des Prozessmodells betreffen werden können einem in einem Menü angezeigt und bearbeitet werden.
 
 Die Menüs werden in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` als GUI zusammengefasst.
@@ -104,6 +102,8 @@ In den beiden folgenden Abschnitten wird zusammengefasst, welche Änderungen am 
 .. figure:: _static/diags/ipm3d-simulatorx.png
 
    Architektur von I>PM3D, aufbauend auf Simulator X
+
+.. _mod-simx:
 
 Modifikationen an Simulator X
 -----------------------------

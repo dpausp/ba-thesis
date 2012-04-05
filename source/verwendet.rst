@@ -190,10 +190,11 @@ Zur Anbindung an OpenGL wird die Java-Bibliothek LWJGL (Lightweight Java Gaming 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
 
 Hier sollen nur einige wenige Hinweise zu "modernem" OpenGL (ab Version 3.0) und den in späteren Kapiteln benutzten Begriffen gegeben werden. 
-Näheres kann in :cite:`wright_opengl_2010` oder unter :cite:`www:opengl` nachgelesen werden.
+Näheres kann in :cite:`wright_opengl_2010` oder unter :cite:`opengl` nachgelesen werden. 
+Allgemeines zu Begriffen aus der 3D-Computergrafik findet sich bei :cite:`akenine-moller_real-time_2008`.
 
 In älteren OpenGL-Versionen (1.x) wurden von OpenGL viele, fest eingebaute Funktionen wie die Berechnung der Beleuchtung und Texturierung bereitgestellt, die nur aktiviert und konfiguriert werden mussten. 
-Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* in Verbindung gebracht.
+Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* :cite:`akenine-moller_real-time_2008` in Verbindung gebracht.
 
 Mit Version 3.0 wurden viele dieser Funktionen aus dem Kern von OpenGL entfernt. In neueren Versionen müssen die Berechnungen durch den Programmierer selbst in *Shadern* implementiert werden. 
 
@@ -202,7 +203,7 @@ Diese Möglichkeit wurde in dieser Arbeit für einige "Spezialeffekte" genutzt, 
 
 Bei **Shadern** handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sog. *Shader-Einheiten* ausgeführt werden.
 Code kann in GLSL in Funktionen ausgelagert und so in mehreren Shadern genutzt werden.
-Shader erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Render-Pipeline :cite:`www:glpipe`.
+Shader erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen innerhalb der Render-Pipeline :cite:`www:glpipe` :cite:`akenine-moller_real-time_2008`.
 
 In OpenGL 4 werden folgende Typen unterstützt:
 

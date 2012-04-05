@@ -1,9 +1,10 @@
-Prozessmanagement ist eine etablierte Technik, welche von Unternehmen dazu genutzt wird, geschäftliche Abläufe zu planen, zu analysieren und weiter zu optimieren. Dabei spielen graphische Prozessmodellierungssprachen und Visualisierungen eine große Rolle, um Zusammenhänge aufzuzeigen, Sachverhalte zu verdeutlichen und die Kommunikation zwischen Stakeholdern zu vereinfachen. Übliche Werkzeuge zur Modellierung benutzen hierfür grafische Notationen wie zum Beispiel BPMN, welche aber bisher nur zweidimensionale Grafik für die Darstellung von Prozesselementen nutzen. 
+Prozessmodellierung ist eine etablierte Technik, welche von Unternehmen dazu genutzt wird, geschäftliche Abläufe zu planen, zu analysieren und weiter zu optimieren. 
+Dafür eingesetzte Softwarewerkzeuge nutzen üblicherweise grafische 2D-Notationen zur Darstellung von Prozessdiagrammen.
 
-3D-Prozessvisualisierungen wurden bisher nur relativ wenig untersucht. Insbesondere fehlt es an benutzbaren interaktiven Systemen zur 3D-Prozessmodellierung, was durch die höhere Komplexität im Vergleich zu 2D-Anwendungen und mangelnde technische Möglichkeiten bedingt wird.
+3D-Prozessvisualisierungen wurden bislang nur relativ wenig untersucht. Insbesondere fehlt es an benutzbaren interaktiven Systemen zur 3D-Prozessmodellierung.
 
-Mit der ständigen Weiterentwicklung der Computergrafik hin zu fotorealistischen Darstellungen in hohen Auflösungen sowie der Verfügbarkeit von erschwinglichen, neuartigen 3D-Eingabegeräten könnte dieses Thema mehr in den Vordergrund rücken.
-Dreidimensionale Visualisierungen bieten eine Reihe von möglichen Vorteilen bei der Darstellung von komplexen strukturierten Daten, bringen allerdings auch neue Herausforderungen und Probleme mit sich.
+Das Projekt i>PM3D umfasst die prototypische Entwicklung eines flexiblen 3D-Modellierungswerkzeugs für die perspektivenorientierte Prozessmodellierung, welches auch neuartige (3D-)Eingabegeräte wie die Microsoft Kinect oder Nintendo Wii nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
 
-Im Rahmen dieser Arbeit entstand ein Konzept zur Visualisierung von Prozessmodellen im dreidimensionalen Raum sowie zur Anbindung an eine multimodale 3D-Simulationsumgebung. Darauf aufbauend wurde eine prototypische Implementierung erstellt, die erste Hinweise auf die Vor- und Nachteile von 3D-Prozessmodellen geben und als Basis für weitere Entwicklungen in dieser Richtung dienen soll.
-
+Gegenstand dieser Arbeit ist die Konzeption und Realisierung der Visualisierung von Prozessen in i>PM 3D sowie der internen Repräsentation der Modelle, welche in einer textuellen Form persistiert und wieder geladen werden kann. 
+Die verwendete grafische Modellierungssprache wird über modifizierbare Metamodelle beschrieben und ist daher an spezielle Anforderungen anpassbar.
+Im Rahmen dieser Arbeit entstand eine Render-Bibliothek auf Basis von OpenGL, welche auf die Erfordernisse der Prozessvisualisierung in i>PM 3D zugeschnitten ist, aber auch für andere Computergrafikanwendungen verwendet werden kann.
