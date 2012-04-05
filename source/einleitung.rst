@@ -2,28 +2,40 @@
 Einleitung
 **********
 
-Daneben gab es in der Computergrafik in den letzten (beiden) Jahrzehnten eine bemerkenswerte Entwicklung der Möglichkeiten von Hardware und Software in Sachen dreidimensionaler Darstellung.
-3D-Grafikanwendungen, die früher nur mit sehr großen Aufwand und finanziellem Einsatz realisierbar waren, sind heute selbst in Echtzeit für handelsübliche PCs verfügbar. Auffällig und für jeden sichtbar ist dieser Fortschritt vor allem in der Computerspielebranche. 
+In der Computergrafik gab es in den letzten Jahrzehnten eine bemerkenswerte Entwicklung der Möglichkeiten von Hardware und Software.
+Interaktive 3D-Grafikanwendungen, die früher nur mit sehr großen Aufwand und finanziellem Einsatz realisierbar waren, sind heute für handelsübliche PCs verfügbar. 
+Besonders deutlich wird diese Entwicklung im Bereich der Computerspiele, die es heute dem Spieler erlauben, in eine nahezu fotorealistische Darstellung der realen Welt einzutauchen und mit 3D-Objekten zu interagieren.
+Außer mit den seit Jahrzehnten verbreiteten Eingabegeräten Tastatur und Maus lassen sich Spiele mittlerweile auch mit neuartigen Eingabegeräten – wie der Nintendo Wii oder Microsoft Kinect – bedienen. 
+So lassen sich Bewegungen des Benutzers direkt in den dreidimensionalen Raum übertragen, womit eine natürliche Interaktion mit der virtuellen Welt ermöglicht wird. 
 
-Neben den klassischen Desktop-Anwendungen gibt es mittlerweile auch Techniken, um in die virtuelle Welt vollständig einzutauchen und auf natürliche Weise mit nicht-realen Objekten zu interagieren. Diese immersiven 3D-Anwendungen, oft als "CAVE" bezeichnet werden neben Spielanwendungen auch für die gegenständliche Modellierung in der Industrie, zum Beispiel zum virtuellen Konstruieren eingesetzt ("virtuelle Werkstatt").
+Auch in "ernsthaften" Anwendungen werden die Möglichkeiten der 3D-Computergrafik genutzt. Beispielsweise werden in der Bioinformatik Werkzeuge wie *Pymol* :cite:`pymol`  eingesetzt, welche eine Visualisierung von dreidimensionalen Strukturen ermöglichen, welche entscheidend für die Funktion von Biomolekülen sind. Durch Interaktion per Tastatur und Maus lässt sich das Molekül aus verschiedenen Perspektiven betrachten.
+Das vollständige Eintauchen in eine 3D-Szene und die Interaktion durch Körperbewegungen oder auch Sprache wird von Werkzeugen zur virtuellen Konstruktion gezeigt ("virtuelle Werkstatt") :cite:`lato`. 
+So lässt sich beispielsweise ein rein virtuelles Auto in einer realistischen Darstellung betrachten und sogar "anfassen".
 
-Prozessmanagement ist heute in vielen Unternehmen und anderen Einrichtungen im Einsatz um Geschäftsprozesse zu planen, zu dokumentieren und Möglichkeiten zu finden, um Abläufe zu optimieren. Visualisierungstechniken spielen hierbei eine große Rolle, da Prozesse nicht nur von Rechnern, sondern auch von Menschen verstanden werden sollen. Prozessmodelle werden zur Kommunikation von Sachverhalten eingesetzt, wobei die Beteiligten oft keine ausgebildeten Experten für Prozessmodellierung oder Programmierer sind. Das macht eine besonders intuitive und verständliche Art der Darstellung nötig. 
+In diesen beiden Fällen sind die Vorteile einer dreidimensionalen Darstellung offensichtlich, da hier Objekte aus der realen Welt abgebildet werden, die prinzipiell dreidimensional sind.
 
-Für diesen Einsatzzweck gibt es beispielsweise die standardisierte, grafische Modellierungssprache BPMN, die Prozesse in einer recht abstrakten Form mit Hilfe von einfachen geometrischen Figuren in 2D-Diagrammen darstellen. 
+Die vorliegende Arbeit beschäftigt sich jedoch vorrangig mit der Modellierung von Prozessen, welche zum Ziel hat, (Geschäfts-)Abläufe und zugehörige Informationen in einer abstrahierten Form darzustellen. 
+Prozessmodelle dienen unter anderem zur Kommunikation zwischen am Prozess beteiligten Personen ("Stakeholder"), für die die Darstellung leicht verständlich und informativ sein sollte.
+Hierbei ist es weniger deutlich, welche Vorteile eine dreidimensionale Visualisierung hätte und wie diese Darstellung überhaupt aussehen könnte.
+Prozessmodellierungswerkzeuge, wie bespielsweise ARIS oder das später gezeigte i>PM2 :cite:`roth_konzeption_2011` werden, nutzen bisher ausschließlich 2D-Darstellungen. 
+Das Bedienkonzept dieser Anwendungen, folgt den Standards der seit drei bis vier Jahrzehnten üblichen Desktopprogramme, welche mit Tastatur und Maus bedient werden und eine zweidimensionale grafische Benutzeroberfläche anbieten (auch "WIMP" genannt[#f1]_).
 
-Implementiert werden die genannten Modellierungssprachen durch verschiedene Programme, die den Standards der seit drei bis vier Jahrzehnten üblichen Desktopprogramme (auch "WIMP" genannt[#f1]_) folgen und mit Maus und Tastatur bedient und mit üblichen GUI-Elementen dargestellt werden.
+Der Einsatz der dritten Dimension für die Repräsentation von Prozessen wurde jedoch schon vereinzelt untersucht, beispielsweise wird von :cite:`betz` gezeigt, wie sich dies für die Visualisierung von Beziehungen zwischen mehreren Modellen oder zur Darstellung von hierarchischen Modellen sinnvoll nutzen lässt. 
+So könnten sich Vorteile zu einer 2D-Darstellung ergeben, welche beispielsweise weniger Möglichkeiten bietet, verschiedene Arten von Beziehungen zwischen Modellelementen in leicht verständlicher Form zu visualisieren :cite:`gil_three_1998`.
+Arbeiten auf dem Gebiet der Softwaremodellierung, welche in dieser Arbeit vorgestellt werden, zeigen weitere Nutzungsmöglichkeiten, die sich möglicherweise auf die Prozessmodellierung übertragen lassen. 
 
-Prozessmodelle müssen, wenn sie effektiv sein sollen von Details abstrahieren und sich auf das Wesentliche konzentrieren. Trotzdem enthalten reale Modelle eine recht große Anzahl an Elementen, was schnell den verfügbaren Platz auf dem Bildschirm belegt und beispielsweise Zoom oder seitliches Scrollen notwenig macht. Zweidimensionale Darstellungen sind hier in ihren Möglichkeiten eingeschränkt, vor allem wenn es darum geht, hierarchie Modelle oder Beziehungen zwischen verschiedenen Modellen zu visualisieren.
+Prozessmodellen enthalten oft auch Konzepte, die Entitäten aus der realen Welt vertreten, beispielsweise eine eingesetzte Maschine oder ausführende Personen. 
+In machen Fällen könnte es sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um beispielsweise abstrakte Konzepte für Benutzer anschaulicher zu machen, wie von :cite:`brown_conceptual_2010` dargestellt wird.
 
-Bisher wurden die Fortschritte in der 3D-Computervisualisierung für die Prozessmodellierung und ähnliche Gebiete noch wenig beachtet. Programme, die alle Möglichkeiten virtueller 3D-Welten für die Prozessmodellierung nutzbar machen fehlen bislang komplett. 
-
-Hierfür gibt es sicher eine Reihe von Gründen, die von fehlenden technischen Möglichkeiten (sowohl bei Hardware als auch bei Softwareentwicklungstechniken) bis hin zu Problemen bei der Vermittlung an Benutzer gehen. 3D-Anwendungen werden hin und wieder als Spielzeug gesehen, die für ernsthafte Arbeiten nicht zu gebrauchen sind, was sicher auch von technischen Unzulänglichkeiten früherer 3D-Systeme und der heutigen Verbreitung von Computerspielen herrührt.
-
+Ein ProzessmodellierungsWerkzeug, das die Möglichkeiten der modernen 3D-Computergrafik ausnutzt oder gar neuartige (3D-)Eingabegeräte unterstützt, existiert bisher nicht :cite:`brown_conceptual_2010`.
+Um die Effektivität von 3D-Visualisierung für die Prozessmodellierung zu beurteilen und verschiedene Darstellungsformen zu vergleichen wäre allerdings ein solches System sehr hilfreich.
 
 Zielsetzung dieser Arbeit
 =========================
 
-Da es kaum Möglichkeiten gibt, die Effektivität von 3D-Prozessvisualisierungen, besonders in interaktiven Anwendungen, zu evaluieren soll diese Arbeit einen Beitrag leisten, indem ein Konzept entwickelt wird, wie Prozesse im dreidimensionalen Raum repräsentiert werden können. Außerdem ist das Ziel, die Integration in ein im Aufbau befindliches 3D-Simulatorsystem, Simulator X zu leisten um den Aufbau einer interaktiven Prozessvisualisierungs- und -modellierungsumgebung möglich zu machen.
+Da es kaum Möglichkeiten gibt, die Effektivität von 3D-Prozessvisualisierungen, besonders in interaktiven Anwendungen, zu evaluieren wurde mit dem i>PM 3D-Projekt das Ziel verfolgt, einen Prototypen für ein 3D-Prozessmodellierungswerkzeug zu schaffen, welches auch neuartige Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht.
+
+
 
 Repräsentation bezieht sich hier sowohl auf die Visualisierung an sich, als auch auf die interne Darstellung der Prozessmodelle und die physische Speicherung auf Datenträgern. Da die dauerhafte Ablage eines Prozesses in Textform und das Laden solcher Darstellungen für eine Evaluation von einem Prozessmodellierungswerkzeugs unerlässlich ist, stellt dies auch einen Beitrag dieser Arbeit dar.
 
