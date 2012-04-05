@@ -6,6 +6,7 @@ Bla
     :maxdepth: 3
 
     abbildungsverzeichnis
+    einleitung
     grundlagen
     related
 ..
