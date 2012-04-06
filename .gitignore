@@ -4,3 +4,7 @@ komplett.rdf
 komplett.bib
 *.eps
 *.dia~
+*.aux
+*.log
+*.*~
+addon.pdf

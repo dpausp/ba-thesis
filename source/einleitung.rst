@@ -71,7 +71,7 @@ Daher wurde auf Basis von OpenGL eine :ref:`render-bibliothek` und eine darauf a
 Funktionale Anforderungen
 =========================
 
-Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den i>PM3DPrototypen realisiert:
+Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den i>PM3D Prototypen realisiert:
 
     (a) Beschreibung der verwendeten Modellierungssprache durch Metamodelle
     (b) Modellierung von Prozessen mit einer grafischen Modellierungssprache nach einem graphbasierten Ansatz

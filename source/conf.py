@@ -182,11 +182,12 @@ preamble_normal =  r"""
 %% \geometry{verbose,tmargin=1cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,headheight=3cm,headsep=1cm,footskip=1cm}
 
 \definecolor{TitleColor}{rgb}{0.212, 0.376, 0.569}
+\definecolor{InnerLinkColor}{rgb}{0.0, 0.0, 0.3}
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{fontspec}
 \setmainfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSerif}
-\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = 1.7]{FreeSans}
+\setsansfont[Mapping = tex-text, FakeStretch = 1.04, WordSpace = {1.2, 1.7, 1.0}]{FreeSans}
 
 \usepackage{setspace}
 \setstretch{1.2}
@@ -204,9 +205,11 @@ preamble_normal =  r"""
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 
 
+\usepackage{pdfpages}
+
 \setcounter{tocdepth}{2}
 """
-
+–
 preamble_simple = ""
 
 latex_elements = {
