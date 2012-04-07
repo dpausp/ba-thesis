@@ -18,7 +18,6 @@ Programming-Language-Mapping
 .. code-block:: java
 
 	level D3 {
-
 		package base {
 			concept ScalaMapping {
 				1..1 string scalaType;
@@ -35,7 +34,6 @@ Editor-Base-Level
 .. code-block:: java
 
 	level D2 instanceOf EMM.D3 {
-
 		package types {
 			import EMM.D3.base.ScalaMapping;
 			ScalaMapping Dimension {
@@ -96,7 +94,6 @@ Editor-Base-Level
 				scalaType = "siris.components.physics.PhysSphere";
 			}
 		}
-
 		package figures {
 			import EMM.D3.base.ScalaMapping;
 			import EMM.D2.types.*;
@@ -194,10 +191,8 @@ Editor-Definition-Level (Auszug)
 .. code-block:: java
 
     Level D1 instanceOf EMM.D2 {
-
-		package nodeFigures {
-
-			TextBox ProcessNode {
+        package nodeFigures {
+			concept ProcessNode instanceOf TextBox {
 				modelElementFQN = pointer PM.M2.processLanguage.Process;
 				displayAttrib = "function";
 				toolingAttrib = "function";
@@ -210,7 +205,7 @@ Editor-Definition-Level (Auszug)
 				rotation = NullRotation;
 			}
 
-            TextureDiamond AndConnectorNode {
+            concept AndConnectorNode instanceOf TextDiamond {
 				texture = "tex/model_textures/and_symbol.png";
 				modelElementFQN = pointer PM.M2.processLanguage.AndConnector;
 				toolingAttrib = "name";
@@ -220,10 +215,9 @@ Editor-Definition-Level (Auszug)
 				pos = DefaultPosition;
 				rotation = DiamondRot;
 			}
-
+        }
         package connectionFigures {
-
-			TexturedLine ControlFlowEdge {
+			concept ControlFlowEdge instanceOf TexturedLine {
 				toolingName = "Control Flow";
 				outboundAttrib = "outboundControlFlows";
 				inboundAttrib = "inboundControlFlows";
@@ -235,7 +229,7 @@ Editor-Definition-Level (Auszug)
 				highlightFactor = 1.7;
 			}
 
-            ColoredLine NodeDataEdge {
+            concept NodeDataEdge instanceOf ColoredLine {
 				toolingName = "Functional-Data Assoc";
 				outboundAttrib = "outboundNodeDataConnection";
 				inboundAttrib = "inboundNodeDataConnection";
@@ -246,6 +240,7 @@ Editor-Definition-Level (Auszug)
 				highlightFactor = 2.0;
 			}
         }
+    }
 
 .. _anhang_pmm:
 
@@ -256,7 +251,6 @@ Prozess-Metamodell
 
     model PMM {
         uri "model:/www.ai4.uni-bayreuth.de/ipm3d/pmm";
-
         level M2 {
             package processLanguage {
                 abstract concept Perspective {
