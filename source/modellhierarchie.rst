@@ -59,14 +59,15 @@ Außerdem werden hier Parameter spezifiziert oder gesetzt, welche die physikalis
 
 Mit "Repräsentation" ist im Folgenden die Gesamtheit dieser Parameter gemeint. 
 
-Die Verknüpfung der mit dem *Domain-Model-Stack* wird dadurch hergestellt, dass in den Concepts des *Editor-Model-Stacks*, die *Domain-Model*-Concepts repräsentieren, eine Referenz auf Letztere angegeben wird 
-(:num:`Abbildung #editor-domain-conn`).
-
+Die Verknüpfung mit dem *Domain-Model-Stack* wird hergestellt, indem in Concepts des *Editor-Model-Stacks* eine Referenz auf *Domain-Model-Stack*-Concepts angegeben wird (:num:`Abbildung #editor-domain-conn`). 
+In :num:`Abbildung #modellhierarchie-diagram` wird dies durch gestrichelte Pfeile dargestellt.
+Besagte Referenzen werden durch das Attribut ``modelElementFQN`` angegeben, welchem der vollqualizierte Name (FQN) des referenzierten Concepts zugewiesen wird. 
+Vollqualifizierte Namen entstehen nach dem Schema <Model>.<Level>.<Package>.<Concept>, beispielsweise ``EMM.D1.nodeFigures.ProcessNode``.
 
 .. _editor-domain-conn:
 
 .. figure:: _static/diags/editor-domain-conn.eps
-    :width: 16cm
+    :width: 15cm
 
     Assoziation zwischen abstraktem Modellelement und konkreter Repräsentation 
 
@@ -140,7 +141,7 @@ Editor-Usage-Model
 
 Ebenfalls auf Level ``D1`` befindet sich das *Editor-Usage-Model*, das Verwendungen, also Spezialisierungen von Concepts aus dem *Editor-Definition-Level* enthält. 
 
-Analog zum *Editor-Definition-Level* sind die Verwendungen in drei Packages eingeteilt, die hier ``nodeUsages``, ``connectionUsages`` und ``sceneryObjectsUsages`` genannt werden müssen.
+Analog zum *Editor-Definition-Level* sind die Verwendungen in drei Packages eingeteilt, die hier ``nodeUsages``, ``connectionUsages`` und ``sceneryObjectUsages`` genannt werden müssen.
 
 Zusammen ergeben diese Verwendungen die konkrete Repräsentation eines Domänenmodells.
 Diese Concepts spezifizieren hier also die Objekte, die vom Modellierungswerkzeug erstellt und auf der Zeichenfläche angezeigt werden. 
@@ -184,21 +185,28 @@ Das Prinzip wird im nächsten Kapitel bei der Vorstellung des verwendeten :ref:`
 Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur literale Datentypen unterstützt werden. 
 Concept-Attribute können im Editor nicht angezeigt oder verändert werden und werden ignoriert\ [#f3]_.
 
+.. _domain-model:
+
 Domain-Model
 ------------
 
-Das *Domain-Model* enthält das konkrete Domänenmodell, wie es im Modellierungswerkzeug durch die zugehörigen Concepts aus dem ref:`euse` visualisiert wird.
+Das *Domain-Model* enthält das konkrete Domänenmodell, wie es im Modellierungswerkzeug durch die zugehörigen Concepts aus dem :ref:`euse` visualisiert wird.
 Zusammen mit dem :ref:`euse` ergibt dies den aktuellen Zustand des angezeigten Modells, welcher persistiert und wieder geladen werden kann.
+Das *Domain-Model* muss den Level ``M1`` enthalten, auf dem die im Folgenden genannten Packages definiert sind.
 
 Für die Erzeugung von Knoten im *Domain-Model* wird immer das :ref:`tvk` verwendet. 
 
 Konkret bedeutet das hier, dass im *Domain-Meta-Model* Basis-Typ-Concepts definiert werden, zu denen ein Typ-Concept als Instanz im *Domain-Model* erzeugt werden muss. 
 Von diesen Type-Concepts kann dann eine Verwendung im *Usage-Model* erzeugt werden.
 
-Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz. Kanten sind daher direkte Instanzen von Typen aus dem *Domain-Meta-Model*.
+Die Implementierung gibt vor, dass die benutzerdefinierten Typen in einem Package mit dem Namen ``types`` abgelegt werden.
+Verwendungen davon werden im Package ``nodeUsages`` abgelegt.
+
+Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz. 
+Kanten sind daher direkte Instanzen von Typen aus dem *Domain-Meta-Model* und werden zum Package ``connections`` hinzugefügt.
 
 
-.. [#f1] Klarer Fall von Copy-And-Paste-"Wiederverwendung". ;-)
+.. [#f1] "Copy-And-Paste"
 
 .. [#f2] Im Domänenmodell sind Kanten also technisch gesehen immer "gerichtet".
 

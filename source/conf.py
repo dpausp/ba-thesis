@@ -228,9 +228,9 @@ latex_elements = {
 }
 
 latex_title = u"""
-i>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen \\\\
+i>PM 3D -- Ein Prozessmodellierungswerkzeug für drei Dimensionen \\\\
 \\vspace{1cm}
-Repräsentation von Prozessmodellen im dreidimensionalen Raum - Konzept und Implementierung
+Repräsentation von Prozessmodellen im dreidimensionalen Raum -- Konzept und Implementierung
 """
 
 # Grouping the document tree into LaTeX files. List of tuples

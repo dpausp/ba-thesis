@@ -178,7 +178,7 @@ Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen
 .. _vergleich-lmm:
 
 .. figure:: _static/diags/vergleich_lmm.eps
-    :width: 16cm
+    :width: 17cm
 
     Vergleich von objektorientierter Modellierung (links) und Metamodellierung mit Clabjects
 
@@ -210,7 +210,7 @@ Dieses Muster wird in :num:`Abbildung #concreteuseof` veranschaulicht.
 .. _concreteuseof:
 
 .. figure:: _static/diags/concreteuseof.eps
-    :width: 16cm
+    :width: 15.5cm
 
     Instanz-Spezialisierung ausgehend von ConceptD
 

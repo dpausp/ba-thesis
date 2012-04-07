@@ -87,7 +87,7 @@ Die gezeigten Attribute und Assoziationen werden von der Implementierung vorausg
 .. _ebl-figures-diag:
 
 .. figure:: _static/diags/ebl-figures.eps
-    :width: 16cm
+    :width: 17cm
 
     Hierarchie des ``figures``-Pakets
 
@@ -195,9 +195,10 @@ Die einzelnen Perspektiven sind als abstrakte Basis-Concepts definiert, die ``Pe
 .. _pmm-hierarchie:
 
 .. figure:: _static/diags/pmm-hierarchie.eps
-    :width: 16cm
+    :width: 17cm
 
     Perspektiven-Hierarchie im Prozess-Meta-Modell
+
 
 ``Node`` gehört zur funktionalen Perspektive, davon sind wiederum ``Process`` und ``FlowElement`` abgeleitet.
 ``Process`` stellt einen Prozess im Sinne der POPM dar.
@@ -218,7 +219,7 @@ Ein ``DataItem`` wird beispielsweise über eine ``NodeDataConnection`` an einen 
 .. _pmm-conn:
 
 .. figure:: _static/diags/pmm-conn.eps
-    :width: 16cm
+    :width: 17cm
 
     Die Kanten ControlFlow, NodeDataConnection und deren Assoziationen
 

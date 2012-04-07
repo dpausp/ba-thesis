@@ -313,23 +313,34 @@ Die Verbindung der SVars mit den Attributen der Drawables erfolgt über Traits, 
 Solche ``SVarSupports`` werden in Modell-Drawables eingemischt, wie im Anwendungsbeispiel im folgenden Abschnitt gezeigt wird.
 
 Diese Traits stellen eine Methode, ``connectSVars`` bereit, die von der Renderkomponente aufgerufen wird nachdem diese ein Drawable erzeugt hat.
-So werden in dieser Methode für alle vom Trait unterstützten SVars Observe-Funktionen registriert, die für jede Änderung des SVar-Wertes aufgerufen werden.
-Üblicherweise leiten diese Funktionen die neuen Werte nur an einen Setter des Drawables weiter, wie sie in den vorherigen Abschnitten gezeigt wurden.
+So werden in dieser Methode für alle vom Trait unterstützten SVars *Observe-Handler* registriert, die bei jeder Änderung des SVar-Wertes aufgerufen werden.
+Üblicherweise leiten diese Funktionen die neuen Werte an Setter des Drawables weiter, wie sie in den vorherigen Abschnitten gezeigt wurden.
 
 Für SVars, deren Typ erst zur Laufzeit bekannt ist, kann der Methode eine "Ersetzungsliste" übergeben werden.
-
 Eine solche Ersetzung ist beispielsweise für die Darstellung von Text auf Modellknoten nötig. 
-
-Im :ref:`Editor-Metamodell<ebl-figures>` wird festgelegt, welches Attribut als Text dargestellt werden soll.
-Die ModelComponent liest den Namen des Attributs aus und definiert eine Ersetzung der ``Text``-SVar durch die entsprechend benannte :ref:`Editor-Model-SVar<modellanbindung-svars>`.
-Beispielsweise wird so für einen Prozessknoten die ``model.function``-SVar mit dem Setter für den aktuellen Text verbunden.
-Aufgrund dessen wird bei jeder Änderung am ``function``-Attribut der sichtbare Text auf dem Grafikobjekt angepasst.
+Im :ref:`Editor-Metamodell<ebl-figures>` wird festgelegt, welches *Domain*-Attribut als Text dargestellt werden soll.
+Die Modellkomponente liest den Namen des Attributs aus und definiert eine Ersetzung der ``Text``-SVar durch die entsprechend benannte :ref:`Domain-Model-SVar<modellanbindung-svars>`.
+Beispielsweise wird für einen Prozessknoten die ``Text``-SVar durch die ``model.function``-SVar ersetzt. 
+Für letztere SVar wird so ein *Observe-Handler* registriert, der dem Setter für den aktuellen Text des Drawables jede Änderung an ``model.function`` weitergibt.
+Aufgrund dessen wird bei jeder Änderung an dieser SVar (bspw. durch eine Eingabe in einem Menü) der sichtbare Text auf dem Grafikobjekt angepasst.
 
 Das gleiche Prinzip wird für Visualisierungsparameter (bspw. Farben oder die Schriftart) aus dem Editor-Modell angewendet.
+:num:`Abbildung #farbe-setzen-aktivitaet` zeigt beispielhaft, wie sich eine Änderung an der Hintergrundfarbe eines Prozessknotens Benutzer auswirkt und welche Schritte vom Editor-Menü bis zur Grafikkarte durchlaufen werden.
+
+Beispiele für SVarSupports
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait ``TextDisplaySVarSupport`` angeboten.
 Im Normalfall wird dieses zusammen mit dem ``BackgroundSVarSupport`` genutzt, welches das Setzen der Hintergrundfarbe übernimmt. 
 Das Trait ``SelectionHighlightSVarSupport`` stellt die Anbindung der :ref:`Visualisierungsvarianten<erweiterung-interaction>` bereit.
+
+
+.. _farbe-setzen-aktivitaet:
+
+.. figure:: _static/diags/farbe-setzen-aktivitaet.eps
+    :width: 17cm
+
+    Ablauf bei Änderung der Hintergrundfarbe eines Prozesses durch den Benutzer
 
 
 .. _beispiel-neue-modellfigur:

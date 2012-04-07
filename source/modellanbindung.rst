@@ -95,6 +95,20 @@ Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die 
 
 Ausgehend von einem ``MModel``-Objekt kann die ``ModelComponent`` in einem Modell navigieren und es modifizieren, beispielsweise neue Concepts anlegen.
 
+:num:`Abbildung #domain-model-beispiel` zeigt beispielhaft einen Ausschnitt aus der Speicherrepräsentation des :ref:`Domain-Model-Stacks<domain-model-stack>`.
+Im Beispiel ist das Concept ``ProcessUsage`` eine Verwendung von ``ProcessA``. 
+Mit ``ProcessUsage`` ist daher eine ``MConceptReference`` assoziiert, welche die Spezialisierungsrelation zwischen den beiden Concepts repräsentiert.
+``ProcessUsage`` hat außerdem eine ausgehende Kante zu einer anderen (nicht gezeigten) Verwendung. 
+Ausgedrückt wird dies durch die Zuweisung vom Typ ``MConceptAssignment``, welche wiederum die zugehörige Kante ``SomeConn`` referenziert. 
+Die Zuweisung gehört zu einem Attribut mit dem Namen ``"outboundControlFlows"``, das im Concept ``Node`` im :ref:`pmm` definiert ist.
+
+.. _domain-model-beispiel:
+
+.. figure:: _static/diags/domain-model-beispiel.eps
+    :width: 18cm
+
+    Speicherrepräsentation eines Beispiel-Prozessmodells (Ausschnitt)
+
 Vereinfachung des Umgangs mit Modellen
 --------------------------------------
 
@@ -361,13 +375,22 @@ Die Erstellung einer ``ModelEntity`` folgt dem folgenden Schema:
 
   #. Nach Fertigstellung einer Entity wird ``newEntityConfigComplete`` aufgerufen. Die Modellkomponente fügt die Entity zu ihrer internen Repräsentation hinzu und verbindet die Domain-Model-SVars mit den Attributen im Modell. Dies heißt, dass auf der SVar eine "Observe"-Funktion registriert wird, die bei jeder Änderung des SVar-Wertes auch den Wert im dahinterliegenden Domain-Concept ändert.\ [#f11]_
 
-Der genannte Prozesse läuft auch parallel für die anderen Komponenten ab, für die Aspects in der Entity definiert sind; hier also für die Render- und gegebenenfalls die Physikkomponente.
+  #. Zum Abschluss werden Observer benachrichtigt, die auf die Erstellung von neuen Entities hören. Dies ist hier konkret die Editorkomponente, die auf diesem Weg die Entity zu ihrer internen Repräsentation hinzufügen kann.
+
+Der genannte Prozess läuft auch parallel für die anderen Komponenten ab, für die Aspects in der Entity definiert sind; hier also für die Render- und gegebenenfalls die Physikkomponente.
 
 Beim Löschen spielt sich Folgendes ab:
 
   #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die Modellkomponente den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
 
   #. Simulator X entfernt nun die Entity aus dem System und ruft dabei in der Komponente die ``removeFromLocalRep``-Methode auf. In dieser Methode sollen interne Verweise und zugehörige Daten in den Komponenten entfernt werden.
+
+.. _entity-erstellen-aktivitaet:
+
+.. figure:: _static/diags/entity-erstellen-aktivitaet.eps
+    :width: 18cm
+
+    Ablauf der Erstellung einer ModelEntity durch die Editorkomponente
 
 
 .. [#f1] Die Benennung "Usage-Model" ist eigentlich nicht ganz passend, da das :ref:`Domain-Model<modellhierarchie>` auch die vom Benutzer erstellten Knotentypen umfasst. Da diese Bezeichnungsweise in der Implementierung zu finden ist, wird diese hier ebenfalls genutzt.
@@ -378,7 +401,7 @@ Beim Löschen spielt sich Folgendes ab:
 
 .. [#f5] Es war nicht möglich, die Implementierung (auf einfachem Wege) so flexibel zu gestalten wie bei Domain-Model-SVars, was leider dazu führt, dass man keine Attribute hinzufügen kann ohne die ``ModelComponent`` anzupassen.
 
-.. [#f7] Dies ist nicht nötig, da die Auswahl von Kanten nicht unterstützt werden soll und Kollisionen mit Verbindungen eher als hinderlich gesehen wurden. Außerdem könnte eine große Anzahl von Verbindungen schnell zu Geschwindigkeitsproblemen der Simulation führen.
+.. [#f7] Dies ist nicht nötig, da die Auswahl von Kanten nicht unterstützt werden soll und Kollisionen mit Verbindungen eher als hinderlich gesehen wurden. Außerdem könnte eine große Anzahl von Verbindungen schnell zu Geschwindigkeitsproblemen der Physiksimulation führen.
 
 .. [#f8] Skalierung wurde für das Projekt hinzugefügt. Dazu wurde die Physikkomponente modifiziert und die selbstgeschriebene Renderkomponente entsprechend ausgelegt.
 
