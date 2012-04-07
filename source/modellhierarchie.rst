@@ -32,7 +32,7 @@ Nach einer kurzen Vorstellung der Modellierungssprache wird eine Übersicht übe
 .. figure:: _static/diags/modellhierarchie.eps
     :width: 16cm
 
-    Modellhierarchie in I>PM3D (angelehnt an MDF :cite:`roth_konzeption_2011`)
+    Modellhierarchie in i>PM3D (angelehnt an MDF :cite:`roth_konzeption_2011`)
 
 
 .. _lmmlight:
@@ -54,7 +54,7 @@ Im Gegensatz zu LMM lassen sich in Spezialisierungen alle Attributzuweisungen de
 Editor-Model-Stack
 ==================
 
-Der *Editor-Model-Stack* von I>PM3D enthält alle Modelle, die dafür zuständig sind, die Visualisierungsparameter eines Domänenmodells zu beschreiben. 
+Der *Editor-Model-Stack* von i>PM3D enthält alle Modelle, die dafür zuständig sind, die Visualisierungsparameter eines Domänenmodells zu beschreiben. 
 Außerdem werden hier Parameter spezifiziert oder gesetzt, welche die physikalische Repräsentation oder die für das Modellelement angebotenen Funktionalitäten im interaktiven Modellierungswerkzeug beeinflussen.
 
 Mit "Repräsentation" ist im Folgenden die Gesamtheit dieser Parameter gemeint. 
@@ -167,7 +167,7 @@ An die Struktur des Modells, also den Aufbau aus Levels und Packages, werden dur
 Durch den :ref:`edef` wurde bereits vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird.
 Passend dazu werden hier Knoten definiert, die mittels Kanten verbunden sind.
 
-In der Implementierung von I>PM3D wird angenommen, dass Knoten und Kanten über spezielle Attribute der Knoten logisch miteinander verbunden sind. 
+In der Implementierung von i>PM3D wird angenommen, dass Knoten und Kanten über spezielle Attribute der Knoten logisch miteinander verbunden sind. 
 So muss im Concept, das den Knotentyp beschreibt, jeweils ein Attribut für eingehende und ausgehende Kanten eines bestimmten Typs definiert sein. 
 Diesen Attributen werden die ein- bzw. ausgehenden Kanten durch das Modellierungswerkzeug zugewiesen.
 

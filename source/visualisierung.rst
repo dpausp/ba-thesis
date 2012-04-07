@@ -4,7 +4,7 @@
 3D-Visualisierung von Prozessen
 *******************************
 
-Im Folgenden wird die Visualisierung von Prozessen im I>PM3D-Prototypen vorgestellt, wie sie durch das im vorherigen Kapitel vorgestellte Editor-Metamodell festgelegt wird.
+Im Folgenden wird die Visualisierung von Prozessen im i>PM3D-Prototypen vorgestellt, wie sie durch das im vorherigen Kapitel vorgestellte Editor-Metamodell festgelegt wird.
 Außerdem werden durch die Implementierung vorgegebene Aspekte angesprochen, welche aber weitgehend unabhängig von der Prozessmodellierung sind.
 Dabei werden auch Hinweise gegeben, welche beim Hinzufügen von neuen Modellfiguren oder Ändern von Visualisierungsparametern beachtet werden sollten.
 
@@ -44,7 +44,7 @@ Weitere Details zur Schriftdarstellung können im Kapitel zur :ref:`Render-Bibli
 .. figure:: _static/screenshots/prozessknoten.png
     :height: 7cm
 
-    Zwei Prozessknoten; links im Ursprungszustand, rechts als angepasste Verwendung (Screenshot aus I>PM3D)
+    Zwei Prozessknoten; links im Ursprungszustand, rechts als angepasste Verwendung (Screenshot aus i>PM3D)
 
 
 Andererseits können Grafiken (Texturen) genutzt werden, um die Bedeutung eines Knotentyps zu visualisieren. 
@@ -55,7 +55,7 @@ So steht ein Pluszeichen für einen AND-Connector, wie in :num:`Abbildung #and-c
 .. figure:: _static/screenshots/and_connector.png
     :height: 7cm
 
-    AND-Connector (Screenshot aus I>PM3D)
+    AND-Connector (Screenshot aus i>PM3D)
 
 
 Blickwinkelabhängige Darstellung von Informationen
@@ -94,7 +94,7 @@ Kanten
 
 Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können, die auch gerichteter Natur sein kann.
 
-In I>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
+In i>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
 Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. 
 Dies wird durch die in :cite:`uli` beschriebene Editor-Komponente übernommen.
 
@@ -109,7 +109,7 @@ Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen D
 .. figure:: _static/screenshots/control_flow.png
     :scale: 100%
 
-    Gerichtete Kontrollflusskante (Screenshot aus I>PM3D)
+    Gerichtete Kontrollflusskante (Screenshot aus i>PM3D)
 
 
 Szenenobjekte
@@ -173,7 +173,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 .. figure:: _static/screenshots/dataitems_hervorhebung.png
     :scale: 100%
 
-    Datenknoten, normal (links) und hervorgehoben (Screenshot aus I>PM3D)
+    Datenknoten, normal (links) und hervorgehoben (Screenshot aus i>PM3D)
 
 
 .. _selektion-sc:
@@ -181,7 +181,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 .. figure:: _static/screenshots/selektierte_knoten.png
     :scale: 100%
 
-    Entscheidungsknoten und Prozess im selektierten Zustand (Screenshot aus I>PM3D)
+    Entscheidungsknoten und Prozess im selektierten Zustand (Screenshot aus i>PM3D)
 
 
 .. _deaktivierung-sc:
@@ -189,7 +189,7 @@ So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von 
 .. figure:: _static/screenshots/prozesse_deaktiviert.png
     :scale: 100%
 
-    Deaktivierter (vorne, durchsichtig) und aktivierter Prozess (Screenshot aus I>PM3D)
+    Deaktivierter (vorne, durchsichtig) und aktivierter Prozess (Screenshot aus i>PM3D)
 
 Die drei gezeigten Visualisierungsvarianten können frei kombiniert werden. 
 Damit ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
@@ -222,7 +222,7 @@ Diese Linien haben allerdings keine physikalische Bedeutung, sondern dienen nur 
 .. figure:: _static/screenshots/dummy.png
     :scale: 100%
 
-    Modellierungsfläche, grün (Screenshot aus I>PM3D)
+    Modellierungsfläche, grün (Screenshot aus i>PM3D)
 
 
 .. _beleuchtung:
@@ -269,14 +269,14 @@ Visualisierung eines Beispielsprozesses
 (schöneres Bild kommt noch)
 .. TODO
 
-:num:`Abbildung #beispielprozess-screenshot` zeigt einen in I>PM3D modellierten Prozess.
+:num:`Abbildung #beispielprozess-screenshot` zeigt einen in i>PM3D modellierten Prozess.
 
 .. _beispielprozess-screenshot:
 
 .. figure:: _static/screenshots/gesamt.png
     :height: 8cm
 
-    Beispiel für einen Prozess in I>PM3D 
+    Beispiel für einen Prozess in i>PM3D 
 
 
 .. _vis-probleme-erweiterung:

@@ -1,10 +1,10 @@
 .. _ipm3d:
 
 **************************************
-Einordnung in das Gesamtprojekt I>PM3D
+Einordnung in das Gesamtprojekt i>PM3D
 **************************************
 
-Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Projekts entstanden. Das Ziel des Projekts ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
+Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des i>PM3D-Projekts entstanden. Das Ziel des Projekts ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
 
 .. _ipm3d-uebersicht:
 
@@ -12,14 +12,14 @@ Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des I>PM3D-Pro
 ======================================
 
 Die Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` zeigt den grundsätzlichen Aufbau des Projektes. Die Bestandteile, mit denen sich die vorliegende Arbeit befasst sind darin rot hervorgehoben.
-Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchholz :cite:`buchi` und Uli Holtmann :cite:`uli` entstanden, die die übrigen Bestandteile von I>PM3D beschreiben. 
+Im Rahmen des Projekts sind ebenfalls die Bachelorarbeiten von Sebastian Buchholz :cite:`buchi` und Uli Holtmann :cite:`uli` entstanden, die die übrigen Bestandteile von i>PM3D beschreiben. 
 
 
 .. _ipm3d-konzeptionelle-uebersicht:
 
 .. figure:: _static/diags/ipm3d-uebersicht.png
 
-   Übersicht über die Bestandteile von I>PM3D
+   Übersicht über die Bestandteile von i>PM3D
 
 Im Folgenden sollen die einzelnen Projektteile kurz vorgestellt und miteinander in Beziehung gesetzt werden.
 
@@ -32,13 +32,13 @@ Visualisierung
 Eine zentrale Fragestellung bei der Realisierung eines grafischen Prozessmodellierungswerkzeugs ist, auf welche Weise Prozessmodelle visualisiert werden sollen.
 
 Elemente aus dem Prozessmodell sollen in einer für den Benutzer leicht verständlichen Art und Weise angezeigt werden, die die Möglichkeiten des dreidimensionalen Raums nutzt. Die Darstellung soll dabei an die aus 2D-Prozessmodellierungswerkzeugen bekannten grafischen Notationen angelehnt sein. 
-Prozessmodelle in I>PM3D werden in einer graphbasierten Form, also durch Knoten und damit verbundenen Kanten dargestellt. Zusätzlich zu den eigentlichen Prozessmodellelementen gibt es die Möglichkeit, beliebige 3D-Objekte anzuzeigen. Dies kann beispielsweise dafür genutzt werden, um abstrakte Konzepte mit Abbildern von realen Objekten zu illustrieren.
+Prozessmodelle in i>PM3D werden in einer graphbasierten Form, also durch Knoten und damit verbundenen Kanten dargestellt. Zusätzlich zu den eigentlichen Prozessmodellelementen gibt es die Möglichkeit, beliebige 3D-Objekte anzuzeigen. Dies kann beispielsweise dafür genutzt werden, um abstrakte Konzepte mit Abbildern von realen Objekten zu illustrieren.
 
 Wie in der Computergrafik üblich wird das Prinzip einer virtuellen Kamera benutzt, durch die der Benutzer die Szene beobachtet, oft "Egoperspektive" genannt. 
 Durch Verschieben und Rotieren der Kamera kann sich der Benutzer in der virtuellen Umgebung "bewegen" und die dargestellten Prozessdiagramme aus verschiedenen Perspektiven betrachten. 
 Knoten und Szenenobjekte sind frei drehbar um alle drei Achsen, unter Beibehaltung der Seitenverhältnisse skalierbar und können prinzipiell frei in der 3D-Szene platziert werden.
 
-Die Visualisierung von Modellen in I>PM3D wird in der vorliegenden Arbeit näher :ref:`vorgestellt<visualisierung>`.
+Die Visualisierung von Modellen in i>PM3D wird in der vorliegenden Arbeit näher :ref:`vorgestellt<visualisierung>`.
 
 Modellanbindung
 ---------------
@@ -89,10 +89,10 @@ Die Bereitstellung von neuartigen Eingabegeräten und die Aufbereitung der Einga
 Diese Beiträge sind in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` unter "Eingabegeräte" und "Eingabeaufbereitung" zu finden. 
 
 
-I>PM3D als Simulator X - Applikation
+i>PM3D als Simulator X - Applikation
 ====================================
 
-I>PM3D ist als Anwendung auf Basis von :ref:`simulatorx` konzipiert. 
+i>PM3D ist als Anwendung auf Basis von :ref:`simulatorx` konzipiert. 
 
 :num:`Abbildung #ipm3d-simulatorx` zeigt, wie die Architektur des Projekts auf den von Simulator X bereitgestellten Funktionalitäten aufbaut. 
 In den beiden folgenden Abschnitten wird zusammengefasst, welche Änderungen am Simulator-X-Basissystem vorgenommen worden sind und wie die im letzten Abschnitt dargestellten Projektteile im Kontext von *Simulator X* umgesetzt werden.
@@ -101,14 +101,14 @@ In den beiden folgenden Abschnitten wird zusammengefasst, welche Änderungen am 
 
 .. figure:: _static/diags/ipm3d-simulatorx.png
 
-   Architektur von I>PM3D, aufbauend auf Simulator X
+   Architektur von i>PM3D, aufbauend auf Simulator X
 
 .. _mod-simx:
 
 Modifikationen an Simulator X
 -----------------------------
 
-Für I>PM3D wurde die von :ref:`simulatorx` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
+Für i>PM3D wurde die von :ref:`simulatorx` bereitgestellte Physik-Komponente für spezielle Aufgaben erweitert. Die Physikengine wird für die Selektion von Modellobjekten, für die Realisierung von "Gravitationsebenen", und die Erkennung von Kollisionen zwischen Modellobjekten eingesetzt. Den Einsatz Physikkomponente und die projektspezifischen Modifikationen beschreibt :cite:`buchi`.
 
 Die ebenfalls mitgelieferte Renderkomponente, die für die grafische Ausgabe auf Basis von OpenGL zuständig ist, war für das Projekt allerdings nicht sinnvoll nutzbar. Daher wurde diese durch eine Anbindung an die im Rahmen dieser Arbeit entwickelte, flexible :ref:`render-bibliothek` ersetzt, welche die einfache Erstellung von neuen Modell-Figuren ermöglicht und die Möglichkeiten moderner OpenGL-Grafikprogrammierung nutzt.  
 Die Anbindung an *Simulator X* wird durch die in :num:`Abbildung #ipm3d-simulatorx` gezeigte :ref:`renderkomponente` geleistet.

@@ -12,7 +12,7 @@ Scala wird als "objektfunktionale" Programmiersprache charakterisiert.
 "Objektfunktional" soll die Bestrebungen ausdrücken, Aspekte aus funktionalen und objektorientierten Programmiersprachen zu einer flexiblen und effektiven Programmiersprache zu kombinieren.
 
 Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch in der Lage ist, CIL-Code für die .NET-Runtime zu erzeugen. 
-I>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
+i>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
 
 Die "objektorientierte Facette" Scalas orientiert sich an den Konzepten von Java, bietet aber einige Erweiterungen.
 
@@ -140,7 +140,7 @@ Simulator X
 *Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` ist ein Prototyp einer neuartigen Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
 Der Fokus liegt hierbei auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung.
 
-Dies macht Simulator X zu einer gut geeigneten Plattform für den I>PM3D-Prototypen.
+Dies macht Simulator X zu einer gut geeigneten Plattform für den i>PM3D-Prototypen.
 
 *Simulator X* setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
 
@@ -184,7 +184,7 @@ Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe von I>PM3D zu realisieren, wird die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
+Um die Grafikausgabe von i>PM3D zu realisieren, wird die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
 
 Zur Anbindung an OpenGL wird die Java-Bibliothek LWJGL (Lightweight Java Gaming Library) :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.
@@ -259,7 +259,7 @@ In folgendem Beispiel wird ein Template erstellt, welches die :ref:`LMM-Zuweisun
 Simplex3D-Math
 --------------
 
-Im I>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www:simplex3d` genutzt. 
+Im i>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www:simplex3d` genutzt. 
 
 Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
 

@@ -167,7 +167,7 @@ Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt.
 
 Daher muss für ``ColladaSceneryObjects`` im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
 
-Näheres zur COLLADA-Unterstützung in I>PM3D lässt sich bei :cite:`uli` nachlesen.
+Näheres zur COLLADA-Unterstützung in i>PM3D lässt sich bei :cite:`uli` nachlesen.
 
 .. _edl:
 

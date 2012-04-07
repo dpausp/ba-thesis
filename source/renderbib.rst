@@ -127,7 +127,7 @@ Drawables stellen im Normalfall eine Schnittstelle für die Anwendung bereit, ü
 So könnte eine Transformation, die für ein bewegliches Objekt eingesetzt wird, einen Setter bereitstellen, der das Verändern der aktuellen Position erlaubt.
 
 Die Render-Bibliothek stellt eine Reihe von Implementierungen dieser Traits zur Verfügung. 
-Diese sind zwar auf die Bedürfnisse des I>PM3D-Projekts abgestimmt, aber möglichst allgemein gehalten und damit wiederverwendbar.
+Diese sind zwar auf die Bedürfnisse des i>PM3D-Projekts abgestimmt, aber möglichst allgemein gehalten und damit wiederverwendbar.
 
 Sinnvollerweise werden Drawables erstellt, indem Traits zusammengemischt werden, die die genannten Basis-Traits ``Mesh``, ``Transformation`` und ``Effect`` implementieren.
 So kann mit diesem Konzept beispielsweise ein Würfel definiert werden, indem eine entsprechende ``Mesh``-Implementierung erstellt wird.
@@ -227,7 +227,7 @@ Optional kann direkt eine .jar-Datei erstellt werden.
 Am Ende des Kapitels wird im Anwendungsbeispiel die Nutzung des COLLADA2Scala-Compilers demonstriert.
 
 
-Spezielle Erweiterungen für I>PM3D
+Spezielle Erweiterungen für i>PM3D
 ==================================
 
 In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden (:ref:`Anforderung (f) <anforderungen>`).
@@ -303,7 +303,7 @@ Die Skalieroperationen werden von einer Shaderfunktion realisiert.
 Um auch bei größeren Entferungen von der Kamera und kleiner Schrift noch eine angemessene Lesbarkeit zu erreichen kann Mipmapping genutzt werden, das auch von der Render-Bibliothek unterstützt wird. 
 Aufgrund von Problemen mit verschiedenen Grafikkarten, die für das Projekt getestet wurden, ist dies standardmäßig jedoch nicht aktiviert.
 
-SVarSupport - Einbindung der Modell-Drawables in I>PM3D
+SVarSupport - Einbindung der Modell-Drawables in i>PM3D
 -------------------------------------------------------
 
 Visualisierungsparameter der Modellelemente werden über die ``ModelComponent`` bereitgestellte :ref:`SVars<modellanbindung-svars>` gesetzt. 

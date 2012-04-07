@@ -1,6 +1,6 @@
-************************************************
-Anhang B: Systemanforderungen und Inhalt der DVD
-************************************************
+**************************************
+Systemanforderungen und Inhalt der DVD
+**************************************
 
 Systemanforderungen
 ===================

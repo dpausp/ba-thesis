@@ -1,6 +1,7 @@
 .. raw:: latex
     
-    \printbibheading
-    \printbibliography[nottype=online,heading=subbibliography,title={Literatur}]
-    \printbibliography[type=online,heading=subbibliography,title={WWW-Quellen}]
+    \printbibheading[heading=bibintoc, title={Literaturverzeichnis}]
+    \printbibliography[nottype=online,heading=subbibintoc,title={Literatur}]
+    \printbibliography[type=online,heading=subbibintoc,title={WWW-Referenzen}]
+
 

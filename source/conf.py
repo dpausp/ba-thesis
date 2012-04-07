@@ -200,7 +200,7 @@ preamble_normal =  r"""
 \usepackage[style=alphabetic,backend=biber]{biblatex}
 \addbibresource{links.bib}
 \addbibresource{ai4.bib}
-\addbibresource{komplett.bib}
+\addbibresource{komplett2.bib}
 
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt} 
@@ -209,7 +209,7 @@ preamble_normal =  r"""
 
 \setcounter{tocdepth}{2}
 """
-–
+
 preamble_simple = ""
 
 latex_elements = {

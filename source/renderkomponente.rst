@@ -4,7 +4,7 @@
 Render-Komponente
 *****************
 
-In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für I>PM3D bereitstellt.
+In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für i>PM3D bereitstellt.
 Von dieser Komponente wird die im Rahmen dieser Arbeit entstandene :ref:`render-bibliothek` an Simulator X angebunden.
 
 Damit wird die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.

@@ -34,12 +34,12 @@ Außerdem wäre es sehr hilfreich, beispielsweise durch einen Doppelklick auf ei
 Verschiedene Modelltypen anzeigen und verknüpfen zu können, wäre wohl eine weitere lohnende Entwicklungsmöglichkeit. 
 Dazu müsste die gleichzeitige Verwendung von mehreren Metamodellen durch die Editorkomponente unterstützt werden (:ref:`siehe<laden-metamodelle>`).
 
-Da am Lehrstuhl, an dem dieses Projekt entstanden ist, ebenfalls die umfangreiche Metamodellierungsumgebung OMME entwickelt wird, wäre eine Integration von I>PM3D in diese überlegenswert. 
+Da am Lehrstuhl, an dem dieses Projekt entstanden ist, ebenfalls die umfangreiche Metamodellierungsumgebung OMME entwickelt wird, wäre eine Integration von i>PM3D in diese überlegenswert. 
 Für die Realisierung des Prototypen wurden schon Prinzipien aus OMME wie die Austauschbarkeit und Separation der Metamodelle für Editor und Modellierungsdomäne sowie die Spezialisierung von Instanzen genutzt. 
 Um die Flexibilität weiter zu erhöhen sollte nach dem Vorbild von MDF die Spezifikation der grafischen Repräsentation vom Editor-Modell getrennt werden.
 
 Vielversprechend könnten auch Kombinationen von 3D und 2D-Visualisierungen sein, um die Vorteile aus beiden "Welten" nutzen zu können. 
-Dies könnte durch die Integration von 2D-Elementen in I>PM3D realisiert werden. 
+Dies könnte durch die Integration von 2D-Elementen in i>PM3D realisiert werden. 
 Außerdem wäre es technisch möglich, i>PM3D auf Basis von *Simulator X* in die Eclipse-Plattform zu integrieren. 
 Damit könnten 3D-Editoren neben mit MDF spezifizierten 2D-Editoren in derselben Umgebung genutzt werden.
 
