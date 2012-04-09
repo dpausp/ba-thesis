@@ -5,7 +5,7 @@ Spezifikation der Metamodelle
 *****************************
 
 Nachdem im vorherigen Kapitel eine Übersicht über die von i>PM3D unterstützten Metamodelle gegeben wurde, werden hier die im Projekt verwendeten Metamodelle für Editor und Domäne sowie deren Concepts genauer vorgestellt.
-Das verwendete *Editor-Metamodell* wird im Folgenden mit **EMM** bezeichnet, das Domain-Meta-Model mit **PMM**.
+Das verwendete Editor-Metamodell wird im Folgenden mit **EMM** bezeichnet, das Domain-Metamodell mit **PMM** (Prozess-Metamodell).
 Vollqualifizierte Namen (FQN) von Levels setzen sich aus dem Modellnamen und dem Levelnamen zusammen, getrennt durch einen Punkt. 
 FQNs für Packages und Concepts entstehen, indem deren Namen in der gleichen Weise angehängt werden.
 
@@ -132,7 +132,7 @@ Wie in :ref:`ipm3d-gui` erwähnt, sollen verfügbare Knotentypen in einem Menü 
 Daher müssen alle ``Nodes`` folgende Attribute setzen:
 
   * ``toolingAttrib``: Legt fest, welches (String)-Attribut aus dem *Domain*-Concept zur Identifikation des ``Node``-Typs in einer Palette angezeigt werden soll.
-  * ``toolingTitle``: Hierdurch wird angegeben, unter welcher "Überschrift" ein ``Node``-Typ in einer Palette einsortiert werden soll. 
+  * ``toolingTitle``: Hierdurch wird angegeben, unter welcher Kategorie ein ``Node``-Typ in einer Palette einsortiert werden soll. 
     Diese "Überschriften" korrespondieren mit den Knotentypen, die im *Domain-Meta-Model* definiert werden.
 
 .. _ebl-figures-kanten:
@@ -160,14 +160,14 @@ Szenenobjekte
 Typen für Szenenobjekte werden vom Basistyp ``SceneryObject`` abgeleitet. Wie für Knoten werden Attribute für die Position, Größe und Rotation definiert.
 Wie der Typ innerhalb der grafischen Benutzeroberfläche bezeichnet werden soll wird durch das Attribut ``toolingName`` festgelegt.
 
-Für Szenenobjekte kann eine Physikrepräsentation (Typ ``PhysicsSettings``) definiert werden, falls diese nicht anderweitig festgelegt wird.
+Für Szenenobjekte kann eine physikalische Repräsentation (Typ ``PhysicsSettings``) definiert werden, falls diese nicht anderweitig festgelegt wird.
 
 Es gibt momentan nur eine Art von Szenenobjekten, das ``ColladaSceneryObject``. Über das Attribut ``modelPath`` kann ein Pfad zu einer COLLADA-Datei\ [#f7]_ angegeben werden.
 Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt. 
 
 Daher muss für ``ColladaSceneryObjects`` im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
 
-Näheres zur COLLADA-Unterstützung in i>PM3D lässt sich bei :cite:`uli` nachlesen.
+Näheres zur COLLADA-Unterstützung in i>PM3D lässt sich bei :cite:`uli` (Unterabschnitt 7.5.2) nachlesen.
 
 .. _edl:
 
@@ -333,7 +333,7 @@ So wird dem dem Werkzeug mitgeteilt, dass eingehende Verbindungen im Domänenmod
 
 .. [#f2] Quaternionen erlauben eine kompakte Darstellung von Rotationen im 3D-Raum :cite:`www:quat`.
 
-.. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
+.. [#f3] "Spekulare Farbe" ist ein Begriff, der oft im Zusammenhang mit dem Phong-Lichtmodell :cite:`illumination_1975` benutzt wird und dort für die spiegelnden Anteile des zurückgeworfenen Lichts steht.
 
 .. [#f5] Unterstützt werden PNG, JPEG, BMP und TGA
 

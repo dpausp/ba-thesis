@@ -56,6 +56,7 @@ Editor-Model-Stack
 
 Der *Editor-Model-Stack* von i>PM3D enthält alle Modelle, die dafür zuständig sind, die Visualisierungsparameter eines Domänenmodells zu beschreiben. 
 Außerdem werden hier Parameter spezifiziert oder gesetzt, welche die physikalische Repräsentation oder die für das Modellelement angebotenen Funktionalitäten im interaktiven Modellierungswerkzeug beeinflussen.
+Näheres hierzu wird im nächsten Kapitel erläutert.
 
 Mit "Repräsentation" ist im Folgenden die Gesamtheit dieser Parameter gemeint. 
 
@@ -77,7 +78,7 @@ Anpassbarkeit
 
 Durch Anpassungen im Editor-Model-Stack können für ein Domänen-Metamodell im Prinzip auch mehrere verschiedene Repräsentationen erstellt werden. 
 
-Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist in :num:`Abbildung #modellhierarchie-diagram` zu sehen, dass das im *Designer-Model-Stack* definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt worden sind. 
+Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist das im *Designer-Model-Stack* von MDF definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt. 
 
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
@@ -159,6 +160,9 @@ Modellelemente, die von derselben Instanz abstammen haben also grundsätzlich da
 Domain-Model-Stack
 ==================
 
+Der Domain-Model-Stack umfasst alle Modelle, welche die Modellierungsdomäne beschreiben. 
+Durch das *Domain-Meta-Model* wird die abstrakte Syntax der Modellierungssprache festgelegt.
+
 Domain-Meta-Model
 -----------------
 
@@ -175,7 +179,7 @@ Diesen Attributen werden die ein- bzw. ausgehenden Kanten durch das Modellierung
 Die Existenz von zugehörigen Attributen legt daher fest, in welcher Weise Kanten mit Knoten assoziiert werden können.
 
 Es wird vorgesetzt, dass die Attributnamen für eingehende Kanten mit dem Präfix ``inbound`` und die ausgehenden mit ``outbound`` beginnen.
-Der Rest des Attributnamens kann im Prinzip frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, den Typnamen der Kante oder eine leicht verkürzte Variante davon anzuhängen.
+Der Rest des Attributnamens kann im Prinzip frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, den Typnamen der Kante anzuhängen.
 
 Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein ``outbound``-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. 
 Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes ``inbound``-Attribut besitzt\ [#f2]_.
@@ -196,8 +200,8 @@ Das *Domain-Model* muss den Level ``M1`` enthalten, auf dem die im Folgenden gen
 
 Für die Erzeugung von Knoten im *Domain-Model* wird immer das :ref:`tvk` verwendet. 
 
-Konkret bedeutet das hier, dass im *Domain-Meta-Model* Basis-Typ-Concepts definiert werden, zu denen ein Typ-Concept als Instanz im *Domain-Model* erzeugt werden muss. 
-Von diesen Type-Concepts kann dann eine Verwendung im *Usage-Model* erzeugt werden.
+Dies bedeutet, dass im *Domain-Meta-Model* Concepts definiert sind, von welchen im *Domain-Model* ein Instanz ("Typ-Concept")erstellt wird. 
+Von *Typ-Concepts* kann eine Verwendung (in Form einer Spezialisierung der Instanz) im *Domain-Model* erzeugt werden.
 
 Die Implementierung gibt vor, dass die benutzerdefinierten Typen in einem Package mit dem Namen ``types`` abgelegt werden.
 Verwendungen davon werden im Package ``nodeUsages`` abgelegt.

@@ -172,7 +172,7 @@ Modelle können über ``CloseUsageModel`` wieder geschlossen werden, wobei alle 
 
 Der Umgang mit mehreren Modellen wird auch von der Editorkomponente unterstützt.
 
-Nachdem ein Usage-Modell geladen wurde, wird der Aufrufer analog zum Laden der Metamodelle über die im *Domain-Model* definierten Knotentypen informiert.
+Nachdem ein Usage-Model geladen wurde, wird der Aufrufer analog zum Laden der Metamodelle über die im *Domain-Model* definierten Knotentypen informiert.
 
 Speichern von Modellen
 ----------------------
@@ -188,7 +188,7 @@ Um die Speicherrepräsentation des Modells wieder in eine durch den LMMLight-Par
 Modell-Entitäten
 ================
 
-Objekte, mit denen verschiedene Teile des Systems interagieren, werden in ref:`simulatorx` durch Entities beschrieben. 
+Objekte, mit denen verschiedene Teile des Systems interagieren, werden in :ref:`simulatorx` durch Entities beschrieben. 
 Es ist daher zweckmäßig, für jedes Modellelement sowie für Szenenobjekte eine zugehörige Entity zu erstellen.
 ``ModelEntities`` werden von der ``ModelComponent`` erzeugt, wenn über ein Command die Erstellung von neuen Elementen angefordert oder ein Modell geladen wird. 
 
@@ -213,7 +213,7 @@ Die zur Erstellung von ``ModelEntities`` genutzten ``Aspects`` werden im Folgend
 Physik
 ^^^^^^
 
-Knoten und Szenenobjekte sollen in die physikalische Simulation aufgenommen werden, um Kollisionen zu erkennen und eine Auswahl der Elemente zu ermöglichen :cite:`uli` :cite:`buchi`.
+Knoten und Szenenobjekte sollen in die physikalische Simulation eingebunden werden, um Kollisionen zu erkennen und eine Auswahl der Elemente zu ermöglichen :cite:`uli` :cite:`buchi`.
 
 Hierfür stellt die Physikkomponente verschiedene ``Aspects`` bereit, die besagen, dass eine bestimmte physikalische Repräsentation zu einer Entity erzeugt werden soll.
 Da bisher nur annähernd quaderförmige Geometrien für die Visualisierung von Knoten genutzt werden, wird hier für alle Knoten der ``PhysBox``-Aspect (:num:`Abbildung #entity-description`) verwendet.

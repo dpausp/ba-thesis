@@ -61,7 +61,7 @@ So steht ein Pluszeichen für einen AND-Connector, wie in :num:`Abbildung #and-c
 Blickwinkelabhängige Darstellung von Informationen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Durch die freie Beweglichkeit und die Rotationsmöglichkeit der Kamera sowie der Objekte :ref:`Objekte<ipm3d-visualisierung>` ergeben sich sehr unterschiedliche Beobachtungsperspektiven. 
+Durch die freie Beweglichkeit und die Rotationsmöglichkeit der Kamera sowie der :ref:`Objekte<ipm3d-visualisierung>` ergeben sich sehr unterschiedliche Beobachtungsperspektiven. 
 Objekte können so von allen Seiten betrachtet werden. 
 Trotzdem soll sichergestellt werden, dass Texte oder Symbole auf den Objekten jederzeit erkennbar sind. Daher werden diese grundsätzlich auf allen Seiten dargestellt. 
 
@@ -81,11 +81,10 @@ Die im Projekt verwendeten 3D-Eingabegeräte :cite:`buchi` haben nur eine relati
 Vor allem ungeübten Benutzern kann es schwerfallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
 
 Dies ist auch ein Grund, eine Graphdarstellung mit möglichst einfachen Objekten zu verwenden.
-Es wird deswegen auch verzichtet, Elemente nach dem geometrischen Visualisierungsansatz ineinander zu schachteln, wie es in 2D-Werkzeugen wie es bei :ref:`i>PM2<mdf>` zu sehen war.
+Es wird deswegen auch verzichtet, Elemente nach dem geometrischen Visualisierungsansatz ineinander zu schachteln, wie es bei 2D-Werkzeugen wie :ref:`i>PM2<mdf>` zu sehen war.
 
-Es ist sinnvoll, Quader (oder annähernd quaderförmige Geometrien) einzusetzen, da Knoten in die physikalische Simulation eingebunden sind, welche von den Eingabegeräten für die Selektion von Elementen genutzt wird.
-Quader werden von der verwendeten Physikkomponente direkt unterstützt\ [#f4]_. Bei Verwendung anderer Geometrien zur Visualisierung würde diese nicht mehr mit den physikalischen Ausdehnungen übereinstimmen.
-
+Es ist sinnvoll, Quader (oder annähernd quaderförmige Geometrien) einzusetzen, da Knoten in die physikalische Simulation eingebunden sind und Quader von der verwendeten Physikkomponente direkt unterstützt werden\ [#f4]_. 
+Die physikalische Simulation wird von den Eingabegeräten für die Selektion von Elementen genutzt, wie von :cite:`buchi` beschrieben.
 
 .. _kanten:
 
@@ -141,7 +140,7 @@ Hervorhebung
 Diese Variante wird dafür eingesetzt, ein Objekt kurzzeitig beim Überfahren durch einem Cursor eines Eingabegeräts hervorzuheben. 
 Dargestellt wird das abhängig von der Helligkeit der Grundfarbe des Objekts durch eine Aufhellung bzw. einer Abdunkelung der Farbe. Der Farbton wird dabei nicht verändert.
 
-:num:`Abbildung #hervorhebung-sc` zeigt im Vergleich einen hervorgehobenen AND-Connector und einen im Normalzustand (rechts).
+:num:`Abbildung #hervorhebung-sc` zeigt im Vergleich ein hervorgehobenes Datenelement und eines im Normalzustand (rechts).
 
 Selektion
 ---------
@@ -153,7 +152,7 @@ Die Visualisierung des Selektionszustandes soll daher möglich auffällig sein, 
 
 Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Wie der "Rand" definiert ist je nach Objekttyp unterschiedlich\ [#f5]_.
 
-In :num:`Abbildung #selektion-sc` wird links ein Prozess und rechts ein AND-Connector im selektierten Zustand gezeigt.
+In :num:`Abbildung #selektion-sc` sind zwei selektierte Knoten zu sehen.
 
 
 .. _deaktivierung:
@@ -397,7 +396,7 @@ Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-B
 
 Verbindungen könnten alternativ auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden, um solche Probleme weiter einzudämmen, wie es auch in 2D-Werkzeugen häufig zu sehen ist.
 Kanten, die als "gebogene 3D-Röhren" dargestellt werden, zeigen :cite:`spratt_using_1994` und :cite:`balzer_hierarchy_2004` (:num:`Abbildung #balzert-tubes`).
-Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
+Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effizienz von unterschiedlichen Darstellungsformen für gerichtete Kanten vorgestellt, deren Richtung beispielsweise auch durch Farbverläufe und andere Farbeffekte angezeigt werden könnten.
 
 .. _balzert-tubes:
 
@@ -415,4 +414,4 @@ Von :cite:`holten_user_2009` wird eine Benutzerstudie zur Effektivität von unte
 
 .. [#f4] Von der Physikkomponente werden auch Kugeln unterstützt, allerdings ist die Verwendung von Quadern bisher fest in der Implementierung von i>PM3D vorgegeben.
 
-.. [#f5] Der Rand ist über die Texturkoordinaten definiert. Näheres :ref:`siehe <erweiterung-interaction>`.
+.. [#f5] Der Rand ist über die Texturkoordinaten definiert. :ref:`Siehe <erweiterung-interaction>`.

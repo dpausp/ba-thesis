@@ -12,13 +12,12 @@ Prozessmodellierungssprachen
 ============================
 
 Modellierung hat im Rahmen des Prozessmanagements die Aufgabe, komplexe (Geschäfts-)Abläufe aus der Realität in einer abstrahierten, das heißt vereinfachten, aber dennoch korrekten Form darzustellen\ [#f1]_.
-Einerseits werden werden Prozessmodelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
+Einerseits werden Prozessmodelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
 Andererseits können abstrakt modellierte Prozesse von einem Softwaresystem automatisch ausgeführt bzw. simuliert werden :cite:`ter_hofstede_business_2003`.
 
 Um Modelle formulieren zu können bedarf es einer passenden Modellierungssprache. 
 
-Zu einer Sprache gehört eine **abstrakte Syntax**, die allgemein Elemente einer Sprache und deren Beziehungen beschreibt.
-Erst eine **konkrete Syntax** legt sozusagen das "Aussehen" der Sprache fest :cite:`clark_applied_2008`.
+Zu einer Sprache gehört eine **abstrakte Syntax**, die allgemein Elemente einer Sprache und deren Beziehungen beschreibt, wohingegen die **konkrete Syntax** das "Aussehen" der Sprache festlegt :cite:`clark_applied_2008`.
 Grundsätzlich lassen sich textuelle und grafische Notationen für Sprachen unterscheiden. 
 
 Visuelle Sprachen und deren Klassifikation
@@ -28,7 +27,7 @@ Wohl die leistungsfähigste "Schnittstelle" des Menschen ist das visuelle System
 Daher eignen sich besonders grafische Darstellungen dafür, einen Überblick über komplexe Modelle zu geben und Zusammenhänge zwischen einzelnen Modellelementen aufzuzeigen.
 So spielen visuelle Sprachen auch eine große Rolle in der Prozessmodellierung :cite:`ter_hofstede_business_2003` :cite:`jablonski_perspective_2008`.
 
-Die konkrete Syntax einer grafischen (oder "visuelle") Sprache umfasst eine Ansammlung von grafischen Objekten (auch "Formen" oder "Figuren" genannt), die Sprachelemente repräsentieren.
+Die konkrete Syntax einer grafischen (oder "visuellen") Sprache umfasst eine Ansammlung von grafischen Objekten (auch "Formen" oder "Figuren" genannt), die Sprachelemente repräsentieren.
 Elemente können auf verschiedene Arten miteinander in Beziehung gesetzt werden. 
 Grafische Sprachen lassen sich nach diesem Kriterium prinzipiell in zwei Klassen, welche in :num:`Abbildung #klassifikation-vis` gezeigt werden, und Mischformen einteilen :cite:`costagliola_classification_2002`.
 
@@ -68,10 +67,10 @@ Verhaltensorientierte Perspektive
     Dies wird auch als "Kontrollfluss" bezeichnet und gibt die zeitlichen bzw. logischen Abhängigkeiten zwischen Elementen der funktionalen Perspektive an. Durch diese Perspektive wird also die Ausführungsreihenfolge festgelegt. 
 
 Organisationale Perspektive 
-    Einem Prozess lässt sich eine ausführende Entität, beispielsweise eine abstrakte Rolle oder eine konkrete Person zuordnen, die für die Ausführung verantwortlich ist.
+    Einem Prozess lässt sich eine Entität zuordnen, die für die Ausführung verantwortlich ist, beispielsweise eine abstrakte Rolle oder eine konkrete Person.
 
 Datenbezogene Perspektive 
-    Prozesse sind ohne Daten, die im Ablauf erstellt, modifiziert und ausgetauscht werden quasi undenkbar. Datenflüsse legen oft auch die Abhängigkeiten zwischen Prozessschritten fest.
+    Prozesse sind ohne Daten, die im Ablauf erstellt, modifiziert und ausgetauscht werden nahezu undenkbar. Datenflüsse legen oft auch die Abhängigkeiten zwischen Prozessschritten fest.
 
 Operationale Perspektive 
     Zur Ausführung von Prozessen sind verschiedene Betriebsmittel wie Maschinen, Werkzeuge oder Rechnerressourcen erforderlich, welche in dieser Perspektive abgebildet werden.
@@ -108,20 +107,26 @@ Solche Programme bieten oft schon passende Formen und Verbindungen, beispielswei
 
 Ein Benutzer macht die Bedeutung eines solchen Diagramms an den erkennbaren grafischen Formen und deren Aussehen fest; insofern wäre dies für Menschen durchaus ausreichend.
 
-Durch ein Zeichenprogramm wird das Diagramm intern nur als eine "Ansammlung" von Bildpunkten oder geometrischen Primitiven dargestellt und auch entsprechend gespeichert ("persistiert").
-Für ein solches Programm hat die Semantik des Modells keinerlei Bedeutung. 
+Durch ein Zeichenprogramm wird das Diagramm intern nur als eine Ansammlung von Bildpunkten oder geometrischen Primitiven dargestellt und auch entsprechend gespeichert ("persistiert").
+Für ein solches Programm hat die Semantik der grafischen Konstrukte keinerlei Bedeutung. 
 So ergibt sich ein Problem, wenn der modellierte Prozess automatisch ausgeführt oder verändert werden soll. 
 Wie soll den grafischen Elementen eine Bedeutung zugeordnet werden?
 
 Daher sind eher Werkzeuge gefragt, die auch intern eine "Vorstellung" von Modellierungskonzepten haben :cite:`volz_werkzeugunterstutzung_2011`.
 Solche Werkzeuge werden – auch in dieser Arbeit – "Modellierungswerkzeuge" genannt.
 
-Ein solches grafisches Werkzeug bietet die Möglichkeit, Modelle zu erstellen, diese in formaler Weise zu persistieren und wieder aus einer physikalischen Repräsentation – beispielsweise einer Datei – zu laden. 
+Ein solches grafisches Werkzeug bietet die Möglichkeit, Modelle zu erstellen, diese in formaler Weise zu persistieren und wieder aus einer physischen Repräsentation – beispielsweise einer Datei – zu laden. 
 Dem Benutzer wird üblicherweise eine Palette an Modellelementen angeboten, die in einem konkreten Prozessmodell eingesetzt werden können. 
-Ein Anwender "baut" ein Modell, indem er grafische Objekte miteinander auf einer "Zeichenfläche" kombiniert.
+Ein Anwender "baut" ein Modell, indem er Instanzen der grafischen Objekte miteinander auf einer "Zeichenfläche" kombiniert.
+Zu den konkreten, grafischen Elementen wird automatisch eine abstrakte Instanz angelegt, welche die Bedeutung des Modellelements festlegt.
+
+Änderungen am abstrakten Modellelement können die Darstellung der grafischen Elemente beeinflussen. 
+So kann beispielsweise in einem Prozessknoten dessen Funktion angegeben sein, welche in der grafischen Repräsentation als Text angezeigt wird.
+Bei einer Änderung der Funktion im Modellelement wird auch der Text auf dem Grafikobjekt angepasst.
 
 Ein Modellierungswerkzeug für die perspektivenorientierte Prozessmodellierung wird in :num:`Abbildung #ipm2` gezeigt. 
 Auf der linken Seite lässt sich die Palette mit den Modellelementen erkennen, die in verschiedene "Gruppen" eingeordnet sind.
+
 
 .. _ipm2:
 
@@ -141,14 +146,14 @@ So lassen sich Sachverhalte verständlicher und direkter als mit allgemeinen, fe
 An ein bestimmtes Einsatzgebiet angepasste Sprachen werden als **domänenspezifische Sprachen** (DSL) bezeichnet :cite:`clark_applied_2008`.
 
 Zur Beschreibung von Modellierungssprachen lässt sich das Konzept der **Metamodellierung** einsetzen :cite:`weisemoller_comparison_2008` :cite:`volz_werkzeugunterstutzung_2011`.
-Ein Metamodell lässt sich als ein Modell für eine Ansammlung ("Klasse") von Modellen charakterisieren :cite:`seidewitz_what_2003`.  
+Ein Metamodell lässt sich als ein Modell für eine Menge ("Klasse") von Modellen charakterisieren :cite:`seidewitz_what_2003`.  
 
 Durch die Anpassung eines Metamodells, welches die abstrakte Syntax beschreibt, können neue Modellelemente hinzugefügt und bestehende angepasst oder entfernt werden.  
-Andererseits lässt sich die konkrete Syntax, im Falle einer visuellen Sprache also die grafische Repräsentation der Modellelemente ebenfalls durch ein Metamodell spezifizieren.  
+Andererseits lässt sich die konkrete Syntax, im Falle einer grafischen Sprache also die grafische Repräsentation der Modellelemente ebenfalls durch ein Metamodell spezifizieren.  
 So ist es möglich, zu einer abstrakten Syntax mehrere grafische Repräsentationen zu erstellen, die auf spezielle Anforderungen zugeschnitten sein können :cite:`jablonski_perspective_2008`.  
 
 Um Metamodelle zu "erstellen" ist es notwendig, diese auf eine wohldefinierte Weise beschreiben zu können. 
-Dies leistet das im Folgenden vorgestellte Linguistic Meta Model (LMM), welches im Rahmen der Open Meta Modelling Environment (OMME), einer Metamodellierungsumgebung, entstanden ist :cite:`volz_werkzeugunterstutzung_2011`.
+Dies leistet das im Folgenden vorgestellte Linguistic Meta Model (LMM), welches im Rahmen des Open Meta Modelling Environment (OMME), einer Metamodellierungsumgebung, entstanden ist :cite:`volz_werkzeugunterstutzung_2011`.
 
 .. _lmm:
 
@@ -173,7 +178,17 @@ So kann ein Concept – wie eine Klasse – Attribute definieren. Gleichzeitig k
 Anders ausgedrückt können Concepts sowohl eine "Typ-Facette", die Attribute definiert als auch eine "Instanz-Facette", die Zuweisungen vornimmt, beinhalten :cite:`atkinson_meta-level_2000`.
 Dieses Prinzip wird mit dem Begriff **Clabject** (**Cla**\ ss and O\ **bject**\ ) umschrieben.
 
+
+
+
+Klassen stellen im objektorientierten System Typen dar; Objekte sind Instanzen von Klassen, welche Werte an die Attribute der Klasse zuweisen.
+Im Gegensatz zu der von Klasse und Objekt vorgegebenen Hierarchie aus zwei "Ebenen" lassen sich mit Concepts Hierarchien mit beliebig vielen Ebenen realisieren. 
+Dazu können Concepts gleichzeitig den Typ für Concepts auf der darunterliegenden Ebene und eine Instanz eines Concepts (``instanceOf``) auf der nächsthöheren Ebene darstellen.
+Ebenso gibt es die Möglichkeit für Concepts, andere Concepts analog zu Klassen zu "erweitern" (``extends``), also einen Subtyp zu bilden. 
+
 Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen  ist in :num:`Abbildung #vergleich-lmm` zu sehen.
+In der Abbildung besitzt ``ConceptC`` eine Instanz-Facette, welche den Attributen aus ``ConceptA`` und ``ConceptB`` Werte zuweist.
+Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``ConceptD`` mit dem Wert 5.5 belegt wird.
 
 .. _vergleich-lmm:
 
@@ -182,23 +197,13 @@ Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen
 
     Vergleich von objektorientierter Modellierung (links) und Metamodellierung mit Clabjects
 
-
-Im objektorientierten System stellen Klassen Typen dar; Objekte sind Instanzen von Klassen, welche Werte an die Attribute der Klasse zuweisen.
-
-Im Gegensatz zu der von Klasse und Objekt vorgegebenen Hierarchie aus zwei "Ebenen" lassen sich mit Concepts Hierarchien mit beliebig vielen Ebenen darstellen. 
-Dazu können Concepts gleichzeitig den Typ für Concepts auf der darunterliegenden Ebene und eine Instanz eines Concepts (``instanceOf``) auf der nächsthöheren Ebene darstellen.
-Ebenso gibt es die Möglichkeit für Concepts, andere Concepts analog zu Klassen zu "erweitern" (``extends``), also einen Subtyp zu bilden. 
-
-In :num:`Abbildung #vergleich-lmm` besitzt ``ConceptC`` eine Instanz-Facette, welche den Attributen aus ``ConceptA`` und ``ConceptB`` Werte zuweist.
-Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``ConceptD`` mit dem Wert 5.5 belegt wird.
-
 Concepts werden, wie in :num:`Abbildung #lmm-model` gezeigt, in **Packages** eingeordnet. Packages bilden zusammen einen **Level**, welcher eine Ebene in der Metamodellierungshierarchie repräsentiert.
 Mehrere Levels stellen zusammen das vollständige **Model** dar, wobei auch Modelle mit nur einer Ebene erlaubt sind.
 
-In Concepts können sowohl **literale Attribute** (bspw. string, real, integer) als auch **Concept-Attribute**, welche auf andere Concepts verweisen, angegeben werden.
+In Concepts können sowohl **Literaltyp-Attribute** (bspw. string, real, integer) als auch **Concept-Attribute**, welche andere Concepts referenzieren, angegeben werden.
 
 Levels können ebenfalls zueinander in einer Instanzbeziehung (``instanceOf``) stehen. 
-Ein Level *MA* ist die Instanz eines anderen Levels *MB*, wenn alle in *MA* definierten Concepts Instanzen von Concepts in *MB* sind.
+Wenn alle in einem Level *MA* definierten Concepts Instanzen von jeweils genau einem Concept in Level *MB* sind, ist *MA* eine Instanz von *MB*, 
 
 Die genannten Beziehungen wie ``instanceOf`` zwischen Levels bzw. Concepts werden in :num:`Abbildung #lmm-model` als "Reference" dargestellt.
 
@@ -263,8 +268,7 @@ Rechts wird der *Designer-Model-Stack* gezeigt, der den Editor für die Domäne 
 Das *Graphical-Definition-Model* beschreibt Figuren, die sich für die Visualisierung der Domäne einsetzen lassen. 
 Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelementen verbunden. So wird die grafische Repräsentation der Modellelemente im Editor festgelegt.
 
-Bemerkenswert ist, dass auf allen Ebenen LMM – textuell dargestellt durch LML – verwendet wird. 
-Damit wird LMM sowohl für die Beschreibung des Modellierungswerkzeugs als auch für die persistente Speicherung und interne Darstellung der mit dem Werkzeug erstellten Modelle genutzt.
+Bemerkenswert ist, dass LMM sowohl für die Beschreibung des Modellierungswerkzeugs als auch für die persistente Speicherung und interne Darstellung der mit dem Werkzeug erstellten Modelle genutzt wird.
 
 :num:`Abbildung #ipm-typ-verwendung-2` zeigt einen Prozess, der in einem mit MDF definierten Editor (*i>PM*\ :sup:`2`) für die :ref:`POPM <popm>` erstellt wurde.
 
@@ -311,13 +315,13 @@ So wird in der Verwendung für *B* die vordefinierte Funktion durch "Notiz erste
 
 
 Das Typ-Verwendungs-Konzept ist auch in i>PM\ :sup:`2` (:num:`Abbildung #ipm2`) zu erkennen. 
-Die Palette (links) zeigt unter "Process" die davon abgeleiteten "Typen", wovon für die Zeichenfläche "Verwendungen" erstellt werden.
+Die Palette (links) zeigt unter "Process" die davon instanziierten "Typen", wovon für die Zeichenfläche "Verwendungen" erstellt werden.
 Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen" mit geänderter Grundfarbe zu sehen.
 
 
 .. [#f1] Allgemein zum Modellbegriff und den Eigenschaften von Modellen: :cite:`stachowiak_allgemeine_1973`
 
-.. [#f2] Business Modeling and Notation; vereinfacht gesagt eine standardisierte, (grafische) Prozessmodellierungssprache. Siehe :cite:`www:bpmn`
+.. [#f2] Business Process Modeling and Notation; vereinfacht gesagt eine standardisierte, (grafische) Prozessmodellierungssprache. Siehe :cite:`www:bpmn`
 
 .. [#f3] Dies deckt natürlich nicht alle objektorientierten Programmiersprachen ab. "Objektorientierung" kann durchaus auf anderem Wege umgesetzt werden.
 

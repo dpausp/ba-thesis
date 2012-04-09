@@ -5,13 +5,13 @@ Fazit und Ausblick
 In der vorliegenden Arbeit wurde die Einbindung von Prozessmodellen und deren Visualisierung im i>PM3D-Prototypen sowie die Spezifikation der verwendeten Modellierungssprache durch Metamodelle vorgestellt.
 
 Aufgrund der Komplexität dieses Themas, der dabei auftretenden Fragestellungen und der insgesamt noch eher schwach ausgeprägten Forschungslage zum Thema 3D-Visualisierung von Prozessen kann dies jedoch nur ein Anfang sein. 
-In Zukunft wäre es wichtig, die Effektivität von 3D-Visualisierungsansätzen genauer zu untersuchen. 
+In Zukunft wäre es wichtig, die Effizienz von 3D-Visualisierungsansätzen genauer zu untersuchen. 
 Dabei sollten auch Benutzer eingebunden werden, die sich zwar mit dem Thema Prozessmodellierung auskennen, jedoch noch kaum Erfahrung im Umgang mit 3D-Umgebungen haben.
 
 Eingabe und Benutzerinteraktion wurden in dieser Arbeit größtenteils ausgeklammert, da diese von :cite:`uli` und :cite:`buchi` im Rahmen des Projekts bearbeitet wurden. 
-Dies ist aber eigentlich ein "untrennbarer" Bestandteil, wenn man die Effektivität von 3D-Visualisierungen – insbesondere in Modellierungswerkzeugen – bewerten will.
+Dies ist aber eigentlich ein "untrennbarer" Bestandteil, wenn man die Effizienz von 3D-Visualisierungen – insbesondere in Modellierungswerkzeugen – bewerten will.
 
-Bei eigenen Versuchen mit dem Prototypen hat sich besonders gezeigt, dass die Effektivität mit dem Vorhandensein gut funktionierender und intuitiver Eingabemethoden steht und fällt. 
+Bei eigenen Versuchen mit dem Prototypen hat sich besonders gezeigt, dass die Effizienz mit dem Vorhandensein gut funktionierender und intuitiver Eingabemethoden steht und fällt. 
 Daher ist es besonders lohnenswert, zukünftige Arbeiten in diese Richtung zu lenken. 
 
 Probleme und naheliegende Erweiterungsmöglichkeiten, welche speziell die Visualisierung betreffen, wurden schon im :ref:`Kapitel zur Visualisierung <vis-probleme-erweiterung>` besprochen.

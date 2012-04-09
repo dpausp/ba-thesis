@@ -18,8 +18,8 @@ Solche Systeme bieten teilweise auch die Möglichkeit, dass mehrere Benutzer gle
 
 In den genannten Anwendungsfällen sind die Vorteile einer dreidimensionalen Darstellung offensichtlich, da hier Objekte aus der realen Welt abgebildet werden, die grundsätzlich dreidimensional ist.
 
-Motivation für die 3D-Modellierung von Prozessen
-================================================
+Motivation für die Modellierung von Prozessen in 3D
+===================================================
 
 Die vorliegende Arbeit beschäftigt sich jedoch vorrangig mit der Modellierung von Prozessen, welche die Aufgabe hat, (Geschäfts-)Abläufe und zugehörige Informationen in einer abstrahierten Form darzustellen. 
 Hierbei ist es weniger leicht festzustellen, welche Vorteile eine dreidimensionale Visualisierung hätte und wie diese Darstellung überhaupt aussehen könnte.
@@ -31,18 +31,18 @@ Das Bedienkonzept dieser Anwendungen folgt den Standards der seit zwei bis drei 
 Der Einsatz der dritten Dimension für die Repräsentation von Prozessen wurde jedoch schon vereinzelt untersucht. 
 Beispielsweise wird von :cite:`betz_3d_2008` :ref:`gezeigt<betz>`, wie sich dies für die Visualisierung von Beziehungen zwischen mehreren Modellen oder zur Darstellung von hierarchischen Modellen sinnvoll nutzen lässt. 
 So könnten sich Vorteile zu einer 2D-Darstellung ergeben, welche unter anderem weniger Möglichkeiten bietet, verschiedene Arten von Beziehungen zwischen Modellelementen in leicht verständlicher Form zu visualisieren :cite:`gil_three_1998`.
-Arbeiten auf dem Gebiet der Softwaremodellierung, welche in dieser Arbeit vorgestellt werden, zeigen weitere Nutzungsmöglichkeiten, die sich möglicherweise auf die Prozessmodellierung übertragen lassen. 
+Arbeiten auf dem Gebiet der Softwaremodellierung, welche in dieser Arbeit vorgestellt werden, zeigen weitere Nutzungsmöglichkeiten, die sich auch auf die Prozessmodellierung übertragen lassen. 
 
 Prozessmodelle enthalten oft auch Konzepte, die Entitäten aus der realen Welt vertreten, beispielsweise die in einem Prozessschritt verwendete Maschine oder eine ausführende Person. 
 In machen Fällen könnte es sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um das abstrakte Modell für Benutzer anschaulicher zu machen, wie von :cite:`brown_conceptual_2010` dargestellt wird.
 
 Ein Prozessmodellierungswerkzeug, welches die Möglichkeiten der modernen 3D-Computergrafik ausnutzt oder gar neuartige (3D-)Eingabegeräte unterstützt, existiert bisher nicht :cite:`brown_conceptual_2010`.
-Um die Effektivität von 3D-Visualisierung für die Prozessmodellierung zu beurteilen und verschiedene Darstellungsformen zu vergleichen wäre ein solches System allerdings sehr hilfreich.
+Um die Effizienz von 3D-Visualisierung für die Prozessmodellierung zu beurteilen und verschiedene Darstellungsformen zu vergleichen wäre ein solches System allerdings sehr hilfreich.
 
 Zielsetzung und Aufbau dieser Arbeit
 ====================================
 
-Da es kaum Möglichkeiten gibt, die Effektivität von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem i>PM3D-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
+Da es kaum Möglichkeiten gibt, die Effizienz von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem i>PM3D-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
 Das Projekt basiert auf :ref:`simulatorx`, einer Plattform für eine modulare, komponentenbasierte Realisierung von Anwendungen aus dem Bereich der 3D-Computergrafik.
 
 Ein detaillierter Überblick über das Gesamtprojekt wird später in :ref:`dieser Arbeit<ipm3d>` gegeben.
@@ -52,11 +52,11 @@ Repräsentation bezieht sich hier sowohl auf die Visualisierung der Prozessmodel
 
 Um das Experimentieren mit der Visualisierung einfach zu machen und die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen, werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten **Metamodellen** beschrieben, wie es schon durch das in :cite:`roth_konzeption_2011` entwickelte (MDF) :ref:`Model Designer Framework<mdf>` für 2D-Modelleditoren umgesetzt wird. 
 So lassen sich auch gänzlich neue Elemente und dazugehörige grafische Objekte hinzufügen.
-Die Modell-Hierarchie von i>PM3D wird in :ref:`dieser Arbeit<modellhierarchie>` vorgestellt.
+Eine Übersicht über die in i>PM3D verwendeten (Meta-)Modelle und deren Hierarchie wird in :ref:`dieser Arbeit<modellhierarchie>` gegeben.
 
 Prinzipiell lässt sich i>PM3D durch diese Anpassbarkeit nicht nur für die Modellierung von Prozessen sondern auch für ähnliche Anwendungsdomänen einsetzen. 
 Der Fokus liegt hier allerdings speziell auf der Modellierung nach dem Prinzip der :ref:`perspektivenorientierten Prozessmodellierung<popm>` und dem damit assoziierten :ref:`tvk`.
-So wird ein Metamodell für diese Domäne und deren Visualisierung nach einem graphbasierten Ansatz :ref:`bereitgestellt<metamodelle>`. 
+So wird ein Metamodell für diese Domäne und eines für deren Visualisierung nach einem graphbasierten Ansatz :ref:`bereitgestellt<metamodelle>` bereitgestellt. 
 Zusammen beschreiben diese Metamodelle einen **Prozessmodell-Editor**, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt (siehe :ref:`visualisierung`).
 
 Für den Zugriff auf die interne Repräsentation der Modelle muss eine Schnittstelle bereitgestellt werden, über die andere Komponenten der Anwendung Parameter zur Laufzeit verändern können, welche die grafische Repräsentation oder das Prozessmodellelement selbst (bspw. die Funktion eines Prozessknotens) betreffen.
@@ -82,4 +82,4 @@ Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an de
     (g) Anzeige von textuellen Attributen aus dem Prozessmodell auf den Modellfiguren
 
 
-.. [#f1] WIMP steht für "Windows, Icons, Menus, Pointer. Grafische Benutzeroberflächen, die auf die Nutzung mit anderen Eingabegeräte als Tastatur und Maus ausgelegt sind, werden auch als "Post-WIMP-Interfaces" bezeichnet. :cite:`van_dam_post-wimp_1997`
+.. [#f1] WIMP steht für "Windows, Icons, Menus, Pointer". Grafische Benutzeroberflächen, die auf die Nutzung mit anderen Eingabegeräte als Tastatur und Maus ausgelegt sind, werden auch als "Post-WIMP-Interfaces" bezeichnet. :cite:`van_dam_post-wimp_1997`

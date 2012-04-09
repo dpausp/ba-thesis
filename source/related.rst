@@ -2,7 +2,7 @@
 Verwandte Arbeiten zur 3D-Visualisierung
 ****************************************
 
-Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen, sollen hier auch solche vorgestellt werden, die sich allgemein mit 3D-Visualisierung oder verwandten Gebieten wie der Softwaremodellierung beschäftigen. 
+Neben den (wenigen) Arbeiten, die sich explizit mit der dreidimensionalen Visualisierung und Modellierung von Prozessen beschäftigen, sollen hier auch solche vorgestellt werden, die sich allgemein oder in verwandten Gebieten wie der Softwaremodellierung mit 3D-Visualisierungen beschäftigen.
 
 Die hier gezeigten Arbeiten sollen als Anregung oder Motivation für die in dieser Arbeit dargestellte 3D-Visualisierung von Prozessen dienen.
 Außerdem sollen Ideen für zukünftige Erweiterungen des vorliegenden Projekts gesammelt und prinzipielle Vor- und Nachteile von 3D-Visualisierungen beleuchtet werden.
@@ -73,7 +73,7 @@ So würden sich Beziehungen zwischen mehreren Diagrammen gut grafisch darstellen
 Wie sich in :num:`Abbildung #mcintosh-sm` erkennen lässt, werden Beziehungen zwischen Super- und Subzuständen durch transluzente, graues Dreiecke dargestellt.
 
 Solche Diagramme seien Benutzern mit Erfahrung in Rational Rose vorgelegt worden, welche sich insgesamt positiv zur Nützlichkeit jener 3D-Diagramme geäußert hätten. 
-Von den Benutzern seien verschiedene Erweiterungen vorgeschlagen worden; unter anderem eine Filtermöglichkeit, mit der sich uninteressante Details verbergen lassen, Einschränkungen der Navigation um ungünstige Sichten auf das Modell zu vermeiden sowie Funktionen, um schnell zwischen verschiedenen Betrachtungsperspektiven wechseln zu können. 
+Von den Benutzern seien verschiedene Erweiterungen vorgeschlagen worden; unter anderem eine Filtermöglichkeit, mit der sich uninteressante Details verbergen lassen, Einschränkungen der Navigation um ungünstige Sichten auf das Modell zu vermeiden (bspw. direkt von der Seite, so dass die 2D-Elemente nicht erkennbar sind) sowie Funktionen, um schnell zwischen verschiedenen Betrachtungsperspektiven wechseln zu können. 
 
 .. _mcintosh-sm:
 
@@ -96,7 +96,7 @@ Von den Benutzern seien verschiedene Erweiterungen vorgeschlagen worden; unter a
 3D-Visualisierungen von (großen) UML-Zustandsdiagrammen werden auch von :cite:`krolovitsch_3d_2009` und, darauf aufbauend, :cite:`alvergren_3d_2009` untersucht. 
 Zustandsdiagramme werden, wie in :cite:`mcintosh_x3d-uml:_2008` auf Flächen im 3D-Raum gezeichnet, wobei hier die Zustände selbst als 3D-Objekte dargestellt sind, um den visuellen Eindruck zu verbessern, wie in :num:`Abbildung #krolovitsch-sm` zu sehen ist. 
 
-In :num:`Abbildung #krolovitsch-sm-nodes` ist zu sehen, wie in komplexen Diagrammen komplette Diagrammteile ausgeblendet und durch einen blauen Würfel ersetzt werden können, um momentan unwichtige Details zu verbergen und die Übersichtlichkeit zu erhöhen. 
+:num:`Abbildung #krolovitsch-sm-nodes` zeigt, wie in komplexen Diagrammen komplette Diagrammteile ausgeblendet und durch einen blauen Würfel ersetzt werden können, um momentan unwichtige Details zu verbergen und die Übersichtlichkeit zu erhöhen. 
 
 .. _krolovitsch-sm:
 
@@ -146,7 +146,7 @@ In :cite:`gogolla_towards_1999` wird ebenfalls die 3D-Darstellung von UML-Diagra
 Die dritte Dimension könne beispielsweise dafür genutzt werden, als "uninteressant" eingestufte Elemente in den Hintergrund zu schieben und damit Elemente im Vordergrund besonders hervorzuheben.
 
 In :num:`Abbildung #gogolla-classdiag-a` und :num:`Abbildung #gogolla-classdiag-b` wird das Prinzip am Beispiel eines Klassendiagramms verdeutlicht.
-Bei letzerer Abbildung ist zu sehen, dass bei Klassen, die nah am Betrachter sind, mehr Information dargestellt wird als bei den hinteren Klassen, bei denen nur der Name als Text zu erkennen ist.
+Bei letzerer Abbildung ist zu sehen, dass bei Klassen, die nah am Betrachter sind, mehr Information dargestellt wird als bei den in größerer Entfernung dargestellten Klassen, bei denen nur der Name als Text zu erkennen ist.
 
 Zusätzlich wird die Nutzung von Animationen vorgeschlagen, um Übergänge zwischen verschiedenen Visualisierungsperspektiven – wie zwischen den beiden gezeigten Abbildungen – anschaulicher zu machen.
 
@@ -172,9 +172,9 @@ Graphical Editing Framework 3D
 ------------------------------
 
 Bei GEF3D handelt es sich um ein Framework zur Erstellung von Modell-Editoren :cite:`von_pilgrim_gef3d:_2008`.
-Das Projekt basiere auf den Konzepten des Grafical Editing Framework der Eclipse Plattform und übertrage diese in den dreidimensionalen Raum.
+Das Projekt basiert auf den Konzepten des Grafical Editing Framework der Eclipse Plattform und überträgt diese in den dreidimensionalen Raum.
 
-Mit GEF3D sei es möglich, 3D-Editoren für Eclipse zu erstellen und schon vorhandene, GEF-basierte 2D-Editoren darin einzubetten indem 2D-Elemente auf Flächen im dreidimensionalen Raum gezeichnet würden. 
+Mit GEF3D ist es möglich, 3D-Editoren für Eclipse zu erstellen und schon vorhandene, GEF-basierte 2D-Editoren darin einzubetten indem 2D-Elemente auf Flächen im dreidimensionalen Raum gezeichnet würden. 
 :num:`Abbildung #gef3d-twt3d` zeigt ein Beispiel für die Darstellung von mehreren Diagrammtypen in einer Ansicht und Verbindungen zwischen Elementen verschiedener Diagramme.
 
 In :num:`Abbildung #gef3d-ecore` ist ein mit GEF3D implementierter Ecore-Editor zu sehen. 
@@ -208,6 +208,7 @@ Die grafische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und T
 3D-Prozessvisualisierung
 ========================
 
+Arbeiten, die speziell die Domäne der Prozessmodellierung betreffen und Vor sowie Nachteile von 3D-Visualisierungen zeigen werden hier vorgestellt.
 
 .. _betz:
 
@@ -255,6 +256,9 @@ Der Benutzer könne mehrere Verfeinerungsstufen des Modells in einer Ansicht seh
 
     Vier Verfeinerungsstufen eines Prozessmodells aus :cite:`betz_3d_2008` 
 
+
+.. _schoenhage:
+
 3D-Visualisierung für die Prozesssimulation
 ------------------------------------------
 
@@ -296,7 +300,6 @@ Unter Zuhilfennahme einer "virtuellen Welt" (virtual reality), in welche abstrak
 In dieser Umgebung könnten Abbilder von realen Entitäten, die mit dem Prozess in Beziehung stehen oder mit diesem interagieren – beispielsweise verwendete Betriebsmittel oder ausführende Personen – dargestellt werden. 
 Dies könne auch dazu dienen, den Ort und die räumliche Anordnung von Prozessschritten, beispielsweise durch die Einbettung in ein virtuelles Gebäude, zu visualisieren. 
 Möglich sei auch eine Simulation der Prozessausführung in der virtuellen Welt.
-
 Dadurch solle es den Beteiligten leichter möglich sein, festzustellen, ob das Modell die Realität richtig abbilde und ob eventuell Probleme bei der Umsetzung des Prozesses in der Realität auftreten könnten.
 
 Wie in :num:`Abbildung #brown-process` zu sehen ist, werden Prozesse als 3D-Graph dargestellt, wobei als Knoten auf 3D-Objekte übertragene BPMN-Modellelemente genutzt werden.
@@ -313,7 +316,7 @@ Informationen auf den Objekten scheinen nur auf einer Seite dargestellt zu sein.
 Je nach Perspektive wäre es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 :num:`Abbildung #brown-process` zeigt auch, dass die gegenseitige Verdeckung von Modellelementen ebenfalls zu Schwierigkeiten bei der Lesbarkeit der Informationen führt.
 
-Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion des Benutzers mit dem Modell für andere Teilnehmer zeigen soll.
+Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion der Benutzer mit dem Modell für andere Teilnehmer zeigen soll.
 
 .. _brown-nodes:
 
@@ -334,8 +337,12 @@ Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
     Kommentarwände und Multimedia-Inhalte in der virtuellen Welt aus :cite:`brown_conceptual_2010` 
 
 
-Weiterführendes zur Visualisierung von Graphen in 3D
-====================================================
+Verbesserung der dreidimensionalen Darstellung von Graphen
+==========================================================
+
+3D-Szenen werden auf üblichen Arbeitsplatz-Bildschirmen auf eine zweidimensionale Projektion reduziert. 
+Dies bedeutet, dass Vorteile einer dreidimensionalen Darstellung wie die Tiefenwirkung nicht vollständig zur Geltung kommen. 
+Um dies zu umgehen lassen sich Techniken wie die Stereoskopie, Bewegungsparallaxe\ [#f2]_ oder voll immersive virtuelle Umgebungen (oft als CAVE bezeichnet \[#f3]_) einsetzen.
 
 .. _ware-graphs:
 
@@ -343,7 +350,7 @@ Nutzung von 3D-Effekten für einen verbesserten Tiefeneindruck
 -------------------------------------------------------------
 
 In :cite:`ware_visualizing_2008` wird an Probanden untersucht, wie groß die Vorteile einer stereoskopischen 3D-Darstellung von umfangreichen Graphen im Vergleich zu einer 2D-Darstellung sind. 
-Als Maß für die "Lesbarkeit" wird hier das Abschneiden bei der Aufgabe, die Pfadlänge zwischen zwei markierten Knoten zu erkennen genutzt. 
+Als Maß für die "Lesbarkeit" wird hier das Abschneiden bei der Aufgabe, die Pfadlänge zwischen zwei markierten Knoten zu erkennen, genutzt. 
 
 Eine stereoskopische 3D-Darstellung sei besonders hilfreich, um dem Betrachter einen realistischen Tiefeneindruck zu vermitteln und damit das Erkennen von Verbindungen zu erleichtern. 
 Eine weitere Maßnahme, um den Tiefeneindruck zu verbessern, sei es, den Graphen ständig zu rotieren und damit die Bewegungsparallaxe zu nutzen\ [#f2]_.
@@ -361,7 +368,7 @@ Dies wird in der späteren Arbeit auf den Umstand zurückgeführt, dass hierbei 
 
 Neben der Anzeige von 3D-Graphvisualisierungen auf handelsüblichen Arbeitsplatz-Rechnern könnten dafür auch immersive 3D-Umgebungen (fully immersive virtual reality) genutzt werden. 
 
-So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-artigen\ [#f3]_ Umgebung. 
+So zeigt :cite:`halpin_exploring_2008` die Visualisierung von sozialen Netzwerken in einer CAVE-Umgebung. 
 Benutzer könnten so direkt mit der Graphdarstellung der Daten in einer natürlichen Art und Weise interagieren und einen realitätsnahen räumlichen Eindruck von der virtuellen Welt bekommen. 
 
 Der Graph würde zu Beginn in einer "2D-Darstellung" in einer Ebene vor dem Benutzer angezeigt, wie in der :num:`Abbildung #halpin-extrude` (unten) zu sehen ist. 
@@ -407,14 +414,19 @@ Von :ref:`Dywer<dywer>` und :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
 Wie von Dywer gezeigt ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
 
-Effektivität von 3D-Darstellungen?
+Neben dem Prozessmodell an sich lassen sich auch weitere Informationen dreidimensional darstellen. 
+So zeigten :ref:`Schönhage et. al.<schoenhage>`, wie sich aus einer Simulation des Prozesses gewonnene Daten neben dem Prozessmodell anzeigen lassen.
+:ref:`Brown<ross-brown>` bettet die abstrahierte Darstellung des Prozesses in eine virtuelle Umgebung ein, welche den tatsächlichen Ausführungsort eines Prozesses abbilden kann. 
+So ließen sich beispielsweise Laufwege von am Prozess beteiligten Personen oder andere Handlungen animiert darstellen, um die Anschaulichkeit zu erhöhen und mögliche Probleme bei der Ausführung aufzuzeigen.
+
+Effizienz von 3D-Darstellungen?
 ----------------------------------
 
 Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen Vorteile gegenüber 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
-Es wurden immerhin einige Hinweise zur Effektivität gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen in der Softwaremodellierung andeuten, jedoch auch Probleme aufzeigen :cite:`dwyer_three_2001` :cite:`mcintosh_x3d-uml:_2008` :cite:`halpin_exploring_2008`.
-Untersuchungen zur Effektivität, die sich speziell auf die Prozessmodellierung beziehen, ließen sich nicht finden.
+Es wurden immerhin einige Hinweise zur Effizienz gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen in der Softwaremodellierung andeuten, jedoch auch Probleme aufzeigen :cite:`dwyer_three_2001` :cite:`mcintosh_x3d-uml:_2008` :cite:`halpin_exploring_2008`.
+Untersuchungen zur Effizienz, die sich speziell auf die Prozessmodellierung beziehen, ließen sich nicht finden.
 
-Bei der Betrachtung der Effektivität muss sicher auch berücksichtigt werden, dass die Erfahrung der Benutzer mit 3D-Darstellungen, beispielsweise aus Computerspielen oder 3D-CAD-Werkzeugen eine Rolle spielt
+Bei der Betrachtung der Effizienz muss sicher auch berücksichtigt werden, dass die Erfahrung der Benutzer mit 3D-Darstellungen, beispielsweise aus Computerspielen oder 3D-CAD-Werkzeugen eine Rolle spielt
 :cite:`dwyer_three_2001` :cite:`ware_visualizing_2008` :cite:`schonhage_3d_2000`. Wie unerfahrene Benutzer an 3D-Werkzeuge für die Prozessmodellierung herangeführt werden könnten, wäre wohl eine interessante Frage. 
 
 In eine ähnliche Richtung geht die Fragestellung, inwieweit 3D-Werkzeuge überhaupt von Benutzern akzeptiert werden. 
@@ -435,7 +447,9 @@ Negativ könnte bei GEF3D gesehen werden, dass in letzter Zeit relativ wenige Ä
 Ein Blick in den Quellcode zeigte, dass das Projekt noch auf "alter" OpenGL-Funktionalität aufbaut und damit die Möglichkeiten moderne Grafikhardware nicht nutzt.
 Bei der vorliegenden Arbeit stand es aber im Vordergrund, eine möglichst flexible und "zukunftsorientierte" Grundlage für ein (anpassbares) Prozessmodellierungswerkzeug zu legen, wozu auch eine Grafikausgabe auf dem aktuellen Stand der Technik gehört.
 
-Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die für das Visualisierungskonzept in der vorliegenden Arbeit genutzt wurden. 
+Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die in i>PM 3D realisiert wurden.
+So werden Prozesse als 3D-Graph visualisiert, der Knoten selbst dreidimensional darstellt, wie beispielsweise von :ref:`Brown<ross-brown>` gezeigt. 
+Die von Brown vorgeschlagene Möglichkeit, 3D-Abbilder von Objekten aus der realen Welt neben Modellelementen zu zeigen, wird auch von i>PM 3D angeboten.
 
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" (auf Basis von Java3D) können unter http://wilma.sourceforge.net/ heruntergeladen werden.

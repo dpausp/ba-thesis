@@ -208,7 +208,7 @@ Shader erfüllen verschiedene Aufgaben an von OpenGL festgelegten Positionen inn
 In OpenGL 4 werden folgende Typen unterstützt:
 
 Vertex-Shader  
-    arbeiten auf einzelnen Modell-Vertices\ [#f4]_ und sind beispielsweise für die Transformation von Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
+    arbeiten auf einzelnen Vertices eines 3D-Objekts \ [#f10]_ und sind beispielsweise für die Transformation von 3D-Modellkoordinaten in das von OpenGL benutzte Koordinatensystem zuständig.
 
 Geometry-Shader
     können aus den gegebenen Vertices neue Zwischen-Vertices erzeugen.
@@ -267,7 +267,8 @@ Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktio
 .. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht – vereinfacht gesagt – einem Pixel auf dem Bildschirm.
-.. [#f4] Ein Vertex ist ein "Eckpunkt" eines 3D-Modells. Vertexkoordinaten sind die Koordinaten des Punkts im 3D-Raum. OpenGL "rendert" ein 3D-Objekt, indem eine Liste von Vertices der Reihe nach gezeichnet wird.
+.. [#f10] Ein Vertex ist ein "Eckpunkt" eines 3D-Objekts, welches in OpenGL üblicherweise als ein aus Dreiecken aufgebautes Gitter beschrieben wird.
+.. [#f4] Vertexkoordinaten sind die Koordinaten des Punkts im 3D-Raum. OpenGL "rendert" ein 3D-Objekt, indem eine Liste von Vertices der Reihe nach gezeichnet wird.
 .. [#f5] Normalen werden vor allem für die Berechnung der Beleuchtung benötigt.
 .. [#f6] Texturkoordinaten sind häufig zweidimensional und werden vor allem dazu genutzt, 2D-Grafiken auf 3D-Objekten zu positionieren.
 .. [#f7] Siehe http://www.opengl.org/wiki/Rendering_Pipeline_Overview
