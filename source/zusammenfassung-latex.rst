@@ -1,6 +1,7 @@
 .. raw:: latex
-
     
+    \pagestyle{empty}
+
     \section*{Zusammenfassung (Deutsch)}
 
 
@@ -10,7 +11,6 @@
 
     \pagebreak
     \section*{Abstract (English)}
-
 
 .. include:: include_abstract.rst
 

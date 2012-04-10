@@ -238,6 +238,8 @@ Repräsentation von Prozessmodellen im dreidimensionalen Raum -- Konzept und Imp
 latex_documents = [
   ('index-latex', 'IPM3D.tex', latex_title,
    u'Tobias Stenzel', 'manual', True),
+  ('index-abstract', 'abstract.tex', latex_title,
+   u'Tobias Stenzel', 'manual', True),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

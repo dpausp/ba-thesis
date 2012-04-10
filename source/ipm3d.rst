@@ -47,7 +47,7 @@ Ein Modellierungswerkzeug muss die Fähigkeit haben, bestehende Modelle aus eine
 Außerdem sollen neue Modelle erstellt werden können. 
 In i>PM 3D kann die grafische Modellierungssprache (in einem gewissen Rahmen) ohne Änderungen am Programmcode modifiziert werden, da die abstrakten Modellelemente und deren (visuelle) Repräsentation jeweils durch ein zur Laufzeit geladenes Metamodell beschrieben werden. 
 Die in einem Prozessmodell verwendeten abstrakten Modellelemente (bspw. ein "Prozessknoten") sowie deren aktuelle Repräsentation im Modelleditor (bspw. das "Aussehen" und die Position eines Prozessknotens) werden in separaten Modellen abgelegt.
-In der :num:`Abbildund #ipm3d-konzeptionelle-uebersicht` werden diese Modelle als "Prozess-Modell" bzw. als "Editor-Modell" bezeichnet.
+In der :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` werden diese Modelle als "Prozess-Modell" bzw. als "Editor-Modell" bezeichnet.
 
 Der grundsätzliche Aufbau und die Anpassbarkeit der Modell-Hierarchie wird in :ref:`dieser Arbeit<modellhierarchie>` besprochen. 
 Außerdem werden die verwendeten Metamodelle im Detail :ref:`beschrieben<metamodelle>` und ein Beispiel gezeigt, wie sich neue Modellelemente ergänzen lassen.

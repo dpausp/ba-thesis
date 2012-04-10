@@ -11,4 +11,4 @@ This thesis is concerned with the conception and realization of process visualiz
 Additionally, it is shown how models are represented internally in our tool. 
 Models can be saved to and loaded from a textual notation stored on disk. 
 The language used for these models is described by modifiable meta models so it can be adapted to special use cases.
-This work also includes a render library based on OpenGL, which was developed for the needs of i>PM3D but can also be used for other grafical applications.
+This work also includes a render library based on OpenGL, which was developed for the needs of i>PM3D but can also be used for other graphical applications.

@@ -147,7 +147,6 @@ Die dritte Dimension könne beispielsweise dafür genutzt werden, als "uninteres
 
 In :num:`Abbildung #gogolla-classdiag-a` und :num:`Abbildung #gogolla-classdiag-b` wird das Prinzip am Beispiel eines Klassendiagramms verdeutlicht.
 Bei letzerer Abbildung ist zu sehen, dass bei Klassen, die nah am Betrachter sind, mehr Information dargestellt wird als bei den in größerer Entfernung dargestellten Klassen, bei denen nur der Name als Text zu erkennen ist.
-
 Zusätzlich wird die Nutzung von Animationen vorgeschlagen, um Übergänge zwischen verschiedenen Visualisierungsperspektiven – wie zwischen den beiden gezeigten Abbildungen – anschaulicher zu machen.
 
 .. _gogolla-classdiag-a:
@@ -181,7 +180,7 @@ In :num:`Abbildung #gef3d-ecore` ist ein mit GEF3D implementierter Ecore-Editor 
 Diese Darstellungsform mit 2D-Elementen, die im 3D-Raum platziert werden können wird als "2.5D"-Darstellung bezeichnet. 
 Elemente könnten, wie in der Abbildung zu sehen ist, auf Flächen oder auch frei im 3D-Raum platziert werden :cite:`www:gef3ddevblog`.
 
-Die grafische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und Text zu zeichnen werde Vektorgrafik genutzt, was zu einer besseren Darstellungsqualität im Vergleich zu texturbasiertem 2D-Rendering führe\ [#f4]_\ .
+Die grafische Ausgabe von GEF3D baut direkt auf OpenGL auf; um 2D-Grafiken und Text zu zeichnen werde Vektorgrafik genutzt, was zu einer besseren Darstellungsqualität im Vergleich zu texturbasiertem 2D-Rendering führe\ [#f4]_\ .
 
 .. _gef3d-twt3d:
 
@@ -208,7 +207,7 @@ Die grafische Ausgabe von GEF3D baue direkt auf OpenGL auf; um 2D-Grafiken und T
 3D-Prozessvisualisierung
 ========================
 
-Arbeiten, die speziell die Domäne der Prozessmodellierung betreffen und Vor sowie Nachteile von 3D-Visualisierungen zeigen werden hier vorgestellt.
+Arbeiten, die sich speziell mit 3D-Visualisierungen im Kontext des Prozessmanagements (Prozessmodellierung, -simulation) beschäftigen, werden hier vorgestellt.
 
 .. _betz:
 
@@ -340,9 +339,9 @@ Dies ist in :num:`Abbildung #brown-datadisplay` zu sehen.
 Verbesserung der dreidimensionalen Darstellung von Graphen
 ==========================================================
 
-3D-Szenen werden auf üblichen Arbeitsplatz-Bildschirmen auf eine zweidimensionale Projektion reduziert. 
-Dies bedeutet, dass Vorteile einer dreidimensionalen Darstellung wie die Tiefenwirkung nicht vollständig zur Geltung kommen. 
-Um dies zu umgehen lassen sich Techniken wie die Stereoskopie, Bewegungsparallaxe\ [#f2]_ oder voll immersive virtuelle Umgebungen (oft als CAVE bezeichnet \[#f3]_) einsetzen.
+3D-Szenen werden auf üblichen Arbeitsplatz-Bildschirmen zu einer zweidimensionalen Projektion reduziert :cite:`akenine-moller_real-time_2008`. 
+Dies bedeutet, dass die Vorteile einer dreidimensionalen Darstellung, welche sich aus der Tiefenwirkung ergeben, nicht vollständig zur Geltung kommen. 
+Um dies zu umgehen lassen sich Techniken wie die Stereoskopie, Bewegungsparallaxe\ [#f2]_ oder voll immersive virtuelle Umgebungen (oft als CAVE bezeichnet\ [#f3]_) einsetzen.
 
 .. _ware-graphs:
 
@@ -401,14 +400,14 @@ Modellhierarchien und Beziehungen zwischen verschiedenen Modellen lassen sich gu
 Problematisch ist sicher, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schrift bemerkbar machen wird.
 Außerdem wird die natürliche Wahrnehmung des Menschen, die stark auf die Erkennung von 3D-Strukturen ausgelegt ist (ref?) kaum genutzt.
 
-Als Weiterentwicklung lässt sich die von :ref:`Krolovitsch und Nilsson<krolovitsch>` vorgestellte Visualisierung von Zustandsdiagrammen ansehen, die ebenfalls 2D-Flächen nutzt, jedoch die Elemente aus der Ebene herausragen lässt.
+Als Weiterentwicklung lässt sich die von :ref:`Krolovitsch und Nilsson<krolovitsch>` vorgestellte Visualisierung von Zustandsdiagrammen betrachten, die ebenfalls 2D-Flächen nutzt, jedoch die Elemente aus der Ebene herausragen lässt.
 So wirkt die Darstellung etwas "plastischer" und Strukturen lassen sich besser erkennen. 
 
 Interessant ist die dort gezeigte Möglichkeit, Subdiagramme temporär auszublenden und durch ein einzelnes Symbol zu ersetzen.
 Dies wäre auch in der Prozessmodellierung hilfreich für die Darstellung von kompositen Prozessen.
 So könnte beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weiteres Modell in der 3D-Szene angezeigt werden ohne ein neues Fenster zu öffnen, wie es in 2D-Werkzeugen praktiziert wird.
 
-:ref:`Betz et al.<betz>` zeigten für den Bereich der Prozessmodellierung die schon genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
+:ref:`Betz et al.<betz>` zeigten für den Bereich der Prozessmodellierung die schon für die Softwaremodellierung genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
 
 Von :ref:`Dywer<dywer>` und :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 

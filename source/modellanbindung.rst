@@ -27,20 +27,19 @@ Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen
 Modellkomponente
 ================
 
-Wie in :ref:`simulatorx` erläutert bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die jeweils ein begrenztes Aufgabengebiet abdecken.
+Wie in :ref:`simulatorx` erläutert, bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die jeweils ein wohl definiertes Aufgabengebiet abdecken.
 Die ``ModelComponent`` stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen (:ref:`Anforderung (d) <anforderungen>`). 
 
 So wird der Zugriff auf die Modelle vollständig von der ``ModelComponent`` gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
-Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die actor-basierte Architektur und damit nachrichtenbasierte Kommunikation ("message passing") von Simulator X vorgegeben.
+Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die Actor-basierte Architektur und damit nachrichtenbasierte Kommunikation ("message passing") von Simulator X vorgegeben.
 
 Commands
 --------
 
 Die Modellfunktionen werden zum Teil als ``Commands`` bereitgestellt, die über das Kommunikationssystem von :ref:`simulatorx` an die ``ModelComponent`` geschickt werden.
-In der momentanen Umsetzung werden diese Commands ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
+In der momentanen Umsetzung werden diese ``Commands`` ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
 Es existieren ``Commands`` für die folgenden Funktionen:
-
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von (Usage-)Modellen
 * Erstellen und Löschen von Knoten und Szenenobjekten
@@ -60,7 +59,7 @@ Da die Funktionalität der ``ModelComponent`` relativ umfangreich ist, ist diese
 
     Unterkomponenten der ``ModelComponent`` (vereinfacht)
 
-Trait ``Component`` wird von Simulator X bereitgestellt und muss von allen Komponenten implementiert werden. 
+Das Trait ``Component`` wird von Simulator X bereitgestellt und muss von allen Komponenten implementiert werden. 
 Dessen Methoden beziehen sich überwiegend auf den :ref:`"Lebenszyklus" <lebenszyklus>` von ``Entities``.
 Die Implementierung dieser Methoden erfolgt durch das eingemischte Trait ``ModelComponentEntityLifecycle``.
 
@@ -90,7 +89,6 @@ Die Elemente von LMM werden durch analog benannte Klassen repräsentiert, die mi
 So wird die "Wurzel" von einer ``MModel``-Instanz gebildet, der sich ``MLevels`` unterordnen, die wiederum ``MPackages`` mit ``MConcepts`` sowie weiteren ``MPackages`` enthalten.
 Weiterhin kann ein ``MConcept`` andere ``MConcepts`` referenzieren. So ergibt sich ein azyklischer, gerichteter Graph.
 
-Vorteilhaft ist es, dass es sich hier um Objekte handelt, welche die Vorteile von Scala nutzen und daher in einer Scala-Umgebung bequem genutzt werden können. 
 Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr einfach zu benutzende Funktionalität bieten (bspw. das Filtern von Sequenzen nach bestimmten Kriterien) als die von Java oder EMF bereitgestellten.
 
 Ausgehend von einem ``MModel``-Objekt kann die ``ModelComponent`` in einem Modell navigieren und es modifizieren, beispielsweise neue Concepts anlegen.
@@ -99,8 +97,8 @@ Ausgehend von einem ``MModel``-Objekt kann die ``ModelComponent`` in einem Model
 Im Beispiel ist das Concept ``ProcessUsage`` eine Verwendung von ``ProcessA``. 
 Mit ``ProcessUsage`` ist daher eine ``MConceptReference`` assoziiert, welche die Spezialisierungsrelation zwischen den beiden Concepts repräsentiert.
 ``ProcessUsage`` hat außerdem eine ausgehende Kante zu einer anderen (nicht gezeigten) Verwendung. 
-Ausgedrückt wird dies durch die Zuweisung vom Typ ``MConceptAssignment``, welche wiederum die zugehörige Kante ``SomeConn`` referenziert. 
-Die Zuweisung gehört zu einem Attribut mit dem Namen ``"outboundControlFlows"``, das im Concept ``Node`` im :ref:`pmm` definiert ist.
+Ausgedrückt wird dies durch die Zuweisung vom Typ ``MConceptAssignment``, welche wiederum die zugehörige Kante ``ControlFlowA`` referenziert. 
+Die Zuweisung gehört zu einem Attribut mit dem Namen "outboundControlFlows", das im Concept ``Node`` aus dem :ref:`pmm` definiert ist.
 
 .. _domain-model-beispiel:
 
@@ -113,7 +111,7 @@ Vereinfachung des Umgangs mit Modellen
 --------------------------------------
 
 Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern, wurde eine Reihe von Adaptern für die in der Speicherrepräsentation der Modelle genutzten Klassen implementiert.
-Ein Beispiel dafür ist der ``MConceptAdapter``, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (``assignableAttributes``), das Setzen von Werten (``setValue``) oder die Abfrage von Concept-Relationen (``instanceOf``) erlauben.
+Ein Beispiel dafür ist der ``MConceptAdapter``, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (``assignableAttributes``), das Setzen von Werten (``setValue``) oder die Abfrage von Concept-Beziehungen (``instanceOf``) erlauben.
 
 Für alle Adapter werden :ref:`implicit` angeboten, die die gekapselten Objekte direkt um die Methoden "erweitern", die in den Adaptern definiert sind.
 
@@ -125,7 +123,7 @@ Laden von Metamodellen
 Wie in :ref:`modellhierarchie` beschrieben wurde, werden Metamodelle für die Spezifikation der verwendeten Modellierungssprache und deren Repräsentation eingesetzt. 
 Diese sollen prinzipiell austauschbar sein. Dazu wird von der Modellkomponente die Funktion bereitgestellt, Metamodelle zur Laufzeit zu laden.
 
-Um das Laden der Modelle anzustoßen, ist folgendes Command definiert:
+Um das Laden der Modelle anzustoßen, ist folgendes ``Command`` definiert:
 
 .. code-block:: scala
 
@@ -145,7 +143,7 @@ Zum Einen ist dies eine Auflistung der verfügbaren Kanten- und Szenenobjekttype
 Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungs-Konzept zur Laufzeit Typen vom Benutzer angelegt werden.
 
 Die Kommunikation zwischen Editor- und Modellkomponente wird in :num:`Abbildung #load-metamodels-sequencediag` am Laden von Metamodellen beispielhaft gezeigt.
-Nachrichten, die mit Großbuchstaben beginnen stellen Commands beziehungsweise Replies dar; Nachrichten mit Kleinbuchstaben sind gewöhnliche Methodenaufrufe und -rückgabewerte.
+Nachrichten, die mit Großbuchstaben beginnen stellen ``Commands`` beziehungsweise Replies dar; Nachrichten mit Kleinbuchstaben sind gewöhnliche Methodenaufrufe und -rückgabewerte.
 
 
 .. _load-metamodels-sequencediag:
@@ -162,11 +160,11 @@ Laden und Schließen von und Umgang mit mehreren Modellen
 Ein konkretes "Prozesmodell" wird geöffnet, indem das zugehörige *Domain-Model* und *Editor-Usage-Model* geladen werden.
 Zusammen werden diese beiden Modelle im Folgenden vereinfachend das *Usage-Modell* genannt, welches den aktuellen Zustand eines Prozessmodells und dessen Repräsentation im Editor umfasst\ [#f1]_.
 
-Das Command ``LoadUsageModels`` ist analog zum Command ``LoadMetaModels`` definiert, wie im vorherigen Unterabschnitt beschrieben.
+Das ``Command`` ``LoadUsageModels`` ist analog zum ``Command`` ``LoadMetaModels`` definiert, wie im vorherigen Unterabschnitt beschrieben.
 
 Es können von der Anwendung zur Laufzeit mehrere Usage-Modelle (zu denselben Metamodellen) geladen werden. 
 In der ``ModelComponent`` ist jeweils ein Usage-Model-Paar als "aktiv" gekennzeichnet.
-Commands wie das Erstellen von Knoten beziehen sich immer auf das aktive Usage-Model. Welches Modell "aktiv" ist kann über das Command ``SetActiveUsageModel`` geändert werden.
+Commands wie das Erstellen von Knoten beziehen sich immer auf das aktive Usage-Model. Welches Modell "aktiv" ist kann über das ``Command`` ``SetActiveUsageModel`` geändert werden.
 
 Modelle können über ``CloseUsageModel`` wieder geschlossen werden, wobei alle seit dem letzten Speichern erfolgten Änderungen verloren gehen.
 
@@ -178,9 +176,9 @@ Speichern von Modellen
 ----------------------
 
 "Speichern" bedeutet hier, dass die Änderungen an Modellelementen in das Usage-Model zurückgeschrieben werden und das dieses anschließend in textueller Form persistiert wird.
-Analog zum Lade-Command ``LoadUsageModels`` werden bei ``SaveUsageModels`` zwei Dateinamen für Domain- und Editormodell angegeben. Java-Resource-Pfade sind hier nicht erlaubt.
+Analog zu ``LoadUsageModels`` werden bei ``SaveUsageModels`` zwei Dateinamen für Domain- und Editormodell angegeben. Java-Resource-Pfade sind hier nicht erlaubt.
 
-Um die Speicherrepräsentation des Modells wieder in eine durch den LMMLight-Parser lesbare\ [#f10]_, textuelle Darstellung zu überführen, wird der in :ref:`stringtemplate` gezeigte Wrapper für die StringTemplate-Bibliothek genutzt.
+Um die Speicherrepräsentation des Modells wieder in eine durch den LMMLight-Parser lesbare\ [#f10]_, textuelle Darstellung zu überführen, wird der in :ref:`stringtemplate` vorgestellte Wrapper für die StringTemplate-Bibliothek genutzt.
 
 
 .. _model-entities:
@@ -194,7 +192,7 @@ Es ist daher zweckmäßig, für jedes Modellelement sowie für Szenenobjekte ein
 
 Wie aus :ref:`simulatorx` bekannt werden Entities mit Hilfe von ``EntityDescriptions`` beschrieben, die aus ``Aspects`` aufgebaut sind.
 In :num:`Abbildung #entity-description` ist ein eine solche ``Entity``-Definition zu sehen.
-Der Ablauf bei der Erstellung einer ``ModelEntity`` aus einer ``EntityDescription`` wird im Abschnitt :ref:`lebenszyklus` kurz vorgestellt.
+Der Ablauf bei der Erstellung einer ``ModelEntity`` aus einer ``EntityDescription`` wird im Abschnitt :ref:`lebenszyklus` vorgestellt.
 
 .. _entity-description:
 
@@ -223,9 +221,9 @@ Kanten definieren keinen Physik-Aspect und besitzen daher keine physikalische Re
 Grafik
 ^^^^^^
 
-Die :ref:`Renderkomponente` stellt verschiedene RenderAspects bereit, die der Renderkomponente alle nötigen Informationen mitteilen, um ein Visualisierungsobjekt zur entsprechenden Entity anzulegen.
+Die :ref:`Renderkomponente` stellt verschiedene ``RenderAspects`` bereit, die der Renderkomponente alle nötigen Informationen mitteilen, um ein Visualisierungsobjekt zur entsprechenden Entity anzulegen.
 
-Szenenobjekte, für die es bisher nur die Möglichkeit gibt, diese aus COLLADA-3D-Modelldateien zu laden werden von der Renderkomponente selbst erzeugt. 
+Szenenobjekte, welche aus COLLADA-3D-Modelldateien geladen werden, werden von der Renderkomponente selbst erzeugt. 
 Solche Szenenobjekte sind statisch durch das 3D-Modell definiert. 
 Das bedeutet in diesem Zusammenhang, dass ihr Erscheinungsbild zur Laufzeit nicht geändert werden kann (abgesehen von Position, Rotation und Skalierung).
 In der Entity-Beschreibung wird dafür der ``ShapeFromFile``-Aspect angegeben.
@@ -239,15 +237,15 @@ Modell
 ^^^^^^
 
 Für die drei Elementtypen Knoten, Kanten und Szenenobjekte gibt es jeweils einen Aspect, der von ``ModelAspect`` abgeleitet ist, wie beispielsweise den ``NodeAspect``, wie er in :num:`Abbildung #entity-description` zu sehen ist.
-``ModelAspects`` sind der ``ModelComponent`` zugeordnet und enthalten für Nutzer der ModelEntity relevante Informationen. 
+``ModelAspects`` sind der ``ModelComponent`` zugeordnet und enthalten für Nutzer der ``ModelEntity`` relevante Informationen. 
 
 Für alle Elemente, die von ``ModelEntities`` repräsentiert werden wird ein vollqualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
-Dieser Name wird in Commands verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
+Dieser Name wird in ``Commands`` verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
 
 Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem *Domain-Model* genutzt. Szenenobjekte werden über die FQN des *Editor-Usage*-Concepts identifiziert\ [#f2]_.
 
 Außerdem wird ein Identifikationsstring (``creatorId``) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
-Mit "Ersteller" ist hier der Absender des entsprechenden Commands oder die ``ModelComponent`` selbst gemeint. 
+Mit "Ersteller" ist hier der Absender des entsprechenden ``Commands`` oder die ``ModelComponent`` selbst gemeint. 
 
 Diese ID kann von diesem dafür benutzt werden, neu erstellte Entities in internen Datenstrukturen richtig zuzuordnen.
 
@@ -310,7 +308,7 @@ SVars können direkt Attribute aus den beiden zugrunde liegenden (Meta)-Modellen
 #. **Editor-Model-SVars**:
    Diese SVars werden nach Bedarf aus den Attributen des *Editor-Metamodels* erstellt. 
    Sie erlauben es, die Visualisierung der Elemente anzupassen, wie sie im Editormodell beschrieben wird\ [#f4]_.
-   Neben literalen Attributen werden hier auch Concept-Attribute unterstützt. Letztere werden für die meisten hier genannten SVars benötigt.
+   Neben literalen Attributen werden hier auch Attribute unterstützt, die Concepts referenzieren. Letztere werden für die meisten hier genannten SVars benötigt.
 
    Welche Editor-Attribute unterstützt werden wird von der ``ModelComponent`` festgelegt; dies sind\ [#f5]_:
    
@@ -367,7 +365,7 @@ Komponenten in :ref:`simulatorx` definieren eine Reihe von Methoden, die vom Fra
 
 Die Erstellung einer ``ModelEntity`` folgt dem folgenden Schema:
 
-  #. Der Vorgang wird beispielsweise durch ein ``CreateNode``-Command vom Editor angestoßen. Die Modellkomponente erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`Aspekten<modelentities-aspects>` und übergibt diese an das Framework (Methode ``EntityDescription.realize``), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
+  #. Der Vorgang wird beispielsweise durch ein ``CreateNode-Command`` vom Editor angestoßen. Die Modellkomponente erzeugt daraufhin eine ``EntityDescription`` mit den :ref:`Aspekten<modelentities-aspects>` und übergibt diese an das Framework (Methode ``EntityDescription.realize``), welches die Erstellung der Entity verwaltet und die folgenden Methoden aufruft.
 
   #. Die Methode ``getAdditionalProvidings`` gibt eine Sequenz von ``SVarDescriptions`` zurück, die zu der Entity hinzugefügt werden sollen. Im Falle der Modellkomponente sind dies ``SVarDescriptions`` zu den im vorherigen Abschnitt beschriebenen SVars.
 
@@ -377,11 +375,11 @@ Die Erstellung einer ``ModelEntity`` folgt dem folgenden Schema:
 
   #. Zum Abschluss werden Observer benachrichtigt, die auf die Erstellung von neuen Entities hören. Dies ist hier konkret die Editorkomponente, die auf diesem Weg die Entity zu ihrer internen Repräsentation hinzufügen kann.
 
-Der genannte Prozess läuft auch parallel für die anderen Komponenten ab, für die Aspects in der Entity definiert sind; hier also für die Render- und gegebenenfalls die Physikkomponente.
+Der genannte Ablauf spielt sich auch parallel für die anderen Komponenten ab, für die Aspects in der Entity definiert sind; hier also für die Render- und gegebenenfalls die Physikkomponente.
 
 Beim Löschen spielt sich Folgendes ab:
 
-  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-Command vom Editor initiiert. Daraufhin startet die Modellkomponente den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
+  #. Das Löschen wird beispielsweise durch ein DeleteNode(fqnToDelete)-``Command`` vom Editor initiiert. Daraufhin startet die Modellkomponente den Löschvorgang, indem auf der zur FQN gehörigen Entity die Methode ``remove`` aufgerufen wird.
 
   #. Simulator X entfernt nun die Entity aus dem System und ruft dabei in der Komponente die ``removeFromLocalRep``-Methode auf. In dieser Methode sollen interne Verweise und zugehörige Daten in den Komponenten entfernt werden.
 

@@ -4,7 +4,7 @@
 Modellhierarchie
 ****************
 
-Da es sinnvoll ist, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`) war diese Flexibilität auch für das vorliegende Arbeit erwünscht (:ref:`Anforderung (a,c) <anforderungen>`). 
+In der Prozessmodellierung ist es sinnvoll, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`). Daher war diese Flexibilität auch für das vorliegende Arbeit erwünscht (:ref:`Anforderung (a,c) <anforderungen>`). 
 
 Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
@@ -17,12 +17,12 @@ Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
 Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier ein Modellierungswerkzeug für die POPM und kein generisches Framework realisiert werden sollte. 
 Dennoch ist es möglich, in einem gewissen Rahmen Modifikationen an den verwendeten Modellelementen vorzunehmen und deren Visualisierung anzupassen. 
 
-Dies hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann, ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
-
-Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene :ref:`Prozess-Metamodell <pmm>` genutzt wird. 
-
 Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im aktuellen Kapitel und bei der näheren Vorstellung der :ref:`Metamodelle<metamodelle>` deutlich.
 Am Ende des nächsten Kapitels ist ein :ref:`Anwendungsbeispiel<beispiel-neues-element>` zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
+
+Die Anpassbarkeit der konkreten Syntax hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann, ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
+
+Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene :ref:`Prozess-Metamodell <pmm>` genutzt wird. 
 
 :num:`Abbildung #modellhierarchie-diagram` zeigt, wie sich die Hierarchie der Modelle darstellt, welche sich in einen **Editor-Model-Stack** und einen **Domain-Model-Stack** aufteilt.
 Nach einer kurzen Vorstellung der Modellierungssprache wird eine Übersicht über die beiden Model-Stacks gegeben.
@@ -41,12 +41,12 @@ LMMLight
 ========
 
 Die Modelle werden mit Hilfe einer Metamodellierungssprache spezifiziert, die vom :ref:`lmm` abgeleitet ist. 
-Zum weiteren Verständnis ist es ausreichend, die in diesem Abschnitt gezeigten Grundelemente und die Prinzipien zu kennen.
+Zum weiteren Verständnis ist es ausreichend, die in diesem Abschnitt gezeigten Grundelemente und Prinzipien zu kennen.
 
 Die hier verwendete Sprache, im Folgenden **LMMLight** genannt, folgt in vielen Aspekten LMM, ohne jedoch alle weiterführenden Modellierungsmuster zu unterstützen, um eine einfache Implementierung zu ermöglichen. 
 Konkret hat dies zur Folge, dass der textuelle Modell-Editor von OMME für die Erstellung von LMMLight-Modellen sinnvoll genutzt werden kann, solange auf die nicht unterstützten Modellierungsmuster verzichtet wird.
 
-LMMLight unterstützt das Muster der **Spezialisierung von Instanzen** (``concreteUseOf``), da dies unter anderem für die Realisierung des :ref:`Typ-Verwendungs-Konzepts<tvk>` hilfreich ist.
+LMMLight unterstützt das Muster der **Spezialisierung von Instanzen** (``concreteUseOf``), welches unter anderem für die Realisierung des :ref:`Typ-Verwendungs-Konzepts<tvk>` genutzt wird.
 Im Gegensatz zu LMM lassen sich in Spezialisierungen alle Attributzuweisungen des spezialisierten Concepts ohne Einschränkung überschreiben.
 
 .. _editor-model-stack:
@@ -76,17 +76,17 @@ Vollqualifizierte Namen entstehen nach dem Schema <Model>.<Level>.<Package>.<Con
 Anpassbarkeit
 -------------
 
-Durch Anpassungen im Editor-Model-Stack können für ein Domänen-Metamodell im Prinzip auch mehrere verschiedene Repräsentationen erstellt werden. 
+Durch Anpassungen im Editor-Model-Stack können für ein Domänen-Metamodell mehrere verschiedene Repräsentationen erstellt werden. 
 
 Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist das im *Designer-Model-Stack* von MDF definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt. 
 
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
-Um die Implementierung zu vereinfachen wurde jedoch darauf verzichtet. 
+Da der Fokus dieser Arbeit auf der (perspektivenorientierten) Prozessmodellierung liegt, wurde jedoch darauf verzichtet, um die Implementierung zu vereinfachen.
 Dabei wird hingenommen, dass die Repräsentationen der einzelnen Domänenmodellelemente (auch "Figuren" genannt) für jede neue Repräsentation des Domänenmodells komplett neu beschrieben werden müssen.
 
 Bei der Erstellung der Figuren muss berücksichtigt werden, dass durch die Implementierung der :ref:`modellkomponente` eine feste Auswahl an Visualisierungsparametern definiert ist. 
-Welche dies sind kann in der Beschreibung der :ref:`modellanbindung-svars` nachgelesen werden.
+Welche dies sind, kann in der Beschreibung der :ref:`modellanbindung-svars` nachgelesen werden.
 
 *Editor-Definition-* und *Editor-Meta-Model* können zwar konzeptionell – wie im MDF – unterschieden werden; 
 jedoch wird in dieser Arbeit davon ausgegangen, dass diese zusammen in einem Modell (im Sinne von LMM) definiert werden, welches hier als das **Editor-Metamodell** bezeichnet wird. 
@@ -96,7 +96,7 @@ Um eine andere Visualisierung festzulegen müsste das komplette Editor-Metamodel
 Übersicht über die Editor-Model-Ebenen
 --------------------------------------
 
-In :num:`Abbildung #modellhierarchie-diagram` ist zu sehen, wie die Editor-Model-Ebenen, die im Folgenden vorgestellt werden, von "oben nach unten" definiert sind. 
+:num:`Abbildung #modellhierarchie-diagram` veranschaulicht, wie die Editor-Model-Ebenen, die im Folgenden vorgestellt werden, von "oben nach unten" definiert sind. 
 *Programming-Language-Mapping*, *Editor-Base-Level* und *Editor-Definition-Level* ergeben zusammen das **Editor-Metamodell**, 
 welches die Repräsentation eines bestimmten Domain-Metamodells oder – anders gesagt – einen **Editor** für das Domain-Metamodell spezifiziert.
 
@@ -127,7 +127,7 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein (vorgegeben durch
 
     * package ``nodeFigures`` definiert Concepts, die die Repräsentation von Knoten aus dem Domänenmodell beschreiben.
     * package ``connectionFigures`` definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
-    * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte". Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell und stehen für sich alleine.
+    * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte"(:ref:`Anforderung (h): Anzeige beliebiger 3D-Objekte <anforderungen>`). Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell, da sie kein Modellelement repräsentieren.
 
 Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird (:ref:`Anforderung (b) <anforderungen>`).
 Zusammen bilden diese Packages den in der :num:`Abbildung #modellhierarchie-diagram` gezeigten *Editor-Definition-Level*. 
@@ -151,7 +151,7 @@ Sie legen damit beispielsweise fest, wo sich Modellelemente im Raum befinden und
 Dies sind auch typische Parameter, in denen sich alle Verwendungen einer Instanz unterscheiden.
 
 Dem Konzept der Spezialisierung von Instanzen folgend kann hier auch die konkrete Visualisierung des Objekts beeinflusst werden. 
-Wird in den Verwendungen für ein Attribut kein Wert angegeben, wird der Wert aus dem übergeordneten Concept benutzt.
+Wird in den Verwendungen für ein Attribut kein Wert angegeben, wird der Wert aus dem konkret verwendeten Concept benutzt.
 
 Modellelemente, die von derselben Instanz abstammen haben also grundsätzlich das gleiche Erscheinungsbild, solange keine Werte überschrieben werden.
 
@@ -186,8 +186,8 @@ Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entspreche
 
 Das Prinzip wird im nächsten Kapitel bei der Vorstellung des verwendeten :ref:`Prozess-Metamodells<pmm>` und anschließend in einem :ref:`Anwendungsbeispiel<beispiel-neues-element>` verdeutlicht.
 
-Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur literale Datentypen unterstützt werden. 
-Concept-Attribute können im Editor nicht angezeigt oder verändert werden und werden ignoriert\ [#f3]_.
+Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur Literaltyp-Attribute allgemein (außer für die Assoziation von Knoten und Kanten, wie vorher beschrieben) unterstützt werden. 
+Attribute, die Concepts referenzieren, können im Editor nicht angezeigt oder verändert werden und werden ignoriert\ [#f3]_.
 
 .. _domain-model:
 
@@ -210,9 +210,9 @@ Für Kanten kommt das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsat
 Kanten sind daher direkte Instanzen von Typen aus dem *Domain-Meta-Model* und werden zum Package ``connections`` hinzugefügt.
 
 
-.. [#f1] "Copy-And-Paste"
+.. [#f1] "Copy-And-Paste-Wiederverwendung"
 
 .. [#f2] Im Domänenmodell sind Kanten also technisch gesehen immer "gerichtet".
 
-.. [#f3] Als "Ausweg" kann natürlich ein zusätzlicher Knotentyp und eine passende Verbindung definiert werden, so dass der Sachverhalt vom Editor visualisiert und modifiziert werden kann.
+.. [#f3] Als "Ausweg" kann ein zusätzlicher Knotentyp und eine passende Verbindung definiert werden, so dass der Sachverhalt vom Editor visualisiert und modifiziert werden kann.
 

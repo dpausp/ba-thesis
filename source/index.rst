@@ -27,7 +27,6 @@ I>PM 3D - Ein Prozessmodellierungswerkzeug für drei Dimensionen - Repräsentati
 .. toctree::
     anhang_a
     anhang_b
-    anhang_c
 
 Index und Tabellen
 ==================

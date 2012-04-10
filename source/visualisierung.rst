@@ -8,13 +8,13 @@ Im Folgenden wird die Visualisierung von Prozessen im i>PM3D-Prototypen vorgeste
 Außerdem werden durch die Implementierung vorgegebene Aspekte angesprochen, welche aber weitgehend unabhängig von der Prozessmodellierung sind.
 Dabei werden auch Hinweise gegeben, welche beim Hinzufügen von neuen Modellfiguren oder Ändern von Visualisierungsparametern beachtet werden sollten.
 
-Abschließend werden bisher nicht umgesetzte Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sorgen könnten.
+Abschließend werden bisher nicht umgesetzte Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sinnvoll sind.
 
 
 Grundlegende Darstellung der grafischen Elemente
 ================================================
 
-Wie im vorherigen Kapitel unter :ref:`ebl` erläutert werden auf dem Editor-Base-Level grundlegende Figuren und deren Darstellung durch grafische Objekte im Modellierungswerkzeug definiert.
+Wie im vorherigen Kapitel unter :ref:`ebl` erläutert, werden auf dem Editor-Base-Level grundlegende Figuren und deren Darstellung durch grafische Objekte im Modellierungswerkzeug definiert.
 Die konkreten Repräsentationen für bestimmte Typen aus dem Prozessmodell werden auf dem Editor-Definition-Level festgelegt. 
 In den Metamodellen wurde schon vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird. 
 Anwender, die bereits Erfahrung mit verbreiteten grafischen 2D-Prozessmodellierungssprachen haben sollten durch das Aussehen der Modellelemente möglichst intuitiv verstehen können, welche Konzepte aus der Prozessmodellierung dargestellt werden.
@@ -31,9 +31,9 @@ Ebene Flächen eignen sich besonders gut zur Darstellung von Information; gekrü
 
 Bei Würfeln oder ähnlichen Körpern ist es auch relativ einfach, einen (dreidimensionalen) Rahmen zu zeichnen, dessen Verwendung weiter unten in :ref:`visualisierungsvarianten` dargestellt wird.
 
-:num:`Abbildung #prozessknoten` zeigt zwei Prozesse, auf denen deren Funktion als Text angezeigt wird. 
+:num:`Abbildung #prozessknoten` zeigt zwei Prozessknoten, auf welchen die Prozess-Funktion als Text angezeigt wird. 
 
-Da die Erstellung von Knoten nach dem :ref:`tvk` erfolgt lässt sich die Visualisierung für jeden Knoten individuell anpassen.
+Da die Erstellung von Knoten nach dem :ref:`tvk` erfolgt, lässt sich die Visualisierung für jeden Knoten individuell anpassen.
 In der Abbildung wurde beim rechten Knoten zur Laufzeit die Hintergrundfarbe geändert.
 
 Texte werden nach Bedarf an Wortgrenzen auf mehrere Zeilen verteilt und zentriert angezeigt. 
@@ -75,14 +75,12 @@ Ab einer gewissen Abweichung wird nur noch die Hintergrundfarbe angezeigt. So is
 Berücksichtigung der Eingabemethoden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Da dieser Prototyp neben der klassischen Desktop-Bedienung mit Maus und Tastatur auch zur Evaluierung von neuartigen Eingabegeräten eingesetzt werden soll, müssen auch die Besonderheiten dieser Eingabemethoden berücksichtigt werden. 
-
+Da i>PM3D nicht nur die klassischen Desktop-Bedienung mit Maus und Tastatur erlauben, sondern auch zur Evaluierung von neuartigen Eingabegeräten eingesetzt werden soll, müssen auch die Besonderheiten dieser Eingabemethoden berücksichtigt werden. 
 Die im Projekt verwendeten 3D-Eingabegeräte :cite:`buchi` haben nur eine relativ begrenzte Genauigkeit bei der Auswahl und Platzierung von Objekten. 
 Vor allem ungeübten Benutzern kann es schwerfallen, Objekte zu selektieren und zu bewegen, besonders wenn die Objekte relativ klein sind.
 
 Dies ist auch ein Grund, eine Graphdarstellung mit möglichst einfachen Objekten zu verwenden.
 Es wird deswegen auch verzichtet, Elemente nach dem geometrischen Visualisierungsansatz ineinander zu schachteln, wie es bei 2D-Werkzeugen wie :ref:`i>PM2<mdf>` zu sehen war.
-
 Es ist sinnvoll, Quader (oder annähernd quaderförmige Geometrien) einzusetzen, da Knoten in die physikalische Simulation eingebunden sind und Quader von der verwendeten Physikkomponente direkt unterstützt werden\ [#f4]_. 
 Die physikalische Simulation wird von den Eingabegeräten für die Selektion von Elementen genutzt, wie von :cite:`buchi` beschrieben.
 
@@ -91,11 +89,10 @@ Die physikalische Simulation wird von den Eingabegeräten für die Selektion von
 Kanten
 ------
 
-Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können, die auch gerichteter Natur sein kann.
-
+Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können; außerdem muss ggf. visualisiert werden, welche Richtung die Kante besitzt.
 In i>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
 Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. 
-Dies wird durch die in :cite:`uli` beschriebene Editor-Komponente übernommen.
+Dies wird von der in :cite:`uli` beschriebenen Editor-Komponente übernommen.
 
 Die durch das Concept ``TexturedConnection`` (siehe :ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 
@@ -115,11 +112,12 @@ Szenenobjekte
 -------------
 
 Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als ``SceneryObject`` bezeichnet werden. 
+(:ref:`Anforderung (h) <anforderungen>`)
 
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
 Diese können zur Illustration von Prozessschritten dienen, wie es von :ref:`Brown <ross-brown>` gezeigt wurde.
 
-Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden, besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
+Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden. Sie besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
 
 .. _visualisierungsvarianten:
@@ -137,7 +135,7 @@ Diese Modifikationen werden nicht im Editor-Usage-Model persistiert; daher werde
 Hervorhebung
 ------------
 
-Diese Variante wird dafür eingesetzt, ein Objekt kurzzeitig beim Überfahren durch einem Cursor eines Eingabegeräts hervorzuheben. 
+Diese Variante wird dafür eingesetzt, ein Objekt kurzzeitig beim Überfahren durch einen Cursor eines Eingabegeräts hervorzuheben. 
 Dargestellt wird das abhängig von der Helligkeit der Grundfarbe des Objekts durch eine Aufhellung bzw. einer Abdunkelung der Farbe. Der Farbton wird dabei nicht verändert.
 
 :num:`Abbildung #hervorhebung-sc` zeigt im Vergleich ein hervorgehobenes Datenelement und eines im Normalzustand (rechts).
@@ -150,7 +148,7 @@ Selektierte Objekte sollen von unselektierten Objekten auch bei großer Entfernu
 
 Die Visualisierung des Selektionszustandes soll daher möglich auffällig sein, ohne das Erscheinungsbild allzu stark zu beeinflussen. 
 
-Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Wie der "Rand" definiert ist je nach Objekttyp unterschiedlich\ [#f5]_.
+Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Die Definition des "Rands" ist je nach Objekttyp unterschiedlich\ [#f5]_.
 
 In :num:`Abbildung #selektion-sc` sind zwei selektierte Knoten zu sehen.
 
@@ -207,7 +205,7 @@ Zur Vereinfachung der Platzierung werden in 2D-Modellierungswerkzeugen oft im Hi
 Noch hilfreicher können "magnetische" Gitter sein, die grob in der Nähe platzierte Objekte automatisch auf feste, regelmäßige Positionen verschieben.
 
 Um dies zu erreichen, wird die :ref:`Physikkomponente<mod-simx>` genutzt. 
-Sobald sich ein Objekt nahe genug an einer solchen Modellierungsebene befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen, solange bis der Mittelpunkt des Objekts die Fläche erreicht hat, wo es angehalten wird.
+Sobald sich ein Objekt nahe genug an einer solchen Modellierungsebene befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen. Das Objekt bewegt sich solange, bis dessen Mittelpunkt die Fläche erreicht hat und dort automatisch angehalten wird.
 
 Näheres zur Implementierung dieser "Gravitationsflächen" findet sich in :cite:`buchi`.
 
@@ -229,7 +227,7 @@ Diese Linien haben allerdings keine physikalische Bedeutung, sondern dienen nur 
 Beleuchtung
 ===========
 
-Für die Beleuchtung der Szene werden mehrere Lichtquellen eingesetzt. Die primäre Lichtquelle befindet direkt an der Kamera und bewegt sich mit dieser. 
+Für die Beleuchtung der Szene werden mehrere Lichtquellen eingesetzt. Die primäre Lichtquelle befindet sich direkt an der Kamera und bewegt sich mit dieser. 
 Die Lichtfarbe ist weiß, also wird der Farbton der beleuchteten Objekte unverfälscht dargestellt. 
 
 Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive, farbige Lichtquelle an drei festen Positionen unterhalb (blau), links (grün) und rechts (rot) der Szene, von der Startposition der Kamera aus gesehen. 
@@ -287,7 +285,7 @@ Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer\ [#f3]_ 
 Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
 
 Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
-Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden könnten.
+Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden können.
 
 Darstellung von Text
 --------------------
@@ -298,7 +296,8 @@ Andere Techniken, die eine höhere Darstellungsqualität erreichen, wie sie beis
 Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützung, neue Geometrien direkt auf der Grafikeinheit per Tesselation-Shader zu erzeugen, könnten für die Implementierung von gut lesbaren und dennoch performanten Darstellungstechniken interessant sein.
 
 Jedoch war die Schriftqualität des verwendeten texturbasierten Ansatzes ausreichend für den hier entwickelten Prototypen und lies sich einfach implementieren. 
-Für weitere Arbeiten auf diesem Gebiet sollte dies jedoch erneut evaluiert werden, da die Schriftqualität wichtig für Verständlichkeit und Nutzen der grafischen Repräsentation ist. 
+Da die Darstellung von Schrift wichtig für Verständlichkeit und Nutzen der grafischen Repräsentation ist, sollte für weitere Arbeiten auf diesem Gebiet jedoch evaluiert werden, inwieweit sich die Qualität des hier genutzten Ansatzes verbessern lässt oder ob ein anderer Ansatz gewählt werden muss.
+
 
 Bei ungünstigen Beobachtungssituationen, also bei großer Entfernung und schräger Betrachtung von Flächen, wird es im Prototypen schnell schwierig, Texte ohne Anstrengung zu lesen.  
 Es müssen eher große Schriften gewählt werden und daher lässt sich relativ wenig Information auf den Knoten darstellen.
@@ -313,18 +312,18 @@ Konfigurierbarkeit
 
 Abgesehen von den im :ref:`Metamodell<ebl>` konfigurierbaren Visualisierungsparametern fehlt es noch an weiteren Möglichkeiten, die grafische Darstellung zu beeinflussen. 
 
-Sehr sinnvoll wäre es, die :ref:`beleuchtung` konfigurieren zu können. 
+So wäre es angebracht, eine Konfigurationsmöglichkeit für die :ref:`beleuchtung` anzubieten.
 Wie in jenem Abschnitt gesagt ist es schwierig, Einstellungen zu finden, die für alle Situationen gut geeignet sind.
 Diese hängen auch von der verwendeten Anzeige und von Einflüssen wie Umgebungslicht oder der persönlichen Wahrnehmung des Benutzers ab.
 
 In der grafischen Oberfläche sollte es hierzu eine Möglichkeit geben, Lichtquellen zu setzen und deren Parameter zu verändern. 
-Es sollten auch sinnvolle Standardeinstellungen bzw. auswählbare Profile angeboten werden, um den Benutzer nicht mit zu vielen Aufgaben zu überfordern. 
+Es bietet sich an, auch sinnvolle Standardeinstellungen bzw. auswählbare Profile zur Verfügung zu stellen, um den Benutzer nicht mit zu vielen Aufgaben zu überfordern. 
 Lichtquellen sind in Simulator X über zugehörige Licht-Entities erstell- und konfigurierbar, wie es auch von der :ref:`renderkomponente` unterstützt wird.
 
 Ähnliches gilt für :ref:`modellierungsflaechen`. Sie sind momentan in der Implementierung fest vorgegeben, da es in der GUI noch keine Konfigurationsmöglichkeit gibt.
 Die Flächen können aber ebenfalls nach Bedarf erstellt und über zugehörige Entities konfiguriert werden.
 
-Es sollte darüber nachgedacht werden, die aktuellen Einstellungen für Lichtquellen und Modellierungsflächen auch in die Editor-Modelle aufzunehmen und damit persistent zu machen.
+Es wäre sinnvoll, die aktuellen Einstellungen für Lichtquellen und Modellierungsflächen auch in die Editor-Modelle aufzunehmen und damit persistent zu machen.
 
 Räumliche Darstellung
 ---------------------
@@ -338,7 +337,7 @@ Jedoch ist die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor 
 Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachter liegen und welche sich im Hintergrund befinden. 
 
 Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jedoch kann dies auch scheitern, wenn Objekte unterschiedlich groß sein dürfen, wie es momentan der Fall ist. 
-Die Skalierung von Modellelementen allerdings komplett zu verbieten ist wohl auch unpraktikabel.
+Die Skalierung von Modellelementen allerdings komplett zu verbieten würde eine zu starke Einschränkung bedeuten.
 
 Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie (:ref:`siehe <ware-graphs>`) und Schatten.
 
@@ -347,16 +346,16 @@ Der Bewegungsparallaxen-Effekt lässt sich durch seitliche Bewegung des Benutzer
 Schatten
 ^^^^^^^^
 
-Ein Schattenwurf der Objekte könnte verdeutlichen, wie weit Objekte von einer Fläche entfernt sind und wie der Betrachter zur Lichtquelle orientiert ist.
-Jedoch müsste getestet werden, inwieweit dies hilfreich ist und ob Schatten nicht zu häufig dazu führen, dass sich Informationen im Modell schlecht erkennen lassen. 
-Konfigurationsmöglichkeiten oder eine "intelligente" Schattenberechnung, die weniger auf realistische Effekte setzt aber dafür Lesbarkeitsaspekte berücksichtigt könnten hier Vorteile mit sich bringen.
+Ein Schattenwurf der Objekte kann verdeutlichen, wie weit Objekte von einer Fläche entfernt sind und wie der Betrachter zur Lichtquelle orientiert ist.
+Jedoch müsste getestet werden, inwieweit dies hilfreich ist und ob Schatten nicht zu häufig dazu führen, dass sich Informationen im Modell schlecht erkennen lassen.
+Konfigurationsmöglichkeiten oder eine "intelligente" Schattenberechnung, die weniger auf realistische Effekte setzt aber dafür Lesbarkeitsaspekte berücksichtigt sind hier angebracht.
 
 Voll immersive virtuelle Welten
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Eine weitere Entwicklungsmöglichkeit wäre es, :ref:`voll immersive virtuelle Welten <halpin-social-net>` zu nutzen.
-Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt werden soll.
-Besonders Anzeigen mit hoher Auflösung könnten Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen (:ref:`siehe <ware-graphs>`).
+Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt wird.
+Besonders Anzeigen mit hoher Auflösung würden Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen (:ref:`siehe <ware-graphs>`).
 
 Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und ein System für die "breite Masse" bereitzustellen.
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
@@ -365,7 +364,7 @@ Verdeckung
 ^^^^^^^^^^
 
 Problematisch ist die in 3D-Visualisierungen auftretende Verdeckung von Informationen durch andere Modellelemente, wie schon bei dem von :ref:`Brown <ross-brown>` vorgestellten 3D-Prozesseditor zu sehen war.
-Ist ein Element verdeckt, kann im Prototypen einfach die Betrachterposition verändert werden. 
+Ist ein Element verdeckt, kann im Prototypen die Betrachterposition verändert werden, um die Sicht auf das Element freizugeben. 
 Allgemein sollten Modelle aber so erstellt werden, dass aus "üblichen" Betrachtungsrichtungen möglichst wenig Verdeckung auftritt, um sich nicht ständig hin- und herbewegen zu müssen.
 
 Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen, wie es im Prototypen durch das Deaktivieren von Elementen möglich ist. 
@@ -381,9 +380,9 @@ Darstellung von Kanten
 
 Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen. 
 Dies zeigte sich auch bei den Versuchen mit den Prototypen.
-Hier kann man sagen, dass es wohl keine "perfekte" Lösung gibt, die immer funktioniert.
+Hier lässt sich feststellen, dass es keine Lösung gibt, die für jeden Anwendungsfall gut geeignet ist.
 
-Gerichtete Kanten werden durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt (siehe :ref:`kanten`). 
+Gerichtete Kanten werden in i>PM3D durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt (siehe :ref:`kanten`). 
 Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung zu großen Teilen durch andere Objekte verdeckt wird.   
 
 Der Ansatz, die Richtung durch eine dreidimensionale Pfeilspitze darzustellen, leidet unter dem Problem der Verdeckung. 
@@ -391,7 +390,7 @@ Eine solche Darstellung liegt jedoch näher an bekannten visuellen Sprachen und 
 Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
 Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
-Gerade Linien, wie sie momentan verwendet werden können störend sein wenn sie Knoten verdecken oder andere Elemente schneiden. 
+Die Darstellung als gerade Linie, wie sie momentan verwendet wird, kann dazu führen, dass Knoten verdeckt oder andere Elemente geschnitten werden. 
 Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-Bereich, da man die zusätzliche Dimension zur Vermeidung nutzen kann.
 
 Verbindungen könnten alternativ auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden, um solche Probleme weiter einzudämmen, wie es auch in 2D-Werkzeugen häufig zu sehen ist.

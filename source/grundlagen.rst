@@ -98,6 +98,8 @@ Dies entspricht dem geometriebasierten Ansatz.
     Perspektivenorientierte Prozessmodellierung aus :cite:`roth_konzeption_2011`
 
 
+.. _modellierungswerkzeuge:
+
 Grafische Modellierungswerkzeuge
 --------------------------------
 
@@ -123,6 +125,7 @@ Zu den konkreten, grafischen Elementen wird automatisch eine abstrakte Instanz a
 Änderungen am abstrakten Modellelement können die Darstellung der grafischen Elemente beeinflussen. 
 So kann beispielsweise in einem Prozessknoten dessen Funktion angegeben sein, welche in der grafischen Repräsentation als Text angezeigt wird.
 Bei einer Änderung der Funktion im Modellelement wird auch der Text auf dem Grafikobjekt angepasst.
+Genauso können Eigenschaften oder der Typ eines Modellelements durch Symbole auf den Grafikobjekten visualisiert werden. 
 
 Ein Modellierungswerkzeug für die perspektivenorientierte Prozessmodellierung wird in :num:`Abbildung #ipm2` gezeigt. 
 Auf der linken Seite lässt sich die Palette mit den Modellelementen erkennen, die in verschiedene "Gruppen" eingeordnet sind.
@@ -200,7 +203,7 @@ Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``
 Concepts werden, wie in :num:`Abbildung #lmm-model` gezeigt, in **Packages** eingeordnet. Packages bilden zusammen einen **Level**, welcher eine Ebene in der Metamodellierungshierarchie repräsentiert.
 Mehrere Levels stellen zusammen das vollständige **Model** dar, wobei auch Modelle mit nur einer Ebene erlaubt sind.
 
-In Concepts können sowohl **Literaltyp-Attribute** (bspw. string, real, integer) als auch **Concept-Attribute**, welche andere Concepts referenzieren, angegeben werden.
+In Concepts können sowohl **Literaltyp-Attribute** (bspw. string, real, integer) als auch **Referenz-Attribute**, welche auf andere Concepts verweisen, angegeben werden.
 
 Levels können ebenfalls zueinander in einer Instanzbeziehung (``instanceOf``) stehen. 
 Wenn alle in einem Level *MA* definierten Concepts Instanzen von jeweils genau einem Concept in Level *MB* sind, ist *MA* eine Instanz von *MB*, 
@@ -292,9 +295,9 @@ Es ist allerdings schon ein "Objekt" mit nahezu gleichen Eigenschaften vorhanden
 Wie in der Informatik üblich wäre es wünschenswert, solche Redundanzen zu vermeiden und die "Wiederverwendbarkeit" zu erhöhen.
 
 Dazu kann ein "Typ" definiert werden, vom dem mehrere "Verwendungen" erstellt werden, die dann in mehreren Kontexten eingesetzt werden können.
-Hier könnte beispielsweise der Typ T angelegt werden. T ist eine "Instanz" eines Prozesses.
-T legt fest, dass die Funktion des Prozesses "Notiz aufnehmen" (der auf der Figur angezeigte Text) ist und "OneNote" und "Agent" mit ihm assoziiert sind.
-Prozess *A* kann als Verwendung von T gesehen werden; *A* übernimmt alle Eigenschaften von T.
+Hier könnte beispielsweise der Typ *T* angelegt werden, welcher einen Prozess repräsentiert. 
+*T* legt fest, dass die Funktion des Prozesses "Notiz aufnehmen" (der auf der Figur angezeigte Text) ist und "OneNote" und "Agent" mit ihm assoziiert sind.
+Prozess *A* kann als Verwendung von *T* gesehen werden; *A* übernimmt alle Eigenschaften von *T*.
 
 Um den Prozess *B* darzustellen, müssen jedoch zwei Änderungen vorgenommen werden. 
 Das ist möglich, da eine Verwendung Werte des Typs überschreiben kann. 

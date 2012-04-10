@@ -5,14 +5,9 @@ Bla
 .. toctree::
     :maxdepth: 3
 
-    zusammenfassung-latex
     abbildungsverzeichnis
     einleitung
     grundlagen
-    literaturverzeichnis
-
-.. 
-
     related
     verwendet
     ipm3d
@@ -23,5 +18,6 @@ Bla
     renderkomponente
     renderbib
     schluss
+    literaturverzeichnis
     anhang_a
     anhang_b

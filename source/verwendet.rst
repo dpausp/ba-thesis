@@ -15,7 +15,6 @@ Scala wird zur Zeit vorwiegend auf der Java VM genutzt, wobei der Compiler auch 
 i>PM3D läuft wegen einiger Abhängigkeiten von Java-Bibliotheken bisher ausschließlich auf der Java VM.
 
 Die "objektorientierte Facette" Scalas orientiert sich an den Konzepten von Java, bietet aber einige Erweiterungen.
-
 Hier werden nur Features kurz vorgestellt, die für die Implementierung besonders hilfreich waren und in späteren Kapiteln erwähnt werden.
 
 
@@ -26,7 +25,6 @@ Traits
 
 Als Erweiterung zu Java unterstützt Scala eine (eingeschränkte) Mehrfachvererbung von Implementierungscode über sog. *Traits*. 
 Traits kann man sich als ein Java-Interface vorstellen, in dem Methoden schon vorimplementiert sein können.
-
 Zur Vereinfachung dürfen Traits keinen Konstruktor definieren.
 
 Neben der Verwendung als "Interface" – wie in Java – werden diese oft genutzt, um wiederverwendbare Code-Einheiten zu realisieren, die sich in verschiedenen Klassen einsetzen lassen. 
@@ -199,7 +197,7 @@ Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* :cite:
 Mit Version 3.0 wurden viele dieser Funktionen aus dem Kern von OpenGL entfernt. In neueren Versionen müssen die Berechnungen durch den Programmierer selbst in *Shadern* implementiert werden. 
 
 Das neue Konzept gibt jedoch dem Programmierer die Freiheit, auch völlig neue Grafikeffekte zu implementieren, die mit der *fixed-function-Pipeline* nicht oder nur schwer umsetzbar gewesen wären. 
-Diese Möglichkeit wurde in dieser Arbeit für einige "Spezialeffekte" genutzt, die sich auf diesem Weg einfach realisieren ließen.
+Diese Möglichkeit wurde in der vorliegenden Arbeit für einige "Spezialeffekte" genutzt, die sich auf diesem Weg einfach realisieren ließen.
 
 Bei **Shadern** handelt es sich um kleine Programme, die in der Programmiersprache GLSL (OpenGL Shading Language) geschrieben und die direkt auf dem Grafikprozessor von sog. *Shader-Einheiten* ausgeführt werden.
 Code kann in GLSL in Funktionen ausgelagert und so in mehreren Shadern genutzt werden.
@@ -222,7 +220,7 @@ Tesselation-Shader (ab OpenGL 4)
 Mit **Vertex-Attributen** lassen sich beliebige Daten pro Vertex an die Shaderprogramme übertragen; häufig sind das Vertexkoordinaten\ [#f4]_, Normalen\ [#f5]_ und Texturkoordinaten\ [#f6]_.
 Vertex-Attribute werden vom Shader aus Puffern im Grafikspeicher ausgelesen, welche als Vertex Buffer Objects (VBO) bezeichnet werden.
 
-**Uniforms** übermitteln Werte an Shaderprogramme, die üblicherweise über ein ganzes Grafikobjekt konstant bleiben. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
+**Uniforms** übermitteln Werte an Shaderprogramme, die üblicherweise für ein ganzes Grafikobjekt gelten. Dies können beispielsweise Lichtparameter oder Farbwerte sein.
 
 
 Sonstiges
@@ -237,10 +235,7 @@ Um Prozessmodelle in einer textuellen Form speichern zu können, wird die Templa
 
 ST folgt dem Prinzip, einen Text mit "Platzhaltern" (Attributen) zu definieren. Die Attribute werden aus dem Anwendungsprogramm heraus gesetzt und so das Template mit Inhalt gefüllt.
 
-Um die Nutzung von ST in Scala zu vereinfachen, wurde für diese Arbeit eine dünne Abstraktionsschicht in Scala implementiert. 
 Diese Schicht sorgt unter anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
-
-Zur Erstellung eines den Konventionen folgenden Wrapper-Objekts wird :cite:`www:clapper` genutzt.
 
 In folgendem Beispiel wird ein Template erstellt, welches die :ref:`LMM-Zuweisung<lmm>` ``function = "test"`` produziert:
 
