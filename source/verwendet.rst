@@ -162,8 +162,7 @@ Eine zugeordnete ``SVarDescription``\ [#f1]_ benennt die SVar, gibt ihr einen Sc
 
 Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine **Entity** beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
 
-
-Simulator-X-Anwendungen sind aus **Komponenten** aufgebaut. Diese setzen auf dem Actormodell auf und kommunizieren miteinander über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
+Simulator-X-Anwendungen sind aus **Komponenten** aufgebaut. Diese sind als (Scala)-Actors realisiert und kommunizieren miteinander direkt über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
 Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
 
 Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.

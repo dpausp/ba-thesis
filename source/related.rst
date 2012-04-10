@@ -1,3 +1,5 @@
+.. _related:
+
 ****************************************
 Verwandte Arbeiten zur 3D-Visualisierung
 ****************************************
@@ -112,6 +114,8 @@ Zustandsdiagramme werden, wie in :cite:`mcintosh_x3d-uml:_2008` auf Flächen im 
     :width: 15.5cm
 
     Zustandsdiagramm mit ausgeblendeten Diagrammteilen (dargestellt durch blaue Würfel) aus :cite:`krolovitsch_3d_2009`
+
+.. _gil:
 
 Dreidimensionale Darstellung zur besseren Visualisierung von Beziehungen
 ------------------------------------------------------------------------
@@ -266,23 +270,23 @@ In :cite:`schonhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vo
 Der Prozess selbst wird, wie in :num:`Abbildung #schoenhage-graph` gezeigt, als 3D-Graph dargestellt, wobei Subgraphen durch den Benutzer nach Bedarf auf- und zugeklappt werden könnten. 
 
 Datenflüsse würden durch animierte Kugeln angezeigt, die sich entlang der Kanten von einem Aktivitätsknoten zum nächsten bewegen würden.
-Der Anwender könne durch die Auswahl von Knoten und dem Drücken einer "drill-down-Schaltfläche" eine Visualisierung zugehöriger Prozessdaten öffnen – hier im Beispiel ein 3D-Histogramm – wie in :num:`Abbildung #schoenhage-drilldown` zu sehen ist.
+Der Anwender könne durch die Auswahl von Knoten und dem Drücken einer "drill-down-Schaltfläche" eine Visualisierung zugehöriger Prozessdaten öffnen – hier im Beispiel 3D-Histogramme – wie in :num:`Abbildung #schoenhage-all` zu sehen ist. Im Beispiel zeigen die 3D-Histogramme eine Häufigkeitsverteilung (horizontal) von "Wartezeiten" im Laufe von vier Wochen.
 Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wieder schnell zu diesen zurückspringen zu können.
 
 .. _schoenhage-graph:
 
 .. figure:: _static/ext_pics/schoenhage_process.png
-    :height: 8cm
+    :height: 10cm
 
     Prozessgraph mit "Datenflusskugeln" aus :cite:`schonhage_3d_2000`
 
 
-.. _schoenhage-drilldown:
+.. _schoenhage-all:
 
-.. figure:: _static/ext_pics/schoenhage_drilldown.png
-    :height: 8cm
+.. figure:: _static/ext_pics/schoenhage_all.png
+    :height: 10cm
 
-    Darstellung eines Prozesses mit assoziierten Daten (3D-Histogramm) aus :cite:`schonhage_3d_2000`
+    Darstellung eines Prozesses mit assoziierten Daten (3D-Histogramme) aus :cite:`schonhage_3d_2000`
 
 
 .. _ross-brown:
@@ -389,51 +393,95 @@ Zusammenfassung und Bewertung
 
 Es wurden verschiedene Ansätze gezeigt, zu einer 3D-Visualisierung von Informationen zu gelangen und deren Vorteile zu nutzen. 
 So lässt sich häufig der Ansatz beobachten, von einer bekannten 2D-Visualisierung auszugehen und diese in den 3D-Raum zu übertragen.
-Das war besonders bei den verschiedenen Arbeiten zu sehen, die sich mit 3D-UML beschäftigen.
+Dies war besonders bei den verschiedenen Arbeiten zu sehen, die sich mit 3D-UML beschäftigen.
 
-Eine naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren.
-Dies wurde von :ref:`McIntosh<mcintosh>` für UML-Zustandsdiagramme oder allgemein von :ref:`GEF3D<gef3d>` (dort als 2.5D-Darstellung bezeichnet) gezeigt.
-Für die Implementierung bedeutet das, dass sich möglicherweise schon vorhandene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe einfach auf die Flächen gezeichnet wird.
+Der vorliegende Abschnitt fasst die wichtigsten Nutzungmöglichkeiten der dritten Dimension zusammen, die in den gezeigten Arbeiten vorgeschlagen wurden. 
+Außerdem wird versucht, eine Einschätzung zu geben, wie vorteilhaft die gezeigte Nutzung im Vergleich zu einer reinen 2D-Darstellung ist.
+Die folgende Tabelle gibt einen Überblick über die vorgestellten Nutzungsmöglichkeiten.
+
+Eine naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren. 
+Dies wurde von :ref:`McIntosh<mcintosh>` für UML-Zustandsdiagramme, von :ref:`Gil und Kent<gil>` oder allgemein von :ref:`GEF3D<gef3d>` gezeigt.
+In der Tabelle werden solche Darstellungsformen als 2,5D-Ansatz bezeichnet.
+Für die Implementierung bedeutet das, dass sich schon vorhandene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe direkt auf die Flächen gezeichnet wird.
 Für den Benutzer hat die Darstellung den Vorteil, dass sich die Darstellung der Modellelemente selbst nicht ändert und sich mehrere Modelle gleichzeitig darstellen lassen, indem die Ebenen zueinander versetzt werden. 
-Modellhierarchien und Beziehungen zwischen verschiedenen Modellen lassen sich gut darstellen, indem beispielsweise Linien zwischen assoziierten Elementen oder zu Unterdiagrammen gezeichnet werden.
 
-Problematisch ist sicher, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schrift bemerkbar machen wird.
-Außerdem wird die natürliche Wahrnehmung des Menschen, die stark auf die Erkennung von 3D-Strukturen ausgelegt ist (ref?) kaum genutzt.
+Wie von :ref:`Gil und Kent<gil>` erwähnt, lassen sich durch eine dreidimensionale Anordnung verschiedene Beziehungstypen besser unterscheiden als in reinen 2D-Ansichten. 
+Modellhierarchien und Beziehungen zwischen verschiedenen Modellen lassen sich gut darstellen, indem beispielsweise Linien zwischen assoziierten Elementen oder zu Unterdiagrammen gezeichnet werden.
+Diese Beziehungen lassen sich schon durch die Anordnung optisch leicht von denjenigen unterscheiden, die innerhalb eines (Teil-)Modells bestehen und in einer Ebene mit den Modellelementen liegen. 
+In reinen 2D-Darstellungen ist diese Unterscheidung deutlich schwieriger und es muss üblicherweise auf unterschiedliche Farben oder Konnektoren zurückgegriffen werden. 
+Vor allem bei einer großen Anzahl von Elementen kann dies leicht zu verwirrenden Darstellungen führen.
+
+Problematisch ist dagegen bei 2,5D-Ansätzen, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schrift bemerkbar machen wird.
+Außerdem wird die natürliche Wahrnehmung des Menschen, die stark auf die Erkennung von 3D-Strukturen ausgelegt ist (ref? irani?) wenig genutzt.
 
 Als Weiterentwicklung lässt sich die von :ref:`Krolovitsch und Nilsson<krolovitsch>` vorgestellte Visualisierung von Zustandsdiagrammen betrachten, die ebenfalls 2D-Flächen nutzt, jedoch die Elemente aus der Ebene herausragen lässt.
 So wirkt die Darstellung etwas "plastischer" und Strukturen lassen sich besser erkennen. 
+Die Höhe der Elemente lässt sich außerdem dazu nutzen, Werte von (numerischen) Modellattributen zu visualisieren :cite:`alvergren_3d_2009`.
 
 Interessant ist die dort gezeigte Möglichkeit, Subdiagramme temporär auszublenden und durch ein einzelnes Symbol zu ersetzen.
 Dies wäre auch in der Prozessmodellierung hilfreich für die Darstellung von kompositen Prozessen.
-So könnte beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weiteres Modell in der 3D-Szene angezeigt werden ohne ein neues Fenster zu öffnen, wie es in 2D-Werkzeugen praktiziert wird.
+So kann beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weiteres Modell in der 3D-Szene angezeigt werden ohne ein neues Fenster zu öffnen, wie es in 2D-Werkzeugen praktiziert wird.
 
 :ref:`Betz et al.<betz>` zeigten für den Bereich der Prozessmodellierung die schon für die Softwaremodellierung genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
 
 Von :ref:`Dywer<dywer>` und :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
-Wie von Dywer gezeigt ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
+Wie von Dywer gezeigt, ist es möglich, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
+Damit lassen sich solche Modelle besser aus unterschiedlichen Perspektiven betrachten als die vorgenannten 2,5D-Darstellungen.
 
-Neben dem Prozessmodell an sich lassen sich auch weitere Informationen dreidimensional darstellen. 
+Vorteile, die sich aus der freien Wahl der Betrachtungsperspektive ergeben können 
+
+.. TODO und was bringts? Nutzung der z-Achse fehlt noch
+
+.. _information-integration:
+
+Integration von weiteren Informationen in 3D-Visualisierungen
+-------------------------------------------------------------
+
+Neben dem abstrakten Prozessmodell an sich lassen sich auch weitere Informationen dreidimensional darstellen. 
 So zeigten :ref:`Schönhage et. al.<schoenhage>`, wie sich aus einer Simulation des Prozesses gewonnene Daten neben dem Prozessmodell anzeigen lassen.
-:ref:`Brown<ross-brown>` bettet die abstrahierte Darstellung des Prozesses in eine virtuelle Umgebung ein, welche den tatsächlichen Ausführungsort eines Prozesses abbilden kann. 
-So ließen sich beispielsweise Laufwege von am Prozess beteiligten Personen oder andere Handlungen animiert darstellen, um die Anschaulichkeit zu erhöhen und mögliche Probleme bei der Ausführung aufzuzeigen.
+Dies ist aber prinzipiell mit reinen 2D-Darstellungen ebenfalls möglich. 
+Um hier einen klaren Vorteil der 3D-Visualisierung erkennen zu können, müssen sich die Daten selbst sinnvoll dreidimensional darstellen lassen.
+Ein Beispiel dafür sind die 3D-Histogramme, wie sie von Schönhage gezeigt wurden.
 
-Effizienz von 3D-Darstellungen?
-----------------------------------
+:ref:`Brown<ross-brown>` bettet die abstrahierte Darstellung des Prozesses in eine virtuelle Umgebung ein, welche den tatsächlichen Ausführungsort eines Prozesses räumlich abbilden kann. 
+Dies lässt sich als deutlicher Vorteil für die Nutzung von 3D-Visualisierungen im Vergleich zu 2D-Darstellungen festhalten.
 
-Die "entscheidende Frage", ob und in welchen Situationen 3D-Visualisierungen Vorteile gegenüber 2D-Darstellungen haben kann von den gezeigten Arbeiten sicher nicht beantwortet werden.
+So lassen sich beispielsweise Laufwege von am Prozess beteiligten Personen oder andere Vorgänge wie der Transport von Werkstücken (animiert) darstellen, um mögliche Probleme bei der Ausführung und Optimierungsmöglichkeiten aufzuzeigen. 
+So kann festgestellt werden, ob sich gewisse Wege verkürzen oder vermeiden lassen, indem Reihenfolge oder der Ausführungsort von Prozessschritten verändert werden.
+Durch die Integration von Abbildern realer Objekte in die virtuelle Welt können abstrakte Konzepte des Prozessmodells veranschaulicht oder um weitere Informationen ergänzt werden. 
+Sinnvoll ist dies beispielsweise, um Veränderungen an einem Werkstück im Laufe eines Produktionsprozesses zu visualisieren, indem die Zwischenstufen dreidimensional neben den Prozessschritten abgebildet werden.
+Eine andere denkbare Anwendung wäre eine Visualisierung der Platzverhältnisse in einer Ausführungsumgebung. 
+Wenn die Umgebung sowie sich darin befindliche Objekte relativ zueinander im richtigen Größenverhältnis und in der tatsächlichen Form dargestellt sind, könnte schon bei einer Betrachtung des Prozesses in der virtuellen Welt bemerkt werden, dass vorgesehene Ablageplätze in einem Lager oder Transportbehälter für ein Werkstück zu klein dimensioniert sind.
+
+:num:`Abbildung #brown-airport` zeigt einen Prozess in einer 3D-Umgebung, die mit Hilfe des von Brown vorgestellten Editors erstellt wurde. 
+Gezeigt wird ein Vorgang am einem Flughafen. 
+.. TODO weiter
+
+Dies ließe sich prinzipiell auch mit einer 2D-Darstellung realisieren, indem die Szene von oben gezeigt wird. 
+Dadurch wird aber die Übersichtlichkeit eingeschränkt; die Möglichkeit, den Prozessgraphen im dreidimensionalen Raum in einer Ebene über dem Untergrund zu zeigen, erweist sich hier als Vorteil.
+Ebenso bietet es sich an, im 3D-Raum die Betrachtungsperspektive nach Bedarf zu verändern. 
+Ist die Blickrichtung des Betrachters annähernd parallel zum Boden, lassen sich auch weit entfernte "Stationen" des Prozesses erkennen. 
+
+
+Effizienz und Akzeptanz von 3D-Darstellungen?
+---------------------------------------------
+
+Die wichtige Frage, ob und in welchen Situationen 3D-Visualisierungen Vorteile gegenüber 2D-Darstellungen haben, die über eine reine Verbesserung des Erscheinungsbilds hinausgehen,  kann von den gezeigten Arbeiten sicher nicht vollständig beantwortet werden.
 Es wurden immerhin einige Hinweise zur Effizienz gegeben, indem beispielsweise Benutzerstudien durchgeführt wurden, welche Vorteile für 3D-Darstellungen in der Softwaremodellierung andeuten, jedoch auch Probleme aufzeigen :cite:`dwyer_three_2001` :cite:`mcintosh_x3d-uml:_2008` :cite:`halpin_exploring_2008`.
 Untersuchungen zur Effizienz, die sich speziell auf die Prozessmodellierung beziehen, ließen sich nicht finden.
 
-Bei der Betrachtung der Effizienz muss sicher auch berücksichtigt werden, dass die Erfahrung der Benutzer mit 3D-Darstellungen, beispielsweise aus Computerspielen oder 3D-CAD-Werkzeugen eine Rolle spielt
-:cite:`dwyer_three_2001` :cite:`ware_visualizing_2008` :cite:`schonhage_3d_2000`. Wie unerfahrene Benutzer an 3D-Werkzeuge für die Prozessmodellierung herangeführt werden könnten, wäre wohl eine interessante Frage. 
+Bei der Betrachtung der Effizienz muss auch berücksichtigt werden, dass die Erfahrung der Benutzer mit 3D-Darstellungen – beispielsweise aus Computerspielen oder 3D-CAD-Werkzeugen – eine Rolle spielt
+:cite:`dwyer_three_2001` :cite:`ware_visualizing_2008` :cite:`schonhage_3d_2000`.
+Es stellt sich die Frage, wie unerfahrene Benutzer an 3D-Werkzeuge für die Prozessmodellierung herangeführt werden könnten.
 
 In eine ähnliche Richtung geht die Fragestellung, inwieweit 3D-Werkzeuge überhaupt von Benutzern akzeptiert werden. 
-:cite:`schonhage_3d_2000` bemerkte, dass 3D-Visualisierungen oft als reines "Spielzeug" angesehen würden, die keinen wirklichen Nutzen gegenüber 2D-Darstellungen bringen würden. 
-Um eine hohe Akzeptanz zu erreichen müssten aber auch Probleme wie die schlechte Verfügbarkeit von 3D-"tauglichen" Eingabegeräten oder zu langsame Hardware\ [#f5]_ gelöst werden.
+:cite:`schonhage_3d_2000` bemerkte, dass 3D-Visualisierungen oft als reines "Spielzeug" angesehen würden, die keinen wirklichen Nutzen gegenüber 2D-Darstellungen brächten, sondern bestenfalls nur "schöner" aussähen.
+Daher ist es wichtig, 3D-Visualisierungen für den Benutzer möglichst hilfreich und intuitiv zu gestalten, so dass deren Vorteile klar erkennbar sind.
+Um eine hohe Akzeptanz zu erreichen müssten aber auch technische Probleme wie die schlechte Verfügbarkeit von 3D-tauglichen Eingabegeräten oder zu langsame Hardware\ [#f5]_ gelöst werden.
 
-Verwendbare Vorarbeiten?
-------------------------
+Verwendbare Vorarbeiten und Schlussfolgerungen für die Arbeit
+-------------------------------------------------------------
 
 In den vorgestellten Arbeiten wurden einige Prototypen für 3D-Modellierungswerkzeuge entwickelt. 
 Allerdings war nur von :cite:`dwyer_three_2001` eine freie Version im Internet auffindbar. 
@@ -446,9 +494,15 @@ Negativ könnte bei GEF3D gesehen werden, dass in letzter Zeit relativ wenige Ä
 Ein Blick in den Quellcode zeigte, dass das Projekt noch auf "alter" OpenGL-Funktionalität aufbaut und damit die Möglichkeiten moderne Grafikhardware nicht nutzt.
 Bei der vorliegenden Arbeit stand es aber im Vordergrund, eine möglichst flexible und "zukunftsorientierte" Grundlage für ein (anpassbares) Prozessmodellierungswerkzeug zu legen, wozu auch eine Grafikausgabe auf dem aktuellen Stand der Technik gehört.
 
-Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die in i>PM 3D realisiert wurden.
-So werden Prozesse als 3D-Graph visualisiert, der Knoten selbst dreidimensional darstellt, wie beispielsweise von :ref:`Brown<ross-brown>` gezeigt. 
-Die von Brown vorgeschlagene Möglichkeit, 3D-Abbilder von Objekten aus der realen Welt neben Modellelementen zu zeigen, wird auch von i>PM 3D angeboten.
+Aus den hier vorgestellten Arbeiten ließen sich jedoch einige Konzepte ableiten, die in i>PM 3D realisiert wurden. 
+Es ist für die Arbeit sinnvoll, einen möglichst allgemeinen Visualisierungsansatz zu wählen, der es erlaubt, verschiedene Nutzungsmöglichkeiten der dritten Dimension umzusetzen und diese für verschiedene Anwendungsfälle im Prototypen zu evaluieren.
+Daher soll der Prototyp grundsätzlich eine 3D-Graphvisualisierung von Prozessen unterstützen, wie es beispielsweise von :ref:`Brown<ross-brown>` gezeigt wurde. (:ref:`Anforderung (a)`).
+Die Knoten des Graphen werden selbst dreidimensional dargestellt und sind frei in der 3D-Szene platzierbar. Dies stellt prinzipiell den flexibelsten Ansatz dar.
+Eine 2,5D oder gar 2D-Darstellung lässt sich als Sonderfall einer 3D-Darstellung betrachten. 
+So kann die Darstellung oder die Platzierbarkeit von Elementen – ausgehend vom gewählten 3D-Ansatz – wieder eingeschränkt werden, falls sich dies für eine Anwendung als vorteilhaft herausstellen sollte. 
+
+Abstrakte Prozessmodelle in eine virtuelle Welt einzubetten und so räumliche Information zu nutzen stellt einen vielversprechenden Ansatz dar, aus dreidimensionalen Darstellungen einen großen Vorteil zu ziehen.
+Dadurch wird :ref:`Anforderung (b)<anforderungen>` motiviert, beliebige 3D-Objekte in die Szene einfügen zu können, um damit abstrakte Modellelemente zu illustrieren oder virtuelle Ausführungsumgebungen visualisieren zu können.
 
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" (auf Basis von Java3D) können unter http://wilma.sourceforge.net/ heruntergeladen werden.
