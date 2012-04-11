@@ -34,7 +34,7 @@ So ergeben sich Vorteile zu einer 2D-Darstellung, welche unter anderem weniger M
 Arbeiten auf dem Gebiet der Softwaremodellierung, welche in dieser Arbeit vorgestellt werden, zeigen weitere Nutzungsmöglichkeiten, die sich auch auf die Prozessmodellierung übertragen lassen. 
 
 Prozessmodelle enthalten oft auch Konzepte, die Entitäten aus der realen Welt vertreten, beispielsweise die in einem Prozessschritt verwendete Maschine oder eine ausführende Person. 
-Es kann sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um das abstrakte Modell für Benutzer anschaulicher zu machen oder weitere Informationen bereitzustellen, wie von :cite:`brown_conceptual_2010` dargestellt wird (ref:`siehe <ross-brown>`, :ref:`und <informations-integration>`). 
+Es kann sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um das abstrakte Modell für Benutzer anschaulicher zu machen oder weitere Informationen bereitzustellen, wie von :cite:`brown_conceptual_2010` dargestellt wird (:ref:`siehe <ross-brown>`, :ref:`und <informations-integration>`). 
 
 Ein Prozessmodellierungswerkzeug, welches die Möglichkeiten der modernen 3D-Computergrafik ausnutzt oder gar neuartige (3D-)Eingabegeräte unterstützt, existiert bisher nicht :cite:`brown_conceptual_2010`.
 Um die Effizienz von 3D-Visualisierungen für die Prozessmodellierung zu beurteilen und verschiedene Darstellungsformen zu vergleichen wäre allerdings ein solches System vonnöten.
@@ -58,6 +58,7 @@ Da es kaum möglich war, auf schon vorhandene Implementierungsarbeiten zurückzu
 Dennoch werden :ref:`in <related>` Arbeiten vorgestellt, die einen Überblick darüber geben sollen, wie die dritte Visualisierungsdimension genutzt werden kann und welche Vorteile sich aus 3D-Darstellungen ergeben. 
 Die Implementierung konzentriert sich nicht auf eine bestimmte Nutzungsmöglichkeit, sondern ist möglichst allgemein gehalten. 
 So werden Modelle in i>PM3D als 3D-Graph dargestellt, dessen Knoten sich frei im Raum platzieren lassen. 
+Der Benutzer selbst kann sich in der 3D-Szene bewegen und so den Graphen aus verschiedenen Perspektiven betrachten. 
 Zusätzlich zu den Modellelementen können beliebige 3D-Objekte in die Szene eingefügt werden, um reale Objekte abzubilden.
 Inwieweit sich die in Kapitel 2 gezeigten Nutzungsmöglichkeiten mit dem Prototypen realisieren lassen und welche Erweiterungen dafür sinnvoll wären, wird in :ref:`visualisierung` näher ausgeführt.
 
@@ -98,7 +99,7 @@ Funktionale Anforderungen
 
 Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den i>PM3D Prototypen realisiert:
 
-    (a) Modellierung von Prozessen mit einer grafischen Modellierungssprache nach einem graphbasierten Ansatz in einer 3D-Darstellung
+    (a) Modellierung von Prozessen mit einer grafischen Modellierungssprache nach einem allgemeinen, graphbasierten Ansatz in einer 3D-Darstellung
     (b) Möglichkeit, beliebige grafische Objekte – zusätzlich zu den Modellelementen – in der 3D-Szene anzuzeigen
     (c) Beschreibung der verwendeten Modellierungssprache durch Metamodelle
     (d) Möglichkeit, bestehende Modellkonstrukte und deren Visualisierung zu verändern sowie neue Modellelemente hinzuzufügen

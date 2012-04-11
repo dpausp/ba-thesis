@@ -8,7 +8,7 @@ Im Folgenden wird die Visualisierung von Prozessen im i>PM3D-Prototypen vorgeste
 Außerdem werden durch die Implementierung vorgegebene Aspekte angesprochen, welche aber weitgehend unabhängig von der Prozessmodellierung sind.
 Dabei werden auch Hinweise gegeben, welche beim Hinzufügen von neuen Modellfiguren oder Ändern von Visualisierungsparametern beachtet werden sollten.
 
-Abschließend werden bisher nicht umgesetzte Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sinnvoll sind.
+Abschließend wird gezeigt, welche Nutzungsmöglichkeiten der dritten Dimension sich in i>PM3D umsetzen lassen und es werden Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sinnvoll sind.
 
 
 Grundlegende Darstellung der grafischen Elemente
@@ -287,6 +287,77 @@ Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme i
 Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
 Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden können.
 
+Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension
+-----------------------------------------------------------------------
+
+Zuerst soll geklärt werden, welche in :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden müssten.
+
+Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i>PM 3D, welche anschließend näher ausgeführt wird.
+  
+.. include:: table2.rst
+
+
+Die Wahl der 3D-Graphdarstellung mit frei beweglichen Knoten ergab sich aus der Anforderung, einen möglichst allgemeinen Ansatz für die Visualisierung zu wählen.
+Der Hauptvorteil der zusätzlichen Dimension ist es, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
+
+Visualisisierung von Attributen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Welche Information durch den Abstand (die "Tiefe") vermittelt werden soll, wird durch den Benutzer festgelegt. 
+Durch die freie Platzierbarkeit lässt sich prinzipiell jede gewünschte geometrische Anordnung erreichen.
+Elemente nach ihrer Wichtigkeit anzuordnen, wie es in :ref:`Kapitel 2<related>` vorgeschlagen wurde, ist damit möglich. 
+Außerdem lassen sich durch unterschiedliche Entfernung der Knoten von einem Fixpunkt beliebige Attribute aus dem Prozessmodell visualisieren. 
+
+Allerdings ist der Nutzen dadurch eingeschränkt, dass der Benutzer die Positionierung der Elemente manuell vornehmen muss. 
+Bei einer Änderung der Attribute muss auch die Tiefen-Visualisierung entsprechend angepasst werden. Dies ist allerdings aufwändig und fehleranfällig.
+Um dies für den Anwender effizient zu gestalten, müssten Algorithmen integriert werden, welche die Platzierung anhand von Attributwerten aus dem Prozessmodell automatisch übernehmen und die Visualisierung auch bei Änderungen am Prozessmodell zur Laufzeit synchron halten.
+
+Eine gewisse Hilfe, besonders für diskrete Attribute, können die 2D-Modellierungsflächen darstellen. So kann jeder Fläche ein bestimmter Wert zugewiesen werden. 
+Alle Elemente, die diesen Wert aufweisen, werden auf der passenden Fläche platziert. 
+Die Fläche unterstützt den Benutzer bei der Anordnung, indem sie die Objekte automatisch in einer Ebene platziert, wenn sie in der Nähe der Fläche abgelegt werden.
+Um Objekte beispielsweise in die Kategorien "wichtig" und "unwichtig" einzuteilen, ließen sich zwei (parallele) Flächen definieren, anhand derer die Objekte sortiert werden könen.
+Da bisher nur die Platzierung senkrecht zur Fläche automatisch erfolgt, sollte in einer Erweiterung von i>PM 3D die Möglichkeit hinzugefügt werden, 2D-Layout-Algorithmen anzuwenden, um beispielsweise Knoten mit bestimmten Eigenschaften zu gruppieren oder für eine kreuzungsfreie Darstellung der Verbindungen in der Ebene zu sorgen.
+
+Zeitliche Abläufe
+^^^^^^^^^^^^^^^^^
+
+Eine weitere Nutzungsmöglichkeit für die dritte Dimension ist die Darstellung von zeitlichen Abläufen. 
+Diese werden in einem Prozess üblicherweise schon durch den Kontrollfluss grob vorgegeben, allerdings lassen sich gewisse Aspekte mit einer sinnvollen 3D-Anordnung weiter betonen.
+Die Zeitdauer lässt sich durch die Entfernung zwischen Prozessknoten visualisieren. 
+Einerseits lassen sich Prozesschritte, die (nahezu) gleichzeitig ausgeführt werden und zugehörige Knoten wie assoziierte Daten könnten gemeinsam auf einer 2D-Ebene darstellen, ähnlich wie es von :ref:`Gil <gil>` anhand von 3D-UML-Sequenzdiagrammen gezeigt wurde.
+Andererseits kann man 2D-Ebenen als "Swimlanes" nutzen, wie sie aus BPMN bekannt sind. 
+Dazu werden Prozessschritte auf parallel verlaufenden Flächen gruppiert, die zu einer bestimmten ausführenden Entität gehören.
+
+Veranschaulichung von Beziehungen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Durch die Anordnung der Elemente die Bedeutung von Beziehungen zu unterstreichen ist ebenfalls möglich, wobei wiederum die 2D-Flächen hilfreich sind. 
+So kann durch die Positionierung der Knoten auf einer Fläche leicht verdeutlicht werden, dass Kanten, die parallel zur Fläche verlaufen, eine andere Bedeutung haben als diejenigen, die aus der Ebene herausragen und zu Elementen führen, die auf einer anderen Fläche platziert sein können. 
+:ref:`In <gef3d>` wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
+i>PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt (`siehe <modellanbindung>`). 
+Dies sollte in einer weiteren Entwicklung vorrangig hinzugefügt werden, um diese Anwendung der dritten Dimension zu erlauben, welche deutliche Vorteile zu 2D-Darstellungen verspricht.
+
+Hierarchische Darstellung und mehrere Modelle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ähnliches gilt für die Darstellung von hierarchischen Diagrammen in derselben 3D-Szene, wie sie für die Darstellung von kompositen Prozessen hilfreich wäre.
+Ein Verfeinerungsmodell sollte in einem separaten Modell abgelegt werden, welches im grobgranularen Modell durch einen kompositen Prozessknoten vertreten wird. 
+Wird das Verfeinerungsmodell nach Bedarf "ausgeklappt", sollte eine optische Verbindung zum Knoten im übergeordneten Modell die Zusammengehörigkeit anzeigen, wie es beispielsweise von :ref:`McIntosh<mcintosh>` gezeigt wurde.
+Dies ist noch nicht möglich, da Verbindungen zwischen Modellen nicht erlaubt sind.
+Durch die Fahigkeit, manuell mehrere Modelle zu laden :cite:`uli`, lassen sich solche Hierarchiestufen immerhin schon in derselben 3D-Szene anzeigen. 
+Weiterhin wäre eine direkte Unterstützung durch den Editor angebracht, welcher die Subdiagramme bei einer Benutzerinteraktion mit dem kompositen Prozessknoten automatisch öffnen sollte.
+
+Da sich der Benutzer frei in der Szene bewegen kann, können unterschiedliche Betrachtungsperspektiven eingenommen werden. 
+Die Perspektive kann so gewählt werden, dass die momentan für den Benutzer besonders interessanten Aspekte der 3D-Szene deutlich zu erkennen sind.
+
+Einbettung in virtuelle Umgebung
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+geht auch ...
+
+.. TODO Szenenobjekte
+
+
 Darstellung von Text
 --------------------
 
@@ -297,7 +368,6 @@ Besonders die Möglichkeiten aktuellster Grafikhardware mit OpenGL4-Unterstützu
 
 Jedoch war die Schriftqualität des verwendeten texturbasierten Ansatzes ausreichend für den hier entwickelten Prototypen und lies sich einfach implementieren. 
 Da die Darstellung von Schrift wichtig für Verständlichkeit und Nutzen der grafischen Repräsentation ist, sollte für weitere Arbeiten auf diesem Gebiet jedoch evaluiert werden, inwieweit sich die Qualität des hier genutzten Ansatzes verbessern lässt oder ob ein anderer Ansatz gewählt werden muss.
-
 
 Bei ungünstigen Beobachtungssituationen, also bei großer Entfernung und schräger Betrachtung von Flächen, wird es im Prototypen schnell schwierig, Texte ohne Anstrengung zu lesen.  
 Es müssen eher große Schriften gewählt werden und daher lässt sich relativ wenig Information auf den Knoten darstellen.
@@ -329,7 +399,6 @@ Räumliche Darstellung
 ---------------------
 
 Die räumliche Darstellung, vor allem der Tiefeneindruck ist für das Verständnis von 3D-Visualisierungen wichtig :cite:`wickens_three_1989` :cite:`ware_visualizing_2008`. 
-Der Hauptvorteil der zusätzlichen Dimension ist es, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
 
 Modellierungsflächen und eine passende Beleuchtung können hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern, wie es der Prototyp zeigt.
 
@@ -378,20 +447,20 @@ So könnte durch den Benutzer beispielsweise festgelegt werden, dass aktuell "Da
 Darstellung von Kanten
 ----------------------
 
-Ein "Ärgernis" bei 3D-Visualisierungen können schlecht erkennbare Verbindungen sein; vor allem die Richtung zu sehen kann bei weit entfernten Kanten ein Problem darstellen. 
-Dies zeigte sich auch bei den Versuchen mit den Prototypen.
-Hier lässt sich feststellen, dass es keine Lösung gibt, die für jeden Anwendungsfall gut geeignet ist.
+Ein großes Problem bei 3D-Visualisierungen können schlecht erkennbar Verbindungen sein; vor allem die Richtung festzustellen, ist bei weit entfernten Kanten oft nur schwer möglich. 
+Dies zeigte sich bei den Versuchen mit den Prototypen.
+Hier lässt sich feststellen, dass es keine Lösung gibt, die für jeden Anwendungsfall optimal geeignet ist.
 
 Gerichtete Kanten werden in i>PM3D durch eine sich wiederholende "Pfeiltextur" auf Verbindungen dargestellt (siehe :ref:`kanten`). 
 Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung zu großen Teilen durch andere Objekte verdeckt wird.   
 
 Der Ansatz, die Richtung durch eine dreidimensionale Pfeilspitze darzustellen, leidet unter dem Problem der Verdeckung. 
-Eine solche Darstellung liegt jedoch näher an bekannten visuellen Sprachen und sollte wohl noch unterstützt werden.
+Eine solche Darstellung liegt jedoch näher an bekannten visuellen Sprachen und sollte daher unterstützt werden.
 Damit gäbe es auch mehr Möglichkeiten um den Typ von Verbindungen durch verschiedene Pfeilspitzen oder -enden besser zu unterscheiden.
 Bisher kann dies nur über die Farbe, Variation der Textur, und die Dicke dargestellt werden.
 
 Die Darstellung als gerade Linie, wie sie momentan verwendet wird, kann dazu führen, dass Knoten verdeckt oder andere Elemente geschnitten werden. 
-Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-Bereich, da man die zusätzliche Dimension zur Vermeidung nutzen kann.
+Das Problem sich kreuzender Verbindungen ist immerhin nicht so groß wie im 2D-Bereich, da die zusätzliche Dimension zur Vermeidung genutzt werden kann.
 
 Verbindungen könnten alternativ auch gekrümmt oder aus mehreren Liniensegmenten aufgebaut gezeichnet werden, um solche Probleme weiter einzudämmen, wie es auch in 2D-Werkzeugen häufig zu sehen ist.
 Kanten, die als "gebogene 3D-Röhren" dargestellt werden, zeigen :cite:`spratt_using_1994` und :cite:`balzer_hierarchy_2004` (:num:`Abbildung #balzert-tubes`).

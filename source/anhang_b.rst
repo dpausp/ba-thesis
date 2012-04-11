@@ -1,6 +1,13 @@
+.. _anhang-dvd:
+
 **************************************
 Systemanforderungen und Inhalt der DVD
 **************************************
+
+DVD
+===
+
+
 
 Systemanforderungen
 ===================
@@ -21,7 +28,3 @@ Software
 * Grafiktreiber mit Unterstützung für OpenGL 3.3
 * Java Virtual Machine in einer Version ab 1.6
 
-DVD
-===
-
-...

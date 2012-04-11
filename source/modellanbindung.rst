@@ -40,6 +40,7 @@ Die Modellfunktionen werden zum Teil als ``Commands`` bereitgestellt, die über 
 In der momentanen Umsetzung werden diese ``Commands`` ausschließlich durch die Editorkomponente genutzt, die von :cite:`uli` beschrieben wird.
 
 Es existieren ``Commands`` für die folgenden Funktionen:
+
 * Laden von Metamodellen
 * Laden, Speichern, Erstellen, Schließen und Löschen von (Usage-)Modellen
 * Erstellen und Löschen von Knoten und Szenenobjekten
