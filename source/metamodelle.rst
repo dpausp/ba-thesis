@@ -18,11 +18,9 @@ Die oberste Ebene des *Editor-Model-Stacks* beinhaltet nur ein Package ``base`` 
 In textueller Darstellung ist diese Ebene in :ref:`Anhang A<anhang-scalamapping>` nachzulesen.
 
 Dieses Concept definiert Attribute, die festlegen, wie Concepts aus dem Modell auf Scala-Objekte abgebildet werden, um im Modellierungswerkzeug genutzt werden zu können.
-
 Für jedes Concept, das sich auf den weiter unten liegenden Ebenen befindet, muss das Attribut ``scalaType`` definiert werden, welches den korrespondierenden Scala-Typ angibt. 
 
 Optional ist das Attribut ``typeConverter``, welches eine Klasse spezifiziert, die dazu genutzt wird, ein LMM-Concept in ein passendes Scala-Objekt umzuwandeln und umgekehrt.\ [#f1]_ 
-
 Ohne ``TypeConverter``-Angabe wird ``scalaType`` direkt als voll qualifizierter Klassenname interpretiert. 
 Von dieser so angegebenen Klasse wird ein Objekt erstellt, welches das entsprechende Concept in der Anwendung vertritt.
 
@@ -36,10 +34,9 @@ Editor-Base-Level
 =================
 
 Level ``D2`` ist als Instanz von ``D3`` definiert. Daraus folgt, dass alle hier definierten Concepts Instanzen von ``ScalaMapping`` sein müssen.
-
 Die auf dieser Ebene definierten Concepts sind prinzipiell von der Prozessmodellierung unabhängig, orientieren sich aber an deren Bedürfnissen.
-In :ref:`Anhang A<anhang-ebl>` ist dieses Modell vollständig abgebildet.
 
+In :ref:`Anhang A<anhang-ebl>` ist dieses Modell vollständig abgebildet.
 Auf ``D2`` werden zwei Packages, ``types`` und ``figures``, definiert. 
 
 .. _ebl-types:
@@ -48,7 +45,6 @@ Paket "types"
 ------------
 
 Das ``EMM.D2.types``-Package definiert grundlegende Typen, die Visualisierungsparameter von Objekten und die Positionierung im Raum sowie deren Größe beschreiben.
-
 Dazu werden folgenden Typen angeboten:
 
   * ``Dimension``, ``Position``: Spezifikation der Größe und der Position eines Objektes im dreidimensionalen Raum, welche in einem kartesischen Koordinatensystem angegeben werden.
@@ -94,7 +90,6 @@ Die gezeigten Attribute und Assoziationen werden von der Implementierung vorausg
 
 
 Das Package wird durch zwei abstrakte Basistypen, ``EditorElement`` und ``SceneryObject`` strukturiert. 
-
 ``EditorElement`` ist der Basistyp aller Graphelemente, welche sich wiederum in Kanten (``Edge``) und Knoten (``Node``) aufteilen.
 
 Jedes ``EditorElement`` muss das Attribut ``modelElementFQN`` setzen, dass den voll qualifizierten Namen des repräsentierten *Domain*-Concepts angibt. 
@@ -108,7 +103,6 @@ Knoten
 ^^^^^^
 
 Das Basis-Concept aller Knoten, ``Node`` definiert die Attribute ``dim`` (Typ ``Dimension``), ``pos`` (``Position``) und ``rotation`` (``Rotation``), die dazu benutzt werden, sowohl das Erscheinungsbild als auch das physikalische Verhalten zu beschreiben.
-
 In der Implementierung wird sichergestellt, dass Visualisierung und physikalische Repräsentation immer zueinander passen. 
 Das bedeutet beispielsweise, dass die für den Benutzer sichtbare Ausdehnung genau die ist, die auch für die Erkennung von Kollisionen oder bei der Auswahl von Elementen durch ein Eingabegerät genutzt wird.
 
@@ -141,17 +135,14 @@ Kanten
 ^^^^^^
 
 Für Kanten stehen ein einfarbiger (``ColoredLine``) und ein texturierter Basistyp (``TexturedLine``) zur Verfügung. 
-
 ``TexturedLine`` bietet die gleichen Attribute wie ``TexturedNode`` an; bei ``ColoredLine`` muss noch die Grundfarbe gesetzt werden (``color``)
 Zusätzlich wird bei beiden noch eine spekulare Farbe\ [#f3]_, ``specularColor`` angegeben.
 
 Bei Kanten wird davon ausgegangen, dass das Typ-Verwendungs-Konzept im Domänenmodell nicht zum Einsatz kommt und Verbindungen direkt instanziiert werden. 
-
 Wie Kantentypen innerhalb der grafischen Benutzeroberfläche bezeichnet werden sollen wird durch das Attribute ``toolingName`` festgelegt.
 
 In Concepts, die Kantentypen repräsentieren müssen außerdem die Attribute von Knotentypen aus dem Domänenmodell angegeben werden, denen die Domain-Concepts der zugehörigen Verbindungen zugewiesen werden.
 ``InboundAttrib`` legt den Namens des Attributs fest, dem eingehende Kanten zugewiesen werden; ``outboundAttrib`` ist entsprechend das Attribut für die ausgehenden Kanten.
-
 Außerdem sind für Kanten noch die beiden Attribute ``startNode`` und ``endNode`` definiert. Diesen Attributen wird im *Editor-Usage-Model* jeweils das *Editor*-Concept zugewiesen, welches den Ausgangs- bzw. den Endknoten repräsentiert.
 
 Szenenobjekte
@@ -164,9 +155,7 @@ Für Szenenobjekte kann eine physikalische Repräsentation (Typ ``PhysicsSetting
 
 Es gibt momentan nur eine Art von Szenenobjekten, das ``ColladaSceneryObject``. Über das Attribut ``modelPath`` kann ein Pfad zu einer COLLADA-Datei\ [#f7]_ angegeben werden.
 Eine Physikdefinition innerhalb des COLLADA-Modells wird nicht unterstützt. 
-
 Daher muss für ``ColladaSceneryObjects`` im Modell eine Physikrepräsentation gesetzt werden wenn die Objekte bei der Kollisionsberechnung berücksichtigt werden sollen und Selektion durch den Benutzer möglich sein soll.
-
 Näheres zur COLLADA-Unterstützung in i>PM3D lässt sich bei :cite:`uli` (Unterabschnitt 7.5.2) nachlesen.
 
 .. _edl:

@@ -8,9 +8,7 @@ In der Prozessmodellierung ist es sinnvoll, neben den Modellen auch die zugrunde
 
 Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
-
 Diesem Konzept folgt das bereits vorgestellte :ref:`Model Designer Framework<mdf>`.
-
 Die hier vorgestellte Modellhierarchie ist ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
 Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
 
@@ -21,7 +19,6 @@ Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen 
 Am Ende des nächsten Kapitels ist ein :ref:`Anwendungsbeispiel<beispiel-neues-element>` zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
 
 Die Anpassbarkeit der konkreten Syntax hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann, ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
-
 Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene :ref:`Prozess-Metamodell <pmm>` genutzt wird. 
 
 :num:`Abbildung #modellhierarchie-diagram` zeigt, wie sich die Hierarchie der Modelle darstellt, welche sich in einen **Editor-Model-Stack** und einen **Domain-Model-Stack** aufteilt.
@@ -57,7 +54,6 @@ Editor-Model-Stack
 Der *Editor-Model-Stack* von i>PM3D enthält alle Modelle, die dafür zuständig sind, die Visualisierungsparameter eines Domänenmodells zu beschreiben. 
 Außerdem werden hier Parameter spezifiziert oder gesetzt, welche die physikalische Repräsentation oder die für das Modellelement angebotenen Funktionalitäten im interaktiven Modellierungswerkzeug beeinflussen.
 Näheres hierzu wird im nächsten Kapitel erläutert.
-
 Mit "Repräsentation" ist im Folgenden die Gesamtheit dieser Parameter gemeint. 
 
 Die Verknüpfung mit dem *Domain-Model-Stack* wird hergestellt, indem in Concepts des *Editor-Model-Stacks* eine Referenz auf *Domain-Model-Stack*-Concepts angegeben wird (:num:`Abbildung #editor-domain-conn`). 
@@ -77,9 +73,7 @@ Anpassbarkeit
 -------------
 
 Durch Anpassungen im Editor-Model-Stack können für ein Domänen-Metamodell mehrere verschiedene Repräsentationen erstellt werden. 
-
 Im Vergleich zur Modellhierarchie von :ref:`MDF<mdf>` ist das im *Designer-Model-Stack* von MDF definierte *Graphical-Meta-Model* und das *Editor-Meta-Model* zusammengelegt. 
-
 Durch die fehlende Trennung von grafischer Darstellung und Editor-Mapping wird die Wiederverwendbarkeit im Vergleich zu MDF allerdings eingeschränkt.
 Bei getrennten Modellen ist es möglich, eine "Bibliothek" von Visualisierungselementen bereitzustellen, aus der Elemente ausgewählt und in beliebig vielen Editor-Definitionen verwendet werden können.
 Da der Fokus dieser Arbeit auf der (perspektivenorientierten) Prozessmodellierung liegt, wurde jedoch darauf verzichtet, um die Implementierung zu vereinfachen.
@@ -175,15 +169,12 @@ Passend dazu werden hier Knoten definiert, die mittels Kanten verbunden sind.
 In der Implementierung von i>PM3D wird angenommen, dass Knoten und Kanten über spezielle Attribute der Knoten logisch miteinander verbunden sind. 
 So muss im Concept, das den Knotentyp beschreibt, jeweils ein Attribut für eingehende und ausgehende Kanten eines bestimmten Typs definiert sein. 
 Diesen Attributen werden die ein- bzw. ausgehenden Kanten durch das Modellierungswerkzeug zugewiesen.
-
 Die Existenz von zugehörigen Attributen legt daher fest, in welcher Weise Kanten mit Knoten assoziiert werden können.
-
 Es wird vorgesetzt, dass die Attributnamen für eingehende Kanten mit dem Präfix ``inbound`` und die ausgehenden mit ``outbound`` beginnen.
 Der Rest des Attributnamens kann im Prinzip frei gewählt werden; jedoch wird in dieser Arbeit die Konvention benutzt, den Typnamen der Kante anzuhängen.
 
 Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur ein ``outbound``-Attribut definiert, sind nur Verbindungen erlaubt, die ihren Startpunkt bei jenem Knotentyp haben. 
 Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes ``inbound``-Attribut besitzt\ [#f2]_.
-
 Das Prinzip wird im nächsten Kapitel bei der Vorstellung des verwendeten :ref:`Prozess-Metamodells<pmm>` und anschließend in einem :ref:`Anwendungsbeispiel<beispiel-neues-element>` verdeutlicht.
 
 Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur Literaltyp-Attribute allgemein (außer für die Assoziation von Knoten und Kanten, wie vorher beschrieben) unterstützt werden. 
@@ -199,7 +190,6 @@ Zusammen mit dem :ref:`euse` ergibt dies den aktuellen Zustand des angezeigten M
 Das *Domain-Model* muss den Level ``M1`` enthalten, auf dem die im Folgenden genannten Packages definiert sind.
 
 Für die Erzeugung von Knoten im *Domain-Model* wird immer das :ref:`tvk` verwendet. 
-
 Dies bedeutet, dass im *Domain-Meta-Model* Concepts definiert sind, von welchen im *Domain-Model* ein Instanz ("Typ-Concept")erstellt wird. 
 Von *Typ-Concepts* kann eine Verwendung (in Form einer Spezialisierung der Instanz) im *Domain-Model* erzeugt werden.
 

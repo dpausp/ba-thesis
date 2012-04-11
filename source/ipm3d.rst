@@ -4,6 +4,8 @@
 Einordnung in das Gesamtprojekt i>PM3D
 **************************************
 
+(dieses Kapitel ist in Zusammenarbeit mit :cite:`buchi` und :cite:`uli` entstanden und wurde für diese Arbeit leicht modifiziert)
+
 Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des i>PM3D-Projekts entstanden. Das Ziel des Projekts ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
 
 .. _ipm3d-uebersicht:

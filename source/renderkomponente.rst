@@ -6,8 +6,7 @@ Render-Komponente
 
 In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für i>PM3D bereitstellt.
 Von dieser Komponente wird die im Rahmen dieser Arbeit entstandene :ref:`render-bibliothek` an Simulator X angebunden.
-
-Damit wird die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
+Dadurch wird die von Simulator X bereitgestellte Komponente für die grafische Darstellung ersetzt, deren Fähigkeiten nicht ausreichten, um die hier vorgestellte Visualisierung auf einfachem Wege zu implementieren.
 
 Die eigentlichen Render-Aufgaben werden an einen Actor (Klasse ``MMPERenderActor``) delegiert, der von der Renderkomponente (``MMPERConnector``) gestartet wird\ [#f1]_.
 Nachrichten, die Grafikfunktionen betreffen werden von anderen Komponenten an die Renderkomponente geschickt und an den RenderActor weitergeleitet. 
@@ -20,12 +19,10 @@ Dies ist für die Ausführung von OpenGL-Funktionen problematisch. Deswegen wird
 
 Der RenderActor definiert zwei Render-Ebenen. Die zuerst gezeichnete Ebene umfasst alle 3D-Objekte wie den Prozessgraphen und Szenenobjekte. 
 Darüber wird eine Ebene gezeichnet, die 2D-Elemente wie Cursor der Eingabegeräte oder das Eightpen-Menü :cite:`buchi` enthält.
-
 Beide Ebenen werden durch jeweils eine :ref:`renderstage` gezeichnet.
 
 Es gibt die Möglichkeit, den RenderActor durch Plugins zu erweitern, die an verschiedenen vordefinierten Erweiterungspunkten im Render-Prozess eingreifen können. 
 Plugins können neue Grafikobjekte erzeugen und zu einer der beiden ``RenderStages`` hinzufügen oder selbst OpenGL-Funktionen ausführen.
-
 Dies wird im Projekt für die Darstellung der Nifty-GUI-Menüs :cite:`uli` und des Eightpen-Menüs :cite:`buchi` genutzt.
 
 OpenGL-Versionsproblematik

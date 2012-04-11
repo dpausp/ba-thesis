@@ -15,7 +15,6 @@ Durch Interaktion per Tastatur und Maus lässt sich das Molekül aus verschieden
 Das vollständige Eintauchen in eine 3D-Szene und die Interaktion durch Körperbewegungen oder auch Sprache wird von Werkzeugen zur virtuellen Konstruktion gezeigt ("virtuelle Werkstatt") :cite:`frohlich_virtuelle_2009`. 
 So lässt sich beispielsweise ein rein virtuelles Auto in einer realistischen Darstellung betrachten und sogar "anfassen". 
 Solche Systeme bieten teilweise auch die Möglichkeit, dass mehrere Benutzer gleichzeitig mit dem System interagieren können.
-
 In den genannten Anwendungsfällen sind die Vorteile einer dreidimensionalen Darstellung offensichtlich, da hier Objekte aus der realen Welt abgebildet werden, die grundsätzlich dreidimensional ist.
 
 Motivation für die Modellierung von Prozessen in 3D
@@ -44,7 +43,6 @@ Zielsetzung und Aufbau dieser Arbeit
 
 Da es kaum Möglichkeiten gibt, die Effizienz von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem i>PM3D-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht. 
 Das Projekt basiert auf :ref:`simulatorx`, einer Plattform für eine modulare, komponentenbasierte Realisierung von Anwendungen aus dem Bereich der 3D-Computergrafik.
-
 Ein detaillierter Überblick über das Gesamtprojekt wird später in :ref:`dieser Arbeit<ipm3d>` gegeben.
 
 Die vorliegende Arbeit beschäftigt sich im Rahmen des Projekts mit der Konzeption und Realisierung der **Repräsentation** der Prozessmodelle im Modellierungswerkzeug.
@@ -54,8 +52,8 @@ Visualisierung
 --------------
 
 Da es kaum möglich war, auf schon vorhandene Implementierungsarbeiten zurückzugreifen, liegt der Fokus dieser Arbeit eher auf der Bereitstellung von technischen Grundlagen, die zur Realisierung einer flexiblen 3D-Prozessvisualisierung im Prototypen nötig waren.
-
 Dennoch werden :ref:`in <related>` Arbeiten vorgestellt, die einen Überblick darüber geben sollen, wie die dritte Visualisierungsdimension genutzt werden kann und welche Vorteile sich aus 3D-Darstellungen ergeben. 
+
 Die Implementierung konzentriert sich nicht auf eine bestimmte Nutzungsmöglichkeit, sondern ist möglichst allgemein gehalten. 
 So werden Modelle in i>PM3D als 3D-Graph dargestellt, dessen Knoten sich frei im Raum platzieren lassen. 
 Der Benutzer selbst kann sich in der 3D-Szene bewegen und so den Graphen aus verschiedenen Perspektiven betrachten. 

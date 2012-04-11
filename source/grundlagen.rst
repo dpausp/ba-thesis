@@ -15,8 +15,7 @@ Modellierung hat im Rahmen des Prozessmanagements die Aufgabe, komplexe (Geschä
 Einerseits werden Prozessmodelle erstellt, um Zusammenhänge besser zu erkennen und Optimierungsmöglichkeiten für den realen Prozess aufzuzeigen.
 Andererseits können abstrakt modellierte Prozesse von einem Softwaresystem automatisch ausgeführt bzw. simuliert werden :cite:`ter_hofstede_business_2003`.
 
-Um Modelle formulieren zu können bedarf es einer passenden Modellierungssprache. 
-
+Um Modelle formulieren zu können, bedarf es einer passenden Modellierungssprache. 
 Zu einer Sprache gehört eine **abstrakte Syntax**, die allgemein Elemente einer Sprache und deren Beziehungen beschreibt, wohingegen die **konkrete Syntax** das "Aussehen" der Sprache festlegt :cite:`clark_applied_2008`.
 Grundsätzlich lassen sich textuelle und grafische Notationen für Sprachen unterscheiden. 
 
@@ -106,7 +105,6 @@ Grafische Modellierungswerkzeuge
 Für die Erstellung von grafischen Prozessmodellen am Rechner wird eine Unterstützung durch Softwarewerkzeuge benötigt.
 Prinzipiell können "Modelle" einfach mit Hilfe von 2D-Zeichenwerkzeugen wie *Dia* :cite:`www:dia` oder *MS Visio* :cite:`www:visio` erstellt werden.
 Solche Programme bieten oft schon passende Formen und Verbindungen, beispielsweise für BPMN\ [#f2]_ an. 
-
 Ein Benutzer macht die Bedeutung eines solchen Diagramms an den erkennbaren grafischen Formen und deren Aussehen fest; insofern wäre dies für Menschen durchaus ausreichend.
 
 Durch ein Zeichenprogramm wird das Diagramm intern nur als eine Ansammlung von Bildpunkten oder geometrischen Primitiven dargestellt und auch entsprechend gespeichert ("persistiert").
@@ -182,8 +180,6 @@ Anders ausgedrückt können Concepts sowohl eine "Typ-Facette", die Attribute de
 Dieses Prinzip wird mit dem Begriff **Clabject** (**Cla**\ ss and O\ **bject**\ ) umschrieben.
 
 
-
-
 Klassen stellen im objektorientierten System Typen dar; Objekte sind Instanzen von Klassen, welche Werte an die Attribute der Klasse zuweisen.
 Im Gegensatz zu der von Klasse und Objekt vorgegebenen Hierarchie aus zwei "Ebenen" lassen sich mit Concepts Hierarchien mit beliebig vielen Ebenen realisieren. 
 Dazu können Concepts gleichzeitig den Typ für Concepts auf der darunterliegenden Ebene und eine Instanz eines Concepts (``instanceOf``) auf der nächsthöheren Ebene darstellen.
@@ -203,16 +199,15 @@ Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``
 Concepts werden, wie in :num:`Abbildung #lmm-model` gezeigt, in **Packages** eingeordnet. Packages bilden zusammen einen **Level**, welcher eine Ebene in der Metamodellierungshierarchie repräsentiert.
 Mehrere Levels stellen zusammen das vollständige **Model** dar, wobei auch Modelle mit nur einer Ebene erlaubt sind.
 
-In Concepts können sowohl **Literaltyp-Attribute** (bspw. string, real, integer) als auch **Referenz-Attribute**, welche auf andere Concepts verweisen, angegeben werden.
 
 Levels können ebenfalls zueinander in einer Instanzbeziehung (``instanceOf``) stehen. 
 Wenn alle in einem Level *MA* definierten Concepts Instanzen von jeweils genau einem Concept in Level *MB* sind, ist *MA* eine Instanz von *MB*, 
 
 Die genannten Beziehungen wie ``instanceOf`` zwischen Levels bzw. Concepts werden in :num:`Abbildung #lmm-model` als "Reference" dargestellt.
+In Concepts können sowohl **Literaltyp-Attribute** (bspw. string, real, integer) als auch **Referenz-Attribute**, welche auf andere Concepts verweisen, angegeben werden.
 
 Neben der schon erwähnten Instanziierung und Subtypbildung werden von LMM zusätzliche Modellierungsmuster unterstützt. 
 Von diesen ist für die vorliegende Arbeit die sog. **Spezialisierung von Instanzen**  bedeutend, deren Vorteile für die Modellierung von :cite:`volz_werkzeugunterstutzung_2011` beschrieben werden.
-
 Dieses Muster wird in :num:`Abbildung #concreteuseof` veranschaulicht.
 
 .. _concreteuseof:
@@ -226,7 +221,6 @@ Dieses Muster wird in :num:`Abbildung #concreteuseof` veranschaulicht.
 In der Abbildung spezialisiert ``UseA`` ``ConceptD`` (``concreteUseOf``). ``UseA`` übernimmt dabei alle Zuweisungen von ``ConceptD``; damit hat das Attribut in ``UseA`` ebenfalls den Wert 5.5.
 ``UseB`` dagegen setzt wiederum einen Wert für das Attribut ``c``. Das heißt, dass in ``UseB`` die bisherige Zuweisung "überschrieben" wird und damit den Wert 0 hat.
 Für ``ConceptD`` ändert sich dabei nichts; die Überschreibung wirkt sich nur in ``UseB`` aus.
-
 In LMM lässt sich für Attribute festlegen, inwieweit das Setzen von Werten in Spezialisierungen zulässig ist und welche Bedeutung dies hat. 
 
 LMM-(Meta-)Modelle lassen sich mit der Sprache Linguistic Meta Language (LML) :cite:`volz_werkzeugunterstutzung_2011` (S.159ff) in einer textuellen Form beschreiben.
@@ -270,7 +264,6 @@ Das *Domain-Metamodel* legt die Elemente der domänenspezifischen Sprache fest, 
 Rechts wird der *Designer-Model-Stack* gezeigt, der den Editor für die Domäne spezifiziert. 
 Das *Graphical-Definition-Model* beschreibt Figuren, die sich für die Visualisierung der Domäne einsetzen lassen. 
 Figuren werden über das *Editor-Definition-Model* mit den Domänenmodellelementen verbunden. So wird die grafische Repräsentation der Modellelemente im Editor festgelegt.
-
 Bemerkenswert ist, dass LMM sowohl für die Beschreibung des Modellierungswerkzeugs als auch für die persistente Speicherung und interne Darstellung der mit dem Werkzeug erstellten Modelle genutzt wird.
 
 :num:`Abbildung #ipm-typ-verwendung-2` zeigt einen Prozess, der in einem mit MDF definierten Editor (*i>PM*\ :sup:`2`) für die :ref:`POPM <popm>` erstellt wurde.
@@ -284,7 +277,6 @@ An :num:`Abbildung #ipm-typ-verwendung-1` und :num:`Abbildung #ipm-typ-verwendun
 
 Das Grundprinzip des Typ-Verwendungs-Konzeptes ist es, einmal erstellte Objekte in unterschiedlichen Zusammenhängen zu verwenden.
 Dieses Konzept lässt sich durch die in :ref:`LMM <lmm>` eingeführte Spezialisierung von Instanzen leicht realisieren\ [#f4]_.
-
 Die Spezialisierung von Instanzen, deren Einsatz für das Typ-Verwendungs-Konzept und das im Folgenden gezeigte Beispiel werden auch in der Arbeit von Volz :cite:`volz_werkzeugunterstutzung_2011` (S.56ff) beschrieben.
 
 :num:`Abbildung #ipm-typ-verwendung-1` zeigt den Prozess "Notiz aufnehmen" (*A*). 

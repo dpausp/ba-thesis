@@ -28,7 +28,6 @@ Die Beschriftung von TextLabelNodes kann dazu verwendet werden, textuelle Attrib
 
 Es sollten möglichst einfache, dreidimensionale geometrische Körper mit möglichst ebenen Seitenflächen wie Würfel oder Quader gewählt werden. 
 Ebene Flächen eignen sich besonders gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von (längeren) Textdarstellungen. 
-
 Bei Würfeln oder ähnlichen Körpern ist es auch relativ einfach, einen (dreidimensionalen) Rahmen zu zeichnen, dessen Verwendung weiter unten in :ref:`visualisierungsvarianten` dargestellt wird.
 
 :num:`Abbildung #prozessknoten` zeigt zwei Prozessknoten, auf welchen die Prozess-Funktion als Text angezeigt wird. 
@@ -95,7 +94,6 @@ Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die betei
 Dies wird von der in :cite:`uli` beschriebenen Editor-Komponente übernommen.
 
 Die durch das Concept ``TexturedConnection`` (siehe :ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
-
 Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert sind, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
 
 :num:`Abbildung #gerichtete-verbindung` zeigt als Beispiel zwei Prozesse, die mit einem Kontrollfluss verbunden sind. Der Kontrollfluss läuft von Prozess A zu Prozess B.
@@ -116,7 +114,6 @@ Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die M�
 
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
 Diese können zur Illustration von Prozessschritten dienen, wie es von :ref:`Brown <ross-brown>` gezeigt wurde.
-
 Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden. Sie besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
 
@@ -147,7 +144,6 @@ Prozessmodellelemente und Szenenobjekte können durch den Benutzer ausgewählt w
 Selektierte Objekte sollen von unselektierten Objekten auch bei großer Entfernung und ungünstigen Blickwinkeln unterscheidbar sein, wobei aber jederzeit noch erkennbar sein muss, um welche Art von Modellelement es sich handelt. 
 
 Die Visualisierung des Selektionszustandes soll daher möglich auffällig sein, ohne das Erscheinungsbild allzu stark zu beeinflussen. 
-
 Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Die Definition des "Rands" ist je nach Objekttyp unterschiedlich\ [#f5]_.
 
 In :num:`Abbildung #selektion-sc` sind zwei selektierte Knoten zu sehen.
@@ -160,7 +156,6 @@ Deaktivierung
 
 Objekte können durch den Modelleditor deaktiviert werden. Welche Bedeutung dies hat, wird vom Editor festgelegt. 
 Zur Visualisierung dieses Zustandes wird das Objekt transluzent in einem Grauton dargestellt, der von der normalen Farbe abhängig ist. 
-
 So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von diesem verdeckt werden.
 
 :num:`Abbildung #deaktivierung-sc` zeigt einen deaktivierten Prozess, hinter dem sich ein anderer Prozess befindet.
@@ -198,15 +193,11 @@ Damit ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deakti
 =======================
 
 Für eine übersichtliche Darstellung des Prozessmodells ist es häufig erwünscht, Elemente in einer bestimmten Weise anzuordnen. 
-
-Durch die freie Positionier- und Drehbarkeit kann zwar prinzipiell jede beliebige geometrische Anordnung erreicht werden, doch ist dies mit einem relativ hohen Aufwand bei der Platzierung durch den Benutzer verbunden. 
-
 Zur Vereinfachung der Platzierung werden in 2D-Modellierungswerkzeugen oft im Hintergrund dargestellte Gitter genutzt, die eine optische Hilfe darstellen. 
 Noch hilfreicher können "magnetische" Gitter sein, die grob in der Nähe platzierte Objekte automatisch auf feste, regelmäßige Positionen verschieben.
 
 Um dies zu erreichen, wird die :ref:`Physikkomponente<mod-simx>` genutzt. 
 Sobald sich ein Objekt nahe genug an einer solchen Modellierungsebene befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen. Das Objekt bewegt sich solange, bis dessen Mittelpunkt die Fläche erreicht hat und dort automatisch angehalten wird.
-
 Näheres zur Implementierung dieser "Gravitationsflächen" findet sich in :cite:`buchi`.
 
 Grafisch werden diese Ebenen transluzent dargestellt, wobei darauf Gitterlinien zu erkennen sind. 
@@ -234,7 +225,6 @@ Zur Verbesserung der Orientierung befindet sich jeweils eine weniger intensive, 
 So soll es für den Benutzer leichter zu erkennen sein, welche Seite der Objekte in Bezug auf die Ausgangsposition nach unten, links beziehungsweise nach rechts zeigt. 
 
 Die von der :ref:`render-bibliothek` bereitgestellten Lichtquellen nach dem Phong-Lichtmodell :cite:`phong_illumination_1975` sorgen für eine relativ realistische Beleuchtung bei vertretbarem Rechenaufwand.
-
 Für die Visualisierung von 3D-Graphmodellen stellt sich die Frage, wie die Lichtparameter am besten gewählt werden sollten, um eine möglichst hohe Lesbarkeit und eine gute Orientierung im Raum zu ermöglichen.
 
 Im Phong-Lichtmodell wird das von einem Objekt reflektierte Licht in drei Beiträge unterschieden :cite:`akenine-moller_real-time_2008`.
@@ -291,7 +281,6 @@ Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension
 -----------------------------------------------------------------------
 
 Zuerst soll geklärt werden, welche in :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden müssten.
-
 Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i>PM 3D, welche anschließend näher ausgeführt wird.
   
 .. include:: table2.rst
@@ -399,7 +388,6 @@ Räumliche Darstellung
 ---------------------
 
 Die räumliche Darstellung, vor allem der Tiefeneindruck ist für das Verständnis von 3D-Visualisierungen wichtig :cite:`wickens_three_1989` :cite:`ware_visualizing_2008`. 
-
 Modellierungsflächen und eine passende Beleuchtung können hilfreich sein, um dem Benutzer die räumliche Orientierung zu erleichtern, wie es der Prototyp zeigt.
 
 Jedoch ist die Darstellung von 3D-Szenen auf einem PC-Bildschirm oder Projektor üblicherweise nur eine 2D-Projektion, bei der ein realistischer Tiefeneindruck fehlt.
@@ -409,7 +397,6 @@ Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jed
 Die Skalierung von Modellelementen allerdings komplett zu verbieten würde eine zu starke Einschränkung bedeuten.
 
 Andere Effekte, die aus der "Umwelt" bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie (:ref:`siehe <ware-graphs>`) und Schatten.
-
 Der Bewegungsparallaxen-Effekt lässt sich durch seitliche Bewegung des Benutzers in der Szene erzeugen und gibt einen Eindruck davon, wie weit Objekte von diesem entfernt sind.
 
 Schatten
@@ -435,7 +422,6 @@ Verdeckung
 Problematisch ist die in 3D-Visualisierungen auftretende Verdeckung von Informationen durch andere Modellelemente, wie schon bei dem von :ref:`Brown <ross-brown>` vorgestellten 3D-Prozesseditor zu sehen war.
 Ist ein Element verdeckt, kann im Prototypen die Betrachterposition verändert werden, um die Sicht auf das Element freizugeben. 
 Allgemein sollten Modelle aber so erstellt werden, dass aus "üblichen" Betrachtungsrichtungen möglichst wenig Verdeckung auftritt, um sich nicht ständig hin- und herbewegen zu müssen.
-
 Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen, wie es im Prototypen durch das Deaktivieren von Elementen möglich ist. 
 
 Interessant wäre es auch, die Durchsichtigkeit von verdeckenden Elementen automatisch zu beeinflussen wie es unter dem Stichwort "dynamic transparency" von :cite:`elmqvist_dynamic_2009` vorgestellt wird.

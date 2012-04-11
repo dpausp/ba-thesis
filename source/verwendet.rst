@@ -44,7 +44,6 @@ Objects
 
 Anstelle der aus Java bekannten statischen Klassenmethoden oder Singleton-Klassen wird in Scala das *object*-Konstrukt genutzt. 
 *Objects* können Klassen "erweitern", das bedeutet, dass das *Object* als Instanz der Klasse betrachtet werden kann. 
-
 Als Beispiel sei hier ein ausführbares Scala-Programm gezeigt, welches eine (im Sinne von Java statische) Methode definiert und aufruft:
 
 .. code-block:: scala
@@ -136,13 +135,11 @@ Simulator X
 ***********
 
 *Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` ist ein Prototyp einer neuartigen Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
-Der Fokus liegt hierbei auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung.
+Der Fokus liegt hierbei auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung. Dies macht Simulator X zu einer gut geeigneten Plattform für den i>PM3D-Prototypen.
 
-Dies macht Simulator X zu einer gut geeigneten Plattform für den i>PM3D-Prototypen.
+*Simulator X* setzt auf dem :ref:`(Scala-)Actor-Modell<actors>`, so dass Programmkomponenten möglichst gut entkoppelt werden
 
-*Simulator X* setzt auf dem (Scala-)Actor-Modell auf welches dafür sorgt, dass Programmkomponenten möglichst gut entkoppelt werden
-
-Dies sorgt auch dafür, dass auch aktuelle Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
+Damit lassen sich auch Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
 
 Aufbauend auf dem Actor-Modell stellt *Simulator X* ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
 
@@ -194,7 +191,6 @@ In älteren OpenGL-Versionen (1.x) wurden von OpenGL viele, fest eingebaute Funk
 Deshalb wird "altes" OpenGL oft mit dem Begriff *fixed-function-Pipeline* :cite:`akenine-moller_real-time_2008` in Verbindung gebracht.
 
 Mit Version 3.0 wurden viele dieser Funktionen aus dem Kern von OpenGL entfernt. In neueren Versionen müssen die Berechnungen durch den Programmierer selbst in *Shadern* implementiert werden. 
-
 Das neue Konzept gibt jedoch dem Programmierer die Freiheit, auch völlig neue Grafikeffekte zu implementieren, die mit der *fixed-function-Pipeline* nicht oder nur schwer umsetzbar gewesen wären. 
 Diese Möglichkeit wurde in der vorliegenden Arbeit für einige "Spezialeffekte" genutzt, die sich auf diesem Weg einfach realisieren ließen.
 
@@ -231,11 +227,8 @@ StringTemplate
 --------------
 
 Um Prozessmodelle in einer textuellen Form speichern zu können, wird die Template-Bibliothek *StringTemplate* (ST) in der Version 4.0.4 verwendet. :cite:`parr_language_2009` 
-
 ST folgt dem Prinzip, einen Text mit "Platzhaltern" (Attributen) zu definieren. Die Attribute werden aus dem Anwendungsprogramm heraus gesetzt und so das Template mit Inhalt gefüllt.
-
 Diese Schicht sorgt unter anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
-
 In folgendem Beispiel wird ein Template erstellt, welches die :ref:`LMM-Zuweisung<lmm>` ``function = "test"`` produziert:
 
 .. code-block:: scala
@@ -254,7 +247,6 @@ Simplex3D-Math
 --------------
 
 Im i>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex3D-Math* in der Version 1.3 :cite:`www:simplex3d` genutzt. 
-
 Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
 
 

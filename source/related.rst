@@ -17,7 +17,6 @@ Nicht selten sind Softwaresysteme überaus umfangreich und es muss daher nach M�
 
 Bisher nutzen Werkzeuge zur Softwaremodellierung, die häufig auf der Unified Modeling Language (UML) aufsetzen nahezu ausschließlich 2D-Visualisierungen. 
 Die UML lässt prinzipiell aber auch 3D-Repräsentationen zu :cite:`booch_unified_1999`.
-
 Einen umfassenden Überblick über Arbeiten, die sich mit 3D-Softwarevisualisierung befassen, gibt :cite:`teyseyre_overview_2009`. 
 
 .. _dywer:
@@ -69,7 +68,6 @@ Die Einschränkungen durch die Tab-Ansicht würden auf verschiedenem Wege "umgan
 Andere Benutzer würden "in die Luft starren", um sich die Zusammenhänge und Auswirkungen von Änderungen besser vorstellen zu können.
 
 Daher sei es die wichtigste Anforderung an eine 3D-Repräsentation, hier Abhilfe zu schaffen und hierarchische Zustandsdiagramme besser abzubilden.
-
 Es wird eine Darstellung vorgeschlagen, welche die Zustandsdiagramme selbst immer noch zweidimensional zeichnet, diese jedoch auf ebenen Flächen im 3D-Raum platziert. 
 So würden sich Beziehungen zwischen mehreren Diagrammen gut grafisch darstellen lassen. 
 Wie sich in :num:`Abbildung #mcintosh-sm` erkennen lässt, werden Beziehungen zwischen Super- und Subzuständen durch transluzente, graues Dreiecke dargestellt.
@@ -211,7 +209,8 @@ Die grafische Ausgabe von GEF3D baut direkt auf OpenGL auf; um 2D-Grafiken und T
 3D-Prozessvisualisierung
 ========================
 
-Arbeiten, die sich speziell mit 3D-Visualisierungen im Kontext des Prozessmanagements (Prozessmodellierung, -simulation) beschäftigen, werden hier vorgestellt.
+Arbeiten, die sich speziell mit 3D-Visualisierungen im Kontext des Prozessmanagements (Prozessmodellierung, -simulation) beschäftigen, werden hier vorgestellt. 
+Außerdem wird gezeigt, wie sich abstrakte Modelle in eine virtuelle Umgebung integrieren lassen.
 
 
 .. _betz:
@@ -267,9 +266,7 @@ Der Benutzer könne mehrere Verfeinerungsstufen des Modells in einer Ansicht seh
 -------------------------------------------
 
 In :cite:`schonhage_3d_2000` wird ein Prototyp einer interaktiven 3D-Umgebung vorgestellt, der dafür genutzt werden könne, Simulationen von Prozessen zu kontrollieren und dabei anfallende Daten zu visualisieren.
-
 Der Prozess selbst wird, wie in :num:`Abbildung #schoenhage-graph` gezeigt, als 3D-Graph dargestellt, wobei Subgraphen durch den Benutzer nach Bedarf auf- und zugeklappt werden könnten. 
-
 Datenflüsse würden durch animierte Kugeln angezeigt, die sich entlang der Kanten von einem Aktivitätsknoten zum nächsten bewegen würden.
 Der Anwender könne durch die Auswahl von Knoten und dem Drücken einer "drill-down-Schaltfläche" eine Visualisierung zugehöriger Prozessdaten öffnen – hier im Beispiel 3D-Histogramme – wie in :num:`Abbildung #schoenhage-all` zu sehen ist. Im Beispiel zeigen die 3D-Histogramme eine Häufigkeitsverteilung (horizontal) von "Wartezeiten" im Laufe von vier Wochen.
 Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wieder schnell zu diesen zurückspringen zu können.
@@ -296,7 +293,6 @@ Modellierung von Prozessen in interaktiven, virtuellen 3D-Umgebungen
 ---------------------------------------------------------------------
 
 In :cite:`brown_conceptual_2010` wird ein Prototyp eines BPMN-Editors vorgestellt, der Prozesse innerhalb eine virtuellen 3D-Umgebung darstellt
-
 Besonderer Wert sei auf die Zusammenarbeit zwischen mehreren Modellierern und die Prozesskommunikation – auch unter Beteiligung von Personen, die keine Modellierungsexperten sind – gelegt worden. 
 "Naive stakeholders" hätten oft Probleme, die abstrakte Welt der konzeptuellen Modellierung zu verstehen, weil der Bezug zu realen Gegenständen fehle. 
 Unter Zuhilfennahme einer "virtuellen Welt" (virtual reality), in welche abstrakte Prozessmodelle eingebettet sind, solle dies abgemildert werden. 
@@ -319,7 +315,6 @@ Auf den Knoten können Informationen durch Texte oder statische Grafiken vermitt
 Informationen auf den Objekten scheinen nur auf einer Seite dargestellt zu sein. Das ist problematisch, falls Modellelemente gedreht und Bewegungen um den Prozessgraphen herum ausgeführt werden. 
 Je nach Perspektive wäre es möglich, dass die Texte bzw. die Symbole nicht mehr sichtbar sind.
 :num:`Abbildung #brown-process` zeigt auch, dass die gegenseitige Verdeckung von Modellelementen ebenfalls zu Schwierigkeiten bei der Lesbarkeit der Informationen führt.
-
 Die Benutzer selbst werden, wie in :num:`Abbildung #brown-nodes` zu sehen ist, als Avatar gezeigt, welcher die Interaktion der Benutzer mit dem Modell für andere Teilnehmer zeigen soll.
 
 .. _brown-nodes:
@@ -356,9 +351,8 @@ Nutzung von 3D-Effekten für einen verbesserten Tiefeneindruck
 In :cite:`ware_visualizing_2008` wird an Probanden untersucht, wie groß die Vorteile einer stereoskopischen 3D-Darstellung von umfangreichen Graphen im Vergleich zu einer 2D-Darstellung sind. 
 Als Maß für die "Lesbarkeit" wird hier das Abschneiden bei der Aufgabe, die Pfadlänge zwischen zwei markierten Knoten zu erkennen, genutzt. 
 
-Eine stereoskopische 3D-Darstellung sei besonders hilfreich, um dem Betrachter einen realistischen Tiefeneindruck zu vermitteln und damit das Erkennen von Verbindungen zu erleichtern. 
+Stereoskopische 3D-Darstellung sei besonders hilfreich, um dem Betrachter einen realistischen Tiefeneindruck zu vermitteln und damit das Erkennen von Verbindungen zu erleichtern. 
 Eine weitere Maßnahme, um den Tiefeneindruck zu verbessern, sei es, den Graphen ständig zu rotieren und damit die Bewegungsparallaxe zu nutzen\ [#f2]_.
-
 Es zeigte sich, dass die Probanden – bei gleicher Fehlerrate – Verbindungen in 3D-Graphen erkennen hätten können, welche um eine Größenordung größer gewesen seien als die entsprechenden 2D-Graphen.
 
 Dabei sei eine Anzeige mit einer sehr hohen Auflösung verwendet worden, die nahe an das Auflösungsvermögen des menschlichen Sehsystems herankomme. 
@@ -454,7 +448,7 @@ Ein Beispiel dafür sind die 3D-Histogramme, wie sie von Schönhage gezeigt wurd
 :ref:`Brown<ross-brown>` bettet die abstrahierte Darstellung des Prozesses in eine virtuelle Umgebung ein, welche den tatsächlichen Ausführungsort eines Prozesses räumlich abbilden kann. 
 Dies lässt sich als deutlicher Vorteil für die Nutzung von 3D-Visualisierungen im Vergleich zu 2D-Darstellungen festhalten.
 
-So lassen sich beispielsweise Laufwege von am Prozess beteiligten Personen oder andere Vorgänge wie der Transport von Werkstücken (animiert) darstellen, um mögliche Probleme bei der Ausführung und Optimierungsmöglichkeiten aufzuzeigen. 
+Beispielsweise lassen sich Laufwege von am Prozess beteiligten Personen oder andere Vorgänge wie der Transport von Werkstücken (animiert) darstellen, um mögliche Probleme bei der Ausführung und Optimierungsmöglichkeiten aufzuzeigen. 
 So kann festgestellt werden, ob sich gewisse Wege verkürzen oder vermeiden lassen, indem Reihenfolge oder der Ausführungsort von Prozessschritten verändert werden.
 Durch die Integration von Abbildern realer Objekte in die virtuelle Welt können abstrakte Konzepte des Prozessmodells veranschaulicht oder um weitere Informationen ergänzt werden. 
 Sinnvoll ist dies beispielsweise, um Veränderungen an einem Werkstück im Laufe eines Produktionsprozesses zu visualisieren, indem die Zwischenstufen dreidimensional neben den Prozessschritten abgebildet werden.

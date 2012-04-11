@@ -15,7 +15,6 @@ Für die im vorherigen Kapitel beschriebene Renderkomponente wurde eine Anbindun
     #. "Bild-in-Bild"-Techniken ("off-screen rendering"), also das Zeichnen von 3D-Teil-Szenen in 2D-Bilder, die im Grafikspeicher abgelegt sind und so in eine größere 3D-Szene eingebettet werden können.
 
 Anforderung (5) wird im Projekt für die Darstellung von :ref:`deaktivierten Modellelementen <deaktivierung>` sowie :ref:`Modellierungsflächen<modellierungsflaechen>` gebraucht. 
-
 Anforderung (7) ist auf den Wunsch zurückzuführen, komplexe Menüs wie das Eightpen-Menü :cite:`buchi` erstellen zu können, die selbst wieder 3D-Objekte enthalten. 
 
 Die Anforderungen (1, 2, 3) werden – auf niedriger Ebene – nur von OpenGL in einer relativ aktuellen Version ab 3.0 erfüllt. 
@@ -48,7 +47,6 @@ Das heißt, dass auf im OpenGL-Standard "deprecated" markierte Funktionalität v
 Damit ist zu erwarten, dass die Render-Bibliothek auch mit den aktuellsten und zukünftigen OpenGL-Versionen sowie neuer Grafikhardware – zumindest in den nächsten Jahren – kompatibel sein wird.
 
 Die Render-Bibliothek orientiert sich in den Grundkonzepten an der für C++ verfügbaren *Visualization Library* :cite:`www:vislib`.
-
 Im Gegensatz zu vielen, umfassenden 3D-Engines sollten dem Benutzer der Bibliothek möglichst wenig Einschränkungen bei der Gestaltung seines Programms auferlegt werden.
 Bei der Konzeption der Render-Bibliothek stand die Wiederverwendbarkeit von einzelnen Bestandteilen im Vordergrund, die sich wieder zu höheren Abstraktionen zusammensetzen lassen.
 

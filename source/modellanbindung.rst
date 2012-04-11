@@ -89,9 +89,6 @@ Die Elemente von LMM werden durch analog benannte Klassen repräsentiert, die mi
 
 So wird die "Wurzel" von einer ``MModel``-Instanz gebildet, der sich ``MLevels`` unterordnen, die wiederum ``MPackages`` mit ``MConcepts`` sowie weiteren ``MPackages`` enthalten.
 Weiterhin kann ein ``MConcept`` andere ``MConcepts`` referenzieren. So ergibt sich ein azyklischer, gerichteter Graph.
-
-Besonders deutlich wird das bei den von Scala bereitgestellten Collections, die deutlich mehr einfach zu benutzende Funktionalität bieten (bspw. das Filtern von Sequenzen nach bestimmten Kriterien) als die von Java oder EMF bereitgestellten.
-
 Ausgehend von einem ``MModel``-Objekt kann die ``ModelComponent`` in einem Modell navigieren und es modifizieren, beispielsweise neue Concepts anlegen.
 
 :num:`Abbildung #domain-model-beispiel` zeigt beispielhaft einen Ausschnitt aus der Speicherrepräsentation des :ref:`Domain-Model-Stacks<domain-model-stack>`.
@@ -113,7 +110,6 @@ Vereinfachung des Umgangs mit Modellen
 
 Um den Zugriff auf die Modelle zu vereinfachen und öfter vorkommende Aufgaben auszulagern, wurde eine Reihe von Adaptern für die in der Speicherrepräsentation der Modelle genutzten Klassen implementiert.
 Ein Beispiel dafür ist der ``MConceptAdapter``, dessen Methoden beispielsweise den schnellen Zugriff auf alle zuweisbaren Attribute (``assignableAttributes``), das Setzen von Werten (``setValue``) oder die Abfrage von Concept-Beziehungen (``instanceOf``) erlauben.
-
 Für alle Adapter werden :ref:`implicit` angeboten, die die gekapselten Objekte direkt um die Methoden "erweitern", die in den Adaptern definiert sind.
 
 .. _laden-metamodelle:
@@ -135,11 +131,9 @@ Von ``loadAsResource`` wird angegeben, ob die Pfade als Java-Resource-Path zu ei
 
 Es wird zur Vereinfachung der Implementierung davon ausgegangen, dass die Metamodelle der Domäne und des Editors immer paarweise geladen werden. 
 Mehrere Repräsentationen zu einer Domäne zu laden ist somit noch nicht möglich.
-
 Die Modellkomponente lässt prinzipiell das Laden von mehreren Metamodell-Paaren zu. Jedoch wird dies von der Editorkomponente :cite:`uli` noch nicht unterstützt.
 
-Nachdem Metamodelle geladen worden sind, werden von der Modellkomponente Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
-
+Nachdem die Metamodelle geladen worden sind, werden von der Modellkomponente Informationen aus den Modellen ausgelesen, die für die Editorkomponente relevant sind.
 Zum Einen ist dies eine Auflistung der verfügbaren Kanten- und Szenenobjekttypen, die vom Benutzer erzeugt werden können und die der Editor zu diesem Zweck in seiner Palette anzeigt.
 Zum Anderen wird der Editor über die Knoten-"Metatypen" informiert, von denen nach dem Typ-Verwendungs-Konzept zur Laufzeit Typen vom Benutzer angelegt werden.
 
@@ -213,7 +207,6 @@ Physik
 ^^^^^^
 
 Knoten und Szenenobjekte sollen in die physikalische Simulation eingebunden werden, um Kollisionen zu erkennen und eine Auswahl der Elemente zu ermöglichen :cite:`uli` :cite:`buchi`.
-
 Hierfür stellt die Physikkomponente verschiedene ``Aspects`` bereit, die besagen, dass eine bestimmte physikalische Repräsentation zu einer Entity erzeugt werden soll.
 Da bisher nur annähernd quaderförmige Geometrien für die Visualisierung von Knoten genutzt werden, wird hier für alle Knoten der ``PhysBox``-Aspect (:num:`Abbildung #entity-description`) verwendet.
 
@@ -242,12 +235,10 @@ Für die drei Elementtypen Knoten, Kanten und Szenenobjekte gibt es jeweils eine
 
 Für alle Elemente, die von ``ModelEntities`` repräsentiert werden wird ein vollqualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
 Dieser Name wird in ``Commands`` verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
-
 Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem *Domain-Model* genutzt. Szenenobjekte werden über die FQN des *Editor-Usage*-Concepts identifiziert\ [#f2]_.
 
 Außerdem wird ein Identifikationsstring (``creatorId``) mitgeliefert, der vom Ersteller eines Elements definiert wird. 
 Mit "Ersteller" ist hier der Absender des entsprechenden ``Commands`` oder die ``ModelComponent`` selbst gemeint. 
-
 Diese ID kann von diesem dafür benutzt werden, neu erstellte Entities in internen Datenstrukturen richtig zuzuordnen.
 
 
