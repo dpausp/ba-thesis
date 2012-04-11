@@ -393,11 +393,17 @@ So lässt sich häufig der Ansatz beobachten, von einer bekannten 2D-Visualisier
 Dies war besonders bei den verschiedenen Arbeiten zu sehen, die sich mit 3D-UML beschäftigen.
 
 Der vorliegende Abschnitt fasst die wichtigsten Nutzungmöglichkeiten der dritten Dimension zusammen, die in den gezeigten Arbeiten vorgeschlagen wurden. 
-Außerdem wird versucht, eine Einschätzung zu geben, wie vorteilhaft die gezeigte Nutzung im Vergleich zu einer reinen 2D-Darstellung ist.
+Außerdem wird versucht, eine Einschätzung zu geben, wie vorteilhaft die gezeigte (3D-)Visualisierung im Vergleich zu einer reinen 2D-Darstellung ist.
 Die folgende Tabelle gibt einen Überblick über die vorgestellten Verwendungsmöglichkeiten und deren möglichen Nutzen.
+
+|
 
 .. include:: table1.rst
 
+|
+
+2,5D / 3D-Visualisierungen von Modellen
+---------------------------------------
 
 Eine naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren. 
 Dies wurde von :ref:`McIntosh<mcintosh>` für UML-Zustandsdiagramme, von :ref:`Gil und Kent<gil>` oder allgemein von :ref:`GEF3D<gef3d>` gezeigt.
@@ -411,7 +417,7 @@ Diese Beziehungen lassen sich schon durch die Anordnung optisch leicht von denje
 In reinen 2D-Darstellungen ist diese Unterscheidung deutlich schwieriger und es muss üblicherweise auf unterschiedliche Farben oder Konnektoren zurückgegriffen werden. 
 Vor allem bei einer großen Anzahl von Elementen kann dies leicht zu verwirrenden Darstellungen führen.
 
-Problematisch ist dagegen bei 2,5D-Ansätzen, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schrift bemerkbar machen wird. 
+Problematisch ist dagegen bei 2,5D-Ansätzen, dass es bei "schrägen" Betrachtungswinkeln schwierig wird, Informationen abzulesen, was sich besonders bei Schriftdarstellung bemerkbar machen wird. 
 Außerdem ist bei den bisher genannten Visualisierungsformen die Möglichkeit eingeschränkt, die dritte Dimension zur Vermittlung von zusätzlichen Informationen zu nutzen, da Elemente immer auf festen Ebenen platziert werden müssen.
 Kontinuierliche Attribute der Modellelemente lassen sich so nicht darstellen.
 
@@ -425,11 +431,11 @@ So kann beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weite
 
 :ref:`Betz et al.<betz>` zeigten für den Bereich der Prozessmodellierung die schon für die Softwaremodellierung genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
 
-Von :ref:`Dywer<dywer>` und :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
+Von :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
 Die dritte Dimension ("Tiefe") lässt sich dazu nutzen, schon durch Verbindungen festgelegte Zusammenhänge zu verdeutlichen oder direkt um Attribute der Modellelemente zu visualisieren.
 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
-Wie von Dywer gezeigt, gibt es die Möglichkeit, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
+Wie von :ref:`Dwyer<dywer>` vorgeschlagen, gibt es die Möglichkeit, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.
 Damit lassen sich solche Modelle besser aus unterschiedlichen Perspektiven betrachten als die vorgenannten 2,5D-Darstellungen.
 Der Wechsel der Perspektive kann hilfreich sein, um unterschiedliche Aspekte der 3D-Szene gezielt betrachten zu können. 
 Beispielsweise können so Beziehungen zwischen Elementen auf parallelen Ebenen herausgestellt werden, indem die Szene "von der Seite" betrachtet wird.
@@ -456,15 +462,19 @@ Sinnvoll ist dies beispielsweise, um Veränderungen an einem Werkstück im Laufe
 Eine andere denkbare Anwendung wäre eine Visualisierung der Platzverhältnisse in einer Ausführungsumgebung. 
 Wenn die Umgebung sowie sich darin befindliche Objekte relativ zueinander im richtigen Größenverhältnis und in der tatsächlichen Form dargestellt sind, könnte schon bei einer Betrachtung des Prozesses in der virtuellen Welt bemerkt werden, dass vorgesehene Ablageplätze in einem Lager oder Transportbehälter für ein Werkstück zu klein dimensioniert sind.
 
-:num:`Abbildung #brown-airport` zeigt einen Prozess in einer 3D-Umgebung, die mit Hilfe des von Brown vorgestellten Editors erstellt wurde. 
-Gezeigt wird ein Vorgang am einem Flughafen. 
-.. TODO weiter
-
+:num:`Abbildung #brown-airport`\ [#f6]_ zeigt einen BPMN-Prozess in einer 3D-Umgebung, die mit Hilfe des von Brown vorgestellten Editors erstellt wurde und einen Flughafen darstellen soll. 
 Dies ließe sich prinzipiell auch mit einer 2D-Darstellung realisieren, indem die Szene von oben gezeigt wird. 
 Dadurch wird aber die Übersichtlichkeit eingeschränkt; die Möglichkeit, den Prozessgraphen im dreidimensionalen Raum in einer Ebene über dem Boden zu zeigen, erweist sich hier als Vorteil.
 Ebenso bietet es sich an, im 3D-Raum die Betrachtungsperspektive nach Bedarf zu verändern. 
-Ist die Blickrichtung des Betrachters annähernd parallel zum Untergrund, lassen sich auch weit entfernte "Stationen" des Prozesses erkennen. 
+Ist die Blickrichtung des Betrachters annähernd parallel zum Untergrund wie in der Abbildung, lassen sich auch weit entfernte "Stationen" des Prozesses erkennen.
+Ein Blick von oben auf die Szene aus größerer Entfernung gibt dagegen einen groben Überblick über die gesamte Prozessstruktur.
 
+.. _brown-airport:
+
+.. figure:: _static/ext_pics/brown_airport.png
+    :width: 16.5cm
+
+    Visualisierung eines BPMN-Prozesses in einer virtuellen Umgebung
 
 Effizienz und Akzeptanz von 3D-Darstellungen?
 ---------------------------------------------
@@ -523,3 +533,5 @@ Dadurch wird :ref:`Anforderung (b)<anforderungen>` motiviert, beliebige 3D-Objek
 .. [#f4] Ein verbreiteter Ansatz, um 2D-Grafiken und Text in OpenGL darzustellen ist es, diese erst in eine Textur zu zeichnen und diese auf 3D-Objekte aufzubringen. Dies wird auch in dieser Arbeit verwendet.
 
 .. [#f5] Die besagte Arbeit ist 2000 entstanden. Sicherlich ist die Geschwindigkeit heutzutage ein kleineres Problem, aber es lässt sich nicht vernachlässigen. Gerade bei aufwändigen Grafikeffekten oder der Verarbeitung von komplexen Eingabedaten kann man leicht an die Grenzen der Rechenleistung stoßen.
+
+.. [#f6] Quelle: www.youtube.com/watch?v=aUBmvykDhB0. Das Video ist auch auf der begelegten DVD zu finden.

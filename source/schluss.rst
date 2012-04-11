@@ -19,8 +19,8 @@ Besonders wichtig wären in diesem Zusammenhang umfangreichere Konfigurationsmö
 Außerdem sollten in einer Weiterentwicklung automatische Verfahren zur Unterstützung des Benutzers, beispielsweise Layout-Algorithmen und eine intelligente Wahl der Lichtparameter integriert werden.
 Daneben kann untersucht werden, inwieweit sich geometriebasierte Ansätze, wia bspw. aus i>PM:sup:`2` bekannt, in den dreidimensionalen Raum übertragen lassen.
 
-Meherere bei der Vorstellung von verwandten Arbeiten zur Visualisierung gezeigten Nutzungsmöglichkeiten der dritten Dimension können mit dem Prototypen schon realisiert werdeni.
-Eine vielversprechende Nutzungsmöglichkeit ist die Einbettung der abstrakten Prozessmodelle in eine :ref:`virtuelle Umgebung <informations-integration>` mit Abbildern realer Objekte, wie es mit i>PM3D prinzipiell schon möglich ist, da beliebige 3D-Objekte in die Szene eingebunden werden können.
+Einige bei der Vorstellung von verwandten Arbeiten zur Visualisierung gezeigte Nutzungsmöglichkeiten der dritten Dimension können mit dem Prototypen schon realisiert werden.
+Vielversprechend ist die Einbettung der abstrakten Prozessmodelle in eine :ref:`virtuelle Umgebung <informations-integration>` mit Abbildern realer Objekte, wie es mit i>PM3D prinzipiell schon möglich ist, da beliebige 3D-Objekte in die Szene eingebunden werden können.
 
 Elemente nach ihrer "Wichtigkeit" oder nach anderen Kriterien in unterschiedlicher Entfernung zu zeigen, ist aufgrund der freien Platzierbarkeit der Elemente umsetzbar, verursacht allerdings viel Aufwand für den Benutzer. 
 Hierfür wäre eine algorithmische Unterstützung vonnöten, die beispielsweise anhand von Attributwerten aus dem Prozessmodell Elemente in einer bestimmten Weise anordnet.
@@ -46,7 +46,7 @@ Der Anpassbarkeit der Visualisierung und der Modellierungskonstrukte, die durch 
 In der Modellanbindung wurde diese noch nicht ganz erreicht, da durch diese bisher eine feste Auswahl an Visualisierungsparametern vorgegeben wird, um die Implementierung zu erleichtern. 
 Dies könnte – möglicherweise auch mit Änderungen in künftigen Versionen von *Simulator X* – wohl flexibler realisiert werden.
 *Simulator X* war aber grundsätzlich für die Realisierung des Projekts gut geeignet; besonders die Entkoppelung von Funktionalitäten durch die Komponentenaufteilung und das *Entity / SVar*-Konzept, welche für die Bereitstellung der Modellfunktionalitäten genutzt wurden haben sich als positiv herausgestellt. 
-Weitere Funktionalitäten zu integrieren, wie beispielsweise die Simulation von Prozessen, visualiert durch die Anzeige von Prozessdaten in der 3D-Szene und durch Animationen von prozessrelevanten Entitäten (bspw. Personen oder Werkstücke) ist durch die Einbindung von zusätzlichen Komponenten leicht möglich.
+Weitere Funktionalitäten zu integrieren, wie beispielsweise die Simulation von Prozessen, visualiert durch die Anzeige von Prozessdaten in der 3D-Szene und durch Animationen von prozessrelevanten Entitäten (bspw. Personen oder Werkstücke) ist durch die Einbindung von zusätzlichen Komponenten leicht möglich. Weiterhin lässt sich auf diesem Wege eine beliebige Erweiterungsmöglichkeiten realisieren, die allgemein nützlich sind oder auf einen bestimmten Anwendungsfall zugeschnitten sein können.
 
 Durch die Render-Bibliothek, die im Rahmen dieser Arbeit entwickelt wird, ist eine Integration von weiteren Figuren, wie in einem Anwendungsbeispiel im letzten Kapitel gezeigt wurde, leicht möglich. 
 Diese könnten auch speziell auf eine 2D-Darstellung ausgelegt sein, um einen 2D-Editor mit i>PM3D zu realisieren, wobei hier noch einige Änderungen an der restlichen Implementierung vorgenommen werden müssten.

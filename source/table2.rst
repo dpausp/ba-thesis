@@ -1,6 +1,5 @@
 .. raw:: latex
 
-    \vspace{1cm}
     \begin{tabular}{|c|c|}
     \hline 
     3. Dimension verwendet für & aktuell umsetzbar in i>PM3D?\tabularnewline
@@ -19,8 +18,5 @@
     Einbettung in virtuelle Umgebung & ja, aber ohne Animation\tabularnewline
     \hline 
     \end{tabular}
-    \\
-    \vspace{1cm}
-    \\
 
 

@@ -13,12 +13,11 @@
     \hline 
     Schönhage & 3D & Prozesssimulation & Darstellung von Ausführungsdaten & o\tabularnewline
     \hline 
-    Betz & 3D & Prozesse(Petrinetz) & mehrere Modelle/-typen, hierarchische M. & +\tabularnewline
+    Betz & 3D & Prozesse(Petrinetz) & mehrere Modelle/-typen, hierarchische Modelle & +\tabularnewline
     \hline 
     Brown & 3D & Prozesse(BPMN) & Einbettung in virtuelle Umgebung & ++\tabularnewline
     \hline 
     \end{tabular}
-    \\
 
 
 

@@ -55,15 +55,19 @@ Als Beispiel sei hier ein ausführbares Scala-Programm gezeigt, welches eine (im
         hello()
     }
 
+
+.. _actors:
+
 Actors
 ------
 
 Ein sinnvoller Einsatzbereich von Scala ist unter anderem die Erstellung von parallelen und verteilten Anwendungen.
-Dazu kommt oft das **Actor-Modell** :cite:`haller_scala_2009` zum Einsatz, das vorher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
+Dazu kommt oft das **Actor-Modell** :cite:`haller_scala_2009` zum Einsatz, das früher beispielsweise schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
-Grundlage für das Actor-Modell ist das **message passing**. 
-Dies bedeutet, dass verschiedene Actors ausschließlich über Nachrichten Informationen austauschen.
-Es ist nicht erlaubt, auf gemeinsame, veränderliche Datenstrukturen zuzugreifen.
+Grundlage für das Actor-Modell ist das **message passing**, welches eine asynchrone Kommunikation zwischen den beteiligten Actors ermöglicht. 
+Berechnungen innerhalb einzelner Actors können so prinzipiell parallel erfolgen. 
+Informationen werden ausschließlich über Nachrichten ausgetauscht. Es ist nicht erlaubt, auf gemeinsame, veränderliche Datenstrukturen zuzugreifen. 
+Actors können auf unterschiedlichen (Java-)Threads ausgeführt werden und somit auch mehrere Prozessorkerne nutzen, ohne den Programmierer mit der manuellen Verwaltung und Synchronisation von Threads zu belasten.
 
 In Scala wird eine Nachricht oft durch ein Objekt einer **case class** dargestellt\ [#f9]_.
 Diese Klassen werden dafür genutzt, Daten zu unveränderlichen Objekten zusammenzufassen, wie im folgenden Code gezeigt wird:
@@ -74,8 +78,6 @@ Diese Klassen werden dafür genutzt, Daten zu unveränderlichen Objekten zusamme
     receivingActor ! Message("hello!", 42)
 
 In der zweiten Zeile wird ein Objekt der Klasse ``Message`` erzeugt und an ``receivingActor`` gesendet.
-
-Ein Actor kann auf Basis eines (Java)-Threads realisiert sein, jedoch ist dies keine zwingende Voraussetzung. 
 
 
 .. _implicit:
@@ -118,6 +120,7 @@ Folgende Parser-Funktion
 
 
 würde beispielsweise die :ref:`LML-String-Zuweisung<lmm>` 
+
 .. code-block:: java
     
     functions = "a", "test";
@@ -134,17 +137,21 @@ erkennen und in ein Scala-Objekt des Typs ``LiteralTypeAssignment`` übersetzen.
 Simulator X
 ***********
 
-*Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` ist ein Prototyp einer neuartigen Simulations-Middleware, die die Realisierung von interaktiven Anwendungen in einer virtuellen 3D-Umgebung besonders einfach machen soll.
-Der Fokus liegt hierbei auf einer Anbindung von neuartigen Eingabemethoden wie Gesten- und Sprachsteuerung. Dies macht Simulator X zu einer gut geeigneten Plattform für den i>PM3D-Prototypen.
+*Simulator X* :cite:`latoschik_simulator_2011` :cite:`fischbach_sixtons_2011` ist ein Prototyp einer neuartigen Simulationsplattform, welche die Realisierung von interaktiven Echtzeit-Anwendungen besonders einfach machen soll. Der Fokus liegt dabei auf Anwendungen aus der Computergrafik, besonders in Verbindung mit multimodalen Bedienschnittstellen, welche neuartige Eingabemethoden wie Gesten- und Sprachsteuerung nutzen.
 
-*Simulator X* setzt auf dem :ref:`(Scala-)Actor-Modell<actors>`, so dass Programmkomponenten möglichst gut entkoppelt werden
+Simulator X setzt auf dem :ref:`(Scala-)Actor-Modell<actors>` auf und bietet daher dessen Eigenschaften wie die Ausnutzung mehrerer Prozessorkerne und eine asynchrone Kommunikation zwischen Actors.
+Sog. **Komponenten** (``Component``) sind die grundlegenden Bestandteile einer Simulator X-Anwendung. Komponenten sind als Actor realisiert und stellen eine wohldefinierte Funktionalität für das System zur Verfügung. 
 
-Damit lassen sich auch Rechnersysteme mit mehreren Prozessorkernen gut ausgelastet werden können ohne den Programmierer mit der expliziten Verwaltung von parallelen Threads und den daraus resultierenden Schwierigkeiten zu belasten.
+Von Simulator X wird eine Reihe von Komponenten bereitgestellt, beispielsweise die für i>PM3D verwendete Gestenerkennung und eine *Physikkomponente* für physikalische Simulationen (bspw. für Gravitation und Erkennung von Kollisionen zwischen Simulationsobjekten). 
+Andere, typischerweise für Simulator X-Anwendungen verwendete Komponenten umfassen Renderkomponenten für die Realisierung der Grafikausgabe oder Komponenten zur Beeinflussung der Simulationsobjekte durch künstliche Intelligenz. 
 
-Aufbauend auf dem Actor-Modell stellt *Simulator X* ein Event-System und eine Abstraktion globaler Zustandsvariablen zur Verfügung. 
+Simulator X bietet – ebenfalls auf Basis des Actor-Modells – ein Event-System und eine Abstraktion globaler Zustandsvariablen an.  
+Komponenten können sich beim Event-System für bestimmte Ereignisse, die von anderen Komponenten ausgelöst werden, registrieren und so automatisch benachrichtigt werden. 
 
-Globale Zustandsvariablen, **SVars** genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. Ein bestimmtes Datum wird von genau einem Actor, dem Besitzer verwaltet. Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
-
+Globale Zustandsvariablen, **SVars** genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. 
+Ein bestimmtes Datum wird von genau einem Actor, dem "Besitzer" verwaltet. 
+Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
+Diese Kommunikation wird von Simulator X automatisch und transparent für den Programmierer durchgeführt.
 :num:`Abbildung #svars` zeigt ein Beispiel, in welchem ``actor#1`` der Besitzer der SVar ist und die beiden anderen Actors nur Referenzen auf diese SVar besitzen.
 
 .. _svars:
@@ -155,30 +162,28 @@ Globale Zustandsvariablen, **SVars** genannt, vereinfachen für den Programmiere
     Zustandsvariablen-Konzept aus :cite:`latoschik_simulator_2011`
 
 
-Eine zugeordnete ``SVarDescription``\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung.
+Eine zugeordnete ``SVarDescription``\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung. 
+So lässt sich beispielsweise definieren, dass der Wert einer SVar eine Farbe darstellt, welche durch eine Klasse ``Vec4`` repräsentiert wird.
 
-Zusammengehörige Referenzen auf Zustandsvariablen werden zur einfacheren Handhabung zu Entitäten zusammengefasst. Eine **Entity** beschreibt genau ein Simulationsobjekt\ [#f2]_ und dessen Daten. 
+Eine Menge von SVars ergibt zusammen eine **Entität**, die genau ein Simulationsobjekt repräsentiert\ [#f2]_.
+So kann durch die Manipulation der ``Color``-SVar einer bestimmten Entität dessen Farbe festgelegt werden.
 
-Simulator-X-Anwendungen sind aus **Komponenten** aufgebaut. Diese sind als (Scala)-Actors realisiert und kommunizieren miteinander direkt über den Austausch von Nachrichten oder durch das Setzen von SVars in Entities.
-Eine Komponente sollte möglichst eine genau abgegrenzte Funktionalität wie beispielsweise ein KI-Modul oder eine Grafikausgabeeinheit realisieren. 
+``Entities`` werden durch den Programmierer mittels einer ``EntityDescription`` beschrieben, die aus mehreren ``Aspect``-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.
+**Aspects** beschreiben eine wohldefinierte Facette der Entität und sind einer bestimmten Komponente zugeordnet. 
+So gibt es beispielsweise Grafik- oder Physik-\ ``Aspects``. 
+Ein ``Aspect`` legt fest, wie eine Komponente mit einem bestimmten Simulationsobjekt umgehen soll.
+Über die ``Aspect``-Definition können Werte durch den Benutzer vorgegeben werden, die das Verhalten der Komponente im Bezug auf die zugehörige Entität festlegen.
+So lässt sich beispielsweise über einen Physik-``Aspect`` festlegen, welche physikalische Repräsentation für die Entität genutzt werden soll, beispielsweise ein Quader mit bestimmten Abmessungen und einer Masse.
+Für eine Renderkomponente kann unter anderem der Pfad zu einer 3D-Objektdatei angegeben werden, welche als grafische Repräsentation für die Simulationsobjekt auf dem Bildschirm angezeigt werden soll.
 
-Um eine Entity zu beschreiben wird eine *EntityDescription* erstellt, die aus mehreren *Aspect*-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.
-
-**Aspects** beschreiben sozusagen eine Facette der Entity und sind einer bestimmten Komponente zugeordnet. 
-So gibt es beispielsweise Grafik- oder Physik-\ *Aspects*.
-Über die Aspekt-Definition können Werte durch den Benutzer vorgegeben werden, die einer Komponente weitere Informationen geben, wie die komponenten-internen Entity-Repräsentation erstellt werden soll.
-Beispiele hierfür sind die Masse des Objekts für eine Physikkomponente oder der Pfad zu einer Modell-Datei für die Grafikkomponente.
-
-Wenn eine Entity vom Simulator-X-System erstellt wird, wird dieser Aspect an die zugeordnete Komponente weitergegeben. 
-
-*Simulator X* befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
+Simulator X befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
 
 .. _opengl:
 
 OpenGL / LWJGL
 **************
 
-Um die Grafikausgabe von i>PM3D zu realisieren, wird die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`www:opengl` genutzt. 
+Um die Grafikausgabe von i>PM3D zu realisieren, wird die plattformunabhängige 3D-Schnittstelle OpenGL :cite:`opengl` genutzt. 
 
 Zur Anbindung an OpenGL wird die Java-Bibliothek LWJGL (Lightweight Java Gaming Library) :cite:`www:lwjgl` in der Version 2.8.2 eingesetzt. 
 Zusätzlich stellt LWJGL eine Schnittstelle für den Zugriff auf Tastatur- und Mausdaten zur Verfügung.

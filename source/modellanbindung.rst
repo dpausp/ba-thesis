@@ -4,8 +4,7 @@
 Modellanbindung
 ***************
 
-Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung (:num:`Abbildung #ipm3d-uebersicht-modellanbindung`) das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar
-(:ref:`Anforderungen (d,e) <anforderungen>`).
+Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung (:num:`Abbildung #ipm3d-uebersicht-modellanbindung`) das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar (:ref:`Anforderungen (d,e) <anforderungen>`).
 
 Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen:
 
@@ -17,9 +16,9 @@ Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen
 
 .. _ipm3d-uebersicht-modellanbindung:
 
-.. figure:: _static/diags/ipm3d-uebersicht.png
+.. figure:: _static/diags/ipm3d-uebersicht-modellanbindung.eps
 
-   Die Modellanbindung im Kontext der Anwendung
+   Die Modellanbindung im Kontext von i>PM3D
 
 
 .. _modellkomponente:

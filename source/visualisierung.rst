@@ -7,8 +7,7 @@
 Im Folgenden wird die Visualisierung von Prozessen im i>PM3D-Prototypen vorgestellt, wie sie durch das im vorherigen Kapitel vorgestellte Editor-Metamodell festgelegt wird.
 Außerdem werden durch die Implementierung vorgegebene Aspekte angesprochen, welche aber weitgehend unabhängig von der Prozessmodellierung sind.
 Dabei werden auch Hinweise gegeben, welche beim Hinzufügen von neuen Modellfiguren oder Ändern von Visualisierungsparametern beachtet werden sollten.
-
-Abschließend wird gezeigt, welche Nutzungsmöglichkeiten der dritten Dimension sich in i>PM3D umsetzen lassen und es werden Erweiterungsmöglichkeiten vorgeschlagen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sinnvoll sind.
+Anschließend wird gezeigt, welche Nutzungsmöglichkeiten der dritten Dimension sich in i>PM3D umsetzen lassen und welche Erweiterungsmöglichkeiten bestehen, die für eine höhere Benutzerfreundlichkeit und Verständlichkeit sinnvoll sind.
 
 
 Grundlegende Darstellung der grafischen Elemente
@@ -17,13 +16,12 @@ Grundlegende Darstellung der grafischen Elemente
 Wie im vorherigen Kapitel unter :ref:`ebl` erläutert, werden auf dem Editor-Base-Level grundlegende Figuren und deren Darstellung durch grafische Objekte im Modellierungswerkzeug definiert.
 Die konkreten Repräsentationen für bestimmte Typen aus dem Prozessmodell werden auf dem Editor-Definition-Level festgelegt. 
 In den Metamodellen wurde schon vorgegeben, dass ein graphbasierter Visualisierungsansatz genutzt wird. 
-Anwender, die bereits Erfahrung mit verbreiteten grafischen 2D-Prozessmodellierungssprachen haben sollten durch das Aussehen der Modellelemente möglichst intuitiv verstehen können, welche Konzepte aus der Prozessmodellierung dargestellt werden.
+Anwender, die bereits Erfahrung mit verbreiteten grafischen 2D-Prozessmodellierungssprachen haben, sollten durch das Aussehen der Modellelemente möglichst intuitiv verstehen können, welche Konzepte aus der Prozessmodellierung dargestellt werden.
 
 Knoten
 ------
 
 Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren ``TextLabelNode`` und ``TexturedNode`` grundsätzlich zwei Möglichkeiten.
-
 Die Beschriftung von TextLabelNodes kann dazu verwendet werden, textuelle Attribute aus dem Prozessmodell direkt anzuzeigen (:ref:`Anforderung (g) <anforderungen>`).
 
 Es sollten möglichst einfache, dreidimensionale geometrische Körper mit möglichst ebenen Seitenflächen wie Würfel oder Quader gewählt werden. 
@@ -41,7 +39,7 @@ Weitere Details zur Schriftdarstellung können im Kapitel zur :ref:`Render-Bibli
 .. _prozessknoten:
 
 .. figure:: _static/screenshots/prozessknoten.png
-    :height: 7cm
+    :width: 16.5cm
 
     Zwei Prozessknoten; links im Ursprungszustand, rechts als angepasste Verwendung (Screenshot aus i>PM3D)
 
@@ -52,7 +50,7 @@ So steht ein Pluszeichen für einen AND-Connector, wie in :num:`Abbildung #and-c
 .. _and-connector:
 
 .. figure:: _static/screenshots/and_connector.png
-    :height: 7cm
+    :height: 8cm
 
     AND-Connector (Screenshot aus i>PM3D)
 
@@ -63,13 +61,21 @@ Blickwinkelabhängige Darstellung von Informationen
 Durch die freie Beweglichkeit und die Rotationsmöglichkeit der Kamera sowie der :ref:`Objekte<ipm3d-visualisierung>` ergeben sich sehr unterschiedliche Beobachtungsperspektiven. 
 Objekte können so von allen Seiten betrachtet werden. 
 Trotzdem soll sichergestellt werden, dass Texte oder Symbole auf den Objekten jederzeit erkennbar sind. Daher werden diese grundsätzlich auf allen Seiten dargestellt. 
-
 Jedoch führt dies bei bestimmten Drehpositionen zu störenden und möglicherweise verwirrenden Darstellungen, wenn beispielsweise bei einem Würfel zwei oder sogar drei Seiten zu sehen sind, die dasselbe anzeigen.
 
 Um dies zu verbessern, werden die Seiten abhängig von Betrachtungswinkel dargestellt. 
 Wird eine Seite vom Benutzer weggedreht, wird die Schrift oder Textur nach und nach "ausgeblendet", indem die Vordergrundfarbe je nach Winkel mit der Hintergrundfarbe gemischt wird.
 Ab einer gewissen Abweichung wird nur noch die Hintergrundfarbe angezeigt. So ist nur eine Seite deutlich zu erkennen und der Betrachter wird nicht durch die anderen Seiten abgelenkt.
 
+:num:`Abbildung #schrift-uebergang` zeigt links den ungünstigsten Grenzfall, in dem alle Seiten gleich deutlich dargestellt werden. Dies ist der Fall, wenn der Betrachter direkt auf eine Ecke blickt.
+Rechts ist der Knoten günstiger ausgerichtet und die Schrift ist auf der rechten Seite des Objekts kaum mehr zu erkennen.
+
+.. _schrift-uebergang:
+
+.. figure:: _static/screenshots/schrift-uebergang.png
+    :width: 16.5cm
+
+    Schriftdarstellung bei direkter Sicht auf eine Ecke (links) und bei günstigerer Perspektive (Screenshot aus i>PM3D)
 
 Berücksichtigung der Eingabemethoden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -89,31 +95,29 @@ Kanten
 ------
 
 Eine Kante sollte optisch leicht als Verbindung zwischen zwei Knoten erkannt werden können; außerdem muss ggf. visualisiert werden, welche Richtung die Kante besitzt.
-In i>PM3D werden Kanten werden durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
+In i>PM3D werden Kanten durch einen (in y-Richtung) gestreckten 3D-Quader dargestellt, der vom Startknoten bis zum Endknoten reicht. 
 Die Länge und Ausrichtung der Kanten wird automatisch angepasst, wenn die beteiligten Knoten im Raum verschoben werden. 
 Dies wird von der in :cite:`uli` beschriebenen Editor-Komponente übernommen.
 
 Die durch das Concept ``TexturedConnection`` (siehe :ref:`ebl`) bereitgestellte texturierte Verbindung dient dazu, gerichtete Kanten zu visualisieren. 
 Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen Dreiecken zu verwenden, die so platziert sind, dass an zwei Ecken der Verbindung ein Pfeil entsteht.
 
-:num:`Abbildung #gerichtete-verbindung` zeigt als Beispiel zwei Prozesse, die mit einem Kontrollfluss verbunden sind. Der Kontrollfluss läuft von Prozess A zu Prozess B.
+:num:`Abbildung #gerichtete-verbindung` zeigt als Beispiel zwei Prozesse, die mit einem Kontrollfluss verbunden sind. Der Kontrollfluss läuft von "Pizza backen" nach "Pizza verpacken".
 
 .. _gerichtete-verbindung:
 
 .. figure:: _static/screenshots/control_flow.png
-    :scale: 100%
+    :height: 8cm
 
-    Gerichtete Kontrollflusskante (Screenshot aus i>PM3D)
+    Gerichtete Kontrollflusskante von "Backen" nach "Verpacken" (Screenshot aus i>PM3D)
 
 
 Szenenobjekte
 -------------
 
-Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Modelle in die Szene einzufügen, die im Metamodell als ``SceneryObject`` bezeichnet werden. 
+Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Grafikobjekte in die Szene einzufügen, die im Editor-Metamodell als ``SceneryObject`` bezeichnet werden. 
 (:ref:`Anforderung (h) <anforderungen>`)
-
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
-Diese können zur Illustration von Prozessschritten dienen, wie es von :ref:`Brown <ross-brown>` gezeigt wurde.
 Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden. Sie besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
 
@@ -134,8 +138,14 @@ Hervorhebung
 
 Diese Variante wird dafür eingesetzt, ein Objekt kurzzeitig beim Überfahren durch einen Cursor eines Eingabegeräts hervorzuheben. 
 Dargestellt wird das abhängig von der Helligkeit der Grundfarbe des Objekts durch eine Aufhellung bzw. einer Abdunkelung der Farbe. Der Farbton wird dabei nicht verändert.
-
 :num:`Abbildung #hervorhebung-sc` zeigt im Vergleich ein hervorgehobenes Datenelement und eines im Normalzustand (rechts).
+
+.. _hervorhebung-sc:
+
+.. figure:: _static/screenshots/dataitems_hervorhebung.png
+    :width: 16.5cm
+
+    Datenknoten, normal (links) und hervorgehoben (Screenshot aus i>PM3D)
 
 Selektion
 ---------
@@ -145,9 +155,14 @@ Selektierte Objekte sollen von unselektierten Objekten auch bei großer Entfernu
 
 Die Visualisierung des Selektionszustandes soll daher möglich auffällig sein, ohne das Erscheinungsbild allzu stark zu beeinflussen. 
 Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Die Definition des "Rands" ist je nach Objekttyp unterschiedlich\ [#f5]_.
-
 In :num:`Abbildung #selektion-sc` sind zwei selektierte Knoten zu sehen.
 
+.. _selektion-sc:
+
+.. figure:: _static/screenshots/selektierte_knoten.png
+    :width: 16.5cm
+
+    Entscheidungsknoten und Prozess im selektierten Zustand (Screenshot aus i>PM3D)
 
 .. _deaktivierung:
 
@@ -157,34 +172,18 @@ Deaktivierung
 Objekte können durch den Modelleditor deaktiviert werden. Welche Bedeutung dies hat, wird vom Editor festgelegt. 
 Zur Visualisierung dieses Zustandes wird das Objekt transluzent in einem Grauton dargestellt, der von der normalen Farbe abhängig ist. 
 So kann man auch Elemente erkennen, die hinter dem deaktivierten liegen und von diesem verdeckt werden.
-
 :num:`Abbildung #deaktivierung-sc` zeigt einen deaktivierten Prozess, hinter dem sich ein anderer Prozess befindet.
-
-.. _hervorhebung-sc:
-
-.. figure:: _static/screenshots/dataitems_hervorhebung.png
-    :scale: 100%
-
-    Datenknoten, normal (links) und hervorgehoben (Screenshot aus i>PM3D)
-
-
-.. _selektion-sc:
-
-.. figure:: _static/screenshots/selektierte_knoten.png
-    :scale: 100%
-
-    Entscheidungsknoten und Prozess im selektierten Zustand (Screenshot aus i>PM3D)
-
 
 .. _deaktivierung-sc:
 
 .. figure:: _static/screenshots/prozesse_deaktiviert.png
-    :scale: 100%
+    :height: 7cm
 
     Deaktivierter (vorne, durchsichtig) und aktivierter Prozess (Screenshot aus i>PM3D)
 
+
 Die drei gezeigten Visualisierungsvarianten können frei kombiniert werden. 
-Damit ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
+So ist es möglich, ein gleichzeitig hervorgehobenes, selektiertes und deaktiviertes Modellelement darzustellen.
 
 
 .. _modellierungsflaechen:
@@ -197,20 +196,21 @@ Zur Vereinfachung der Platzierung werden in 2D-Modellierungswerkzeugen oft im Hi
 Noch hilfreicher können "magnetische" Gitter sein, die grob in der Nähe platzierte Objekte automatisch auf feste, regelmäßige Positionen verschieben.
 
 Um dies zu erreichen, wird die :ref:`Physikkomponente<mod-simx>` genutzt. 
-Sobald sich ein Objekt nahe genug an einer solchen Modellierungsebene befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen. Das Objekt bewegt sich solange, bis dessen Mittelpunkt die Fläche erreicht hat und dort automatisch angehalten wird.
+Sobald sich ein Objekt nahe genug an einer solchen 2D-Modellierungsfläche befindet, wird es nach dem Loslassen durch den Benutzer (Deselektion) von der "Gravitation" der Ebene angezogen. 
+Das Objekt bewegt sich solange, bis dessen Mittelpunkt die Fläche erreicht hat und dort automatisch angehalten wird.
 Näheres zur Implementierung dieser "Gravitationsflächen" findet sich in :cite:`buchi`.
 
-Grafisch werden diese Ebenen transluzent dargestellt, wobei darauf Gitterlinien zu erkennen sind. 
+Grafisch werden diese Flächen transluzent dargestellt, wobei darauf Gitterlinien zu erkennen sind. 
 Diese Linien haben allerdings keine physikalische Bedeutung, sondern dienen nur als optische Platzierungshilfe.
 
-:num:`Abbildung #modellierungsflaeche` zeigt eine solche Ebene.
+:num:`Abbildung #modellierungsflaeche` zeigt zwei solcher Flächen ober- und unterhalb des Betrachters.
 
 .. _modellierungsflaeche:
 
-.. figure:: _static/screenshots/dummy.png
-    :scale: 100%
+.. figure:: _static/screenshots/flaechen.png
+    :width: 16cm
 
-    Modellierungsfläche, grün (Screenshot aus i>PM3D)
+    Zwei leere Modellierungsflächen (Screenshot aus i>PM3D)
 
 
 .. _beleuchtung:
@@ -253,44 +253,39 @@ Insgesamt hat sich bei Versuchen gezeigt, dass es schwierig ist, die Lichtparame
 Visualisierung eines Beispielsprozesses
 =======================================
 
-(schöneres Bild kommt noch)
-.. TODO
-
-:num:`Abbildung #beispielprozess-screenshot` zeigt einen in i>PM3D modellierten Prozess.
+:num:`Abbildung #beispielprozess-screenshot` zeigt den in i>PM3D modellierten Prozess "Pizza produzieren". 
+Zusätzlich zu den bisher gezeigten Knoten ist hier noch der Start-/Stop-Knoten – als roter, abgerundeter Quader dargestellt – zu sehen.
+Neben der funktionalen Perspektive, vertreten durch Prozessknoten und zwei AND-Konnektoren, wird auch die Datenperspektive mit Datenknoten und dazwischen verlaufenden Datenflüssen dargestellt.
+Die Abbildung zeigt, wie sich durch das Deaktivieren von Knoten ein Teil des Modells (hier der Datenperspektive) ausblenden lässt, um die Ansicht auf momentan interessante Teile zu fokussieren und die Übersichtlichkeit zu erhöhen.
+Aktiviert ist nur der Datenfluss der Pizza selbst, von "Pizza belegen" bis hin zum Ende des Prozesses; die restlichen Knoten und damit auch die dazwischenliegenden Verbindungen sind deaktiviert.
 
 .. _beispielprozess-screenshot:
 
-.. figure:: _static/screenshots/gesamt.png
-    :height: 8cm
+.. figure:: _static/screenshots/gesamt2.png
+    :width: 17cm
 
     Beispiel für einen Prozess in i>PM3D 
 
 
 .. _vis-probleme-erweiterung:
 
-Probleme und Erweiterungsmöglichkeiten
-======================================
-
-Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer\ [#f3]_ Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist. 
-Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
-
-Um die Darstellung zu verbessern, und den "Nutzen" für den Anwender zu erhöhen gibt es eine Vielzahl von Verbesserungs- und Erweiterungsmöglichkeiten.
-Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektes ohne grundlegende Veränderungen umgesetzt werden können.
-
 Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension
------------------------------------------------------------------------
+=======================================================================
 
-Zuerst soll geklärt werden, welche in :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden müssten.
+In diesem Abschnitt soll gezeigt werden, welche :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
 Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i>PM 3D, welche anschließend näher ausgeführt wird.
   
+|
+
 .. include:: table2.rst
 
+|
 
 Die Wahl der 3D-Graphdarstellung mit frei beweglichen Knoten ergab sich aus der Anforderung, einen möglichst allgemeinen Ansatz für die Visualisierung zu wählen.
 Der Hauptvorteil der zusätzlichen Dimension ist es, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
 
 Visualisisierung von Attributen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 Welche Information durch den Abstand (die "Tiefe") vermittelt werden soll, wird durch den Benutzer festgelegt. 
 Durch die freie Platzierbarkeit lässt sich prinzipiell jede gewünschte geometrische Anordnung erreichen.
@@ -305,31 +300,31 @@ Eine gewisse Hilfe, besonders für diskrete Attribute, können die 2D-Modellieru
 Alle Elemente, die diesen Wert aufweisen, werden auf der passenden Fläche platziert. 
 Die Fläche unterstützt den Benutzer bei der Anordnung, indem sie die Objekte automatisch in einer Ebene platziert, wenn sie in der Nähe der Fläche abgelegt werden.
 Um Objekte beispielsweise in die Kategorien "wichtig" und "unwichtig" einzuteilen, ließen sich zwei (parallele) Flächen definieren, anhand derer die Objekte sortiert werden könen.
-Da bisher nur die Platzierung senkrecht zur Fläche automatisch erfolgt, sollte in einer Erweiterung von i>PM 3D die Möglichkeit hinzugefügt werden, 2D-Layout-Algorithmen anzuwenden, um beispielsweise Knoten mit bestimmten Eigenschaften zu gruppieren oder für eine kreuzungsfreie Darstellung der Verbindungen in der Ebene zu sorgen.
+Da bisher nur die Platzierung senkrecht zur Fläche automatisch erfolgt, sollte in einer Erweiterung von i>PM3D die Möglichkeit hinzugefügt werden, 2D-Layout-Algorithmen anzuwenden, um beispielsweise Knoten mit bestimmten Eigenschaften zu gruppieren oder für eine kreuzungsfreie Darstellung der Verbindungen in der Ebene zu sorgen.
 
 Zeitliche Abläufe
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Eine weitere Nutzungsmöglichkeit für die dritte Dimension ist die Darstellung von zeitlichen Abläufen. 
 Diese werden in einem Prozess üblicherweise schon durch den Kontrollfluss grob vorgegeben, allerdings lassen sich gewisse Aspekte mit einer sinnvollen 3D-Anordnung weiter betonen.
 Die Zeitdauer lässt sich durch die Entfernung zwischen Prozessknoten visualisieren. 
-Einerseits lassen sich Prozesschritte, die (nahezu) gleichzeitig ausgeführt werden und zugehörige Knoten wie assoziierte Daten könnten gemeinsam auf einer 2D-Ebene darstellen, ähnlich wie es von :ref:`Gil <gil>` anhand von 3D-UML-Sequenzdiagrammen gezeigt wurde.
+Einerseits lassen sich Prozesschritte, die (nahezu) gleichzeitig ausgeführt werden, und zugehörige Knoten – wie assoziierte Daten – gemeinsam auf einer 2D-Ebene darstellen, ähnlich wie es von :ref:`Gil <gil>` anhand von 3D-UML-Sequenzdiagrammen gezeigt wurde.
 Andererseits kann man 2D-Ebenen als "Swimlanes" nutzen, wie sie aus BPMN bekannt sind. 
 Dazu werden Prozessschritte auf parallel verlaufenden Flächen gruppiert, die zu einer bestimmten ausführenden Entität gehören.
 
 Veranschaulichung von Beziehungen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 Durch die Anordnung der Elemente die Bedeutung von Beziehungen zu unterstreichen ist ebenfalls möglich, wobei wiederum die 2D-Flächen hilfreich sind. 
 So kann durch die Positionierung der Knoten auf einer Fläche leicht verdeutlicht werden, dass Kanten, die parallel zur Fläche verlaufen, eine andere Bedeutung haben als diejenigen, die aus der Ebene herausragen und zu Elementen führen, die auf einer anderen Fläche platziert sein können. 
 :ref:`In <gef3d>` wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
-i>PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt (`siehe <modellanbindung>`). 
+i>PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt (:ref:`siehe <modellanbindung>`). 
 Dies sollte in einer weiteren Entwicklung vorrangig hinzugefügt werden, um diese Anwendung der dritten Dimension zu erlauben, welche deutliche Vorteile zu 2D-Darstellungen verspricht.
 
 Hierarchische Darstellung und mehrere Modelle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
-Ähnliches gilt für die Darstellung von hierarchischen Diagrammen in derselben 3D-Szene, wie sie für die Darstellung von kompositen Prozessen hilfreich wäre.
+Die Visualisierung von hierarchischen Diagrammen in derselben 3D-Szene wäre für die Darstellung von kompositen Prozessen hilfreich.
 Ein Verfeinerungsmodell sollte in einem separaten Modell abgelegt werden, welches im grobgranularen Modell durch einen kompositen Prozessknoten vertreten wird. 
 Wird das Verfeinerungsmodell nach Bedarf "ausgeklappt", sollte eine optische Verbindung zum Knoten im übergeordneten Modell die Zusammengehörigkeit anzeigen, wie es beispielsweise von :ref:`McIntosh<mcintosh>` gezeigt wurde.
 Dies ist noch nicht möglich, da Verbindungen zwischen Modellen nicht erlaubt sind.
@@ -339,12 +334,29 @@ Weiterhin wäre eine direkte Unterstützung durch den Editor angebracht, welcher
 Da sich der Benutzer frei in der Szene bewegen kann, können unterschiedliche Betrachtungsperspektiven eingenommen werden. 
 Die Perspektive kann so gewählt werden, dass die momentan für den Benutzer besonders interessanten Aspekte der 3D-Szene deutlich zu erkennen sind.
 
-Einbettung in virtuelle Umgebung
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Einbettung in eine virtuelle Umgebung
+-------------------------------------
 
-geht auch ...
+Durch die Möglichkeit, mittels Szenenobjekten beliebige 3D-Objekte einzubinden, lässt sich der Prozessgraph in eine virtuelle Ausführungsumgebung einbetten. 
+Die Szenenobjekte können in i>PM3D aus COLLADA-Dateien geladen werden, welche von Anwendungen wie beispielsweise *Blender* :cite:`www:blender` erstellt werden können.
+So lässt sich grundsätzlich jede beliebige 3D-Szene aus einzelnen Objekten aufbauen, um die :ref:`in <informations-integration>` gezeigten Nutzungsmöglichkeiten zu realisieren. 
 
-.. TODO Szenenobjekte
+Durch den modularen Aufbau des Systems auf Basis von Simulator X ist die Integration weiterer Funktionalität durch die Implementierung einer neuen Komponente einfach möglich.
+Bewegungsanimationen von Szenenobjekten – beispielsweise Werkstücken – sind bisher noch nicht integriert. Um dies nachzurüsten, müsste eine "Animationskomponente" implementiert werden. 
+Eine solche Komponente könnte Objekte automatisch oder vom Benutzer gesteuert (bspw. durch ein Kommando "zum nächsten Datenknoten bewegen") entlang von Datenflüssen bewegen und so die Dynamik des Prozessablaufs veranschaulichen.
+Für :ref:`Szenenobjekte <ebl-figures>` kann eine physikalische Repräsentation in Form eines Quaders oder einer Kugel definiert werden, um diese in die Physiksimulation aufzunehmen.
+Dies kann durch eine Animationskomponente genutzt werden, um Kollisionen zwischen bewegten Szenenobjekten zu erkennen. 
+Eine andere Möglichkeit ist die Integration von Komponenten, die automatische Pfadsuch-Algorithmen wie beispielsweise den A*-Algorithmus anwenden, welche unter anderem dazu genutzt werden können, optimale Laufwege zu finden.
+
+
+Weitere Entwicklungsmöglichkeiten
+=================================
+
+Die momentan umgesetzte Visualisierung von Prozessen zeigt nach unserer\ [#f3]_ Ansicht, dass eine 3D-Ansicht auf Prozessdiagramme durchaus praktikabel ist.
+Es zeigten sich bei ersten Versuchen mit dem i>PM3D Prototypen einige Probleme in Hinblick auf die Visualisierung, die teilweise schon angesprochen wurden oder im Folgenden noch erwähnt werden. 
+
+Um die Darstellung zu verbessern und den Nutzen für den Anwender weiter zu erhöhen, gibt es eine Vielzahl von Entwicklungsmöglichkeiten.
+Hier sollen vor allem einige dargestellt werden, die sich aus den Erfahrungen mit dem Prototypen ergeben haben und die auf Basis des momentanen Projektstands ohne grundlegende Veränderungen umgesetzt werden können.
 
 
 Darstellung von Text
@@ -364,7 +376,7 @@ Außerdem muss der Kontrast zwischen Textfarbe und Hintergrund immer sehr hoch s
 
 Eine sinnvolle Erweiterungsmöglichkeit wäre es, die Anzeige von Informationen bei weit entfernten Objekten automatisch zu vereinfachen\ [#f1]_, indem beispielsweise ein Text abgekürzt und größer dargestellt wird. 
 So wäre es möglich, Knoten mit größerem Abstand immerhin noch zu unterscheiden. 
-Dafür könnte ein zusätzliches Attribut im Prozessmodell genutzt werden, dass eine Abkürzung für ein längeres Textattribut angibt.
+Dafür kann ein zusätzliches Attribut im Prozessmodell definiert werden, dass eine Abkürzung für ein längeres Textattribut angibt.
 
 Konfigurierbarkeit
 ------------------
@@ -427,7 +439,6 @@ Eine andere Möglichkeit ist es, die verdeckenden Elemente transluzent zu machen
 Interessant wäre es auch, die Durchsichtigkeit von verdeckenden Elementen automatisch zu beeinflussen wie es unter dem Stichwort "dynamic transparency" von :cite:`elmqvist_dynamic_2009` vorgestellt wird.
 Objekte würden nach ihrer Wichtigkeit für die aktuelle Betrachtungssituation eingeteilt. 
 Unwichtige Objekte, "distractors" genannt, würden automatisch transluzent\ [#f2]_ dargestellt falls sie wichtige Objekte ("targets") verdecken.
-
 So könnte durch den Benutzer beispielsweise festgelegt werden, dass aktuell "Datenknoten" besonders wichtig sind und nicht verdeckt werden dürfen.
 
 Darstellung von Kanten
