@@ -137,7 +137,7 @@ Durch die Verwendung von unterschiedlichen ``Effect``-Traits können auf einfach
 .. _drawable-classdiag:
 
 .. figure:: _static/diags/drawable-classdiag.eps
-    :width: 14cm
+    :width: 16.5cm
 
     Zusammensetzung eines farbigen Würfels aus den Basis-Traits
 
@@ -152,7 +152,7 @@ Mittels der Methoden diffuse und specular kann die Anwendung die Reflexionseigen
 .. _effect-classdiag:
 
 .. figure:: _static/diags/effect-classdiag.eps
-    :width: 16cm
+    :width: 16.5cm
 
     Zusammengesetzter PhongMaterialEffect
 
@@ -341,12 +341,16 @@ Das Trait ``SelectionHighlightSVarSupport`` stellt die Anbindung der :ref:`Visua
     Ablauf bei Änderung der Hintergrundfarbe eines Prozesses durch den Benutzer
 
 
+.. raw:: latex
+
+    \pagebreak
+
 .. _beispiel-neue-modellfigur:
 
 Anwendungsbeispiel: Erstellen von neuen Modell-Figuren
 ======================================================
 
-Hier wird gezeigt, wie sich ein neues Grafikobjekt erstellen lässt, das für die Visualisierung eines Knotens eingesetzt werden soll.
+Zum Abschluss wird gezeigt, wie sich ein neues Grafikobjekt erstellen lässt, das für die Visualisierung eines Knotens eingesetzt werden soll.
 Dies ist die Fortsetzung des :ref:`Anwendungsbeispiels<beispiel-neues-element>` für das Hinzufügen eines neuen Modellelements zum Metamodell.
 
 Die Geometrie des Objekts kann zum Einen manuell erstellt werden, indem das Trait ``Mesh`` implementiert wird. 

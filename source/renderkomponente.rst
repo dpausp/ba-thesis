@@ -1,8 +1,8 @@
 .. _renderkomponente:
 
-*****************
-Render-Komponente
-*****************
+****************
+Renderkomponente
+****************
 
 In diesem Kapitel wird die Renderkomponente vorgestellt, die die Grafikfunktionen\ [#f4]_ für i>PM3D bereitstellt.
 Von dieser Komponente wird die im Rahmen dieser Arbeit entstandene :ref:`render-bibliothek` an Simulator X angebunden.
@@ -45,7 +45,7 @@ ShapeFromFactory
 ^^^^^^^^^^^^^^^^
 
 Mir der hier entwickelten Renderkomponente ist es möglich, die grafische Repräsentation einer Entity von einer Factory-Klasse oder -Actor erzeugen zu lassen. 
-Damit lassen sich in der Anwendung beliebige Grafikobjekte nutzen, die mit Hilfe der :ref:`render-bibliothek`: erstellt wurden.
+Damit lassen sich in der Anwendung beliebige Grafikobjekte nutzen, die mit Hilfe der :ref:`render-bibliothek` erstellt wurden.
 
 Hierfür ist der RenderAspect ``ShapeFromFactory`` definiert.
 Dies wird im Projekt für die Erstellung der Grafikobjekte für Modellelemente – also der Knoten und Kanten des Prozessmodells – genutzt.
@@ -67,7 +67,7 @@ User-Entity
 ^^^^^^^^^^^
 
 Simulator X stellt eine ``User``-Entity bereit, über deren SVars ``HeadTransform`` und ``ViewPlatform`` die Position des Benutzers in der 3D-Szene bestimmt wird.
-Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport\ [#f5]_ - (Aspect ``ViewportSettings``) und Render-Frustum-Einstellungen \ [#f6]_ (Aspect ``FrustumSettings``) abgefragt werden können\ [#f3]_.
+Diese wird von der Renderkomponente erzeugt, die zusätzliche SVars definiert, über die Viewport\ [#f5]_ - (Aspect ``ViewportSettings``) und Render-Frustum-Einstellungen\ [#f6]_ (Aspect ``FrustumSettings``) abgefragt werden können\ [#f3]_.
 
 
 .. [#f1] Dieser Aufbau ergibt sich aus der Idee, für die Darstellung der Szene mehrere Bildschirme nutzen zu können, wie es unter Anderem für ein CAVE-System nötig wäre. Dazu könnten der Renderkomponente mehrere RenderActors zugeordnet werden. Dies war vorgesehen, wird jedoch nicht überall in der Implementierung umgesetzt und daher nicht unterstützt.

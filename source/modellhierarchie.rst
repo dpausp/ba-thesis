@@ -4,9 +4,9 @@
 Modellhierarchie
 ****************
 
-In der Prozessmodellierung ist es sinnvoll, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`). Daher war diese Flexibilität auch für das vorliegende Arbeit erwünscht (:ref:`Anforderung (b,c) <anforderungen>`). 
+In der Prozessmodellierung ist es sinnvoll, neben den Modellen auch die zugrundeliegende Modellierungssprache und Visualisierung an spezielle Anforderungen anpassen zu können (siehe :ref:`\Metamodellierung <metamodellierung>`). Daher war eine solche Flexibilität auch für das vorliegende Arbeit erwünscht (:ref:`Anforderung (d) <anforderungen>`). 
 
-Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren.
+Daher wurde das Konzept verfolgt, die verwendete grafische Modellierungssprache über austauschbare Metamodelle zu definieren. (*Anforderung (c)*)
 Ein wichtiger Punkt ist, dass sich die abstrakte Syntax der Sprache und die konkrete Syntax (die "Visualisierung") getrennt beschreiben lassen. 
 Diesem Konzept folgt das bereits vorgestellte :ref:`Model Designer Framework<mdf>`.
 Die hier vorgestellte Modellhierarchie ist ähnlich zu der von MDF definierten aufgebaut und übernimmt einige Begriffe von dort. 
@@ -121,9 +121,9 @@ Auf dieser Ebene müssen die folgenden Packages definiert sein (vorgegeben durch
 
     * package ``nodeFigures`` definiert Concepts, die die Repräsentation von Knoten aus dem Domänenmodell beschreiben.
     * package ``connectionFigures`` definiert Concepts, die die Repräsentation von Kanten aus dem Domänenmodell beschreiben.
-    * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte"(:ref:`Anforderung (h): Anzeige beliebiger 3D-Objekte <anforderungen>`). Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell, da sie kein Modellelement repräsentieren.
+    * package ``sceneryObjects`` enthält die verwendbaren "Szenenobjekte" (*Anforderung (h): Anzeige beliebiger 3D-Objekte*). Szenenobjekt-Concepts haben keine Entsprechung im Domänenmodell, da sie kein Modellelement repräsentieren.
 
-Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird (:ref:`Anforderung (a) <anforderungen>`).
+Damit ist fest vorgegeben, dass sich die Modellelemente in Knoten und Kanten unterscheiden lassen, also prinzipiell ein graphbasierter Ansatz genutzt wird (*Anforderung (a)*).
 Zusammen bilden diese Packages den in der :num:`Abbildung #modellhierarchie-diagram` gezeigten *Editor-Definition-Level*. 
 
 Es dürfen auch noch weitere Packages vorkommen, die Concepts enthalten, welche von Concepts aus den obigen Packages referenziert werden. 

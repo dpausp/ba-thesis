@@ -62,7 +62,7 @@ Actors
 ------
 
 Ein sinnvoller Einsatzbereich von Scala ist unter anderem die Erstellung von parallelen und verteilten Anwendungen.
-Dazu kommt oft das **Actor-Modell** :cite:`haller_scala_2009` zum Einsatz, das früher beispielsweise schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
+Dazu kommt oft das **Actor-Modell** :cite:`haller_scala_2009` zum Einsatz, das früher schon in der Programmiersprache Erlang :cite:`www:erlang` realisiert wurde.
 
 Grundlage für das Actor-Modell ist das **message passing**, welches eine asynchrone Kommunikation zwischen den beteiligten Actors ermöglicht. 
 Berechnungen innerhalb einzelner Actors können so prinzipiell parallel erfolgen. 
@@ -150,9 +150,9 @@ Komponenten können sich beim Event-System für bestimmte Ereignisse, die von an
 
 Globale Zustandsvariablen, **SVars** genannt, vereinfachen für den Programmierer den Umgang mit verteilten Daten. 
 Ein bestimmtes Datum wird von genau einem Actor, dem "Besitzer" verwaltet. 
-Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren um den Wert auszulesen oder zu manipulieren.
+Andere Actors besitzen nur eine spezielle Referenz auf den Wert und müssen mit dem Besitzer kommunizieren, um den Wert auszulesen oder zu manipulieren.
 Diese Kommunikation wird von Simulator X automatisch und transparent für den Programmierer durchgeführt.
-:num:`Abbildung #svars` zeigt ein Beispiel, in welchem ``actor#1`` der Besitzer der SVar ist und die beiden anderen Actors nur Referenzen auf diese SVar besitzen.
+:num:`Abbildung #svars` zeigt ein Beispiel, in welchem ``actor#1`` der Besitzer der SVar ist und die beiden anderen Actors nur Referenzen auf diese SVar halten.
 
 .. _svars:
 
@@ -162,19 +162,20 @@ Diese Kommunikation wird von Simulator X automatisch und transparent für den Pr
     Zustandsvariablen-Konzept aus :cite:`latoschik_simulator_2011`
 
 
-Eine zugeordnete ``SVarDescription``\ [#f1]_ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung. 
+Eine zugeordnete ``SVarDescription``\ benennt die SVar, gibt ihr einen Scala-Datentyp und definiert deren Semantik in einer Anwendung. 
 So lässt sich beispielsweise definieren, dass der Wert einer SVar eine Farbe darstellt, welche durch eine Klasse ``Vec4`` repräsentiert wird.
 
 Eine Menge von SVars ergibt zusammen eine **Entität**, die genau ein Simulationsobjekt repräsentiert\ [#f2]_.
-So kann durch die Manipulation der ``Color``-SVar einer bestimmten Entität dessen Farbe festgelegt werden.
+So kann durch die Manipulation der ``Color``-SVar einer bestimmten Entität deren Farbe festgelegt werden.
 
 ``Entities`` werden durch den Programmierer mittels einer ``EntityDescription`` beschrieben, die aus mehreren ``Aspect``-Definitionen aufgebaut sein kann :cite:`wiebusch_enhanced_2012`.
 **Aspects** beschreiben eine wohldefinierte Facette der Entität und sind einer bestimmten Komponente zugeordnet. 
 So gibt es beispielsweise Grafik- oder Physik-\ ``Aspects``. 
+
 Ein ``Aspect`` legt fest, wie eine Komponente mit einem bestimmten Simulationsobjekt umgehen soll.
 Über die ``Aspect``-Definition können Werte durch den Benutzer vorgegeben werden, die das Verhalten der Komponente im Bezug auf die zugehörige Entität festlegen.
 So lässt sich beispielsweise über einen Physik-``Aspect`` festlegen, welche physikalische Repräsentation für die Entität genutzt werden soll, beispielsweise ein Quader mit bestimmten Abmessungen und einer Masse.
-Für eine Renderkomponente kann unter anderem der Pfad zu einer 3D-Objektdatei angegeben werden, welche als grafische Repräsentation für die Simulationsobjekt auf dem Bildschirm angezeigt werden soll.
+Für eine Renderkomponente kann der Pfad zu einer 3D-Objektdatei angegeben werden, welche als grafische Repräsentation für die Simulationsobjekt auf dem Bildschirm angezeigt werden soll.
 
 Simulator X befindet sich gerade in der Entwicklung. Für das vorliegende Projekt wird eine Version von August 2011 genutzt.
 
@@ -234,7 +235,7 @@ StringTemplate
 Um Prozessmodelle in einer textuellen Form speichern zu können, wird die Template-Bibliothek *StringTemplate* (ST) in der Version 4.0.4 verwendet. :cite:`parr_language_2009` 
 ST folgt dem Prinzip, einen Text mit "Platzhaltern" (Attributen) zu definieren. Die Attribute werden aus dem Anwendungsprogramm heraus gesetzt und so das Template mit Inhalt gefüllt.
 Diese Schicht sorgt unter anderem dafür, dass beliebige Scala-Objekte als Java-Bean an ST weitergegeben werden können, auch wenn sie selbst nicht der Java-Bean-Konvention entsprechen.
-In folgendem Beispiel wird ein Template erstellt, welches die :ref:`LMM-Zuweisung<lmm>` ``function = "test"`` produziert:
+In folgendem Beispiel wird ein Template erstellt, welches die LMM-Zuweisung ``function = "test"`` produziert:
 
 .. code-block:: scala
 
@@ -255,7 +256,6 @@ Im i>PM3D-Projekt wird die in Scala implementierte Mathematikbibliothek *Simplex
 Durch die Bibliothek werden Matrizen, Vektoren und dazugehörige Utility-Funktionen bereitgestellt. Deren API orientiert sich weitgehend an der OpenGL Shading Language.
 
 
-.. [#f1] Beispiele für SVar-Typen: *Color*, *Transformation* oder *Mass*
 .. [#f2] Dies könnte im Prozesseditor beispielsweise ein Modellelement wie ein Prozess oder eine Kontrollflusskante sein.
 .. [#f3] Ein Fragment entspricht – vereinfacht gesagt – einem Pixel auf dem Bildschirm.
 .. [#f10] Ein Vertex ist ein "Eckpunkt" eines 3D-Objekts, welches in OpenGL üblicherweise als ein aus Dreiecken aufgebautes Gitter beschrieben wird.

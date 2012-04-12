@@ -63,21 +63,21 @@ Inwieweit sich die in Kapitel 2 gezeigten Nutzungsmöglichkeiten mit dem Prototy
 Anpassbarkeit durch Metamodellierung
 ------------------------------------
 
-Um die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen – wie es für die Prozessmodellierung sinnvoll ist (:ref:`siehe <metamodellierung>`) – werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten **Metamodellen** beschrieben, wie es schon durch das in :cite:`roth_konzeption_2011` entwickelte (MDF) :ref:`Model Designer Framework<mdf>` für 2D-Modelleditoren umgesetzt wird. 
+Um die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen – wie es für die Prozessmodellierung sinnvoll ist (:ref:`siehe <metamodellierung>`) – werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten **Metamodellen** beschrieben, wie es schon durch das in :cite:`roth_konzeption_2011` entwickelte :ref:`Model Designer Framework<mdf>` für 2D-Modelleditoren umgesetzt wird. 
 So lassen sich auch gänzlich neue Elemente und dazugehörige grafische Objekte hinzufügen. Ebenso macht dies ein Experimentieren mit der Visualisierung einfach.
 Eine Übersicht über die in i>PM3D verwendeten (Meta-)Modelle und deren Hierarchie wird in :ref:`dieser Arbeit<modellhierarchie>` gegeben.
 
 Prinzipiell lässt sich i>PM3D durch diese Anpassbarkeit nicht nur für die Modellierung von Prozessen sondern auch für ähnliche Anwendungsdomänen einsetzen. 
 Der Fokus liegt hier allerdings speziell auf der Modellierung nach dem Prinzip der :ref:`perspektivenorientierten Prozessmodellierung<popm>` und dem damit assoziierten :ref:`tvk`.
 So wird ein Metamodell für diese Domäne und eines für deren Visualisierung nach einem graphbasierten Ansatz :ref:`bereitgestellt<metamodelle>` bereitgestellt. 
-Zusammen beschreiben diese Metamodelle einen **Prozessmodell-Editor**, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt (siehe :ref:`visualisierung`).
+Zusammen beschreiben diese Metamodelle einen **Prozessmodell-Editor**, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt (:ref:`siehe <visualisierung>`).
 
 Modellanbindung
 ---------------
 
 Für den Zugriff auf die interne Repräsentation der Modelle muss eine Schnittstelle bereitgestellt werden, über die andere Komponenten der Anwendung Parameter zur Laufzeit verändern können, welche die grafische Repräsentation oder das Prozessmodellelement selbst (bspw. die Funktion eines Prozessknotens) betreffen.
 Ebenfalls werden für ein Modellierungswerkzeug übliche Funktionen wie das Neuerstellen, Laden und Speichern von Modellen (aus einer textuellen Repräsentation) angeboten.
-Diese sog. :ref:`Modellanbindung` nutzt hierbei die von Simulator X bereitgestellten Möglichkeiten zur Kommunikation zwischen den Komponenten der Anwendung.
+Diese sog. :ref:`Modellanbindung` nutzt hierfür die von Simulator X bereitgestellten Möglichkeiten zur Kommunikation zwischen den Komponenten der Anwendung.
 
 Rendering
 ---------

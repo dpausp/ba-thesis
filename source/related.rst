@@ -41,7 +41,7 @@ Pakete werden durch transluzente Kugeln und Verbindungen zwischen Klassen durch 
 .. _dywer-classdiag:
 
 .. figure:: _static/ext_pics/dywer_classdiag.png
-    :height: 14cm
+    :height: 15cm
 
     3D-UML-Klassendiagramm aus :cite:`dwyer_three_2001`
 
@@ -78,7 +78,7 @@ Von den Benutzern seien verschiedene Erweiterungen vorgeschlagen worden; unter a
 .. _mcintosh-sm:
 
 .. figure:: _static/ext_pics/mcintosh_sm.png
-    :width: 16cm
+    :width: 16.5cm
 
     Hierarchisch aufgebautes 3D-UML-Zustandsdiagramm aus :cite:`mcintosh_x3d-uml:_2008`
 
@@ -230,7 +230,7 @@ Neben den Beziehungen zwischen Aktivitäten im Prozessmodell und den Rollen des 
 .. _betz-org-process:
 
 .. figure:: _static/ext_pics/betz_org_process.png
-    :height: 8cm
+    :height: 10cm
 
     Darstellung von Beziehungen zwischen Prozess- und Organisationsmodell aus :cite:`betz_3d_2008` 
 
@@ -274,7 +274,7 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wiede
 .. _schoenhage-graph:
 
 .. figure:: _static/ext_pics/schoenhage_process.png
-    :height: 10cm
+    :height: 9cm
 
     Prozessgraph mit "Datenflusskugeln" aus :cite:`schonhage_3d_2000`
 
@@ -282,7 +282,7 @@ Es sei möglich, Ansichten auf den Prozessgraphen zu speichern, um später wiede
 .. _schoenhage-all:
 
 .. figure:: _static/ext_pics/schoenhage_all.png
-    :height: 10cm
+    :height: 12cm
 
     Darstellung eines Prozesses mit assoziierten Daten (3D-Histogramme) aus :cite:`schonhage_3d_2000`
 
@@ -406,7 +406,7 @@ Die folgende Tabelle gibt einen Überblick über die vorgestellten Verwendungsm�
 ---------------------------------------
 
 Eine naheliegende Möglichkeit ist es, schon bekannte 2D-Modellierungssprachen wieder zweidimensional auf Flächen im 3D-Raum zu platzieren. 
-Dies wurde von :ref:`McIntosh<mcintosh>` für UML-Zustandsdiagramme, von :ref:`Gil und Kent<gil>` oder allgemein von :ref:`GEF3D<gef3d>` gezeigt.
+Dies wurde von :ref:`McIntosh<mcintosh>` für UML-Zustandsdiagramme, von :ref:`Gil und Kent<gil>` oder bei :ref:`GEF3D<gef3d>` gezeigt.
 In der Tabelle werden solche Darstellungsformen als 2,5D-Ansatz bezeichnet.
 Für die Implementierung bedeutet das, dass sich schon vorhandene 2D-Bibliotheken nutzen lassen, deren Grafikausgabe direkt auf die Flächen gezeichnet wird.
 Für den Benutzer hat die Darstellung den Vorteil, dass sich die Darstellung der Modellelemente selbst nicht ändert und sich mehrere Modelle gleichzeitig darstellen lassen, indem die Ebenen zueinander versetzt werden. 
@@ -432,7 +432,7 @@ So kann beispielsweise durch einen Doppelklick auf einen Prozessknoten ein weite
 :ref:`Betz et al.<betz>` zeigten für den Bereich der Prozessmodellierung die schon für die Softwaremodellierung genannten Nutzungsmöglichkeiten des 3D-Raums, also die hierarchische Darstellung von Prozessdiagrammen und die Visualisierung von Beziehungen zwischen unterschiedlichen Modellarten.
 
 Von :ref:`Gogolla et al.<gogolla>` wurden UML-Diagramme mit "echten", frei plazierbaren 3D-Objekten gezeigt. 
-Die dritte Dimension ("Tiefe") lässt sich dazu nutzen, schon durch Verbindungen festgelegte Zusammenhänge zu verdeutlichen oder direkt um Attribute der Modellelemente zu visualisieren.
+Die dritte Dimension ("Tiefe") lässt sich dazu nutzen, schon durch Verbindungen festgelegte Zusammenhänge zu verdeutlichen oder um Attribute der Modellelemente zu visualisieren.
 
 3D-Objekte wie Quader haben den Vorteil, dass sich Information – oft in Textform — auf mehreren Seiten darstellen lässt. 
 Wie von :ref:`Dwyer<dywer>` vorgeschlagen, gibt es die Möglichkeit, diese Objekte so zu drehen, dass dem Benutzer immer eine Seite zugewandt und damit gut lesbar ist.

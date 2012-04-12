@@ -115,8 +115,8 @@ Eine Möglichkeit ist es, eine Textur mit farblich vom Hintergrund abgehobenen D
 Szenenobjekte
 -------------
 
-Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Grafikobjekte in die Szene einzufügen, die im Editor-Metamodell als ``SceneryObject`` bezeichnet werden. 
-(:ref:`Anforderung (h) <anforderungen>`)
+Zusätzlich zu den Elementen des eigentlichen Prozessmodells gibt es noch die Möglichkeit, beliebige 3D-Grafikobjekte in die Szene einzufügen, die im Editor-Metamodell als ``SceneryObject`` bezeichnet werden
+(*Anforderung (h)*).
 Solche Szenenobjekte können zum Beispiel dafür eingesetzt werden, Abbilder von realen Objekten anzuzeigen. 
 Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und rotiert werden. Sie besitzen aber sonst keine anderen Möglichkeiten, das Erscheinungsbild zu beeinflussen.
 
@@ -126,8 +126,7 @@ Szenenobjekte können genauso wie Knoten, selektiert, frei bewegt, skaliert und 
 Visualisierungsvarianten für interaktive Modelleditoren
 =======================================================
 
-Da die hier vorgestellte Visualisierung in einem interaktiven Modelleditor eingesetzt wird, ergibt sich noch die weitere Anforderung, Visualisierungsvarianten der Modellelemente zu unterstützen.
-
+Da die hier vorgestellte Visualisierung in einem interaktiven Modelleditor eingesetzt wird, ergibt sich noch die Anforderung, Visualisierungsvarianten der Modellelemente zu unterstützen.
 So sollen Interaktionen des Benutzers mit den Modellobjekten sichtbar gemacht werden, indem die Visualisierung der Objekte temporär verändert wird. 
 Diese Modifikationen werden nicht im Editor-Usage-Model persistiert; daher werden alle Objekte im Normalzustand angezeigt nachdem ein Modell neu geladen wurde.
 
@@ -255,41 +254,39 @@ Visualisierung eines Beispielsprozesses
 
 :num:`Abbildung #beispielprozess-screenshot` zeigt den in i>PM3D modellierten Prozess "Pizza produzieren". 
 Zusätzlich zu den bisher gezeigten Knoten ist hier noch der Start-/Stop-Knoten – als roter, abgerundeter Quader dargestellt – zu sehen.
-Neben der funktionalen Perspektive, vertreten durch Prozessknoten und zwei AND-Konnektoren, wird auch die Datenperspektive mit Datenknoten und dazwischen verlaufenden Datenflüssen dargestellt.
+Neben der funktionalen Perspektive, vertreten durch die Start-Stop-Knoten, Prozessknoten und zwei AND-Konnektoren, wird auch die Datenperspektive mit Datenknoten und dazwischen verlaufenden Datenflüssen dargestellt.
 Die Abbildung zeigt, wie sich durch das Deaktivieren von Knoten ein Teil des Modells (hier der Datenperspektive) ausblenden lässt, um die Ansicht auf momentan interessante Teile zu fokussieren und die Übersichtlichkeit zu erhöhen.
-Aktiviert ist nur der Datenfluss der Pizza selbst, von "Pizza belegen" bis hin zum Ende des Prozesses; die restlichen Knoten und damit auch die dazwischenliegenden Verbindungen sind deaktiviert.
+Aktiviert ist nur der Datenfluss der Pizza selbst, von "Pizza belegen" bis hin zum Ende des Prozesses; die restlichen Datenknoten und damit auch die dazwischenliegenden Verbindungen sind deaktiviert.
+Die dünnen, blauen Kanten zwischen den Prozessen und Datenknoten stellen ``NodeDataConnections`` dar, welche ``Nodes`` und ``DataItems`` des Prozessmodells miteinander assoziieren.
 
 .. _beispielprozess-screenshot:
 
 .. figure:: _static/screenshots/gesamt2.png
     :width: 17cm
 
-    Beispiel für einen Prozess in i>PM3D 
+    Beispiel für einen Prozess mit deaktivierten Datenfluss-Elementen (Screenshot aus i>PM3D)
 
 
-.. _vis-probleme-erweiterung:
+.. _vis-umsetzung:
 
 Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension
 =======================================================================
 
 In diesem Abschnitt soll gezeigt werden, welche :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
 Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i>PM 3D, welche anschließend näher ausgeführt wird.
-  
+
 |
 
 .. include:: table2.rst
 
 |
 
-Die Wahl der 3D-Graphdarstellung mit frei beweglichen Knoten ergab sich aus der Anforderung, einen möglichst allgemeinen Ansatz für die Visualisierung zu wählen.
-Der Hauptvorteil der zusätzlichen Dimension ist es, Objekte unterschiedlich weit vom Betrachter entfernt zu zeichnen und somit mehr Information darstellen zu können.
-
-Visualisisierung von Attributen
+Visualisierung von Attributen
 -------------------------------
 
 Welche Information durch den Abstand (die "Tiefe") vermittelt werden soll, wird durch den Benutzer festgelegt. 
 Durch die freie Platzierbarkeit lässt sich prinzipiell jede gewünschte geometrische Anordnung erreichen.
-Elemente nach ihrer Wichtigkeit anzuordnen, wie es in :ref:`Kapitel 2<related>` vorgeschlagen wurde, ist damit möglich. 
+Elemente nach ihrer Wichtigkeit anzuordnen, wie es :ref:`in <related>` vorgeschlagen wurde, ist damit möglich. 
 Außerdem lassen sich durch unterschiedliche Entfernung der Knoten von einem Fixpunkt beliebige Attribute aus dem Prozessmodell visualisieren. 
 
 Allerdings ist der Nutzen dadurch eingeschränkt, dass der Benutzer die Positionierung der Elemente manuell vornehmen muss. 
@@ -324,15 +321,36 @@ Dies sollte in einer weiteren Entwicklung vorrangig hinzugefügt werden, um dies
 Hierarchische Darstellung und mehrere Modelle
 ---------------------------------------------
 
-Die Visualisierung von hierarchischen Diagrammen in derselben 3D-Szene wäre für die Darstellung von kompositen Prozessen hilfreich.
+Die Visualisierung von hierarchischen Diagrammen in derselben 3D-Szene ist für die Darstellung von kompositen Prozessen hilfreich.
 Ein Verfeinerungsmodell sollte in einem separaten Modell abgelegt werden, welches im grobgranularen Modell durch einen kompositen Prozessknoten vertreten wird. 
 Wird das Verfeinerungsmodell nach Bedarf "ausgeklappt", sollte eine optische Verbindung zum Knoten im übergeordneten Modell die Zusammengehörigkeit anzeigen, wie es beispielsweise von :ref:`McIntosh<mcintosh>` gezeigt wurde.
 Dies ist noch nicht möglich, da Verbindungen zwischen Modellen nicht erlaubt sind.
-Durch die Fahigkeit, manuell mehrere Modelle zu laden :cite:`uli`, lassen sich solche Hierarchiestufen immerhin schon in derselben 3D-Szene anzeigen. 
+Durch die Fähigkeit von i>PM3D, manuell mehrere Modelle laden zu können :cite:`uli`, lassen sich solche Hierarchiestufen immerhin schon in separaten Modellen ablegen und in derselben 3D-Szene anzeigen. 
 Weiterhin wäre eine direkte Unterstützung durch den Editor angebracht, welcher die Subdiagramme bei einer Benutzerinteraktion mit dem kompositen Prozessknoten automatisch öffnen sollte.
 
 Da sich der Benutzer frei in der Szene bewegen kann, können unterschiedliche Betrachtungsperspektiven eingenommen werden. 
 Die Perspektive kann so gewählt werden, dass die momentan für den Benutzer besonders interessanten Aspekte der 3D-Szene deutlich zu erkennen sind.
+Besonders hilfreich ist dies, wenn mehrere Modelle gleichzeitig dargestellt werden. 
+Werden beispielsweise zwei Modelle angezeigt, wobei das eine aktuell im Vordergrund dargestellt wird und das andere im Hintergrund liegt, ist das Modell im Vordergrund wegen des geringeren Abstands zum Benutzer besser zu erkennen. 
+:num:`Abbildung #zweimodelle-vorne` zeigt diese Situation.
+Soll nun das andere Modell genauer betrachtet werden, kann dies erreicht werden, indem die Szene einfach von hinten betrachtet wird. 
+:num:`Abbildung #zweimodelle-hinten` stellt dieselben Modelle dar, allerdings hat sich der Benutzer erst um 180° gedreht und dann etwas nach hinten bewegt, um das Modell mit den blauen Prozessknoten zu fokussieren.
+
+Die andere Möglichkeit ist, dass sich der Benutzer zum blauen Modell hinbewegt, wobei das gelbe dann hinter dem Benutzer liegt und nicht mehr zu sehen ist.
+
+.. _zweimodelle-vorne:
+
+.. figure:: _static/screenshots/zweimodelle-vorne.png
+    :width: 16.5cm
+
+    Darstellung von zwei Prozessen, Fokus auf gelbem Modell (Screenshot aus i>PM3D)
+
+.. _zweimodelle-hinten:
+
+.. figure:: _static/screenshots/zweimodelle-hinten.png
+    :width: 16.5cm
+
+    Darstellung von zwei Prozessen, Fokus auf blauem Modell (Screenshot aus i>PM3D)
 
 Einbettung in eine virtuelle Umgebung
 -------------------------------------
@@ -346,8 +364,10 @@ Bewegungsanimationen von Szenenobjekten – beispielsweise Werkstücken – sind
 Eine solche Komponente könnte Objekte automatisch oder vom Benutzer gesteuert (bspw. durch ein Kommando "zum nächsten Datenknoten bewegen") entlang von Datenflüssen bewegen und so die Dynamik des Prozessablaufs veranschaulichen.
 Für :ref:`Szenenobjekte <ebl-figures>` kann eine physikalische Repräsentation in Form eines Quaders oder einer Kugel definiert werden, um diese in die Physiksimulation aufzunehmen.
 Dies kann durch eine Animationskomponente genutzt werden, um Kollisionen zwischen bewegten Szenenobjekten zu erkennen. 
-Eine andere Möglichkeit ist die Integration von Komponenten, die automatische Pfadsuch-Algorithmen wie beispielsweise den A*-Algorithmus anwenden, welche unter anderem dazu genutzt werden können, optimale Laufwege zu finden.
+Eine andere Möglichkeit ist die Integration von Komponenten, die automatische Pfadsuch-Algorithmen wie beispielsweise den A*-Algorithmus :cite:`hart_correction_1972` anwenden, welche unter anderem dazu genutzt werden können, optimale Laufwege zu finden.
 
+
+.. _vis-entwicklungsmoeglichkeiten:
 
 Weitere Entwicklungsmöglichkeiten
 =================================

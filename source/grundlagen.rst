@@ -187,7 +187,7 @@ Ebenso gibt es die Möglichkeit für Concepts, andere Concepts analog zu Klassen
 
 Ein Vergleich zwischen Klasse-Objekt-Beziehungen und Concept-Concept-Beziehungen  ist in :num:`Abbildung #vergleich-lmm` zu sehen.
 In der Abbildung besitzt ``ConceptC`` eine Instanz-Facette, welche den Attributen aus ``ConceptA`` und ``ConceptB`` Werte zuweist.
-Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit welches von ``ConceptD`` mit dem Wert 5.5 belegt wird.
+Die Typ-Facette von ``ConceptC`` stellt das Attribut ``c`` bereit, welches von ``ConceptD`` mit dem Wert 5.5 belegt wird.
 
 .. _vergleich-lmm:
 
@@ -316,7 +316,7 @@ Rechts auf der Zeichenfläche ist eine Verwendung vom Typ "Neues Thema eröffnen
 
 .. [#f1] Allgemein zum Modellbegriff und den Eigenschaften von Modellen: :cite:`stachowiak_allgemeine_1973`
 
-.. [#f2] Business Process Modeling and Notation; vereinfacht gesagt eine standardisierte, (grafische) Prozessmodellierungssprache. Siehe :cite:`www:bpmn`
+.. [#f2] Business Process Modeling and Notation; umfasst eine standardisierte, (grafische) Prozessmodellierungssprache. Siehe :cite:`www:bpmn`.
 
 .. [#f3] Dies deckt natürlich nicht alle objektorientierten Programmiersprachen ab. "Objektorientierung" kann durchaus auf anderem Wege umgesetzt werden.
 

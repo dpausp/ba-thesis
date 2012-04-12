@@ -4,9 +4,8 @@
 Einordnung in das Gesamtprojekt i>PM3D
 **************************************
 
-(dieses Kapitel ist in Zusammenarbeit mit :cite:`buchi` und :cite:`uli` entstanden. )
-
 Diese Arbeit und die dazugehörige Implementierung sind im Rahmen des i>PM3D-Projekts entstanden. Das Ziel des Projekts ist es, einen Prototypen eines grafischen 3D-Prozessmodellierungswerkzeugs zu erstellen, der prinzipielle Vor-und Nachteile von 3D-Editoren zeigen und als Grundlage für weitere Arbeiten in dieser Richtung dienen soll. 
+Das vorliegende Kapitel gibt eine Übersicht über das i>PM3D-Projekt\ [#f1]_.
 
 .. _ipm3d-uebersicht:
 
@@ -17,12 +16,12 @@ In der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` wird 
 Bestandteile, mit denen sich die vorliegende Arbeit befasst, sind darin farbig hervorgehoben (rechts).
 In das i>PM 3D-Projekt sind ebenfalls die Bachelorarbeiten von Sebastian Buchholz :cite:`buchi` und Uli Holtmann :cite:`uli` einzuordnen, die die übrigen Bestandteile von i>PM3D beschreiben. 
 
-
 .. _ipm3d-konzeptionelle-uebersicht:
 
 .. figure:: _static/diags/ipm3d-uebersicht.eps
+    :width: 15cm 
 
-   Übersicht über die Bestandteile von i>PM3D
+    Übersicht über die Bestandteile von i>PM3D
 
 Im Folgenden werden die einzelnen Projektbestandteile kurz vorgestellt und miteinander in Beziehung gesetzt.
 
@@ -85,7 +84,7 @@ Neuartige Eingabegeräte
 
 Neben den für Arbeitsplatzrechner üblichen Eingabegeräten Tastatur und Maus, soll der Editor auch mittels "neuartiger" Eingabegeräte bedienbar sein, die sich besonders für die Interaktion mit virtuellen 3D-Umgebungen eignen könnten.
 Dabei sind besonders solche Geräte interessant, die auch an einem handelsüblichen, aktuellen Desktop-PC angeschlossen werden können und relativ "preiswert" sind. 
-Die Bereitstellung von neuartigen Eingabegeräten und die Aufbereitung der Eingabedaten werden von der Arbeit :cite:`buchi` abgedeckt, welche sich speziell mit der Anbindung der Microsoft Kinect und der Nintendo WiiMote befasst. Neben der direkten Nutzung dieser Geräte als "Mausersatz" [#f1]_ werden auch mit den Geräten ausgeführte Gesten und ein spezielles Kinect-Menü als Eingabemethode untersucht und für das Projekt nutzbar gemacht.
+Die Bereitstellung von neuartigen Eingabegeräten und die Aufbereitung der Eingabedaten werden von der Arbeit :cite:`buchi` abgedeckt, welche sich speziell mit der Anbindung der Microsoft Kinect und der Nintendo WiiMote befasst. Neben der direkten Nutzung dieser Geräte als "Mausersatz" [#f2]_ werden auch mit den Geräten ausgeführte Gesten und ein spezielles Kinect-Menü als Eingabemethode untersucht und für das Projekt nutzbar gemacht.
 
 Diese Beiträge sind in der Übersichtsgrafik :num:`Abbildung #ipm3d-konzeptionelle-uebersicht` unter "Eingabegeräte" und "Eingabeaufbereitung" zu finden. 
 
@@ -118,21 +117,22 @@ Modellkomponente und Modell-Entitäten
 --------------------------------------
 
 Die im vorherigen Abschnitt als *Modellanbindung* bezeichneten Funktionalitäten werden im Simulator X - Kontext durch die **Modellkomponente** realisiert, die dem Editor eine Schnittstelle zur Verfügung stellt über welche die genannten Aktionen ausgelöst werden können.
-
 Die Modellelemente selbst zu bearbeiten, also deren Visualisierungsparameter und Prozessmodellattribute sowie die Position, Größe und Orientierung im Raum zu ändern, wird durch die von der Modellkomponente bereitgestellten **Modell-Entitäten** ermöglicht, welche durch den Editor manipuliert werden.
 
 Dem Simulator X - Konzept folgend, beschreiben diese *Entities* außerdem, wie die dazugehörigen Objekte von der Physikkomponente behandelt und wie sie von der Renderkomponente angezeigt werden.
-
 Näheres zur Modellkomponente und den Modell-Entitäten ist im Kapitel zur :ref:`modellanbindung` zu finden.
 
 Editor-Komponente und Eingabekonnektoren
 ----------------------------------------
 
-Die Bedienschnittstelle, in Abbildung 3.2 als Editor beschrieben, ist ebenso, wie die meisten Teilkomponenten des i>PM 3D Systems, eine Simulator X Komponente. 
-Das ist notwendig, da sich der Editor nur so mit den anderen Komponenten der Anwendung austauschen und für Benachrichtigungen bei der Erstellung der Modell-Entities registrieren kann. 
-Wird eine Modell-Entity fertiggestellt, wird sie dem Editor zusammen mit einer Konfigurationsliste übergeben, so dass dieser sie in seine eigenen Datenstrukturen einbringen und für den Benutzer ansprechbar machen kann.
+Die Bedienschnittstelle, in Abbildung 3.2 als Editor beschrieben, ist eine Simulator X Komponente. 
+Wird eine Modell-Entity fertiggestellt, wird sie dem Editor übergeben, so dass dieser sie in seine eigenen Datenstrukturen einbringen und für den Benutzer ansprechbar machen kann.
 Die Konnektoren der Eingabeaufbereitungsschicht setzen auf keiner Simulator X Komponente auf, benutzen dafür aber das Simulator X Event-System um die aufbereiteten Eingabedaten an die Bedienschnittstelle zu senden.
 Eine ausführlichere Beschreibung der Editor-Komponente, Eingabekonnektoren sowie der Kommunikation untereinander und mit anderen Komponenten ist bei :cite:`uli` zu finden.
 
 
-.. [#f1] Dies bedeutet in diesem Zusammenhang, dass die Geräte einen Cursor ("Mauszeiger") steuern, der die aktuelle Position in einer zweidimensionalen Ebene anzeigt. Bei einem "Klick" wird eine Aktion auf dem darunter befindlichen Objekt ausgelöst.
+.. [#f1] Dieses Kapitel ist in Zusammenarbeit mit :cite:`buchi` und :cite:`uli` entstanden und in jenen Arbeiten in ähnlicher Form zu finden.
+
+.. [#f2] Dies bedeutet in diesem Zusammenhang, dass die Geräte einen Cursor ("Mauszeiger") steuern, der die aktuelle Position in einer zweidimensionalen Ebene anzeigt. Bei einem "Klick" wird eine Aktion auf dem darunter befindlichen Objekt ausgelöst.
+
+

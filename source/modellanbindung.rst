@@ -4,7 +4,7 @@
 Modellanbindung
 ***************
 
-Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung (:num:`Abbildung #ipm3d-uebersicht-modellanbindung`) das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar (:ref:`Anforderungen (d,e) <anforderungen>`).
+Innerhalb des Prozessmodellierungswerkzeugs stellt die Modellanbindung (:num:`Abbildung #ipm3d-uebersicht-modellanbindung`) das Bindeglied zwischen einer Benutzerschnittstelle, wie sie von der Editorkomponente :cite:`uli` realisiert wird und dem zu manipulierenden Modell dar (:ref:`Anforderungen (e,f) <anforderungen>`).
 
 Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen:
 
@@ -17,8 +17,9 @@ Genauer ergeben sich für die Modellanbindung folgende funktionale Anforderungen
 .. _ipm3d-uebersicht-modellanbindung:
 
 .. figure:: _static/diags/ipm3d-uebersicht-modellanbindung.eps
+    :height: 9cm
 
-   Die Modellanbindung im Kontext von i>PM3D
+    Die Modellanbindung im Kontext von i>PM3D
 
 
 .. _modellkomponente:
@@ -27,7 +28,7 @@ Modellkomponente
 ================
 
 Wie in :ref:`simulatorx` erläutert, bestehen Simulator-X-Anwendungen aus einer Reihe von Komponenten, die jeweils ein wohl definiertes Aufgabengebiet abdecken.
-Die ``ModelComponent`` stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen (:ref:`Anforderung (d) <anforderungen>`). 
+Die ``ModelComponent`` stellt folglich dem System alle Funktionalitäten zur Verfügung, die im Zusammenhang mit der Manipulation von Modellen stehen (*Anforderung (e)*). 
 
 So wird der Zugriff auf die Modelle vollständig von der ``ModelComponent`` gekapselt; es gibt für andere Systembestandteile keine Möglichkeit, direkt darauf zuzugreifen.
 Abgesehen von der erhöhten Übersichtlichkeit und Wartbarkeit wird dies auch durch die Actor-basierte Architektur und damit nachrichtenbasierte Kommunikation ("message passing") von Simulator X vorgegeben.
@@ -71,10 +72,10 @@ Das Laden (mittels "LMMLight-Parser") und Speichern ("ModelToText") sowie die Ve
 Modell-Persistenz
 =================
 
-Das Prozessmodellierungswerkzeug muss in der Lage sein, neue Modelle zu erstellen, diese abzuspeichern und wieder zu laden (:ref:`Anforderung (e) <anforderungen>`).
+Das Prozessmodellierungswerkzeug muss in der Lage sein, neue Modelle zu erstellen, diese abzuspeichern und wieder zu laden (*Anforderung (f)*).
 Die Modelle werden in der Sprache :ref:`lmmlight` beschrieben, welche in Dateien in einer textuellen Darstellung abgelegt und daraus wieder geladen werden kann.
 
-Für das Laden wird der im Rahmen dieser Arbeit entstandene *LMMLight-Parser* genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
+Für das Laden wird der im Rahmen dieser Arbeit entstandene **LMMLight-Parser** genutzt, der mit Hilfe der Scala-:ref:`parser-kombinatoren` implementiert wurde.
 Der Parser liefert einen Syntaxbaum der textuellen Eingabe, der aus "unveränderlichen" (immutable) Objekten aufgebaut ist.
 
 Speicherrepräsentation eines LMMLight-Modells
@@ -191,7 +192,7 @@ Der Ablauf bei der Erstellung einer ``ModelEntity`` aus einer ``EntityDescriptio
 .. _entity-description:
 
 .. figure:: _static/diags/entity_description.eps
-    :width: 16cm
+    :width: 16.5cm
 
     ``EntityDescription`` für einen Knoten (nur ausgewählte und vereinfachte Attribute)
 
@@ -382,7 +383,7 @@ Beim Löschen spielt sich Folgendes ab:
     Ablauf der Erstellung einer ModelEntity durch die Editorkomponente
 
 
-.. [#f1] Die Benennung "Usage-Model" ist eigentlich nicht ganz passend, da das :ref:`Domain-Model<modellhierarchie>` auch die vom Benutzer erstellten Knotentypen umfasst. Da diese Bezeichnungsweise in der Implementierung zu finden ist, wird diese hier ebenfalls genutzt.
+.. [#f1] Die Benennung "Usage-Model" ist eigentlich nicht ganz passend, da das :ref:`<domain-model>` auch die vom Benutzer erstellten Knotentypen umfasst. Da diese Bezeichnungsweise in der Implementierung zu finden ist, wird diese hier ebenfalls genutzt.
 
 .. [#f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
 

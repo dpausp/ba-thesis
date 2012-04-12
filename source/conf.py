@@ -182,7 +182,8 @@ preamble_normal =  r"""
 %% \geometry{verbose,tmargin=1cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,headheight=3cm,headsep=1cm,footskip=1cm}
 
 \definecolor{TitleColor}{rgb}{0.212, 0.376, 0.569}
-\definecolor{InnerLinkColor}{rgb}{0.0, 0.0, 0.3}
+%% \definecolor{InnerLinkColor}{rgb}{0.0, 0.0, 0.4}
+\definecolor{InnerLinkColor}{rgb}{1.0, 0.0, 0.0}
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{fontspec}
@@ -207,7 +208,13 @@ preamble_normal =  r"""
 
 \usepackage{pdfpages}
 
+\def\sectionautorefname{Kap.}
+\def\subsectionautorefname{Kap.}
+\def\chapterautorefname{Kap.}
+
 \setcounter{tocdepth}{2}
+
+
 """
 
 preamble_simple = ""

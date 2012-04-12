@@ -5,10 +5,6 @@ Bla
 .. toctree::
     :maxdepth: 3
 
-    visualisierung
-
-..
-
     abbildungsverzeichnis
     einleitung
     grundlagen
@@ -17,6 +13,7 @@ Bla
     ipm3d
     modellhierarchie
     metamodelle
+    visualisierung
     modellanbindung
     renderkomponente
     renderbib

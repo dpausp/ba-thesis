@@ -18,5 +18,3 @@
     Einbettung in virtuelle Umgebung & ja, aber ohne Animation\tabularnewline
     \hline 
     \end{tabular}
-
-
