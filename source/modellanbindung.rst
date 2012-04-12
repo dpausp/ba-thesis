@@ -383,7 +383,7 @@ Beim Löschen spielt sich Folgendes ab:
     Ablauf der Erstellung einer ModelEntity durch die Editorkomponente
 
 
-.. [#f1] Die Benennung "Usage-Model" ist eigentlich nicht ganz passend, da das :ref:`<domain-model>` auch die vom Benutzer erstellten Knotentypen umfasst. Da diese Bezeichnungsweise in der Implementierung zu finden ist, wird diese hier ebenfalls genutzt.
+.. [#f1] Die Benennung "Usage-Model" ist eigentlich nicht ganz passend, da das :ref:`domain-model` auch die vom Benutzer erstellten Knotentypen umfasst. Da diese Bezeichnungsweise in der Implementierung zu finden ist, wird diese hier ebenfalls genutzt.
 
 .. [#f2] Dass hier die FQNs aus dem Modell genutzt werden hat keine besondere Bedeutung und ist nur ein "Implementierungsdetail", auf das man sich nicht verlassen solle.
 

@@ -228,7 +228,7 @@ Am Ende des Kapitels wird im Anwendungsbeispiel die Nutzung des COLLADA2Scala-Co
 Spezielle Erweiterungen für i>PM3D
 ==================================
 
-In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden (:ref:`Anforderung (f) <anforderungen>`).
+In diesem Abschnitt werden abschließend die Erweiterungen vorgestellt, die speziell für die Realisierung der Prozessvisualisierung bereitgestellt werden (:ref:`Anforderung (g) <anforderungen>`).
 Hier wird auch gezeigt, wie die oben beschriebenen Ebenen der Render-Bibliothek und die GLSL-Shader zusammenwirken.
 Außerdem soll verdeutlicht werden, wie :ref:`Drawables <drawable>` als Schnittstelle zwischen grafischer Darstellung und Anwendung dienen.
 

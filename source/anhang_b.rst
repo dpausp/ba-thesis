@@ -30,6 +30,11 @@ DVD
 Ausführbare Dateien
 -------------------
 
+Die DVD enthält eine ausführbare Version von i>PM3D. 
+Für den Start der Anwendung werden .bat-Dateien (Windows) und sh-Dateien (Linux) für unterschiedliche Konfigurationen der Eingabegeräte angeboten.
+Weitere Hinweise zur Ausführung des Programms werden auf der DVD in ``README.txt`` gegeben.
+Außerdem ist der Collada2Scala-Compiler enthalten. Hinweise dazu befinden sich in ``README-collada2scala.txt``.
+
 Eclipse-Projekte
 ----------------
 
@@ -46,6 +51,8 @@ Die mitgelieferten Scala-Eclipse-Projekte teilen sich wie folgt auf:
  * ScalaST4: Anbindung von StringTemplate
 
 (Rückfragen zur Ausführung des Programms oder zur Verwendung und Kompilierung der Projekte in Eclipse oder mit SBT bitte an Tobi.Stenzel@gmx.de)
+
+Weitere Hinweise werden auf der DVD in ``README.txt`` gegeben.
 
 Beilagen
 --------
