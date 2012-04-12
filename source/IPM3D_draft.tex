@@ -186,12 +186,12 @@ WIMP steht für "`Windows, Icons, Menus, Pointer"'. Grafische Benutzeroberfläch
 }).
 
 Der Einsatz der dritten Dimension für die Repräsentation von Prozessen wurde jedoch schon vereinzelt untersucht.
-Beispielsweise wird von \cite{betz_3d_2008} {\hyperref[related:betz]{\emph{gezeigt}}} (\autoref*{related:betz}), wie sich dies für die Visualisierung von Beziehungen zwischen mehreren Modellen oder zur Darstellung von hierarchischen Modellen sinnvoll nutzen lässt.
+Beispielsweise wird von \cite{betz_3d_2008} {\hyperref[related:betz]{gezeigt}} (\autoref*{related:betz}), wie sich dies für die Visualisierung von Beziehungen zwischen mehreren Modellen oder zur Darstellung von hierarchischen Modellen sinnvoll nutzen lässt.
 So ergeben sich Vorteile zu einer 2D-Darstellung, welche unter anderem weniger Möglichkeiten bietet, verschiedene Arten von Beziehungen zwischen Modellelementen in leicht verständlicher Form zu visualisieren \cite{gil_three_1998}.
 Arbeiten auf dem Gebiet der Softwaremodellierung, welche in dieser Arbeit vorgestellt werden, zeigen weitere Nutzungsmöglichkeiten, die sich auch auf die Prozessmodellierung übertragen lassen.
 
 Prozessmodelle enthalten oft auch Konzepte, die Entitäten aus der realen Welt vertreten, beispielsweise die in einem Prozessschritt verwendete Maschine oder eine ausführende Person.
-Es kann sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um das abstrakte Modell für Benutzer anschaulicher zu machen oder weitere Informationen bereitzustellen, wie von \cite{brown_conceptual_2010} vorgeschlagen wird ({\hyperref[related:ross-brown]{\emph{siehe}}} (\autoref*{related:ross-brown}), {\hyperref[related:informations-integration]{\emph{und}}} (\autoref*{related:informations-integration})).
+Es kann sinnvoll sein, diese Objekte in ihrem realen Erscheinungsbild neben dem Prozessmodell darzustellen, um das abstrakte Modell für Benutzer anschaulicher zu machen oder weitere Informationen bereitzustellen, wie von \cite{brown_conceptual_2010} vorgeschlagen wird ({\hyperref[related:ross-brown]{siehe}} \autoref*{related:ross-brown} {\hyperref[related:informations-integration]{und}} \autoref*{related:informations-integration}).
 
 Ein Prozessmodellierungswerkzeug, welches die Möglichkeiten der modernen 3D-Computergrafik ausnutzt oder gar neuartige (3D-)Eingabegeräte unterstützt, existiert bisher nicht \cite{brown_conceptual_2010}.
 Um die Effizienz von 3D-Visualisierungen für die Prozessmodellierung zu beurteilen und verschiedene Darstellungsformen zu vergleichen wäre allerdings ein solches System vonnöten.
@@ -201,7 +201,7 @@ Um die Effizienz von 3D-Visualisierungen für die Prozessmodellierung zu beurtei
 \label{einleitung:zielsetzung-und-aufbau-dieser-arbeit}
 Da es kaum Möglichkeiten gibt, die Effizienz von 3D-Prozessvisualisierungen – besonders in interaktiven Anwendungen – zu evaluieren, wurde mit dem i\textgreater{}PM3D-Projekt ein Prototyp eines 3D-Prozessmodellierungswerkzeugs entwickelt, welches auch neuartige (3D-)Eingabegeräte nutzt und die Anbindung von weiteren Eingabemöglichkeiten einfach macht.
 Das Projekt basiert auf {\hyperref[verwendet:simulatorx]{\emph{Simulator X}}} (\autoref*{verwendet:simulatorx}), einer Plattform für eine modulare, komponentenbasierte Realisierung von Anwendungen aus dem Bereich der 3D-Computergrafik.
-Ein detaillierter Überblick über das Gesamtprojekt wird später in {\hyperref[ipm3d:ipm3d]{\emph{dieser Arbeit}}} (\autoref*{ipm3d:ipm3d}) gegeben.
+Ein detaillierter Überblick über das Gesamtprojekt wird später in {\hyperref[ipm3d:ipm3d]{dieser Arbeit}} (\autoref*{ipm3d:ipm3d}) gegeben.
 
 Die vorliegende Arbeit beschäftigt sich im Rahmen des Projekts mit der Konzeption und Realisierung der \textbf{Repräsentation} der Prozessmodelle im Modellierungswerkzeug.
 Repräsentation bezieht sich hier sowohl auf die Visualisierung der Prozessmodelle als auch auf die interne Darstellung der Modelle und deren physische Speicherung (auf Datenträgern).
@@ -210,24 +210,24 @@ Repräsentation bezieht sich hier sowohl auf die Visualisierung der Prozessmodel
 \subsection{Visualisierung}
 \label{einleitung:visualisierung}
 Da es kaum möglich war, auf schon vorhandene Implementierungsarbeiten zurückzugreifen, liegt der Fokus dieser Arbeit eher auf der Bereitstellung von technischen Grundlagen, die zur Realisierung einer flexiblen 3D-Prozessvisualisierung im Prototypen nötig waren.
-Dennoch werden {\hyperref[related:related]{\emph{in}}} (\autoref*{related:related}) Arbeiten vorgestellt, die einen Überblick darüber geben sollen, wie die dritte Visualisierungsdimension genutzt werden kann und welche Vorteile sich aus 3D-Darstellungen ergeben.
+Dennoch werden {\hyperref[related:related]{in}} \autoref*{related:related} Arbeiten vorgestellt, die einen Überblick darüber geben sollen, wie die dritte Visualisierungsdimension genutzt werden kann und welche Vorteile sich aus 3D-Darstellungen ergeben.
 
 Die Implementierung konzentriert sich nicht auf eine bestimmte Nutzungsmöglichkeit, sondern ist möglichst allgemein gehalten.
 So werden Modelle in i\textgreater{}PM3D als 3D-Graph dargestellt, dessen Knoten sich frei im Raum platzieren lassen.
 Der Benutzer selbst kann sich in der 3D-Szene bewegen und so den Graphen aus verschiedenen Perspektiven betrachten.
 Zusätzlich zu den Modellelementen können beliebige 3D-Objekte in die Szene eingefügt werden, um reale Objekte abzubilden.
-Inwieweit sich die vorgestellten Nutzungsmöglichkeiten mit dem Prototypen realisieren lassen und welche Erweiterungen dafür sinnvoll wären, wird in {\hyperref[visualisierung:visualisierung]{\emph{3D-Visualisierung von Prozessen}}} (\autoref*{visualisierung:visualisierung}) näher ausgeführt.
+Inwieweit sich die vorgestellten Nutzungsmöglichkeiten mit dem Prototypen realisieren lassen und welche Erweiterungen dafür sinnvoll wären, wird in \autoref*{visualisierung:visualisierung} näher ausgeführt.
 
 
 \subsection{Anpassbarkeit durch Metamodellierung}
 \label{einleitung:anpassbarkeit-durch-metamodellierung}
-Um die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen – wie es für die Prozessmodellierung sinnvoll ist ({\hyperref[grundlagen:metamodellierung]{\emph{siehe}}} (\autoref*{grundlagen:metamodellierung})) – werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten \textbf{Metamodellen} beschrieben, wie es schon durch das in \cite{roth_konzeption_2011} entwickelte {\hyperref[grundlagen:mdf]{\emph{Model Designer Framework}}} (\autoref*{grundlagen:mdf}) für 2D-Modelleditoren umgesetzt wird.
+Um die Anpassung der in einem Modell verwendeten Konstrukte zu ermöglichen – wie es für die Prozessmodellierung sinnvoll ist ({\hyperref[grundlagen:metamodellierung]{siehe}} \autoref*{grundlagen:metamodellierung}) – werden abstrakte Syntax der Modellierungssprache und deren konkrete grafische Repräsentation in getrennten \textbf{Metamodellen} beschrieben, wie es schon durch das in \cite{roth_konzeption_2011} entwickelte {\hyperref[grundlagen:mdf]{\emph{Model Designer Framework}}} (\autoref*{grundlagen:mdf}) für 2D-Modelleditoren umgesetzt wird.
 So lassen sich auch gänzlich neue Elemente und dazugehörige grafische Objekte hinzufügen. Ebenso macht dies ein Experimentieren mit der Visualisierung einfach.
-Eine Übersicht über die in i\textgreater{}PM3D verwendeten (Meta-)Modelle und deren Hierarchie wird in {\hyperref[modellhierarchie:modellhierarchie]{\emph{dieser Arbeit}}} (\autoref*{modellhierarchie:modellhierarchie}) gegeben.
+Eine Übersicht über die in i\textgreater{}PM3D verwendeten (Meta-)Modelle und deren Hierarchie wird in \autoref*{modellhierarchie:modellhierarchie} gegeben.
 
 Prinzipiell lässt sich i\textgreater{}PM3D durch diese Anpassbarkeit nicht nur für die Modellierung von Prozessen, sondern auch für ähnliche Anwendungsdomänen einsetzen.
 Der Fokus liegt hier allerdings speziell auf der Modellierung nach dem Prinzip der {\hyperref[grundlagen:popm]{\emph{perspektivenorientierten Prozessmodellierung}}} (\autoref*{grundlagen:popm}) und dem damit assoziierten {\hyperref[grundlagen:tvk]{\emph{Typ-Verwendungs-Konzept}}} (\autoref*{grundlagen:tvk}).
-So wird jeweils ein Metamodell für diese Domäne und deren Visualisierung nach einem graphbasierten Ansatz {\hyperref[metamodelle:metamodelle]{\emph{bereitgestellt}}} (\autoref*{metamodelle:metamodelle}).
+So wird jeweils ein Metamodell für diese Domäne und deren Visualisierung nach einem graphbasierten Ansatz {\hyperref[metamodelle:metamodelle]{bereitgestellt}} (\autoref*{metamodelle:metamodelle}).
 Zusammen beschreiben diese Metamodelle einen \textbf{Prozessmodell-Editor}, der den Konzepten von vergleichbaren 2D-Modellierungswerkzeugen und der daraus bekannten Visualisierung folgt.
 
 
@@ -240,9 +240,9 @@ Diese sog. {\hyperref[modellanbindung:modellanbindung]{\emph{Modellanbindung}}} 
 
 \subsection{Rendering}
 \label{einleitung:rendering}
-Für die Implementierung der 3D-Visualisierung, insbesondere für das leichte Hinzufügen von neuen grafischen Modellobjekten und die Realisierung von speziell für einen Modelleditor benötigten {\hyperref[visualisierung:visualisierung]{\emph{grafischen Effekte}}} (\autoref*{visualisierung:visualisierung}) stand keine geeignete Plattform zur Verfügung.
-In {\hyperref[grundlagen:modellierungswerkzeuge]{\emph{Modellierungswerkzeugen}}} (\autoref*{grundlagen:modellierungswerkzeuge}) ist es üblich, Informationen aus dem (Prozess-)Modell auf den grafischen Elementen durch Text oder andere Symbole zu visualisieren.
-Außerdem sollen die {\hyperref[visualisierung:visualisierungsvarianten]{\emph{Interaktionszustände der Modellelemente}}} (\autoref*{visualisierung:visualisierungsvarianten}) (selektiert, hervorgehoben, deaktiviert) geeignet visualisiert werden.
+Für die Implementierung der 3D-Visualisierung, insbesondere für das leichte Hinzufügen von neuen grafischen Modellobjekten und die Realisierung von speziell für einen Modelleditor benötigten {\hyperref[visualisierung:visualisierung]{grafischen Effekte}} (\autoref*{visualisierung:visualisierung}) stand keine geeignete Plattform zur Verfügung.
+In {\hyperref[grundlagen:modellierungswerkzeuge]{Modellierungswerkzeugen}} (\autoref*{grundlagen:modellierungswerkzeuge}) ist es üblich, Informationen aus dem (Prozess-)Modell auf den grafischen Elementen durch Text oder andere Symbole zu visualisieren.
+Außerdem sollen {\hyperref[visualisierung:visualisierungsvarianten]{Interaktionszustände der Modellelemente}} (\autoref*{visualisierung:visualisierungsvarianten}) (selektiert, hervorgehoben, deaktiviert) geeignet visualisiert werden.
 "`Deaktiviert"' bedeutet in diesem Zusammenhang, dass das Objekt transparent dargestellt wird, um den Blick auf dahinterliegende Grafikobjekte zu ermöglichen.
 
 Um diese Anforderungen mit ausreichender Darstellungsqualität und -geschwindigkeit umsetzen zu können, wurde auf Basis von ("`modernem"') OpenGL eine {\hyperref[renderbib:render-bibliothek]{\emph{Render-Bibliothek}}} (\autoref*{renderbib:render-bibliothek}) und eine darauf aufbauende {\hyperref[renderkomponente:renderkomponente]{\emph{Renderkomponente}}} (\autoref*{renderkomponente:renderkomponente}) für Simulator X erstellt, die auf die Anforderungen des i\textgreater{}PM 3D-Projekts zugeschnitten, aber möglichst allgemein gehalten und erweiterbar sind.
@@ -251,7 +251,7 @@ Um diese Anforderungen mit ausreichender Darstellungsqualität und -geschwindigk
 \section{Funktionale Anforderungen}
 \label{einleitung:anforderungen}\label{einleitung:funktionale-anforderungen}
 Zusammengefasst werden in dieser Arbeit folgende funktionale Anforderungen an den i\textgreater{}PM3D Prototypen realisiert:
-\begin{enumerate}
+\begin{enumerate}[(a)]
 \item {} 
 Modellierung von Prozessen mit einer grafischen Modellierungssprache nach einem allgemeinen, graphbasierten Ansatz in einer 3D-Darstellung
 
@@ -989,7 +989,7 @@ Eine andere denkbare Anwendung wäre eine Visualisierung der Platzverhältnisse 
 Wenn die Umgebung sowie sich darin befindliche Objekte relativ zueinander im richtigen Größenverhältnis und in der tatsächlichen Form dargestellt sind, könnte schon bei einer Betrachtung des Prozesses in der virtuellen Welt bemerkt werden, dass vorgesehene Ablageplätze in einem Lager oder Transportbehälter für ein Werkstück zu klein dimensioniert sind.
 
 \hyperref[related:brown-airport]{Abbildung  \ref*{related:brown-airport}}\footnote{
-Quelle: www.youtube.com/watch?v=aUBmvykDhB0. Das Video ist auch auf der beigelegten {\hyperref[anhang_b:anhang-dvd]{\emph{Systemanforderungen und Inhalt der DVD}}} (\autoref*{anhang_b:anhang-dvd}) zu finden.
+Quelle: www.youtube.com/watch?v=aUBmvykDhB0. Das Video ist auch auf der beigelegten {\hyperref[anhang_b:anhang-dvd]{\emph{DVD}}} (\autoref*{anhang_b:anhang-dvd}) zu finden.
 } zeigt einen BPMN-Prozess in einer 3D-Umgebung, die mit Hilfe des von Brown vorgestellten Editors erstellt wurde und einen Flughafen darstellen soll.
 Dies ließe sich prinzipiell auch mit einer 2D-Darstellung realisieren, indem die Szene von oben gezeigt wird.
 Dadurch wird aber die Übersichtlichkeit eingeschränkt; die Möglichkeit, den Prozessgraphen im dreidimensionalen Raum in einer Ebene über dem Boden zu zeigen, erweist sich hier als Vorteil.
@@ -1050,7 +1050,7 @@ Eine 2,5D oder gar 2D-Darstellung lässt sich als Sonderfall einer 3D-Darstellun
 So kann die Darstellung oder die Platzierbarkeit von Elementen – ausgehend vom gewählten 3D-Ansatz – wieder eingeschränkt werden, falls sich dies für eine Anwendung als vorteilhaft herausstellen sollte.
 
 Abstrakte Prozessmodelle in eine virtuelle Welt einzubetten und so räumliche Information zu nutzen stellt einen vielversprechenden Ansatz dar, aus dreidimensionalen Darstellungen einen großen Vorteil zu ziehen.
-Dadurch wird {\hyperref[einleitung:anforderungen]{\emph{Anforderung (b)}}} (\autoref*{einleitung:anforderungen}) motiviert, beliebige 3D-Objekte in die Szene einfügen zu können, um damit abstrakte Modellelemente zu illustrieren oder virtuelle Ausführungsumgebungen visualisieren zu können.
+Dadurch wird \emph{Anforderung (b)} motiviert, beliebige 3D-Objekte in die Szene einfügen zu können, um damit abstrakte Modellelemente zu illustrieren oder virtuelle Ausführungsumgebungen visualisieren zu können.
 
 
 \chapter{Verwendete Techniken und Software}
@@ -1163,7 +1163,7 @@ Folgende Parser-Funktion
 \PYG{o}{\PYGZcb{}}
 \end{Verbatim}
 
-würde beispielsweise die {\hyperref[grundlagen:lmm]{\emph{LML-String-Zuweisung}}} (\autoref*{grundlagen:lmm})
+würde beispielsweise die LML-String-Zuweisung
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{functions} \PYG{o}{=} \PYG{l+s}{"a"}\PYG{o}{,} \PYG{l+s}{"test"}\PYG{o}{;}
@@ -1336,7 +1336,7 @@ Zusätzlich zu den eigentlichen Prozessmodellelementen gibt es die Möglichkeit,
 Wie in der Computergrafik üblich wird das Prinzip einer virtuellen Kamera benutzt, durch die der Benutzer die Szene beobachtet ("`Egoperspektive"').
 Durch Verschieben und Rotieren der Kamera kann sich der Benutzer in der virtuellen Umgebung "`bewegen"' und die dargestellten Prozessdiagramme aus verschiedenen Perspektiven betrachten.
 Knoten und Szenenobjekte sind frei drehbar um alle drei Achsen und unter Beibehaltung der Seitenverhältnisse skalierbar. Sie können prinzipiell frei in der 3D-Szene platziert werden.
-Die Visualisierung von Modellen in i\textgreater{}PM3D wird in der vorliegenden Arbeit näher {\hyperref[visualisierung:visualisierung]{\emph{vorgestellt}}} (\autoref*{visualisierung:visualisierung}).
+Die Visualisierung von Modellen in i\textgreater{}PM3D wird in der vorliegenden Arbeit näher {\hyperref[visualisierung:visualisierung]{vorgestellt}} (\autoref*{visualisierung:visualisierung}).
 
 
 \subsection{Modellanbindung}
@@ -1347,8 +1347,8 @@ In i\textgreater{}PM 3D kann die grafische Modellierungssprache (in einem gewiss
 Die in einem Prozessmodell verwendeten abstrakten Modellelemente (bspw. ein "`Prozessknoten"') sowie deren aktuelle Repräsentation im Modelleditor (bspw. das "`Aussehen"' und die Position eines Prozessknotens) werden in separaten Modellen abgelegt.
 In der \hyperref[ipm3d:ipm3d-konzeptionelle-uebersicht]{Abbildung  \ref*{ipm3d:ipm3d-konzeptionelle-uebersicht}} werden diese Modelle als "`Prozess-Modell"' bzw. als "`Editor-Modell"' bezeichnet.
 
-Der grundsätzliche Aufbau und die Anpassbarkeit der Modell-Hierarchie wird in {\hyperref[modellhierarchie:modellhierarchie]{\emph{dieser Arbeit}}} (\autoref*{modellhierarchie:modellhierarchie}) besprochen.
-Außerdem werden die verwendeten Metamodelle im Detail {\hyperref[metamodelle:metamodelle]{\emph{beschrieben}}} (\autoref*{metamodelle:metamodelle}) und ein Beispiel gezeigt, wie sich neue Modellelemente ergänzen lassen.
+Der grundsätzliche Aufbau und die Anpassbarkeit der Modell-Hierarchie wird in {\hyperref[modellhierarchie:modellhierarchie]{dieser Arbeit}} (\autoref*{modellhierarchie:modellhierarchie}) besprochen.
+Außerdem werden die verwendeten Metamodelle im Detail {\hyperref[metamodelle:metamodelle]{beschrieben}} (\autoref*{metamodelle:metamodelle}) und ein Beispiel gezeigt, wie sich neue Modellelemente ergänzen lassen.
 
 Es ist ebenfalls Gegenstand dieser Arbeit, die Einbindung der Modell-Funktionen in den Prototypen zu realisieren.
 In der Übersichtsgrafik \hyperref[ipm3d:ipm3d-konzeptionelle-uebersicht]{Abbildung  \ref*{ipm3d:ipm3d-konzeptionelle-uebersicht}} wird dieser Teil des Projekts als {\hyperref[modellanbindung:modellanbindung]{\emph{"`Modellanbindung"'}}} (\autoref*{modellanbindung:modellanbindung}) bezeichnet.
@@ -1436,8 +1436,8 @@ Auf wichtige Unterschiede wird in diesem Kapitel explizit hingewiesen.
 Das Konzept und die Implementierung der vorliegenden Arbeit erreicht jedoch nicht die Flexibilität von MDF, da hier ein Modellierungswerkzeug für die POPM und kein generisches Framework realisiert werden sollte.
 Dennoch ist es möglich, in einem gewissen Rahmen Modifikationen an den verwendeten Modellelementen vorzunehmen und deren Visualisierung anzupassen.
 
-Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im aktuellen Kapitel und bei der näheren Vorstellung der {\hyperref[metamodelle:metamodelle]{\emph{Metamodelle}}} (\autoref*{metamodelle:metamodelle}) deutlich.
-Am Ende des nächsten Kapitels ist ein {\hyperref[metamodelle:beispiel-neues-element]{\emph{Anwendungsbeispiel}}} (\autoref*{metamodelle:beispiel-neues-element}) zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
+Inwieweit sich die Modelle anpassen lassen und welche Einschränkungen bestehen wird im aktuellen Kapitel und bei der näheren Vorstellung der {\hyperref[metamodelle:metamodelle]{Metamodelle}} (\autoref*{metamodelle:metamodelle}) deutlich.
+Am Ende des nächsten Kapitels ist ein {\hyperref[metamodelle:beispiel-neues-element]{Anwendungsbeispiel}} (\autoref*{metamodelle:beispiel-neues-element}) zu finden, welches zeigt, wie neue Elemente zur Modellierungssprache hinzugefügt werden können.
 
 Die Anpassbarkeit der konkreten Syntax hat für den hier realisierten Prototypen vor allem den praktischen Nutzen, dass leicht mit der Visualisierung experimentiert werden kann, ohne den Quellcode der Anwendung ändern und neu übersetzen zu müssen.
 Grundsätzlich lässt sich auch die verwendete Modellierungssprache komplett austauschen, jedoch wird in dieser Arbeit davon ausgegangen, dass das vorgegebene {\hyperref[metamodelle:pmm]{\emph{Prozess-Metamodell}}} (\autoref*{metamodelle:pmm}) genutzt wird.
@@ -1593,7 +1593,7 @@ Ist also beispielsweise in einem Knotentyp für einen bestimmten Kantentyp nur e
 Der Endpunkt müsste dann bei einem anderen Knotentyp liegen, der ein entsprechendes \code{inbound}-Attribut besitzt\footnote{
 Im Domänenmodell sind Kanten also technisch gesehen immer "`gerichtet"'.
 }.
-Das Prinzip wird im nächsten Kapitel bei der Vorstellung des verwendeten {\hyperref[metamodelle:pmm]{\emph{Prozess-Metamodells}}} (\autoref*{metamodelle:pmm}) und anschließend in einem {\hyperref[metamodelle:beispiel-neues-element]{\emph{Anwendungsbeispiel}}} (\autoref*{metamodelle:beispiel-neues-element}) verdeutlicht.
+Das Prinzip wird im nächsten Kapitel bei der Vorstellung des verwendeten {\hyperref[metamodelle:pmm]{\emph{Prozess-Metamodells}}} (\autoref*{metamodelle:pmm}) und anschließend in einem {\hyperref[metamodelle:beispiel-neues-element]{Anwendungsbeispiel}} (\autoref*{metamodelle:beispiel-neues-element}) verdeutlicht.
 
 Ansonsten können im Modellierungswerkzeug modifizierbare Modellattribute frei definiert werden, wobei beachtet werden muss, dass von der Implementierung nur Literaltyp-Attribute allgemein (außer für die Assoziation von Knoten und Kanten, wie vorher beschrieben) unterstützt werden.
 Attribute, die Concepts referenzieren, können im Editor nicht angezeigt oder verändert werden und werden ignoriert\footnote{
@@ -1909,7 +1909,7 @@ Bisher gibt es noch kein Basis-Concept für eine beschriftete Pyramide, also wir
 \end{Verbatim}
 
 TextLabelNode stellt schon alle für einen Text-Knoten benötigten Attribute bereit; daher muss in diesem Concept nur noch der Typ des Grafikobjektes angegeben werden.
-Wie ein passendes Grafikobjekt erstellt werden kann, wird in der {\hyperref[renderbib:beispiel-neue-modellfigur]{\emph{Fortsetzung dieses Beispiels}}} (\autoref*{renderbib:beispiel-neue-modellfigur}) gezeigt.
+Wie ein passendes Grafikobjekt erstellt werden kann, wird in der {\hyperref[renderbib:beispiel-neue-modellfigur]{Fortsetzung dieses Beispiels}} (\autoref*{renderbib:beispiel-neue-modellfigur}) gezeigt.
 
 Auf dem \emph{Editor-Definition-Level} kann nun die Repräsentation für den Organisationsknoten-Typen im package \code{EMM.D1.nodeFigures} als Instanz der \code{TextPyramid}  definiert werden.
 
@@ -1985,7 +1985,7 @@ Die Beschriftung von \code{TextLabelNodes} kann dazu verwendet werden, textuelle
 
 Es sollten möglichst einfache, dreidimensionale geometrische Körper mit möglichst ebenen Seitenflächen wie Würfel oder Quader gewählt werden.
 Ebene Flächen eignen sich besonders gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von (längeren) Textdarstellungen.
-Bei Würfeln oder ähnlichen Körpern ist es auch relativ einfach, einen (dreidimensionalen) Rahmen zu zeichnen, dessen Verwendung weiter unten in {\hyperref[visualisierung:visualisierungsvarianten]{\emph{Visualisierungsvarianten für interaktive Modelleditoren}}} (\autoref*{visualisierung:visualisierungsvarianten}) dargestellt wird.
+Bei Würfeln oder ähnlichen Körpern ist es auch relativ einfach, einen (dreidimensionalen) Rahmen zu zeichnen, dessen Verwendung weiter unten in \autoref*{visualisierung:visualisierungsvarianten} dargestellt wird.
 
 \hyperref[visualisierung:prozessknoten]{Abbildung  \ref*{visualisierung:prozessknoten}} zeigt zwei Prozessknoten, auf welchen die Prozess-Funktion als Text angezeigt wird.
 
@@ -2100,7 +2100,7 @@ Selektierte Objekte sollen von unselektierten Objekten auch bei großer Entfernu
 
 Die Visualisierung des Selektionszustandes soll daher möglich auffällig sein, ohne das Erscheinungsbild allzu stark zu beeinflussen.
 Um die Selektion von der Hervorhebung unterscheidbar zu machen, wird für die Selektion der Rand des Objekts in der Komplementärfarbe eingefärbt. Die Definition des "`Rands"' ist je nach Objekttyp unterschiedlich\footnote{
-Der Rand ist über die Texturkoordinaten definiert. {\hyperref[renderbib:erweiterung-interaction]{\emph{Siehe}}} (\autoref*{renderbib:erweiterung-interaction}).
+Der Rand ist über die Texturkoordinaten definiert. {\hyperref[renderbib:erweiterung-interaction]{Siehe}} (\autoref*{renderbib:erweiterung-interaction}).
 }.
 In \hyperref[visualisierung:selektion-sc]{Abbildung  \ref*{visualisierung:selektion-sc}} sind zwei selektierte Knoten zu sehen.
 \begin{figure}[htbp]
@@ -2202,7 +2202,7 @@ Die dünnen, blauen Kanten zwischen den Prozessen und Datenknoten stellen \code{
 
 \section{Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension}
 \label{visualisierung:vis-umsetzung}\label{visualisierung:umsetzung-von-verschiedenen-nutzungsmoglichkeiten-der-dritten-dimension}
-In diesem Abschnitt soll gezeigt werden, welche {\hyperref[related:related-zusammenfassung]{\emph{in}}} (\autoref*{related:related-zusammenfassung}) genannten Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
+In diesem Abschnitt soll gezeigt werden, welche {\hyperref[related:related-zusammenfassung]{in}} \autoref*{related:related-zusammenfassung} genannten Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
 Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i\textgreater{}PM 3D, welche anschließend näher ausgeführt wird.
 
 \begin{DUlineblock}{0em}
@@ -2263,8 +2263,8 @@ Dazu werden Prozessschritte auf parallel verlaufenden Flächen gruppiert, die zu
 \label{visualisierung:veranschaulichung-von-beziehungen}
 Durch die Anordnung der Elemente die Bedeutung von Beziehungen zu unterstreichen ist ebenfalls möglich, wobei wiederum die 2D-Flächen hilfreich sind.
 So kann durch die Positionierung der Knoten auf einer Fläche leicht verdeutlicht werden, dass Kanten, die parallel zur Fläche verlaufen, eine andere Bedeutung haben als diejenigen, die aus der Ebene herausragen und zu Elementen führen, die auf einer anderen Fläche platziert sein können.
-{\hyperref[related:gef3d]{\emph{In}}} (\autoref*{related:gef3d}) wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
-i\textgreater{}PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt ({\hyperref[modellanbindung:modellanbindung]{\emph{siehe}}} (\autoref*{modellanbindung:modellanbindung})).
+Bei {\hyperref[related:gef3d]{\emph{GEF3D}}} \autoref*{related:gef3d} wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
+i\textgreater{}PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt ({\hyperref[modellanbindung:modellanbindung]{siehe}} \autoref*{modellanbindung:modellanbindung}).
 Dies sollte in einer weiteren Entwicklung vorrangig hinzugefügt werden, um diese Anwendung der dritten Dimension zu erlauben, welche deutliche Vorteile zu 2D-Darstellungen verspricht.
 
 
@@ -2304,7 +2304,7 @@ Die andere Möglichkeit ist, dass sich der Benutzer zum blauen Modell hinbewegt,
 \label{visualisierung:einbettung-in-eine-virtuelle-umgebung}
 Durch die Möglichkeit, mittels Szenenobjekten beliebige 3D-Objekte einzubinden, lässt sich der Prozessgraph in eine virtuelle Ausführungsumgebung einbetten.
 Die Szenenobjekte können in i\textgreater{}PM3D aus COLLADA-Dateien geladen werden, welche von Anwendungen wie beispielsweise \emph{Blender} \cite{www:blender} erstellt werden können.
-So lässt sich grundsätzlich jede beliebige 3D-Szene aus einzelnen Objekten aufbauen, um die {\hyperref[related:informations-integration]{\emph{in}}} (\autoref*{related:informations-integration}) gezeigten Nutzungsmöglichkeiten zu realisieren.
+So lässt sich grundsätzlich jede beliebige 3D-Szene aus einzelnen Objekten aufbauen, um die {\hyperref[related:informations-integration]{in}} \autoref*{related:informations-integration} gezeigten Nutzungsmöglichkeiten zu realisieren.
 
 Durch den modularen Aufbau des Systems auf Basis von Simulator X ist die Integration weiterer Funktionalität durch die Implementierung einer neuen Komponente einfach möglich.
 Bewegungsanimationen von Szenenobjekten – beispielsweise Werkstücken – sind bisher noch nicht integriert. Um dies nachzurüsten, müsste eine "`Animationskomponente"' implementiert werden.
@@ -2375,7 +2375,7 @@ Dies macht es manchmal schwierig zu erkennen, welche Objekte näher am Betrachte
 Es besteht die Möglichkeit, sich an der Größe der Objekte zu orientieren. Jedoch kann dies auch scheitern, wenn Objekte unterschiedlich groß sein dürfen, wie es momentan der Fall ist.
 Die Skalierung von Modellelementen allerdings komplett zu verbieten würde eine zu starke Einschränkung bedeuten.
 
-Andere Effekte, die aus der "`Umwelt"' bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie ({\hyperref[related:ware-graphs]{\emph{siehe}}} (\autoref*{related:ware-graphs})) und Schatten.
+Andere Effekte, die aus der "`Umwelt"' bekannt sind und die einen besseren räumlichen Eindruck ermöglichen können sind die Bewegungsparallaxe, Stereoskopie ({\hyperref[related:ware-graphs]{siehe}} \autoref*{related:ware-graphs}) und Schatten.
 Der Bewegungsparallaxen-Effekt lässt sich durch seitliche Bewegung des Benutzers in der Szene erzeugen und gibt einen Eindruck davon, wie weit Objekte von diesem entfernt sind.
 
 
@@ -2390,7 +2390,7 @@ Konfigurationsmöglichkeiten oder eine "`intelligente"' Schattenberechnung, die 
 \label{visualisierung:voll-immersive-virtuelle-welten}
 Eine weitere Entwicklungsmöglichkeit wäre es, {\hyperref[related:halpin-social-net]{\emph{voll immersive virtuelle Welten}}} (\autoref*{related:halpin-social-net}) zu nutzen.
 Dies ist auch ein Anwendungsgebiet, das von der hier verwendeten Plattform Simulator X unterstützt wird.
-Besonders Anzeigen mit hoher Auflösung würden Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen ({\hyperref[related:ware-graphs]{\emph{siehe}}} (\autoref*{related:ware-graphs})).
+Besonders Anzeigen mit hoher Auflösung würden Vorteile für Lesbarkeit und Verständlichkeit mit sich bringen ({\hyperref[related:ware-graphs]{siehe}} \autoref*{related:ware-graphs}).
 
 Das Ziel des Projekts ist es aber eher auf technisch noch sehr aufwändige sowie teure Lösungen zu verzichten und ein System für die "`breite Masse"' bereitzustellen.
 Durch die ständige technische Weiterentwicklung könnten solche Systeme aber in Zukunft durchaus eine praktische Alternative zu üblichen Benutzerschnittstellen für diverse Einsatzgebiete werden.
@@ -2417,7 +2417,7 @@ Ein großes Problem bei 3D-Visualisierungen können schlecht erkennbar Verbindun
 Dies zeigte sich bei den Versuchen mit den Prototypen.
 Hier lässt sich feststellen, dass es keine Lösung gibt, die für jeden Anwendungsfall optimal geeignet ist.
 
-Gerichtete Kanten werden in i\textgreater{}PM3D durch eine sich wiederholende "`Pfeiltextur"' auf Verbindungen dargestellt (siehe {\hyperref[visualisierung:kanten]{\emph{Kanten}}} (\autoref*{visualisierung:kanten})).
+Gerichtete Kanten werden in i\textgreater{}PM3D durch eine sich wiederholende "`Pfeiltextur"' auf Verbindungen dargestellt ({\hyperref[visualisierung:kanten]{siehe}} \autoref*{visualisierung:kanten}).
 Das hat den Vorteil, dass die Richtung auch erkennbar ist, wenn die Verbindung zu großen Teilen durch andere Objekte verdeckt wird.
 
 Der Ansatz, die Richtung durch eine dreidimensionale Pfeilspitze darzustellen, leidet unter dem Problem der Verdeckung.
@@ -2504,7 +2504,7 @@ Alle anderen Manipulationsmöglichkeiten — das sind diejenigen, die nur Parame
 
 \subsection{Übersicht}
 \label{modellanbindung:ubersicht}
-Da die Funktionalität der \code{ModelComponent} relativ umfangreich ist, ist diese wiederum in die in  \hyperref[modellanbindung:modelcomponent-classdiag]{Abbbildung  \ref*{modellanbindung:modelcomponent-classdiag}} gezeigten "`Unterkomponenten"' aufgeteilt.
+Da die Funktionalität der \code{ModelComponent} relativ umfangreich ist, ist diese wiederum in die in  \hyperref[modellanbindung:modelcomponent-classdiag]{Abbildung  \ref*{modellanbindung:modelcomponent-classdiag}} gezeigten "`Unterkomponenten"' aufgeteilt.
 \begin{figure}[htbp]
 \centering
 \capstart
@@ -2982,7 +2982,7 @@ Darstellung von Schrift und Texturen auf 3D-Objekten, möglichst skalierbar
 
 \end{enumerate}
 
-Anforderung (5) wird im Projekt für die Darstellung von {\hyperref[visualisierung:deaktivierung]{\emph{deaktivierten Modellelementen}}} (\autoref*{visualisierung:deaktivierung}) sowie {\hyperref[visualisierung:modellierungsflaechen]{\emph{Modellierungsflächen}}} (\autoref*{visualisierung:modellierungsflaechen}) gebraucht.
+Anforderung (5) wird im Projekt für die Darstellung von {\hyperref[visualisierung:deaktivierung]{deaktivierten Modellelementen}} (\autoref*{visualisierung:deaktivierung}) sowie {\hyperref[visualisierung:modellierungsflaechen]{Modellierungsflächen}} (\autoref*{visualisierung:modellierungsflaechen}) gebraucht.
 Anforderung (7) ist auf den Wunsch zurückzuführen, komplexe Menüs wie das Eightpen-Menü \cite{buchi} erstellen zu können, die selbst wieder 3D-Objekte enthalten.
 
 Die Anforderungen (1, 2, 3) werden – auf niedriger Ebene – nur von OpenGL in einer relativ aktuellen Version ab 3.0 erfüllt.
@@ -2991,7 +2991,7 @@ Da "`modernes"' {\hyperref[verwendet:opengl]{\emph{OpenGL}}} (\autoref*{verwende
 Im Gegensatz dazu stehen zahlreiche Frameworks, die verschiedene Aufgabengebiete und Abstraktionsebenen abdecken und auf Low-Level-Schnittstellen wie OpenGL aufsetzen.
 Diese könnten die Anforderungen (4–7) selbst abdecken oder zumindest dafür benutzt werden, diese zu implementieren.
 Solche Systeme werden oft als "`Game-Engines"' bezeichnet, die in erster Linie für die Erstellung von 3D-Computerspielen gedacht sind, sich aber auch durchaus für andere Visualisierungsaufgaben einsetzen lassen\footnote{
-Gezeigt wird dies von \cite{alvergren_3d_2009}; {\hyperref[related:krolovitsch]{\emph{siehe}}} (\autoref*{related:krolovitsch}). Dort sei die C++-Game-Engine Panda3D (über eine Python-Anbindung) genutzt worden, um schnell einen Prototypen für einen 3D-Zustandsdiagramm-Editor zu erstellen.
+Gezeigt wird dies von \cite{alvergren_3d_2009}; {\hyperref[related:krolovitsch]{siehe}} \autoref*{related:krolovitsch}. Dort sei die C++-Game-Engine Panda3D (über eine Python-Anbindung) genutzt worden, um schnell einen Prototypen für einen 3D-Zustandsdiagramm-Editor zu erstellen.
 }.
 
 Für die Java-Plattform sind mit JME3 und Ardor3D zwei relativ aktuelle, in Java implementierte 3D-Frameworks verfügbar.
@@ -3024,7 +3024,7 @@ Solche Abstraktionen werden – wenn sie allgemein verwendbar sind – direkt vo
 Durch das Prinzip soll der Programmierer von oft wiederkehrenden Aufgaben entlastet werden, aber trotzdem die vollen Möglichkeiten von OpenGL nutzen können, wenn nötig.
 
 Höhere Abstraktionen sollen auch von Programmieren ohne tiefgreifende Computergrafik- und OpenGL-Kenntnisse genutzt werden können.
-Ein {\hyperref[renderbib:beispiel-neue-modellfigur]{\emph{Beispiel}}} (\autoref*{renderbib:beispiel-neue-modellfigur}) dafür ist die Möglichkeit, auf einfachem Wege ein neues Grafikobjekt für die Darstellung von Modellelementen zu erstellen.
+Ein {\hyperref[renderbib:beispiel-neue-modellfigur]{Beispiel}} (\autoref*{renderbib:beispiel-neue-modellfigur}) dafür ist die Möglichkeit, auf einfachem Wege ein neues Grafikobjekt für die Darstellung von Modellelementen zu erstellen.
 
 Die Library lässt sich grob in zwei Schichten, eine \textbf{Low-Level-API} und einer \textbf{Higher-Level-API} aufteilen, die im Folgenden vorgestellt werden.
 
@@ -3306,7 +3306,7 @@ Das gleiche Prinzip wird für Visualisierungsparameter (bspw. Farben oder die Sc
 \label{renderbib:beispiele-fur-svarsupports}
 Für die im vorherigen Unterabschnitt beschriebene Textdarstellung wird das Trait \code{TextDisplaySVarSupport} angeboten.
 Im Normalfall wird dieses zusammen mit dem \code{BackgroundSVarSupport} genutzt, welches das Setzen der Hintergrundfarbe übernimmt.
-Das Trait \code{SelectionHighlightSVarSupport} stellt die Anbindung der {\hyperref[renderbib:erweiterung-interaction]{\emph{Visualisierungsvarianten}}} (\autoref*{renderbib:erweiterung-interaction}) bereit.
+Das Trait \code{SelectionHighlightSVarSupport} stellt die Anbindung der {\hyperref[renderbib:erweiterung-interaction]{Visualisierungsvarianten}} (\autoref*{renderbib:erweiterung-interaction}) bereit.
 \begin{figure}[htbp]
 \centering
 \capstart
@@ -3383,7 +3383,7 @@ Dies ist aber eigentlich ein "`untrennbarer"' Bestandteil, wenn man die Effizien
 Bei eigenen Versuchen mit dem Prototypen hat sich besonders gezeigt, dass die Effizienz mit dem Vorhandensein gut funktionierender und intuitiver Eingabemethoden steht und fällt.
 Daher ist es besonders lohnenswert, zukünftige Arbeiten in diese Richtung zu lenken.
 
-Probleme und naheliegende Erweiterungsmöglichkeiten, welche speziell die Visualisierung betreffen, wurden schon {\hyperref[visualisierung:vis-umsetzung]{\emph{in}}} (\autoref*{visualisierung:vis-umsetzung}) {\hyperref[visualisierung:vis-entwicklungsmoeglichkeiten]{\emph{und}}} (\autoref*{visualisierung:vis-entwicklungsmoeglichkeiten}) besprochen.
+Probleme und naheliegende Erweiterungsmöglichkeiten, welche speziell die Visualisierung betreffen, wurden schon {\hyperref[visualisierung:vis-umsetzung]{in}} \autoref*{visualisierung:vis-umsetzung} {\hyperref[visualisierung:vis-entwicklungsmoeglichkeiten]{und}} \autoref*{visualisierung:vis-entwicklungsmoeglichkeiten} besprochen.
 Besonders wichtig wären in diesem Zusammenhang umfangreichere Konfigurationsmöglichkeiten, die nach Möglichkeit auch in das Metamodell aufgenommen werden sollten, um eine einheitliche Konfiguration der Visualisierungsparameter zu ermöglichen.
 Außerdem sollten in einer Weiterentwicklung automatische Verfahren zur Unterstützung des Benutzers, beispielsweise Layout-Algorithmen und eine intelligente Wahl der Lichtparameter integriert werden.
 Daneben kann untersucht werden, inwieweit sich geometriebasierte Ansätze, wia bspw. aus i\textgreater{}PM:sup:\emph{2} bekannt, in den dreidimensionalen Raum übertragen lassen.
@@ -3399,7 +3399,7 @@ Jede Stufe kann so durch ein Modell repräsentiert werden, dessen Modellelemente
 
 Es fehlt allerdings noch entsprechende Unterstützung, um Beziehungen zwischen mehreren Modellen darzustellen und abzuspeichern.
 Verschiedene Modelltypen anzeigen und verknüpfen zu können, ist eine weitere lohnende Entwicklungsmöglichkeit.
-Dazu müsste die gleichzeitige Verwendung von mehreren Metamodellen durch die Editorkomponente unterstützt werden ({\hyperref[modellanbindung:laden-metamodelle]{\emph{siehe}}} (\autoref*{modellanbindung:laden-metamodelle})).
+Dazu müsste die gleichzeitige Verwendung von mehreren Metamodellen durch die Editorkomponente unterstützt werden ({\hyperref[modellanbindung:laden-metamodelle]{siehe}} \autoref*{modellanbindung:laden-metamodelle}).
 
 Da am Lehrstuhl, an dem dieses Projekt entstanden ist, ebenfalls die umfangreiche Metamodellierungsumgebung OMME entwickelt wird, wäre eine Integration von i\textgreater{}PM3D in diese überlegenswert.
 Für die Realisierung des Prototypen wurden schon Prinzipien aus OMME wie die Austauschbarkeit und Separation der Metamodelle für Editor und Modellierungsdomäne sowie die Spezialisierung von Instanzen genutzt.
@@ -3422,7 +3422,7 @@ Allgemein hat sich die Render-Bibliothek durch ihre Erweiterbarkeit und der leic
 Mit jener sollten sich auch andere 3D-Anwendungen gut umsetzen lassen, ohne die "`Freiheiten"' des Programmierers einzuschränken, möglicherweise auch auf Basis von Simulator X über die hier entwickelte Integration über die Renderkomponente.
 
 Insgesamt lässt sich zum Projekt sagen, dass ein durchaus benutzbarer Prototyp eines 3D-Prozessmodellierungswerkzeugs entstanden ist, der als Basis für weitere Entwicklungen dienen kann (und sollte). Prinzipiell lässt sich i\textgreater{}PM 3D auch schon für die Visualisierung und Bearbeitung von anderen Modelltypen nutzen, die sich ebenfalls in einer graphbasierten Form darstellen lassen, beispielsweise für die Modellierung von Proteinen oder Reaktionsnetzwerken in der Bioinformatik.
-Eine ausführbare Version von i\textgreater{}PM3D befindet sich auf der beigelegten {\hyperref[anhang_b:anhang-dvd]{\emph{DVD}}} (\autoref*{anhang_b:anhang-dvd}).
+Eine ausführbare Version von i\textgreater{}PM3D befindet sich auf der beigelegten {\hyperref[anhang_b:anhang-dvd]{DVD}} (\autoref*{anhang_b:anhang-dvd}).
 \printbibheading[heading=bibintoc, title={Literaturverzeichnis}]
 \printbibliography[nottype=online,heading=subbibintoc,title={Literatur}]
 \printbibliography[type=online,heading=subbibintoc,title={WWW-Referenzen}]\appendix

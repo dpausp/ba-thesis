@@ -6,7 +6,7 @@ Spezifikation der Metamodelle
 
 Nachdem im vorherigen Kapitel eine Übersicht über die von i>PM3D unterstützte Metamodell-Hierarchie gegeben wurde, werden hier die im Projekt verwendeten Metamodelle für Editor und Domäne sowie deren Concepts genauer vorgestellt.
 Das verwendete Editor-Metamodell wird im Folgenden mit **EMM** bezeichnet, das Domain-Metamodell mit **PMM** (Prozess-Metamodell).
-Die im Folgenden genannten vollqualifizierten Namen (FQN) von Levels setzen sich aus dem Modellnamen und dem Levelnamen zusammen, getrennt durch einen Punkt. 
+Die im Folgenden genannten voll qualifizierten Namen (FQN) von Levels setzen sich aus dem Modellnamen und dem Levelnamen zusammen, getrennt durch einen Punkt. 
 FQNs für Packages und Concepts entstehen, indem deren Namen in der gleichen Weise angehängt werden.
 
 .. _scalamapping:

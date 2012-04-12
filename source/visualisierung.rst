@@ -22,7 +22,7 @@ Knoten
 ------
 
 Für die Darstellung von Informationen auf den Knoten gibt es durch die auf dem :ref:`ebl` definierten Basis-Figuren ``TextLabelNode`` und ``TexturedNode`` grundsätzlich zwei Möglichkeiten.
-Die Beschriftung von TextLabelNodes kann dazu verwendet werden, textuelle Attribute aus dem Prozessmodell direkt anzuzeigen (:ref:`Anforderung (h) <anforderungen>`).
+Die Beschriftung von ``TextLabelNodes`` kann dazu verwendet werden, textuelle Attribute aus dem Prozessmodell direkt anzuzeigen (:ref:`Anforderung (h) <anforderungen>`).
 
 Es sollten möglichst einfache, dreidimensionale geometrische Körper mit möglichst ebenen Seitenflächen wie Würfel oder Quader gewählt werden. 
 Ebene Flächen eignen sich besonders gut zur Darstellung von Information; gekrümmte Flächen beeinträchtigen besonders die Lesbarkeit von (längeren) Textdarstellungen. 
@@ -58,7 +58,7 @@ So steht ein Pluszeichen für einen AND-Connector, wie in :num:`Abbildung #and-c
 Blickwinkelabhängige Darstellung von Informationen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Durch die freie Beweglichkeit und die Rotationsmöglichkeit der Kamera sowie der :ref:`Objekte<ipm3d-visualisierung>` ergeben sich sehr unterschiedliche Beobachtungsperspektiven. 
+Durch die freie Beweglichkeit und Rotationsmöglichkeit der Kamera sowie der :ref:`Objekte<ipm3d-visualisierung>` ergeben sich sehr unterschiedliche Beobachtungsperspektiven. 
 Objekte können so von allen Seiten betrachtet werden. 
 Trotzdem soll sichergestellt werden, dass Texte oder Symbole auf den Objekten jederzeit erkennbar sind. Daher werden diese grundsätzlich auf allen Seiten dargestellt. 
 Jedoch führt dies bei bestimmten Drehpositionen zu störenden und möglicherweise verwirrenden Darstellungen, wenn beispielsweise bei einem Würfel zwei oder sogar drei Seiten zu sehen sind, die dasselbe anzeigen.
@@ -272,7 +272,7 @@ Die dünnen, blauen Kanten zwischen den Prozessen und Datenknoten stellen ``Node
 Umsetzung von verschiedenen Nutzungsmöglichkeiten der dritten Dimension
 =======================================================================
 
-In diesem Abschnitt soll gezeigt werden, welche :ref:`in <related-zusammenfassung>` genannen Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
+In diesem Abschnitt soll gezeigt werden, welche :ref:`in <related-zusammenfassung>` genannten Nutzungsmöglichkeiten sich mit dem bisherigen Prototypen umsetzen lassen oder welche Erweiterungen dafür vorgenommen werden sollten.
 Die folgende Tabelle zeigt hierzu eine Übersicht über verschiedene Verwendungen der dritten Dimension und deren Umsetzung in i>PM 3D, welche anschließend näher ausgeführt wird.
 
 |
@@ -296,7 +296,7 @@ Um dies für den Anwender effizient zu gestalten, müssten Algorithmen integrier
 Eine gewisse Hilfe, besonders für diskrete Attribute, können die 2D-Modellierungsflächen darstellen. So kann jeder Fläche ein bestimmter Wert zugewiesen werden. 
 Alle Elemente, die diesen Wert aufweisen, werden auf der passenden Fläche platziert. 
 Die Fläche unterstützt den Benutzer bei der Anordnung, indem sie die Objekte automatisch in einer Ebene platziert, wenn sie in der Nähe der Fläche abgelegt werden.
-Um Objekte beispielsweise in die Kategorien "wichtig" und "unwichtig" einzuteilen, ließen sich zwei (parallele) Flächen definieren, anhand derer die Objekte sortiert werden könen.
+Um Objekte beispielsweise in die Kategorien "wichtig" und "unwichtig" einzuteilen, ließen sich zwei (parallele) Flächen definieren, anhand derer die Objekte sortiert werden können.
 Da bisher nur die Platzierung senkrecht zur Fläche automatisch erfolgt, sollte in einer Erweiterung von i>PM3D die Möglichkeit hinzugefügt werden, 2D-Layout-Algorithmen anzuwenden, um beispielsweise Knoten mit bestimmten Eigenschaften zu gruppieren oder für eine kreuzungsfreie Darstellung der Verbindungen in der Ebene zu sorgen.
 
 Zeitliche Abläufe
@@ -314,7 +314,7 @@ Veranschaulichung von Beziehungen
 
 Durch die Anordnung der Elemente die Bedeutung von Beziehungen zu unterstreichen ist ebenfalls möglich, wobei wiederum die 2D-Flächen hilfreich sind. 
 So kann durch die Positionierung der Knoten auf einer Fläche leicht verdeutlicht werden, dass Kanten, die parallel zur Fläche verlaufen, eine andere Bedeutung haben als diejenigen, die aus der Ebene herausragen und zu Elementen führen, die auf einer anderen Fläche platziert sein können. 
-:ref:`In <gef3d>` wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
+Bei :ref:`GEF3D <gef3d>` wurde dies genutzt, um gleichzeitig Beziehungen innerhalb eines Modells als auch Beziehungen zu Elementen eines anderen Modells (möglicherweise auch anderen Typs) zu visualisieren.
 i>PM 3D hat die Fähigkeit, mehrere Modelle gleichzeitig zu laden, allerdings werden Verbindungen zwischen mehreren Modellen und verschiedene Modelltypen zur gleichen Zeit noch nicht unterstützt (:ref:`siehe <modellanbindung>`). 
 Dies sollte in einer weiteren Entwicklung vorrangig hinzugefügt werden, um diese Anwendung der dritten Dimension zu erlauben, welche deutliche Vorteile zu 2D-Darstellungen verspricht.
 

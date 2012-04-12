@@ -119,7 +119,7 @@ Folgende Parser-Funktion
     }
 
 
-würde beispielsweise die :ref:`LML-String-Zuweisung<lmm>` 
+würde beispielsweise die LML-String-Zuweisung 
 
 .. code-block:: java
     

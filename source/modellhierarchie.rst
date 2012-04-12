@@ -58,7 +58,7 @@ Mit "Repräsentation" ist im Folgenden die Gesamtheit dieser Parameter gemeint.
 
 Die Verknüpfung mit dem *Domain-Model-Stack* wird hergestellt, indem in Concepts des *Editor-Model-Stacks* eine Referenz auf *Domain-Model-Stack*-Concepts angegeben wird (:num:`Abbildung #editor-domain-conn`). 
 In :num:`Abbildung #modellhierarchie-diagram` wird dies durch gestrichelte Pfeile dargestellt.
-Besagte Referenzen werden durch das Attribut ``modelElementFQN`` angegeben, welchem der vollqualizierte Name (FQN) des referenzierten Concepts zugewiesen wird. 
+Besagte Referenzen werden durch das Attribut ``modelElementFQN`` angegeben, welchem der voll qualifizierte Name (FQN) des referenzierten Concepts zugewiesen wird. 
 Vollqualifizierte Namen entstehen nach dem Schema <Model>.<Level>.<Package>.<Concept>, beispielsweise ``EMM.D1.nodeFigures.ProcessNode``.
 
 .. _editor-domain-conn:

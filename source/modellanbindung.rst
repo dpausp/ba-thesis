@@ -51,7 +51,7 @@ Alle anderen Manipulationsmöglichkeiten — das sind diejenigen, die nur Parame
 Übersicht 
 ---------
 
-Da die Funktionalität der ``ModelComponent`` relativ umfangreich ist, ist diese wiederum in die in  :num:`Abbbildung #modelcomponent-classdiag` gezeigten "Unterkomponenten" aufgeteilt.
+Da die Funktionalität der ``ModelComponent`` relativ umfangreich ist, ist diese wiederum in die in  :num:`Abbildung #modelcomponent-classdiag` gezeigten "Unterkomponenten" aufgeteilt.
 
 .. _modelcomponent-classdiag:
 
@@ -233,7 +233,7 @@ Modell
 Für die drei Elementtypen Knoten, Kanten und Szenenobjekte gibt es jeweils einen Aspect, der von ``ModelAspect`` abgeleitet ist, wie beispielsweise den ``NodeAspect``, wie er in :num:`Abbildung #entity-description` zu sehen ist.
 ``ModelAspects`` sind der ``ModelComponent`` zugeordnet und enthalten für Nutzer der ``ModelEntity`` relevante Informationen. 
 
-Für alle Elemente, die von ``ModelEntities`` repräsentiert werden wird ein vollqualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
+Für alle Elemente, die von ``ModelEntities`` repräsentiert werden wird ein voll qualifizierter Name (``fqn``) vergeben, der das Element eindeutig innerhalb des Systems identifiziert.
 Dieser Name wird in ``Commands`` verwendet, die sich auf bestimmte Elemente beziehen, wie beispielsweise das Verbinden oder Löschen von Knoten.
 Bei Knoten und Kanten wird dafür die FQN des entsprechenden Modellelementes aus dem *Domain-Model* genutzt. Szenenobjekte werden über die FQN des *Editor-Usage*-Concepts identifiziert\ [#f2]_.
 

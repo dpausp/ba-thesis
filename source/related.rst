@@ -521,7 +521,7 @@ Eine 2,5D oder gar 2D-Darstellung lässt sich als Sonderfall einer 3D-Darstellun
 So kann die Darstellung oder die Platzierbarkeit von Elementen – ausgehend vom gewählten 3D-Ansatz – wieder eingeschränkt werden, falls sich dies für eine Anwendung als vorteilhaft herausstellen sollte. 
 
 Abstrakte Prozessmodelle in eine virtuelle Welt einzubetten und so räumliche Information zu nutzen stellt einen vielversprechenden Ansatz dar, aus dreidimensionalen Darstellungen einen großen Vorteil zu ziehen.
-Dadurch wird :ref:`Anforderung (b)<anforderungen>` motiviert, beliebige 3D-Objekte in die Szene einfügen zu können, um damit abstrakte Modellelemente zu illustrieren oder virtuelle Ausführungsumgebungen visualisieren zu können.
+Dadurch wird *Anforderung (b)* motiviert, beliebige 3D-Objekte in die Szene einfügen zu können, um damit abstrakte Modellelemente zu illustrieren oder virtuelle Ausführungsumgebungen visualisieren zu können.
 
 
 .. [#f1] Quellcode und ausführbare Dateien des (weiterentwickelten) Prototyps "WilmaScope" (auf Basis von Java3D) können unter http://wilma.sourceforge.net/ heruntergeladen werden.
@@ -534,4 +534,4 @@ Dadurch wird :ref:`Anforderung (b)<anforderungen>` motiviert, beliebige 3D-Objek
 
 .. [#f5] Die besagte Arbeit ist 2000 entstanden. Sicherlich ist die Geschwindigkeit heutzutage ein kleineres Problem, aber es lässt sich nicht vernachlässigen. Gerade bei aufwändigen Grafikeffekten oder der Verarbeitung von komplexen Eingabedaten kann man leicht an die Grenzen der Rechenleistung stoßen.
 
-.. [#f6] Quelle: www.youtube.com/watch?v=aUBmvykDhB0. Das Video ist auch auf der beigelegten :ref:`anhang-dvd` zu finden.
+.. [#f6] Quelle: www.youtube.com/watch?v=aUBmvykDhB0. Das Video ist auch auf der beigelegten :ref:`DVD <anhang-dvd>` zu finden.
