@@ -6,5 +6,6 @@ komplett.bib
 *.dia~
 *.aux
 *.log
+*.png
 *.*~
 addon.pdf
